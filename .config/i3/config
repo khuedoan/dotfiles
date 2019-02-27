@@ -61,7 +61,7 @@ bindsym XF86MonBrightnessDown exec xbacklight -10
 # Media
 bindsym XF86AudioRaiseVolume  exec amixer -q set Master 10%+ unmute  
 bindsym XF86AudioLowerVolume  exec amixer -q set Master 10%- unmute  
-bindsym XF86AudioMute         exec amixer -q set Master mute  
+bindsym XF86AudioMute         exec amixer -q set Master toggle  
 bindsym XF86AudioPlay         exec playerctl play-pause  
 bindsym XF86AudioNext         exec playerctl next  
 bindsym XF86AudioPrev         exec playerctl previous
@@ -217,7 +217,7 @@ mode $wm_menu {
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
-bindsym $mod+Shift+w mode $wm_menu
+bindsym $mod+grave  mode $wm_menu
 
 # Session menu
 set  $session_menu "[E]xit - [L]ock - [P]oweroff - [R]eboot - [S]uspend"
@@ -230,7 +230,7 @@ mode $session_menu {
     bindsym Return  mode "default"
     bindsym Escape  mode "default"
 }
-bindsym $mod+Shift+s mode $session_menu
+bindsym $mod+Escape mode $session_menu
 
 #############
 #           #

@@ -125,4 +125,4 @@ fi
 
 set -o vi
 
-alias dotfiles='/usr/bin/git --git-dir=/home/khuedoan/.cfg/ --work-tree=/home/khuedoan'
+alias dotfiles='/usr/bin/git --git-dir=/home/khuedoan/.dotfiles/ --work-tree=/home/khuedoan'

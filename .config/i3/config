@@ -10,7 +10,7 @@ set $dmenu     dmenu     -fn "Dejavu Sans-11" -nb "#282A36" -nf "#F8F8F2" -sb "#
 
 # Border
 smart_borders on
-for_window [class="^.*"] border pixel 3
+for_window [class="^.*"] border pixel 1
 
 # Colors
 client.focused          #6272A4 #6272A4 #F8F8F2 #6272A4   #6272A4
@@ -28,7 +28,7 @@ font pango:DejaVu Sans Mono 8
 
 # Gaps
 smart_gaps on
-gaps inner 10
+gaps inner 20
 
 # Mod key
 set $mod Mod4

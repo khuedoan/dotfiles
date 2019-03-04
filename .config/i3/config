@@ -242,7 +242,7 @@ bindsym $mod+Escape mode $session_menu
 bindsym $mod+c exec xclip -o | $dmenu -p "Calculate" | xargs echo | bc 2>&1 | $dmenu -p "Result" | xclip -i
 
 # Dictionary
-bindsym $mod+d exec xclip -o | $dmenu -p "Translate" | xargs echo | trans -b :vi 2>&1 | $dmenu -p "Translated" | xclip -i
+bindsym $mod+d exec xclip -o | $dmenu -p "Translate" | xargs echo | trans -b en:vi 2>&1 | $dmenu -p "Translated" | xclip -i
 
 # Open copied video URL in Picture in Picture mode
 bindsym $mod+y exec mpv $(xclip -o) --geometry=x20%+20-20 --force-window --ytdl-format=best

@@ -126,3 +126,6 @@ fi
 set -o vi
 
 alias dotfiles='/usr/bin/git --git-dir=/home/khuedoan/.dotfiles/ --work-tree=/home/khuedoan'
+
+alias dmenu='dmenu -fn "Dejavu Sans-11" -nb "#282A36" -nf "#F8F8F2" -sb "#CAA9FA" -sf "#282A36"'
+alias dmenu_run='dmenu_run -fn "Dejavu Sans Mono-11" -nb "#282A36" -nf "#F8F8F2" -sb "#CAA9FA" -sf "#282A36"'

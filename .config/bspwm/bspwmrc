@@ -1,0 +1,32 @@
+#! /bin/sh
+shopt -s expand_aliases
+source ~/.aliases
+
+# Autostart
+xsetroot -cursor_name left_ptr
+sxhkd &
+fcitx &
+feh --bg-scale ~/Pictures/Wallpapers/Hyper\ Beast.jpg &
+$HOME/.config/polybar/launch &
+compton &
+
+# Workspace
+bspc monitor -d 1 2 3 4 5 6 7 8 9 0
+
+# Border
+bspc config border_width 2
+
+# Gap
+bspc config window_gap   10
+
+# Monocule
+bspc config borderless_monocle true
+bspc config gapless_monocle    true
+bspc config single_monocle     true
+
+# Float
+bspc rule -a feh                  state=floating rectangle=500x500+0+0
+bspc rule -a Nm-connection-editor state=floating
+bspc rule -a mpv                  state=floating
+bspc rule -a Pcmanfm              state=floating
+bspc rule -a Xarchiver            state=floating

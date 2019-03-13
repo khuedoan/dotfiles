@@ -1,6 +1,12 @@
 ! rxvt-unicode config
+URxvt.font: xft:Source Code Pro SemiBold:size=10
+URxvt.boldFont: xft:Source Code Pro Black:size=10
 URxvt.scrollBar: false
-URxvt.font: xft:Mono:medium:size=10
+URxvt.tabbed.tabbar-fg: -2
+URxvt.tabbed.tabbar-bg: -1
+URxvt.tabbed.tab-fg: -1
+URxvt.tabbed.tab-bg: 4
+URxvt.perl-ext-common: default,matcher,tabbed
 
 ! Dracula Xresources palette
 *.foreground: #F8F8F2
@@ -21,4 +27,3 @@ URxvt.font: xft:Mono:medium:size=10
 *.color14:    #9AEDFE
 *.color7:     #BFBFBF
 *.color15:    #E6E6E6
-

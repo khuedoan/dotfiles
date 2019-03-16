@@ -145,4 +145,4 @@ content = %{A1:i3lock-next:}%{A}
 [module/power]
 type = custom/text
 
-content = %{A1:~/.config/dmenu/dmenu-power:}%{A}
+content = %{A1:~/.config/rofi/scripts/rofi-power:}%{A}

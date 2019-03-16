@@ -7,14 +7,70 @@ super + Return
 	urxvt
 
 # program launcher
+<<<<<<< HEAD
 super + @space
 	dmenu_run
+=======
+super + space
+    dmenu_run -nb "#282A36" -nf "#F8F8F2" -sb "#BD93F9" -sf "#282A36" -fn "Source Code Pro SemiBold-10" -p "Run"
+>>>>>>> master
 
 # make sxhkd reload its configuration files:
 super + Escape
 	pkill -USR1 -x sxhkd
 
 #
+<<<<<<< HEAD
+=======
+# Media keys
+#
+
+# mute
+XF86AudioMute
+	amixer -q set Master toggle
+
+# volume down
+XF86AudioLowerVolume
+	amixer -q set Master 10%- unmute
+
+# volume up
+XF86AudioRaiseVolume
+	amixer -q set Master 10%+ unmute
+
+# previous
+XF86AudioPrev
+	playerctl previous
+
+# play/pause
+XF86AudioPlay
+	playerctl play
+
+# next
+XF86AudioNext
+	playerctl next
+
+# decrease brightness
+XF86MonBrightnessDown
+	xbacklight -10
+
+# increase brightness
+XF86MonBrightnessUp
+	xbacklight +10
+
+# copy screenshot to clipboard
+Print
+    maim --format=png /dev/stdout | xclip -selection clipboard -t image/png -i
+
+# copy area screenshot to clipboard
+shift + Print
+    maim --noopengl -s --format=png /dev/stdout | xclip -selection clipboard -t image/png -i
+
+# copy active window screenshot to clipboard
+alt + Print
+    maim -i $(xdotool getactivewindow) | xclip -selection clipboard -t image/png
+
+#
+>>>>>>> master
 # bspwm hotkeys
 #
 

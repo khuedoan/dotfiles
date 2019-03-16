@@ -7,14 +7,21 @@ super + Return
 	urxvt
 
 # program launcher
+<<<<<<< HEAD
+super + @space
+	dmenu_run
+=======
 super + space
     dmenu_run -nb "#282A36" -nf "#F8F8F2" -sb "#BD93F9" -sf "#282A36" -fn "Source Code Pro SemiBold-10" -p "Run"
+>>>>>>> master
 
 # make sxhkd reload its configuration files:
 super + Escape
 	pkill -USR1 -x sxhkd
 
 #
+<<<<<<< HEAD
+=======
 # Media keys
 #
 
@@ -63,6 +70,7 @@ alt + Print
     maim -i $(xdotool getactivewindow) | xclip -selection clipboard -t image/png
 
 #
+>>>>>>> master
 # bspwm hotkeys
 #
 

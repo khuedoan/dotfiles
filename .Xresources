@@ -1,10 +1,12 @@
 ! rxvt-unicode config
+URxvt.depth: 32
+URxvt.background: rgba:28FF/2AFF/36FF/AAAA
 URxvt.font: xft:Source Code Pro SemiBold:size=10
 URxvt.boldFont: xft:Source Code Pro Black:size=10
 URxvt.scrollBar: false
 URxvt.tabbed.tabbar-fg: -2
 URxvt.tabbed.tabbar-bg: -1
-URxvt.tabbed.tab-fg: -1
+URxvt.tabbed.tab-fg: -2
 URxvt.tabbed.tab-bg: 4
 URxvt.perl-ext-common: default,matcher,tabbed
 

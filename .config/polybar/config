@@ -1,52 +1,35 @@
 [bar/topbar]
 wm-restack = bspwm
-
-height = 20
-
-foreground = ${xrdb:foreground}
-background = [0]${xrdb:background}
-
+height = 22
+foreground = #FFFFFF
+background = #44282A36
 font-0 = Lucida Grande:style=Bold:size=9;2
 font-1 = SauceCodePro Nerd Font:style=Black:size=10;2
-
 padding-right = 2
-module-margin = 1
-
-cursor-click = pointer
-
-modules-left   = bspwm title
+module-margin = 2
+modules-left   = bspwm wlan
 modules-center = date
-modules-right  = wlan cpu temperature memory battery alsa xbacklight lock power
-
+modules-right  = cpu temperature memory battery xbacklight alsa
+cursor-click = pointer
 tray-position = right
 
 [module/bspwm]
 type = internal/bspwm
-
 label-focused  = %{T2}%name%
 label-occupied = %{T2}%name%
 label-urgent   = %{T2}%name%
-label-empty    = %{T2}*
-label-focused-padding-left  = 2
-label-occupied-padding-left = 2
-label-urgent-padding-left   = 2
-label-empty-padding-left    = 2
-label-focused-foreground = ${xrdb:color2}
-label-urgent-foreground  = ${xrdb:color1}
-label-empty-foreground   = ${xrdb:color7}
-
-[module/title]
-type = internal/xwindow
-
-format-label-font = 2
-
-label-maxlen = 100
+label-empty    = %{T2}·
+label-focused-padding  = 2
+label-occupied-padding = 2
+label-urgent-padding   = 2
+label-empty-padding    = 2
+label-focused-background  = #88000000
+label-urgent-background   = #88FF0000
 
 [module/date]
 type = internal/date
 interval = 1
 label = %time% - %date%
-
 time     = %R
 date     = %a, %b %d
 time-alt = %T
@@ -55,76 +38,60 @@ date-alt = %A, %B %d, %Y
 [module/wlan]
 type = internal/network
 interface = wlp2s0
-
-format-connected-prefix = %{A1:urxvt -e nmtui-connect:}直 %{A}
-label-connected = %essid%  %upspeed%  %downspeed%
+format-connected-prefix    = %{A1:urxvt -e nmtui-connect:}直 %{A}
 format-disconnected-prefix = %{A1:urxvt -e nmtui-connect:}睊 %{A}
-label-disconnected = Disconnected
+label-connected         = %essid%  %upspeed%  %downspeed%
+label-disconnected      = Disconnected
 
 [module/cpu]
 type = internal/cpu
-
 format-prefix = %{A1:urxvt -e htop:} %{A}
-
 [module/temperature]
 type = internal/temperature
-
 thermal-zone = 10
-
 format      = <ramp> <label>
 format-warn = <ramp> <label-warn>
-
+label-warn-foreground = #FF0000
 ramp-0 = 
 ramp-1 = 
 ramp-2 = 
 ramp-3 = 
 ramp-4 = 
 
-label-warn-foreground = ${xrdb:color1}
-
 [module/memory]
 type = internal/memory
-
 format-prefix = " "
-label = %gb_used%/%gb_total%
+label         = %gb_used%
 
 [module/battery]
 type = internal/battery
-
 battery = BAT0
 adapter = AC
-
 format-discharging = <ramp-capacity> <label-discharging>
 format-charging    = <animation-charging> <label-charging>
 format-full        = <ramp-capacity> <label-full>
-
-format-charging-foreground = ${xrdb:color3}
-format-full-foreground     = ${xrdb:color2}
-
+format-charging-foreground = #FFFF00
+format-full-foreground     = #00FF00
 ramp-capacity-0 = 
 ramp-capacity-1 = 
 ramp-capacity-2 = 
 ramp-capacity-3 = 
 ramp-capacity-4 = 
-
+animation-charging-framerate = 1000
 animation-charging-0 = 
 animation-charging-1 = 
 animation-charging-2 = 
 animation-charging-3 = 
 animation-charging-4 = 
-animation-charging-framerate = 1000
 
 [module/alsa]
 type = internal/alsa
 format-volume = <ramp-volume> <bar-volume>
-
 format-muted-prefix = "ﱝ "
-label-muted         = sound muted
-
+label-muted = sound muted
 ramp-volume-0 = 奄
 ramp-volume-1 = 奔
 ramp-volume-2 = 墳
-
 bar-volume-width     = 11
 bar-volume-indicator = |
 bar-volume-fill      = ─
@@ -133,16 +100,6 @@ bar-volume-empty     = -
 [module/xbacklight]
 type = internal/xbacklight
 format = <ramp>
-
 ramp-0 = 
 ramp-1 = 
 ramp-2 = 
-
-[module/lock]
-type = custom/text
-content = %{A1:i3lock-next:}%{A}
-
-[module/power]
-type = custom/text
-
-content = %{A1:~/.config/rofi/scripts/rofi-power:}%{A}

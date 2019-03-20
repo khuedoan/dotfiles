@@ -23,8 +23,8 @@ label-focused-padding  = 2
 label-occupied-padding = 2
 label-urgent-padding   = 2
 label-empty-padding    = 2
-label-focused-background  = #88000000
-label-urgent-background   = #88FF0000
+label-focused-background  = #66000000
+label-urgent-background   = #66FF0000
 
 [module/date]
 type = internal/date
@@ -40,7 +40,7 @@ type = internal/network
 interface = wlp2s0
 format-connected-prefix    = %{A1:urxvt -e nmtui-connect:}直 %{A}
 format-disconnected-prefix = %{A1:urxvt -e nmtui-connect:}睊 %{A}
-label-connected         = %essid%  %upspeed%  %downspeed%
+label-connected         = %essid%
 label-disconnected      = Disconnected
 
 [module/cpu]

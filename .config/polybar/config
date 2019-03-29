@@ -7,9 +7,9 @@ font-0 = Lucida Grande:style=Bold:size=9;2
 font-1 = SauceCodePro Nerd Font:style=Black:size=10;2
 padding-right = 2
 module-margin = 2
-modules-left   = bspwm wlan
+modules-left   = bspwm title
 modules-center = date
-modules-right  = cpu temperature memory battery xbacklight alsa
+modules-right  = wlan cpu temperature memory battery xbacklight alsa
 cursor-click = pointer
 tray-position = right
 
@@ -25,6 +25,10 @@ label-urgent-padding   = 2
 label-empty-padding    = 2
 label-focused-background  = #66000000
 label-urgent-background   = #66FF0000
+
+[module/title]
+type = internal/xwindow
+label-maxlen = 100
 
 [module/date]
 type = internal/date

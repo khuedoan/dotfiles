@@ -29,10 +29,8 @@ zstyle ':completion:*' menu select
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}'
 
 # Plugins
-# sudo pacman -S zsh-autosuggestions zsh-syntax-highlighting
-if [ -f /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh ]; then
-    . /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-fi
-if [ -f /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then
-    . /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-fi
+# sudo pacman -S zsh-autosuggestions zsh-syntax-highlighting fzf
+. /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+. /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+. /usr/share/fzf/key-bindings.zsh
+. /usr/share/fzf/completion.zsh

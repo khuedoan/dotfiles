@@ -4,6 +4,8 @@
 xsetroot -cursor_name left_ptr &
 sxhkd &
 fcitx &
+setxkbmap -option ctrl:nocaps &
+xcape -e 'Control_L=Escape' &
 feh --bg-fill --randomize ~/Pictures/Wallpapers/* &
 $HOME/.config/polybar/launch &
 compton &

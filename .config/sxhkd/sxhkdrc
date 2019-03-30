@@ -105,3 +105,6 @@ super + t
 # Calculator
 super + c
     $HOME/.config/rofi/scripts/rofi-calc
+# Key bindings list
+super + slash
+    $HOME/.config/rofi/scripts/rofi-help

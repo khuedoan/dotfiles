@@ -7,6 +7,9 @@ super + {h,j,k,l}
 # Focus the given workspace
 super + {1-9,0}
 	bspc desktop -f '^{1-9,10}'
+# Focus frequently used workspace conveniently 
+alt + {a,s,d,f,g}
+	bspc desktop -f '^{1-5}'
 # Focus the next/previous window in the current workspace
 super + {_,shift + }semicolon
 	bspc node -f {next,prev}.local
@@ -104,4 +107,4 @@ super + t
     $HOME/.config/rofi/scripts/rofi-trans
 # Calculator
 super + c
-    $HOME/.config/rofi/scripts/rofi-calculator
+    $HOME/.config/rofi/scripts/rofi-calc

@@ -4,13 +4,13 @@
 
 You will need at least these packages for this rice to be usable:
 
-`bspwm`
+[`bspwm`](https://www.archlinux.org/packages/community/x86_64/bspwm/)
 
-`sxhkd`
+[`sxhkd`](https://www.archlinux.org/packages/community/x86_64/sxhkd/)
 
 [`polybar`](https://aur.archlinux.org/packages/polybar/)
 
-`urxvt` or any terminal of choice, edit [sxhkdrc](.config/sxhkd/sxhkdrc) to launch different one
+[`rxvt-unicode`](https://www.archlinux.org/packages/community/x86_64/rxvt-unicode/) or any terminal of choice, edit [sxhkdrc](.config/sxhkd/sxhkdrc) to launch different one
 
 Fonts:
 

@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+
+OPTIONS="Poweroff\nReboot\nSuspend"
+LAUNCHER="rofi -dmenu -p Power"
+LOCKER="i3lock-next"
+
+option=`echo -e $OPTIONS | $LAUNCHER | awk '{print $1}' | tr -d '\r\n'`
+if [ ${#option} -gt 0 ]
+then
+    case $option in
+      Exit)
+        eval $1
+        ;;
+      Reboot)
+        systemctl reboot
+        ;;
+      Poweroff)
+        systemctl poweroff
+        ;;
+      Suspend)
+        $LOCKER & systemctl suspend
+        ;;
+      *)
+        ;;
+    esac
+fi

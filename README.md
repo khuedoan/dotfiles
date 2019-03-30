@@ -8,27 +8,29 @@ You will need at least these packages for this rice to be usable:
 
 `sxhkd`
 
-`polybar` ([AUR](https://aur.archlinux.org/packages/polybar/))
+`polybar` [AUR](https://aur.archlinux.org/packages/polybar/)
 
 `urxvt` or any terminal of choice, edit [sxhkdrc](.config/sxhkd/sxhkdrc) to launch different one
 
 Fonts:
 
-`nerd-fonts-source-code-pro`
+`nerd-fonts-source-code-pro` [AUR](https://aur.archlinux.org/packages/nerd-fonts-source-code-pro/)
 
-`ttf-mac-fonts`
+`ttf-mac-fonts` [AUR](https://aur.archlinux.org/packages/ttf-mac-fonts/)
 
 Optional:
 
-`compton-tryone-git`
+`compton-tryone-git` [AUR](https://aur.archlinux.org/packages/compton-tryone-git/)
 
-`i3lock-next-git`
+`i3lock-next-git` [AUR](https://aur.archlinux.org/packages/i3lock-next-git/)
 
 ## Installation
 
-You can install this rice by runing this command:
+You can quickly install this rice by running this command:
 
 `curl -Lks https://raw.githubusercontent.com/khuedoan98/dotfiles/master/install.sh | /bin/bash`
+
+Or just clone this repo and manually copy only the files you want.
 
 ## Recommended packages
 

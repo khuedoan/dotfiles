@@ -23,3 +23,10 @@ alias ping='ping -c 5'
 
 # feh
 alias feh='feh --scale-down --auto-zoom'
+
+# git
+alias gs='git status'
+alias gd='git diff'
+alias ga='git add'
+alias gc='git commit -m'
+alias gp='git push'

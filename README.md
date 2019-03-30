@@ -8,21 +8,21 @@ You will need at least these packages for this rice to be usable:
 
 `sxhkd`
 
-`polybar` [AUR](https://aur.archlinux.org/packages/polybar/)
+[`polybar`](https://aur.archlinux.org/packages/polybar/)
 
 `urxvt` or any terminal of choice, edit [sxhkdrc](.config/sxhkd/sxhkdrc) to launch different one
 
 Fonts:
 
-`nerd-fonts-source-code-pro` [AUR](https://aur.archlinux.org/packages/nerd-fonts-source-code-pro/)
+[`nerd-fonts-source-code-pro`](https://aur.archlinux.org/packages/nerd-fonts-source-code-pro/)
 
-`ttf-mac-fonts` [AUR](https://aur.archlinux.org/packages/ttf-mac-fonts/)
+[`ttf-mac-fonts`](https://aur.archlinux.org/packages/ttf-mac-fonts/)
 
 Optional:
 
-`compton-tryone-git` [AUR](https://aur.archlinux.org/packages/compton-tryone-git/)
+[`compton-tryone-git`](https://aur.archlinux.org/packages/compton-tryone-git/)
 
-`i3lock-next-git` [AUR](https://aur.archlinux.org/packages/i3lock-next-git/)
+[`i3lock-next-git`](https://aur.archlinux.org/packages/i3lock-next-git/)
 
 ## Installation
 

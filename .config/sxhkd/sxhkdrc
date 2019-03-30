@@ -99,6 +99,9 @@ super + Return
 # Web browser
 super + w
     firefox
+# File browser
+super + f
+    pcmanfm
 # Translator
 super + t
     $HOME/.config/rofi/scripts/rofi-trans

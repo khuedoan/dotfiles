@@ -37,7 +37,7 @@ set expandtab       " Use spaces when <Tab> is inserted
 set cursorline      " Highlight the screen line of the cursor
 
 " Cursor line
-hi CursorLine cterm=none ctermbg=DarkGray
+hi CursorLine cterm=none ctermbg=060
 
 " Change cursor shape in different modes
 " 0    Blink Block

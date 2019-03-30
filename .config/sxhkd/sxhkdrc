@@ -8,7 +8,7 @@ super + {h,j,k,l}
 super + {1-9,0}
 	bspc desktop -f '^{1-9,10}'
 # Focus frequently used workspace conveniently 
-alt + {a,s,d,f,g}
+super + {a,s,d,f,g}
 	bspc desktop -f '^{1-5}'
 # Focus the next/previous window in the current workspace
 super + {_,shift + }semicolon
@@ -99,9 +99,6 @@ super + Return
 # Web browser
 super + w
     firefox
-# File browser
-super + f
-    pcmanfm
 # Translator
 super + t
     $HOME/.config/rofi/scripts/rofi-trans

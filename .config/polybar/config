@@ -2,7 +2,7 @@
 wm-restack = bspwm
 height = 22
 foreground = #FFFFFF
-background = #44282A36
+background = #66282A36
 font-0 = Lucida Grande:style=Bold:size=9;2
 font-1 = SauceCodePro Nerd Font:style=Black:size=10;2
 padding-right = 2
@@ -28,7 +28,7 @@ label-urgent-background   = #66FF0000
 
 [module/title]
 type = internal/xwindow
-label-maxlen = 100
+label-maxlen = 80
 
 [module/date]
 type = internal/date

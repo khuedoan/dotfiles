@@ -30,3 +30,11 @@ alias gd='git diff'
 alias ga='git add'
 alias gc='git commit -m'
 alias gp='git push'
+
+# dotfiles
+alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias dfs='dotfiles status'
+alias dfd='dotfiles diff'
+alias dfa='dotfiles add'
+alias dfc='dotfiles commit -m'
+alias dfp='dotfiles push'

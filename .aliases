@@ -30,6 +30,7 @@ alias gd='git diff'
 alias ga='git add'
 alias gc='git commit -m'
 alias gp='git push'
+alias gl='git ls-tree -r master --name-only'
 
 # dotfiles
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'

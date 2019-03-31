@@ -20,6 +20,8 @@ You will need at least these packages for this rice to be usable:
 
 [`polybar`](https://aur.archlinux.org/packages/polybar/)
 
+[`rofi`](https://www.archlinux.org/packages/community/x86_64/rofi/)
+
 [`rxvt-unicode`](https://www.archlinux.org/packages/community/x86_64/rxvt-unicode/) or any terminal of choice, edit [sxhkdrc](.config/sxhkd/sxhkdrc) to launch different one
 
 Fonts:

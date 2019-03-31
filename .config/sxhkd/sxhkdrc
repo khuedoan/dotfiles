@@ -82,7 +82,7 @@ super + alt + r
 	xbacklight {-,+}10
 # Screenshot
 {_,ctrl + ,alt + }Print
-    maim {_,-s,-i $(xdotool getactivewindow)} | xclip -selection clipboard -t image/png -i
+    maim {_,-s,-i $(xdotool getactivewindow)} --noopengl | xclip -selection clipboard -t image/png -i
 
 ################
 # Quick launch #

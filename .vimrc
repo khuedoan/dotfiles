@@ -1,4 +1,4 @@
-" Source the global vim configuration file
+" Source the default vimrc file
 :if filereadable("/usr/share/vim/vim81/defaults.vim")
 :   source /usr/share/vim/vim81/defaults.vim
 :endif

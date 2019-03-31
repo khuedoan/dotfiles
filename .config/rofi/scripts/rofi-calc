@@ -1,5 +1,38 @@
 #!/usr/bin/env bash
 
+# https://github.com/onespaceman/menu-calc
+# Calculator for use with rofi/dmenu(2)
+# Copying to the clipboard requires xclip
+
+usage() {
+    echo "$(tput bold)menu-calc$(tput sgr0)"
+    echo "A calculator for Rofi/dmenu(2)"
+    echo
+    echo "$(tput bold)Usage:$(tput sgr0)"
+    echo "    = 4+2"
+    echo "    = (4+2)/(4+3)"
+    echo "    = 4^2"
+    echo "    = sqrt(4)"
+    echo "    = c(2)"
+    echo
+    echo "$(tput bold)Force Rofi/dmenu(2):$(tput sgr0)"
+    echo "By default, if rofi exists, it will be used. To force menu-calc to"
+    echo "use one or the other, use the --dmenu argument"
+    echo
+    echo "    = --dmenu=<dmenu_executable>"
+    echo
+    echo "$(tput bold)Passing arguments to Rofi/dmenu(2):$(tput sgr0)"
+    echo "Any parameters after ' -- ' will be passed to Rofi/dmenu(2)."
+    echo
+    echo "    = -- <Rofi/dmenu(2) args>"
+    echo
+    echo "The answer can be copied to the clipboard and used for further calculations inside (or outside) Rofi/dmenu."
+    echo
+    echo "If launched outside of Rofi/dmenu the expression may need quotation marks."
+    exit
+}
+
+# Process CLI parameters
 for var in "$@"
 do
     case $var in

@@ -8,6 +8,8 @@ My bspwm rice on Arch Linux
 
 You can install this rice right after Arch Linux installation
 
+After installation, use `super + /` to show key bindings
+
 ### Prerequisites
 
 You will need at least these packages for this rice to be usable:
@@ -38,7 +40,7 @@ You can quickly install this rice by running this command:
 
 `curl -Lks https://raw.githubusercontent.com/khuedoan98/dotfiles/master/install.sh | /bin/bash`
 
-Or just clone this repo and manually copy only the files you want.
+Or just clone this repo and manually copy only the files you need
 
 ## Recommended packages
 
@@ -51,3 +53,4 @@ These are the packages I usually have in my Arch Linux system:
 ## Acknowledgments
 
 - **sumnerevans** for [rofi calculator script](https://github.com/sumnerevans/menu-calc)
+- **thugcee** for [show sxhkd key bindings with fuzzy search script](https://www.reddit.com/r/bspwm/comments/aejyze/tip_show_sxhkd_keybindings_with_fuzzy_search/)

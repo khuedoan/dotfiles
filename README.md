@@ -4,6 +4,8 @@ My bspwm rice on Arch Linux
 
 ## Screenshots
 
+![Terminal](Picture/Screenshots/screenshot-20190401-075230.png)
+
 ## Getting Started
 
 You can install this rice right after Arch Linux installation

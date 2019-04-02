@@ -1,7 +1,7 @@
 ! URxvt config
 URxvt.depth: 32
-URxvt.font: xft:SauceCodePro Nerd Font:style=Semibold:size=10
-URxvt.boldFont: xft:SauceCodePro Nerd Font:style=Black:size=10
+URxvt.font: xft:SauceCodePro Nerd Font:style=Semibold:size=10,minspace=False, xft:Dejavu Sans:style=Medium:size=8
+URxvt.boldFont: xft:SauceCodePro Nerd Font:style=Black:size=10, xft:Dejavu Sans:style=Bold:size=8
 URxvt.scrollBar: false
 URxvt.secondaryScreen: 1
 URxvt.secondaryScroll: 0

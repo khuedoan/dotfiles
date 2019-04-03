@@ -15,6 +15,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'scrooloose/nerdtree'
+Plug 'justinmk/vim-sneak'
 call plug#end()
 
 " Airline

@@ -121,3 +121,5 @@ bar-volume-empty-foreground = ${colors.foreground-alt}
 type = internal/xbacklight
 format = <ramp>
 ramp-0 = 
+ramp-1 = 
+ramp-2 = 

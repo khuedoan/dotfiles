@@ -61,7 +61,7 @@ label-disconnected      = Disconnected
 
 [module/cpu]
 type = internal/cpu
-format-prefix = %{A1:urxvt -e htop:} %{A}
+format-prefix = %{A1:urxvt -e gtop:} %{A}
 
 [module/temperature]
 type = internal/temperature

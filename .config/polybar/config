@@ -5,6 +5,7 @@ foreground = #FFFFFF
 background = #66282A36
 font-0 = Lucida Grande:style=Bold:size=9;2
 font-1 = SauceCodePro Nerd Font:style=Black:size=10;2
+font-2 = SauceCodePro Nerd Font:style=Black:size=10;1
 padding-right = 2
 module-margin = 2
 modules-left   = bspwm title
@@ -97,13 +98,14 @@ ramp-volume-0 = 奄
 ramp-volume-1 = 奔
 ramp-volume-2 = 墳
 bar-volume-width     = 11
-bar-volume-indicator = |
+bar-volume-indicator =
 bar-volume-fill      = ─
-bar-volume-empty     = -
+bar-volume-empty     = ─
+bar-volume-fill-font      = 3
+bar-volume-empty-font     = 3
+bar-volume-empty-foreground = #888888
 
 [module/xbacklight]
 type = internal/xbacklight
 format = <ramp>
 ramp-0 = 
-ramp-1 = 
-ramp-2 = 

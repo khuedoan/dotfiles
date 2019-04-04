@@ -1,8 +1,19 @@
+[colors]
+foreground     = #FFFFFF
+foreground-alt = #666666
+background         = #66282A36
+background-focused = #66000000
+background-urgent  = #66FF0000
+red    = #FF0000
+green  = #00FF00
+blue   = #0000FF
+yellow = #FFFF00
+
 [bar/topbar]
 wm-restack = bspwm
 height = 22
-foreground = #FFFFFF
-background = #66282A36
+foreground = ${colors.foreground}
+background = ${colors.background}
 font-0 = Lucida Grande:style=Bold:size=9;2
 font-1 = SauceCodePro Nerd Font:style=Black:size=10;2
 font-2 = SauceCodePro Nerd Font:style=Black:size=10;1
@@ -24,8 +35,8 @@ label-focused-padding  = 2
 label-occupied-padding = 2
 label-urgent-padding   = 2
 label-empty-padding    = 2
-label-focused-background  = #66000000
-label-urgent-background   = #66FF0000
+label-focused-background  = ${colors.background-focused}
+label-urgent-background   = ${colors.background-urgent}
 
 [module/title]
 type = internal/xwindow
@@ -57,7 +68,7 @@ type = internal/temperature
 thermal-zone = 10
 format      = <ramp> <label>
 format-warn = <ramp> <label-warn>
-label-warn-foreground = #FF0000
+label-warn-foreground = ${colors.red}
 ramp-0 = 
 ramp-1 = 
 ramp-2 = 
@@ -76,8 +87,8 @@ adapter = AC
 format-discharging = <ramp-capacity> <label-discharging>
 format-charging    = <animation-charging> <label-charging>
 format-full        = <ramp-capacity> <label-full>
-format-charging-foreground = #FFFF00
-format-full-foreground     = #00FF00
+format-charging-foreground = ${colors.yellow}
+format-full-foreground     = ${colors.green}
 ramp-capacity-0 = 
 ramp-capacity-1 = 
 ramp-capacity-2 = 
@@ -104,7 +115,7 @@ bar-volume-fill      = ─
 bar-volume-empty     = ─
 bar-volume-fill-font      = 3
 bar-volume-empty-font     = 3
-bar-volume-empty-foreground = #888888
+bar-volume-empty-foreground = ${colors.foreground-alt}
 
 [module/xbacklight]
 type = internal/xbacklight

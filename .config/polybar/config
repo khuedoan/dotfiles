@@ -68,7 +68,7 @@ format-prefix = " "
 
 [module/temperature]
 type = internal/temperature
-thermal-zone = 10
+thermal-zone = 9
 format = %{A1:notify-send "$(sensors | sed 's/([^)]*)//g')":}<ramp> <label>%{A}
 format-warn = %{A1:notify-send "$(sensors | sed 's/([^)]*)//g')":}<ramp> <label-warn>%{A}
 label-warn-foreground = ${colors.red}

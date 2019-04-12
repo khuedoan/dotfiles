@@ -42,13 +42,6 @@ set cursorline      " Highlight the screen line of the cursor
 hi CursorLine cterm=none ctermbg=060
 
 " Change cursor shape in different modes
-" 0    Blink Block
-" 1    Blink Block
-" 2    Steady Block
-" 3    Blink Underline
-" 4    Steady Underline
-" 5    Blink Bar
-" 6    Steady Bar
-let &t_EI = "\<Esc>[2 q" " NORMAL
-let &t_SI = "\<Esc>[5 q" " INSERT
-let &t_SR = "\<Esc>[3 q" " REPLACE
+let &t_EI = "\<Esc>[2 q" " NORMAL  █
+let &t_SI = "\<Esc>[5 q" " INSERT  |
+let &t_SR = "\<Esc>[3 q" " REPLACE _

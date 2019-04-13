@@ -12,12 +12,16 @@ ssid=$(nmcli dev wifi list | \
              -l 25 | \
        awk '{print $1}')
 
-password=$(echo "" | \
-           dmenu -p  "Password" \
+if [ -z $ssid ]; then
+    exit 1
+fi
+
+password=$(dmenu -p  "Password for $ssid" \
                  -nb "#282A36" \
                  -nf "#F8F8F2" \
                  -sb "#50FA7B" \
                  -sf "#282A36" \
-                 -fn "Mono-12.5")
+                 -fn "Mono-12.5" \
+           <&-)
 
 nmcli dev wifi connect "$ssid" password "$password"

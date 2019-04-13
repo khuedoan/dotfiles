@@ -56,7 +56,7 @@ super + ctrl + f
 super + alt + l
     i3lock-next
 # Power menu
-super + alt + p
+super + p
     $HOME/.config/dmenu/scripts/dmenu-power
 # Quit bspwm
 super + alt + q

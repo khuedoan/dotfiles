@@ -1,0 +1,23 @@
+#!/bin/bash
+
+notify-send "NetworkManager" "Scanning wifi"
+
+ssid=$(nmcli dev wifi list | \
+       dmenu -p  "Wifi" \
+             -nb "#282A36" \
+             -nf "#F8F8F2" \
+             -sb "#50FA7B" \
+             -sf "#282A36" \
+             -fn "Mono-12.5" \
+             -l 25 | \
+       awk '{print $1}')
+
+password=$(echo "" | \
+           dmenu -p  "Password" \
+                 -nb "#282A36" \
+                 -nf "#F8F8F2" \
+                 -sb "#50FA7B" \
+                 -sf "#282A36" \
+                 -fn "Mono-12.5")
+
+nmcli dev wifi connect "$ssid" password "$password"

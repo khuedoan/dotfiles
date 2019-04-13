@@ -54,8 +54,8 @@ date-alt = %A, %B %d, %Y
 [module/wlan]
 type = internal/network
 interface = wlp2s0
-format-connected    = %{A1:urxvt -e nmtui-connect:}<label-connected>%{A}
-format-disconnected = %{A1:urxvt -e nmtui-connect:}<label-disconnected>%{A}
+format-connected    = %{A1:$HOME/.config/dmenu/scripts/dmenu-wifi:}<label-connected>%{A}
+format-disconnected = %{A1:$HOME/.config/dmenu/scripts/dmenu-wifi:}<label-disconnected>%{A}
 format-connected-prefix    = "直 "
 format-disconnected-prefix = "睊 "
 label-connected         = %essid%

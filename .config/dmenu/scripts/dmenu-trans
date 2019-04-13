@@ -19,7 +19,7 @@ target_language=$(echo -e ":vi\n:en" | \
                   dmenu_themed -p  "Select target language")
 
 if [ -z $target_language ]; then
-    exit 2
+    exit 1
 fi
 
-notify-send --urgency=low "Translate" "$(trans --no-ansi "$target_language" "$text")"
+notify-send "Translate" "$(trans --no-ansi "$target_language" "$text")"

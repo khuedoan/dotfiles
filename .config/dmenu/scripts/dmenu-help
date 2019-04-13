@@ -6,7 +6,7 @@ column -t -s $'\t' | \
 dmenu -p  "Key bindings" \
       -nb "#282A36" \
       -nf "#F8F8F2" \
-      -sb "#8BE9FD" \
+      -sb "#FF79C6" \
       -sf "#282A36" \
       -fn "Mono-12.5" \
       -l  25

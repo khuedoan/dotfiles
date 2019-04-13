@@ -9,14 +9,14 @@ dmenu_themed() {
           "$@"
 }
 
-text=$(dmenu_themed -p  "Google Translate" <&-)
+text=$(dmenu_themed -p "Google Translate" <&-)
 
 if [ -z $text ]; then
     exit 1
 fi
 
 languages=$(echo -e ":vi\n:en\nen:vi" | \
-                  dmenu_themed -p  "Select [SOURCE]:[TARGET] languages")
+            dmenu_themed -p "Select [SOURCE]:[TARGET] languages")
 
 if [ -z $languages ]; then
     exit 1

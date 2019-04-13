@@ -9,7 +9,7 @@ dmenu_themed() {
           "$@"
 }
 
-notify-send -t 1000 "NetworkManager" "Scanning wifi..."
+notify-send -t 2000 "NetworkManager" "Scanning wifi..."
 
 ssid=$(nmcli dev wifi list | \
        dmenu_themed -l 25 -p "Wifi" | \

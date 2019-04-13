@@ -3,7 +3,7 @@
 dmenu_themed() {
     dmenu -nb "#282A36" \
           -nf "#F8F8F2" \
-          -sb "#50FA7B" \
+          -sb "#8BE9FD" \
           -sf "#282A36" \
           -fn "Mono-12.5" \
           "$@"

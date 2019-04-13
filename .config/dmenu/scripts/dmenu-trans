@@ -1,0 +1,25 @@
+#!/bin/bash
+
+dmenu_themed() {
+    dmenu -nb "#282A36" \
+          -nf "#F8F8F2" \
+          -sb "#50FA7B" \
+          -sf "#282A36" \
+          -fn "Mono-12.5" \
+          "$@"
+}
+
+text=$(dmenu_themed -p  "Google Translate" <&-)
+
+if [ -z $text ]; then
+    exit 1
+fi
+
+target_language=$(echo -e ":vi\n:en" | \
+                  dmenu_themed -p  "Select target language")
+
+if [ -z $target_language ]; then
+    exit 2
+fi
+
+notify-send --urgency=low "Translate" "$(trans --no-ansi "$target_language" "$text")"

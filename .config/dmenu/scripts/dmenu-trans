@@ -15,11 +15,11 @@ if [ -z $text ]; then
     exit 1
 fi
 
-target_language=$(echo -e ":vi\n:en" | \
-                  dmenu_themed -p  "Select target language")
+languages=$(echo -e ":vi\n:en\nen:vi" | \
+                  dmenu_themed -p  "Select [SOURCE]:[TARGET] languages")
 
-if [ -z $target_language ]; then
+if [ -z $languages ]; then
     exit 1
 fi
 
-notify-send "Translate" "$(trans --no-ansi "$target_language" "$text")"
+notify-send "Translate" "$(trans --no-ansi "$languages" "$text")"

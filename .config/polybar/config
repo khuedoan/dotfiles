@@ -21,7 +21,7 @@ padding-right = 2
 module-margin = 2
 modules-left   = bspwm title
 modules-center = date
-modules-right  = wlan cpu temperature memory battery xbacklight alsa
+modules-right  = ethernet wlan cpu temperature memory battery xbacklight alsa
 cursor-click = pointer
 tray-position = right
 
@@ -50,6 +50,12 @@ time     = %R
 date     = %a, %b %d
 time-alt = %T
 date-alt = %A, %B %d, %Y
+
+[module/ethernet]
+type = internal/network
+interface = enp0s20f0u2
+format-connected-prefix    = " "
+label-connected         = %local_ip%
 
 [module/wlan]
 type = internal/network

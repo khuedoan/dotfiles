@@ -5,7 +5,7 @@ dmenu_themed() {
           -nf "#F8F8F2" \
           -sb "#8BE9FD" \
           -sf "#282A36" \
-          -fn "Mono-12.5" \
+          -fn "Lucida Grande-12" \
           "$@"
 }
 

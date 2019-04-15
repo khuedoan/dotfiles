@@ -9,7 +9,7 @@ dmenu_themed() {
           "$@"
 }
 
-text=$(dmenu_themed -p "Google Translate" <&-)
+text=$(echo "$(xclip -o)" | dmenu_themed -p "Google Translate")
 
 if [ -z $text ]; then
     exit 1

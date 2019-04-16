@@ -102,6 +102,9 @@ super + w
 # File Manager
 super + f
     pcmanfm
+# Document viewer
+super + d
+    zathura
 # Translator
 super + t
     $HOME/.config/dmenu/scripts/dmenu-trans

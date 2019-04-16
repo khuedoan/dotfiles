@@ -40,3 +40,6 @@ alias dfa='dotfiles add'
 alias dfc='dotfiles commit'
 alias dfp='dotfiles push'
 alias dfl='dotfiles ls-tree -r master --name-only'
+
+# AUR helper
+alias aur='trizen'

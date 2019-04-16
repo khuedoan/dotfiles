@@ -99,6 +99,9 @@ super + Return
 # Web browser
 super + w
     firefox
+# File Manager
+super + f
+    pcmanfm
 # Translator
 super + t
     $HOME/.config/dmenu/scripts/dmenu-trans

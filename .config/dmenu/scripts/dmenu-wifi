@@ -21,4 +21,8 @@ fi
 
 password=$(dmenu_themed -p "Password for $ssid" <&-)
 
-nmcli dev wifi connect "$ssid" password "$password"
+if [ -z $password ]; then
+    nmcli dev wifi connect "$ssid"
+else
+    nmcli dev wifi connect "$ssid" password "$password"
+fi

@@ -105,6 +105,9 @@ super + f
 # Document viewer
 super + d
     zathura
+# Virtual Machine Manager
+super + v
+    virt-manager
 # Translator
 super + t
     $HOME/.config/dmenu/scripts/dmenu-trans

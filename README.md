@@ -56,5 +56,4 @@ These are the packages I usually have in my Arch Linux system:
 
 ## Acknowledgments
 
-- **sumnerevans** for [rofi calculator script](https://github.com/sumnerevans/menu-calc)
 - **thugcee** for [show sxhkd key bindings with fuzzy search script](https://www.reddit.com/r/bspwm/comments/aejyze/tip_show_sxhkd_keybindings_with_fuzzy_search/)

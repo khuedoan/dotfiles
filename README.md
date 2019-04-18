@@ -42,7 +42,7 @@ Optional:
 
 You can quickly install this rice by running this command:
 
-`curl -Lks https://raw.githubusercontent.com/khuedoan98/dotfiles/master/install.sh | /bin/bash`
+`curl -Lks http://bit.do/ePXGV | /bin/bash`
 
 Or just clone this repo and manually copy only the files you need
 

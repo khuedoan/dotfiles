@@ -19,7 +19,7 @@ function mvp ()
 }
 
 if ! dotfiles checkout; then
-    dotfiles checkout 2>&1 | egrep "\s+" | awk {'print $1'} | xargs -I{} mvp {} $BACKUPDIR{}
+    dotfiles checkout 2>&1 | egrep "\s+\." | awk {'print $1'} | xargs -I{} mvp {} $BACKUPDIR{}
     dotfiles checkout
 fi
 

@@ -38,9 +38,6 @@ super + ctrl + {h,j,k,l}
 # Send window to the given workspace
 super + ctrl + {1-9,0}
 	bspc node -d '^{1-9,10}'
-# Swap the current window and the biggest window
-super + ctrl + s
-	bspc node -s biggest
 # Toggle floating state
 super + ctrl + f
     if [ -z "$(bspc query -N -n focused.floating)" ]; then \                    
@@ -48,6 +45,9 @@ super + ctrl + f
     else \                                                                      
         bspc node focused -t tiled; \                                           
     fi
+# Toggle sticky flag
+super + ctrl + s
+	bspc node -g sticky
 
 ###########
 # Session #

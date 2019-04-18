@@ -87,13 +87,13 @@ super + Return
 # Web browser
 super + w
     firefox
-# File Manager
+# File manager
 super + f
     pcmanfm
 # Document viewer
 super + d
     zathura
-# Virtual Machine Manager
+# Virtual machine manager
 super + v
     virt-manager
 # Translator

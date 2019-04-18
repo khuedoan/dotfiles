@@ -14,9 +14,7 @@ After installation, use `super + /` to show key bindings
 
 ### Prerequisites
 
-You will need at least these packages for this rice to be usable
-(edit [sxhkdrc](.config/sxhkd/sxhkdrc) if you want to use a different terminal):
-
+You will need at least these packages for this rice to be usable:
 [`bspwm`](https://www.archlinux.org/packages/community/x86_64/bspwm/)
 [`sxhkd`](https://www.archlinux.org/packages/community/x86_64/sxhkd/)
 [`polybar`](https://aur.archlinux.org/packages/polybar/)

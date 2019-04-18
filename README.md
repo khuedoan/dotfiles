@@ -14,28 +14,21 @@ After installation, use `super + /` to show key bindings
 
 ### Prerequisites
 
-You will need at least these packages for this rice to be usable:
+You will need at least these packages for this rice to be usable
+(edit [sxhkdrc](.config/sxhkd/sxhkdrc) if you want to use a different terminal):
 
 [`bspwm`](https://www.archlinux.org/packages/community/x86_64/bspwm/)
-
 [`sxhkd`](https://www.archlinux.org/packages/community/x86_64/sxhkd/)
-
 [`polybar`](https://aur.archlinux.org/packages/polybar/)
-
 [`dmenu`](https://www.archlinux.org/packages/community/x86_64/dmenu/)
-
-[`rxvt-unicode`](https://www.archlinux.org/packages/community/x86_64/rxvt-unicode/) or any terminal of choice, edit [sxhkdrc](.config/sxhkd/sxhkdrc) to launch different one
+[`rxvt-unicode`](https://www.archlinux.org/packages/community/x86_64/rxvt-unicode/)
 
 Fonts:
-
 [`nerd-fonts-source-code-pro`](https://aur.archlinux.org/packages/nerd-fonts-source-code-pro/)
-
 [`ttf-mac-fonts`](https://aur.archlinux.org/packages/ttf-mac-fonts/)
 
 Optional:
-
 [`compton-tryone-git`](https://aur.archlinux.org/packages/compton-tryone-git/)
-
 [`i3lock-next-git`](https://aur.archlinux.org/packages/i3lock-next-git/)
 
 ### Installation

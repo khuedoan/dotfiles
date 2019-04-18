@@ -14,7 +14,9 @@ if ! dotfiles checkout; then
         dotfiles checkout
         dotfiles config status.showUntrackedFiles no
         dotfiles push --set-upstream origin master
+        echo "Install completed!"
     else
         rm -rf $GITDIR
+        echo "Installation cancelled"
     fi
 fi

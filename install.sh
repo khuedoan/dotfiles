@@ -1,16 +1,16 @@
 REPO="https://github.com/khuedoan98/dotfiles.git"
 GITDIR=$HOME/.dotfiles/
-BACKUPDIR=$HOME/.dotfiles_backup/
+BACKUPDIR=$HOME/.dotfilesbackup/
 
 git clone --bare $REPO $GITDIR
 
 function dotfiles {
-   /usr/bin/git --git-dir=$GITDIR --work-tree=$HOME $@
+    /usr/bin/git --git-dir=$GITDIR --work-tree=$HOME $@
 }
 
-dotfiles config status.showUntrackedFiles no
-
 if ! dotfiles checkout; then
-    rm -rf $GITDIR
-    echo "Please backup or remove the above files and run the script again"
+    dotfiles checkout 2>&1 | egrep "\s+" | awk {'print $1'} | xargs -I{} mv {} $BACKUPDIR{}
+    dotfiles checkout
 fi
+
+dotfiles config status.showUntrackedFiles no

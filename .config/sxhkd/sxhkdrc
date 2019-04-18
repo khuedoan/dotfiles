@@ -7,18 +7,12 @@ super + {_,ctrl + }{h,j,k,l}
 # Focus the given workspace or move window to that workspace
 super + {_,ctrl + }{1-9,0}
 	bspc {desktop -f, node -d} '^{1-9,10}'
-# Focus the next/previous window in the current workspace
-alt + {_,shift + }grave
-	bspc node -f {next,prev}.local
-# Focus the next/previous workspace in the current workspace
-super + {_,shift + }grave
-	bspc desktop -f {next,prev}.local
-# Focus the last window
-alt + Tab
-	bspc node -f last
-# Focus the last workspace
-super + Tab
-	bspc desktop -f last
+# Focus the next/previous workspace or window
+{super,alt} + {_,shift + }grave
+	bspc {desktop,node} -f {next,prev}.local
+# Focus the last workspace or window
+{super,alt} + Tab
+	bspc {desktop,node} -f last
 # Preselect the direction
 super + shift + {h,j,k,l}
 	bspc node -p {west,south,north,east}

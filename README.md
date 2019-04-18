@@ -36,7 +36,8 @@ Optional:
 #### The lazy way
 
 ```bash
-curl -Lks http://bit.do/ePXGV | bash -x
+curl -Lks http://bit.do/ePXGV > install.sh
+bash -x install.sh
 ```
 
 #### The better way

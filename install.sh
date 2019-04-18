@@ -9,6 +9,7 @@ function dotfiles {
 
 if ! dotfiles checkout; then
     read -p "All of the above files will be deleted, are you sure? (y/N) " -n 1 -r
+    echo
     if [[ $REPLY =~ ^[Yy]$ ]]; then
         dotfiles checkout 2>&1 | egrep "^\s+" | awk {'print $1'} | xargs -I {} rm {}
         dotfiles checkout

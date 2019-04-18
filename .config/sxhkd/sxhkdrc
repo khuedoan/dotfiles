@@ -29,9 +29,9 @@ super + Escape
 ##################
 # Window control #
 ##################
-# Close window
-super + ctrl + q
-	bspc node -c
+# Close or kill window
+super + ctrl + {_,shift + }q
+	bspc node -{c,k}
 # Swap the window in the given direction
 super + ctrl + {h,j,k,l}
 	bspc node -s {west,south,north,east}

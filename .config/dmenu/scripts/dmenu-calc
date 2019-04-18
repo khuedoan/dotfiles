@@ -15,7 +15,7 @@ if [ -z $expression ]; then
     exit 1
 fi
 
-result=$(echo "$expression" | bc -l | dmenu_themed)
+result=$(echo "$expression" | bc -l | dmenu_themed -p "Result")
 
 if [ -z $result ]; then
     exit 1

@@ -8,8 +8,11 @@ function dotfiles {
 }
 
 if ! dotfiles checkout; then
-    dotfiles checkout 2>&1 | egrep "^\s+" | awk {'print $1'} | xargs -I {} rm {}
-    dotfiles checkout
+    read -p "All of the above files will be deleted, are you sure? (y/N) " -n 1 -r
+    if [[ $REPLY =~ ^[Yy]$ ]]; then
+        dotfiles checkout 2>&1 | egrep "^\s+" | awk {'print $1'} | xargs -I {} rm {}
+        dotfiles checkout
+    fi
 fi
 
 dotfiles config status.showUntrackedFiles no

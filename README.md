@@ -40,11 +40,62 @@ Optional:
 
 ### Installation
 
-You can quickly install this rice by running this command:
+#### The lazy way
 
-`curl -Lks http://bit.do/ePXGV | /bin/bash`
+```bash
+curl -Lks http://bit.do/ePXGV > install.sh
+bash -x install.sh
+```
 
-Or just clone this repo and manually copy only the files you need
+#### The better way
+
+1. Fork this repo.
+
+2. Edit the `REPO` variable in `install.sh` and commit.
+
+3. Clone with `git clone https://github.com/YOURGITHUBUSERNAME/YOURREPONAME.git"`
+
+4. Run the install script
+
+```bash
+cd YOURREPONAME
+chmod +x install.sh
+./install.sh
+```
+
+#### The best way
+
+I know the above one is not the best, so please help me to find out ;)
+
+### Usage
+
+#### Quick start
+
+`super + /`        for help
+
+`super + enter`    for terminal
+
+`super + space`    for app launcher
+
+`super + ctrl + q` to quit app
+
+The Capslock key is now Escape when tapping and Control when holding.
+
+#### Version control
+
+Make change to the dotfiles to suit your needs, then use `dotfiles` command instead of `git` for version control
+
+For example:
+
+```bash
+dotfiles add .config/foo
+dotfiles commit
+dotfiles push
+```
+
+Check out `.aliases` for more (like `dfc` instead of `dotfiles commit`)
+
+#### 
 
 ## Recommended packages
 

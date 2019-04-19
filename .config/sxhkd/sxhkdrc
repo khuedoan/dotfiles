@@ -83,7 +83,7 @@ super + space
               -p  "Run"
 # Terminal
 super + Return
-	urxvt
+	st
 # Web browser
 super + w
     firefox

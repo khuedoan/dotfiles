@@ -1,9 +1,5 @@
 # Arch Linux Rice
 
-My bspwm rice on Arch Linux
-
-## Screenshots
-
 ![Terminal](Pictures/Screenshots/screenshot-20190419-021103.png)
 
 Pretending to be busy while watching YouTube video in Picture-in-Picture mode

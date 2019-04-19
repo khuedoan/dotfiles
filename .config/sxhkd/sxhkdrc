@@ -98,10 +98,10 @@ super + v
     virt-manager
 # Translator
 super + t
-    sh $HOME/.config/dmenu/scripts/dmenu-trans
+    $HOME/.config/dmenu/scripts/dmenu-trans
 # Calculator
 super + c
-    sh $HOME/.config/dmenu/scripts/dmenu-calc
+    $HOME/.config/dmenu/scripts/dmenu-calc
 # Key bindings list
 super + slash
-    sh $HOME/.config/dmenu/scripts/dmenu-help
+    $HOME/.config/dmenu/scripts/dmenu-help

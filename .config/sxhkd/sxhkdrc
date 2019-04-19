@@ -85,8 +85,8 @@ super + space
 super + Return
 	st
 # Web browser
-super + w
-    firefox
+super + {_,shift + }w
+    firefox {_,--private-window}
 # File manager
 super + f
     pcmanfm

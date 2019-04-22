@@ -30,7 +30,7 @@ Optional:
 #### The lazy way
 
 ```bash
-curl -Lks http://bit.do/ePXGV > install.sh
+curl -Lks https://khuedoan.me/dotfiles/install.sh > install.sh
 bash -x install.sh
 ```
 

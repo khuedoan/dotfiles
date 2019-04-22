@@ -8,8 +8,6 @@ Pretending to be busy while watching YouTube video in Picture-in-Picture mode
 
 You can install this rice right after Arch Linux installation
 
-After installation, use `super + /` to show key bindings
-
 ### Prerequisites
 
 You will need at least these packages for this rice to be usable:

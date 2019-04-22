@@ -13,11 +13,10 @@ After installation, use `super + /` to show key bindings
 ### Prerequisites
 
 You will need at least these packages for this rice to be usable:
-[`bspwm`](https://www.archlinux.org/packages/community/x86_64/bspwm/)
-[`sxhkd`](https://www.archlinux.org/packages/community/x86_64/sxhkd/)
+[`bspwm`]
+[`sxhkd`]
 [`polybar`](https://aur.archlinux.org/packages/polybar/)
-[`dmenu`](https://www.archlinux.org/packages/community/x86_64/dmenu/)
-[`rxvt-unicode`](https://www.archlinux.org/packages/community/x86_64/rxvt-unicode/)
+[`rxvt-unicode`]
 
 Fonts:
 [`nerd-fonts-source-code-pro`](https://aur.archlinux.org/packages/nerd-fonts-source-code-pro/)
@@ -25,6 +24,7 @@ Fonts:
 
 Optional:
 [`compton-tryone-git`](https://aur.archlinux.org/packages/compton-tryone-git/)
+[`dmenu2`](https://aur.archlinux.org/packages/dmenu2/)
 [`i3lock-next-git`](https://aur.archlinux.org/packages/i3lock-next-git/)
 
 ### Installation

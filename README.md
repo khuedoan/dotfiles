@@ -13,10 +13,10 @@ After installation, use `super + /` to show key bindings
 ### Prerequisites
 
 You will need at least these packages for this rice to be usable:
-[`bspwm`]
-[`sxhkd`]
+`bspwm`
+`sxhkd`
 [`polybar`](https://aur.archlinux.org/packages/polybar/)
-[`rxvt-unicode`]
+`rxvt-unicode`
 
 Fonts:
 [`nerd-fonts-source-code-pro`](https://aur.archlinux.org/packages/nerd-fonts-source-code-pro/)

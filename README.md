@@ -11,6 +11,8 @@ You can install this rice right after Arch Linux installation
 ### Prerequisites
 
 You will need at least these packages for this rice to be usable:
+`xorg-server`
+`xorg-xinit`
 `bspwm`
 `sxhkd`
 [`polybar`](https://aur.archlinux.org/packages/polybar/)

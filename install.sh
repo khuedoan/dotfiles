@@ -43,16 +43,16 @@ read response
 if [ $response = "y" ]; then
     echo "Installing basic packages"
     sudo pacman --noconfirm -S xorg-server xorg-xinit xorg-setxkbmap xcape bspwm sxhkd
-    trizen -S polybar dmenu2 i3lock-next-git compton-tryone-git
+    trizen --noconfirm -S polybar dmenu2 i3lock-next-git compton-tryone-git
     echo "Installing fonts"
     sudo pacman --noconfirm -S ttf-dejavu
-    trizen -S nerd-fonts-source-code-pro ttf-mac-fonts ttf-ms-fonts
+    trizen --noconfirm -S nerd-fonts-source-code-pro ttf-mac-fonts ttf-ms-fonts
     echo "Installing extra packages"
     sudo pacman --noconfirm -S alsa-utils xorg-xbacklight maim xclip dunst libnotify feh bc translate-shell playerctl htop glances
     sudo pacman --noconfirm -S $terminal $browser
     sudo pacman --noconfirm -S pcmanfm zathura zathura-pdf-mupdf mpv youtube-dl
     sudo pacman --noconfirm -S fzf zsh-completions zsh-auto-suggestions zsh-syntax-highlighting
-    trizen -S zsh-theme-powerlevel10k-git
+    trizen --noconfirm -S zsh-theme-powerlevel10k-git
 fi
 
 exit 0

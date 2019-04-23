@@ -52,7 +52,7 @@ if [ $response = "y" ]; then
                    htop glances
     sudo pacman -S $terminal $browser
     sudo pacman -S pcmanfm zathura zathura-pdf-mupdf mpv youtube-dl
-    sudo pacman -S fzf zsh-auto-suggestions zsh-syntax-highlighting
+    sudo pacman -S fzf zsh-completions zsh-auto-suggestions zsh-syntax-highlighting
     trizen -S zsh-theme-powerlevel10k-git
 fi
 

@@ -5,7 +5,8 @@ terminal="rxvt-unicode"
 browser="firefox"
 
 # Device specific configurations
-wificard="wlp2s0"
+ethernet="$(ls /sys/class/net | grep enp)"
+wificard="$(ls /sys/class/net | grep wlp)"
 cputhermalzone="9"
 
 REPO="https://github.com/khuedoan98/dotfiles.git"

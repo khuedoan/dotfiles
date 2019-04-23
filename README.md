@@ -10,6 +10,8 @@ You can install this rice right after Arch Linux installation
 
 ### Prerequisites
 
+The install scipt below assumed you installed Arch with [my instruction](https://khuedoan.me/archguide)
+
 You will need at least these packages for this rice to be usable:
 `dash`
 `xorg-server`

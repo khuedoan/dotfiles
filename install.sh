@@ -42,16 +42,16 @@ echo -n "Install recommended packages? (y/N) "
 read response
 if [ $response = "y" ]; then
     echo "Installing basic packages"
-    sudo pacman -S xorg-server xorg-xinit xorg-setxkbmap xcape bspwm sxhkd
+    sudo pacman --noconfirm -S xorg-server xorg-xinit xorg-setxkbmap xcape bspwm sxhkd
     trizen -S polybar dmenu2 i3lock-next-git compton-tryone-git
     echo "Installing fonts"
-    sudo pacman -S ttf-dejavu
+    sudo pacman --noconfirm -S ttf-dejavu
     trizen -S nerd-fonts-source-code-pro ttf-mac-fonts ttf-ms-fonts
     echo "Installing extra packages"
-    sudo pacman -S alsa-utils xorg-xbacklight maim xclip dunst libnotify feh bc translate-shell playerctl htop glances
-    sudo pacman -S $terminal $browser
-    sudo pacman -S pcmanfm zathura zathura-pdf-mupdf mpv youtube-dl
-    sudo pacman -S fzf zsh-completions zsh-auto-suggestions zsh-syntax-highlighting
+    sudo pacman --noconfirm -S alsa-utils xorg-xbacklight maim xclip dunst libnotify feh bc translate-shell playerctl htop glances
+    sudo pacman --noconfirm -S $terminal $browser
+    sudo pacman --noconfirm -S pcmanfm zathura zathura-pdf-mupdf mpv youtube-dl
+    sudo pacman --noconfirm -S fzf zsh-completions zsh-auto-suggestions zsh-syntax-highlighting
     trizen -S zsh-theme-powerlevel10k-git
 fi
 

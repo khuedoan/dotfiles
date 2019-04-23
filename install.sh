@@ -48,7 +48,7 @@ if [ $response = "y" ]; then
     sudo pacman -S ttf-dejavu
     trizen -S nerd-fonts-source-code-pro ttf-mac-fonts ttf-ms-fonts
     echo "Installing extra packages"
-    sudo pacman -S alsa-utils xorg-xbacklight maim xclip dunst feh bc translate-shell playerctl htop glances
+    sudo pacman -S alsa-utils xorg-xbacklight maim xclip dunst libnotify feh bc translate-shell playerctl htop glances
     sudo pacman -S $terminal $browser
     sudo pacman -S pcmanfm zathura zathura-pdf-mupdf mpv youtube-dl
     sudo pacman -S fzf zsh-completions zsh-auto-suggestions zsh-syntax-highlighting

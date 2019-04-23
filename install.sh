@@ -34,6 +34,7 @@ if ! dotfiles checkout; then
     fi
 fi
 
+sed -i "s/enp0s20f0u2/$ethernetcard/g" ~/.config/polybar/config
 sed -i "s/wlp2s0/$wificard/g" ~/.config/polybar/config
 sed -i "s/thermal-zone\ =\ 9/thermal-zone\ =\ $cputhermalzone/g" ~/.config/polybar/config
 

@@ -1,10 +1,12 @@
 #!/bin/dash
 
 # Default apps
-##########################
 terminal="rxvt-unicode"
 browser="firefox"
-##########################
+
+# Device specific configurations
+wificard="wlp2s0"
+cputhermalzone="9"
 
 REPO="https://github.com/khuedoan98/dotfiles.git"
 GITDIR=$HOME/.dotfiles/
@@ -30,6 +32,9 @@ if ! dotfiles checkout; then
             exit 1
     fi
 fi
+
+sed -i "s/wlp2s0/$wificard/g" ~/.config/polybar/config
+sed -i "s/thermal-zone\ =\ 9/thermal-zone\ =\ $cputhermalzone/g" ~/.config/polybar/config
 
 echo -n "Install recommended packages? (y/N) "
 read response

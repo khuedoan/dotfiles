@@ -27,6 +27,7 @@ let g:airline#extensions#tabline#enabled = 1
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " Options
+set confirm         " Ask what to do about unsaved/read-only files
 set number          " Print the line number in front of each line
 set relativenumber  " Show relative line number in front of each line 
 set incsearch       " Highlight match while typing search pattern

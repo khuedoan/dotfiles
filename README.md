@@ -11,6 +11,7 @@ You can install this rice right after Arch Linux installation
 ### Prerequisites
 
 You will need at least these packages for this rice to be usable:
+`dash`
 `xorg-server`
 `xorg-xinit`
 `bspwm`
@@ -33,7 +34,8 @@ Optional:
 
 ```bash
 curl -Lks https://khuedoan.me/dotfiles/install.sh > install.sh
-bash -x install.sh
+chmod +x install.sh
+./install.sh
 ```
 
 #### The better way

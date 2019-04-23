@@ -1,23 +1,25 @@
+#!/bin/dash
+
 REPO="https://github.com/khuedoan98/dotfiles.git"
 GITDIR=$HOME/.dotfiles/
 
 git clone --bare $REPO $GITDIR
 
-function dotfiles {
+dotfiles() {
     /usr/bin/git --git-dir=$GITDIR --work-tree=$HOME $@
 }
 
 if ! dotfiles checkout; then
-    read -p "All of the above files will be deleted, are you sure? (y/N) " -n 1 -r
-    echo
-    if [[ $REPLY =~ ^[Yy]$ ]]; then
-        dotfiles checkout 2>&1 | egrep "^\s+" | awk {'print $1'} | xargs -I {} rm {}
-        dotfiles checkout
-        dotfiles config status.showUntrackedFiles no
-        dotfiles push --set-upstream origin master
-        echo "Install completed!"
+    echo -n "All of the above files will be deleted, are you sure? (y/N) "
+    read response
+    if [ $response = "y" ]; then
+            dotfiles checkout 2>&1 | egrep "^\s+" | awk {'print $1'} | xargs -I {} rm {}
+            dotfiles checkout &&
+            dotfiles config status.showUntrackedFiles no &&
+            dotfiles push --set-upstream origin master &&
+            echo "Install completed!"
     else
-        rm -rf $GITDIR
-        echo "Installation cancelled"
+            rm -rf $GITDIR
+            echo "Installation cancelled"
     fi
 fi

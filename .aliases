@@ -9,7 +9,7 @@ alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
 
 # diff
-alias diff='vimdiff'
+alias diff='colordiff'
 
 # Set interactive and/or verbose
 alias cp='cp -iv'

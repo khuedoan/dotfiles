@@ -5,7 +5,7 @@ terminal="rxvt-unicode"
 browser="firefox"
 
 # Device specific configurations
-ethernet="$(ls /sys/class/net | grep enp)"
+ethernetcard="$(ls /sys/class/net | grep enp)"
 wificard="$(ls /sys/class/net | grep wlp)"
 cputhermalzone="9"
 

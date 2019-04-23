@@ -51,7 +51,7 @@ if [ $response = "y" ]; then
     sudo pacman --noconfirm -S alsa-utils xorg-xbacklight maim xclip dunst libnotify feh bc translate-shell playerctl htop glances
     sudo pacman --noconfirm -S $terminal $browser
     sudo pacman --noconfirm -S pcmanfm zathura zathura-pdf-mupdf mpv youtube-dl
-    sudo pacman --noconfirm -S fzf zsh-completions zsh-auto-suggestions zsh-syntax-highlighting
+    sudo pacman --noconfirm -S fzf zsh-completions zsh-autosuggestions zsh-syntax-highlighting
     trizen --noconfirm -S zsh-theme-powerlevel10k-git
 fi
 

@@ -1,7 +1,7 @@
 #! /bin/sh
 
 # Autostart
-feh --bg-fill --randomize ~/Pictures/Wallpapers/* &
+feh --bg-fill --randomize ~/Pictures/Wallpapers/*.jpg &
 $HOME/.config/polybar/launch &
 sxhkd &
 xsetroot -cursor_name left_ptr &

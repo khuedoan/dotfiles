@@ -7,7 +7,11 @@ browser="firefox"
 # Device specific configurations
 ethernetcard="$(ls /sys/class/net | grep enp)"
 wificard="$(ls /sys/class/net | grep wlp)"
-cputhermalzone="$(for i in /sys/class/thermal/thermal_zone*; do echo "$i: $(<$i/type)"; done | grep x86_pkg_temp | cut -d : -f 1 | grep -oP '\d+')"
+cputhermalzone="$(for i in /sys/class/thermal/thermal_zone*; do
+                      if [ $(cat $i/type) = "x86_pkg_temp" ]; then
+                          echo $i
+                      fi
+                  done | grep -oP "\d+")"
 
 REPO="https://github.com/khuedoan98/dotfiles.git"
 GITDIR=$HOME/.dotfiles/

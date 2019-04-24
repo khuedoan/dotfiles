@@ -97,8 +97,8 @@ super + d
 super + v
     virt-manager
 # Translator
-super + t
-    $HOME/.config/dmenu/scripts/dmenu-trans
+super + {_,shift +}t
+    $HOME/.config/dmenu/scripts/dmenu-trans {en:vi,_}
 # Calculator
 super + c
     $HOME/.config/dmenu/scripts/dmenu-calc

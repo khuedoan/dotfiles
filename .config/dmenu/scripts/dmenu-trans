@@ -15,8 +15,13 @@ if [ -z $text ]; then
     exit 1
 fi
 
-languages=$(echo -e ":vi\n:en\n:ko" | \
-            dmenu_themed -p "Select [SOURCE]:[TARGET] languages")
+
+if [ -z $1 ]; then
+    languages=$(echo -e ":vi\n:en\n:ko" | \
+                dmenu_themed -p "Select [SOURCE]:[TARGET] languages")
+else
+    languages=$1
+fi
 
 if [ -z $languages ]; then
     exit 1

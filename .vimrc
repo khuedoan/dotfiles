@@ -46,3 +46,7 @@ hi CursorLine cterm=none ctermbg=060
 let &t_EI = "\<Esc>[2 q" " NORMAL  █
 let &t_SI = "\<Esc>[5 q" " INSERT  |
 let &t_SR = "\<Esc>[3 q" " REPLACE _
+
+" Key mapping
+" Save as root
+cmap w!! w !sudo /usr/bin/tee > /dev/null %

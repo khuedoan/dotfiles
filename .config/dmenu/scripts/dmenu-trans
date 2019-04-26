@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 dmenu_themed() {
     dmenu -nb "#282A36" \
@@ -16,14 +16,14 @@ if [ -z $text ]; then
 fi
 
 
-if [ -z $1 ]; then
+if [ -z "$1" ]; then
     languages=$(echo -e ":vi\n:en\n:ko" | \
                 dmenu_themed -p "Select [SOURCE]:[TARGET] languages")
 else
     languages=$1
 fi
 
-if [ -z $languages ]; then
+if [ -z "$languages" ]; then
     exit 1
 fi
 

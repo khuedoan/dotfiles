@@ -8,7 +8,7 @@ case "$(echo -e $OPTIONS | dmenu -p  "Power" -i \
                                  -sb "#FF5555" \
                                  -sf "#282A36" \
                                  -fn "Mono-12.5")" in
-    poweroff) systemctl poweroff;;
-    reboot)   systemctl reboot;;
-    suspend)  systemctl suspend && i3lock-next;;
+    Poweroff) systemctl poweroff;;
+    Reboot)   systemctl reboot;;
+    Suspend)  systemctl suspend && i3lock-next;;
 esac

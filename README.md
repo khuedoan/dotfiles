@@ -34,11 +34,11 @@ Optional:
 
 #### The lazy way
 
-```bash
-curl -Lks https://khuedoan.me/dotfiles/install.sh > install.sh
-chmod +x install.sh
-./install.sh
-```
+`curl -Lks https://khuedoan.me/dotfiles/install.sh > install.sh`
+
+`chmod +x install.sh`
+
+`./install.sh`
 
 #### The better way
 
@@ -50,11 +50,11 @@ chmod +x install.sh
 
 4. Run the install script
 
-```bash
-cd YOURREPONAME
-chmod +x install.sh
-./install.sh
-```
+`cd YOURREPONAME`
+
+`chmod +x install.sh`
+
+`./install.sh`
 
 #### The best way
 
@@ -80,13 +80,13 @@ Make change to the dotfiles to suit your needs, then use `dotfiles` command inst
 
 For example:
 
-```bash
-dotfiles add .config/foo
-dotfiles commit
-dotfiles push
-```
+`dotfiles add .config/foo`
 
-Check out `.aliases` for more (like `dfc` instead of `dotfiles commit`)
+`dotfiles commit`
+
+`dotfiles push`
+
+Check out `.aliases` for more
 
 #### 
 

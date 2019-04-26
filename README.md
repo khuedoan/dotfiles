@@ -88,8 +88,6 @@ For example:
 
 Check out `.aliases` for more
 
-#### 
-
 ## Recommended packages
 
 These are the packages I usually have in my Arch Linux system:

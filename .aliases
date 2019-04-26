@@ -18,9 +18,6 @@ alias rm='rm -iv'
 alias mkdir='mkdir -v'
 alias rmdir='rmdir -v'
 
-# ping
-alias ping='ping -c 5'
-
 # feh
 alias feh='feh --scale-down --auto-zoom'
 
@@ -40,6 +37,3 @@ alias dfa='dotfiles add'
 alias dfc='dotfiles commit'
 alias dfp='dotfiles push'
 alias dfl='dotfiles ls-tree -r master --name-only'
-
-# AUR helper
-alias aur='trizen'

@@ -13,7 +13,7 @@ xautolock -time 10 -locker i3lock-next &
 bspc monitor -d 1 2 3 4 5 6 7 8 9 0
 
 # Border
-bspc config border_width 1
+bspc config border_width 2
 
 # Gap
 bspc config window_gap   20
@@ -33,5 +33,6 @@ bspc rule -a Lxappearance         state=floating
 bspc rule -a Nm-connection-editor state=floating
 bspc rule -a mpv                  state=floating
 bspc rule -a Pcmanfm              state=floating
+bspc rule -a Surf                 state=tiled
 bspc rule -a Xarchiver            state=floating
 bspc rule -a Zathura              state=tiled

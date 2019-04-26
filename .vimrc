@@ -1,30 +1,11 @@
+"""""""""""
+" Options "
+"""""""""""
+
 " Source the default vimrc file
 :if filereadable("/usr/share/vim/vim81/defaults.vim")
 :   source /usr/share/vim/vim81/defaults.vim
 :endif
-
-" Automatically install vim-plug
-if empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-endif
-
-" Plugins
-call plug#begin('~/.vim/plugged')
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'scrooloose/nerdtree'
-Plug 'justinmk/vim-sneak'
-call plug#end()
-
-" Airline
-let g:airline_theme='dracula'
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#tabline#enabled = 1
-
-" NERDTree
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " Options
 set confirm         " Ask what to do about unsaved/read-only files
@@ -46,3 +27,46 @@ hi CursorLine cterm=none ctermbg=060
 let &t_EI = "\<Esc>[2 q" " NORMAL  █
 let &t_SI = "\<Esc>[5 q" " INSERT  |
 let &t_SR = "\<Esc>[3 q" " REPLACE _
+
+"""""""""""
+" Key map "
+"""""""""""
+
+" Save as root
+cmap w!! w !sudo /usr/bin/tee > /dev/null %
+
+"""""""""""
+" Plugins "
+"""""""""""
+
+" Automatically install vim-plug
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+" Plugins list
+call plug#begin('~/.vim/plugged')
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'scrooloose/nerdtree'
+Plug 'justinmk/vim-sneak'
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
+call plug#end()
+
+""""""""""""""""""
+" Plugins config "
+""""""""""""""""""
+
+" Airline
+let g:airline_theme = 'dracula'
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+
+" NERDTree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+" Markdown Preview
+let g:mkdp_auto_start = 1
+let g:mkdp_browser = 'surf'

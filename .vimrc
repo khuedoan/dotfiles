@@ -60,9 +60,13 @@ call plug#end()
 """"""""""""""""""
 
 " Airline
-let g:airline_theme='dracula'
+let g:airline_theme = 'dracula'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 
 " NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+" Markdown Preview
+let g:mkdp_auto_start = 1
+let g:mkdp_browser = 'surf'

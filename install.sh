@@ -1,4 +1,4 @@
-#!/bin/dash
+#!/bin/sh
 
 # Default apps
 terminal="rxvt-unicode"

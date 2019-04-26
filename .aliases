@@ -1,24 +1,21 @@
-# ls
-alias ls='ls -F --color=auto'
-alias l='ls -Flh --color=auto'
-alias ll='ls -Flha --color=auto'
-
 # grep
 alias grep='grep --color=auto'
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
 
-# Interactive
+# ls
+alias ls='ls -F --color=auto'
+alias l='ls -Flh --color=auto'
+alias ll='ls -Flha --color=auto'
+
+# interactive
 alias cp='cp -i'
 alias mv='mv -i'
 alias rm='rm -i'
 
-# Verbose
+# verbose
 alias mkdir='mkdir -v'
 alias rmdir='rmdir -v'
-
-# feh
-alias feh='feh --scale-down --auto-zoom'
 
 # git
 alias gs='git status'
@@ -36,3 +33,6 @@ alias dfa='dotfiles add'
 alias dfc='dotfiles commit'
 alias dfp='dotfiles push'
 alias dfl='dotfiles ls-tree -r master --name-only'
+
+# feh
+alias feh='feh --scale-down --auto-zoom'

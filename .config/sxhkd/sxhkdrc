@@ -102,6 +102,9 @@ super + {_,shift +}t
 # Calculator
 super + c
     $HOME/.config/dmenu/scripts/dmenu-calc
+# Network menu
+super + n
+    $HOME/.config/dmenu/scripts/dmenu-wifi
 # Key bindings list
 super + slash
     $HOME/.config/dmenu/scripts/dmenu-help

@@ -1,8 +1,8 @@
 #!/usr/bin/bash
 
-OPTIONS="poweroff\nreboot\nsuspend"
+OPTIONS="Poweroff\nReboot\nSuspend"
 
-case "$(echo -e $OPTIONS | dmenu -p  "Power" \
+case "$(echo -e $OPTIONS | dmenu -p  "Power" -i \
                                  -nb "#282A36" \
                                  -nf "#F8F8F2" \
                                  -sb "#FF5555" \

@@ -1,12 +1,12 @@
-# grep
-alias grep='grep --color=auto'
-alias egrep='egrep --color=auto'
-alias fgrep='fgrep --color=auto'
-
 # ls
 alias ls='ls -F --color=auto'
 alias l='ls -Flh --color=auto'
 alias ll='ls -Flha --color=auto'
+
+# grep
+alias grep='grep --color=auto'
+alias egrep='egrep --color=auto'
+alias fgrep='fgrep --color=auto'
 
 # interactive
 alias cp='cp -i'

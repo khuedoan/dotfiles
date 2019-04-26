@@ -20,6 +20,7 @@ Base:
 `xorg-xinit`
 `bspwm`
 `sxhkd`
+[`dmenu2`](https://aur.archlinux.org/packages/dmenu2/)
 [`polybar`](https://aur.archlinux.org/packages/polybar/)
 `rxvt-unicode`
 
@@ -29,7 +30,6 @@ Fonts:
 
 Optional:
 [`compton-tryone-git`](https://aur.archlinux.org/packages/compton-tryone-git/)
-[`dmenu2`](https://aur.archlinux.org/packages/dmenu2/)
 [`i3lock-next-git`](https://aur.archlinux.org/packages/i3lock-next-git/)
 
 ### Installation

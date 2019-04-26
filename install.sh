@@ -40,7 +40,7 @@ fi
 
 sed -i "s/enp0s20f0u2/$ethernetcard/g" ~/.config/polybar/config
 sed -i "s/wlp2s0/$wificard/g" ~/.config/polybar/config
-sed -i "s/thermal-zone\ =\ 9/thermal-zone\ =\ $cputhermalzone/g" ~/.config/polybar/config
+sed -i "s/thermal-zone\ =\ 10/thermal-zone\ =\ $cputhermalzone/g" ~/.config/polybar/config
 
 echo -n "Install recommended packages? (y/N) "
 read response

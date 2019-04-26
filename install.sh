@@ -37,15 +37,15 @@ if [ $response = "y" ]; then
             dotfiles checkout 2>&1 | egrep "^\s+" | awk {'print $1'} | xargs -I {} rm -v {}
             dotfiles checkout
             dotfiles config status.showUntrackedFiles no
-            echo -n "Set upstream? (y/N) "
-            read response
-            if [ $response = "y" ]; then
-                dotfiles push --set-upstream origin master
-            fi
             echo -n "Set ssh url? (y/N) "
             read response
             if [ $response = "y" ]; then
                 dotfiles remote set-url origin $REPOSSH
+            fi
+            echo -n "Set upstream? (y/N) "
+            read response
+            if [ $response = "y" ]; then
+                dotfiles push --set-upstream origin master
             fi
         else
                 rm -rf $GITDIR

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 dmenu_themed() {
     dmenu -nb "#282A36" \
@@ -11,13 +11,13 @@ dmenu_themed() {
 
 expression=$(dmenu_themed -p "Calculator" <&-)
 
-if [ -z $expression ]; then
+if [ -z "$expression" ]; then
     exit 1
 fi
 
 result=$(echo "$expression" | bc -l | dmenu_themed -p "Result")
 
-if [ -z $result ]; then
+if [ -z "$result" ]; then
     exit 1
 fi
 

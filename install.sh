@@ -1,9 +1,5 @@
 #!/bin/sh
 
-# Default apps
-terminal="rxvt-unicode"
-browser="firefox"
-
 # Device specific configurations
 ethernetcard="$(ls /sys/class/net | grep enp)"
 wificard="$(ls /sys/class/net | grep wlp)"
@@ -53,7 +49,7 @@ if [ $response = "y" ]; then
     trizen --noconfirm -S nerd-fonts-source-code-pro ttf-mac-fonts ttf-ms-fonts
     echo "Installing extra packages"
     sudo pacman --noconfirm -S alsa-utils xorg-xbacklight maim xclip dunst libnotify feh bc translate-shell playerctl htop glances
-    sudo pacman --noconfirm -S $terminal $browser
+    sudo pacman --noconfirm -S firefox rxvt-unicode
     sudo pacman --noconfirm -S pcmanfm zathura zathura-pdf-mupdf mpv youtube-dl
     sudo pacman --noconfirm -S fzf zsh-completions zsh-autosuggestions zsh-syntax-highlighting
     trizen --noconfirm -S zsh-theme-powerlevel10k-git

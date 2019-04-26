@@ -17,40 +17,56 @@ if [ $response = "y" ]; then
     trizen --noconfirm -S zsh-theme-powerlevel10k-git
 fi
 
-REPO="https://github.com/khuedoan98/dotfiles.git"
-GITDIR=$HOME/.dotfiles/
+echo -n "Install dotfiles? (y/N) "
+read response
+if [ $response = "y" ]; then
+    REPO="https://github.com/khuedoan98/dotfiles.git"
+    REPOSSH="git@github.com:khuedoan98/dotfiles.git"
+    GITDIR=$HOME/.dotfiles/
 
-git clone --bare $REPO $GITDIR
+    git clone --bare $REPO $GITDIR
 
-dotfiles() {
-    /usr/bin/git --git-dir=$GITDIR --work-tree=$HOME $@
-}
+    dotfiles() {
+        /usr/bin/git --git-dir=$GITDIR --work-tree=$HOME $@
+    }
 
-if ! dotfiles checkout; then
-    echo -n "All of the above files will be deleted, are you sure? (y/N) "
-    read response
-    if [ $response = "y" ]; then
+    if ! dotfiles checkout; then
+        echo -n "All of the above files will be deleted, are you sure? (y/N) "
+        read response
+        if [ $response = "y" ]; then
             dotfiles checkout 2>&1 | egrep "^\s+" | awk {'print $1'} | xargs -I {} rm -v {}
-            dotfiles checkout &&
-            dotfiles config status.showUntrackedFiles no &&
-            dotfiles push --set-upstream origin master &&
-            echo "Install completed!"
-    else
-            rm -rf $GITDIR
-            echo "Installation cancelled"
-            exit 1
+            dotfiles checkout
+            dotfiles config status.showUntrackedFiles no
+            echo -n "Set upstream? (y/N) "
+            read response
+            if [ $response = "y" ]; then
+                dotfiles push --set-upstream origin master
+            fi
+            echo -n "Set ssh url? (y/N) "
+            read response
+            if [ $response = "y" ]; then
+                dotfiles remote set-url origin $REPOSSH
+            fi
+        else
+                rm -rf $GITDIR
+                echo "Installation cancelled"
+                exit 1
+        fi
     fi
 fi
 
-# Device specific configurations
-ethernetcard="$(ls /sys/class/net | grep enp)"
-wificard="$(ls /sys/class/net | grep wlp)"
-cputhermalzone="$(for i in /sys/class/thermal/thermal_zone*; do
-                      if [ $(cat $i/type) = "x86_pkg_temp" ]; then
-                          echo $i
-                      fi
-                  done | grep -oP "\d+")"
+echo -n "Run post-installation? (y/N) "
+read response
+if [ $response = "y" ]; then
+    ethernetcard="$(ls /sys/class/net | grep enp)"
+    wificard="$(ls /sys/class/net | grep wlp)"
+    cputhermalzone="$(for i in /sys/class/thermal/thermal_zone*; do
+                          if [ $(cat $i/type) = "x86_pkg_temp" ]; then
+                              echo $i
+                          fi
+                      done | grep -oP "\d+")"
 
-sed -i "s/enp0s20f0u2/$ethernetcard/g" ~/.config/polybar/config
-sed -i "s/wlp2s0/$wificard/g" ~/.config/polybar/config
-sed -i "s/thermal-zone\ =\ 10/thermal-zone\ =\ $cputhermalzone/g" ~/.config/polybar/config
+    sed -i "s/enp0s20f0u2/$ethernetcard/g" ~/.config/polybar/config
+    sed -i "s/wlp2s0/$wificard/g" ~/.config/polybar/config
+    sed -i "s/thermal-zone\ =\ 10/thermal-zone\ =\ $cputhermalzone/g" ~/.config/polybar/config
+fi

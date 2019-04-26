@@ -87,6 +87,9 @@ super + Return
 # Web browser
 super + {_,shift + }w
     firefox {_,--private-window}
+# Messenger
+super + m
+    surf messenger.com
 # File manager
 super + f
     pcmanfm

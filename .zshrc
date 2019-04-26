@@ -46,5 +46,3 @@ fi
 if [ -f /usr/share/fzf/completion.zsh ]; then
     . /usr/share/fzf/completion.zsh
 fi
-# sudo pacman -S thefuck
-eval $(thefuck --alias)

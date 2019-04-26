@@ -1,13 +1,21 @@
 #!/bin/sh
 
-# Device specific configurations
-ethernetcard="$(ls /sys/class/net | grep enp)"
-wificard="$(ls /sys/class/net | grep wlp)"
-cputhermalzone="$(for i in /sys/class/thermal/thermal_zone*; do
-                      if [ $(cat $i/type) = "x86_pkg_temp" ]; then
-                          echo $i
-                      fi
-                  done | grep -oP "\d+")"
+echo -n "Install recommended packages? (y/N) "
+read response
+if [ $response = "y" ]; then
+    echo "Installing basic packages"
+    sudo pacman --noconfirm -S xorg-server xorg-xinit xorg-setxkbmap xcape bspwm sxhkd
+    trizen --noconfirm -S polybar dmenu2 i3lock-next-git compton-tryone-git
+    echo "Installing fonts"
+    sudo pacman --noconfirm -S ttf-dejavu
+    trizen --noconfirm -S nerd-fonts-source-code-pro ttf-mac-fonts ttf-ms-fonts
+    echo "Installing extra packages"
+    sudo pacman --noconfirm -S alsa-utils xorg-xbacklight maim xclip dunst libnotify feh bc translate-shell playerctl htop glances
+    sudo pacman --noconfirm -S firefox rxvt-unicode
+    sudo pacman --noconfirm -S pcmanfm zathura zathura-pdf-mupdf mpv youtube-dl
+    sudo pacman --noconfirm -S fzf zsh-completions zsh-autosuggestions zsh-syntax-highlighting
+    trizen --noconfirm -S zsh-theme-powerlevel10k-git
+fi
 
 REPO="https://github.com/khuedoan98/dotfiles.git"
 GITDIR=$HOME/.dotfiles/
@@ -34,25 +42,15 @@ if ! dotfiles checkout; then
     fi
 fi
 
+# Device specific configurations
+ethernetcard="$(ls /sys/class/net | grep enp)"
+wificard="$(ls /sys/class/net | grep wlp)"
+cputhermalzone="$(for i in /sys/class/thermal/thermal_zone*; do
+                      if [ $(cat $i/type) = "x86_pkg_temp" ]; then
+                          echo $i
+                      fi
+                  done | grep -oP "\d+")"
+
 sed -i "s/enp0s20f0u2/$ethernetcard/g" ~/.config/polybar/config
 sed -i "s/wlp2s0/$wificard/g" ~/.config/polybar/config
 sed -i "s/thermal-zone\ =\ 10/thermal-zone\ =\ $cputhermalzone/g" ~/.config/polybar/config
-
-echo -n "Install recommended packages? (y/N) "
-read response
-if [ $response = "y" ]; then
-    echo "Installing basic packages"
-    sudo pacman --noconfirm -S xorg-server xorg-xinit xorg-setxkbmap xcape bspwm sxhkd
-    trizen --noconfirm -S polybar dmenu2 i3lock-next-git compton-tryone-git
-    echo "Installing fonts"
-    sudo pacman --noconfirm -S ttf-dejavu
-    trizen --noconfirm -S nerd-fonts-source-code-pro ttf-mac-fonts ttf-ms-fonts
-    echo "Installing extra packages"
-    sudo pacman --noconfirm -S alsa-utils xorg-xbacklight maim xclip dunst libnotify feh bc translate-shell playerctl htop glances
-    sudo pacman --noconfirm -S firefox rxvt-unicode
-    sudo pacman --noconfirm -S pcmanfm zathura zathura-pdf-mupdf mpv youtube-dl
-    sudo pacman --noconfirm -S fzf zsh-completions zsh-autosuggestions zsh-syntax-highlighting
-    trizen --noconfirm -S zsh-theme-powerlevel10k-git
-fi
-
-exit 0

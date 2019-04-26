@@ -12,7 +12,7 @@ dmenu_themed() {
 notify-send -t 2000 "NetworkManager" "Scanning wifi..."
 
 ssid=$(nmcli -g SSID device wifi list | \
-       dmenu_themed -l 25 -p "Wifi")
+       dmenu_themed -l 25 -p "Wifi" -i)
 
 if [ -z $ssid ]; then
     exit 1

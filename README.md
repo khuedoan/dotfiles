@@ -36,7 +36,7 @@ Optional:
 
 #### The lazy way
 
-`curl -Lks https://khuedoan.me/dotfiles/install.sh > install.sh`
+`curl https://khuedoan.me/dotfiles/install.sh > install.sh`
 
 `chmod +x install.sh`
 

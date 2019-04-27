@@ -76,13 +76,7 @@ if [ "$response" = "y" ]; then
                           fi
                       done | grep -oP "\d+")"
 
-    if [ -n "$wificard" ]; then
-        sed -i "s/wlp2s0/$wificard/g" ~/.config/polybar/config
-    fi
-    if [ -n "$ethernetcard" ]; then
-        sed -i "s/enp0s20f0u2/$ethernetcard/g" ~/.config/polybar/config
-    fi
-    if [ -n "$cpuethernetcard" ]; then
-        sed -i "s/thermal-zone\ =\ 10/thermal-zone\ =\ $cputhermalzone/g" ~/.config/polybar/config
-    fi
+    [ "$wificard" ] && sed -i "s/wlp2s0/$wificard/g" ~/.config/polybar/config
+    [ "$ethernetcard" ] && sed -i "s/enp0s20f0u2/$ethernetcard/g" ~/.config/polybar/config
+    [ "$cpuethernetcard" ] && sed -i "s/thermal-zone\ =\ 10/thermal-zone\ =\ $cputhermalzone/g" ~/.config/polybar/config
 fi

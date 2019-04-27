@@ -131,7 +131,7 @@
 
 [urgency_critical]
     background = "#900000"
-    foreground = "#ffffff"
+    foreground = "#f8f8f2"
     timeout = 0
 
 # SCRIPTING

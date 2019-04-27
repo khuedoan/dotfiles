@@ -2,7 +2,7 @@
 
 echo -n "Install recommended packages? (y/N) "
 read response
-if [ $response = "y" ]; then
+if [ "$response" = "y" ]; then
     echo "Installing basic packages"
     sudo pacman --noconfirm -S xorg-server xorg-xinit xorg-setxkbmap xcape bspwm sxhkd
     trizen --noconfirm -S polybar dmenu2 i3lock-next-git compton-tryone-git
@@ -19,7 +19,7 @@ fi
 
 echo -n "Install dotfiles? (y/N) "
 read response
-if [ $response = "y" ]; then
+if [ "$response" = "y" ]; then
     REPO="https://github.com/khuedoan98/dotfiles.git"
     REPOSSH="git@github.com:khuedoan98/dotfiles.git"
     GITDIR=$HOME/.dotfiles/
@@ -33,18 +33,18 @@ if [ $response = "y" ]; then
     if ! dotfiles checkout; then
         echo -n "All of the above files will be deleted, are you sure? (y/N) "
         read response
-        if [ $response = "y" ]; then
+        if [ "$response" = "y" ]; then
             dotfiles checkout 2>&1 | egrep "^\s+" | awk {'print $1'} | xargs -I {} rm -v {}
             dotfiles checkout
             dotfiles config status.showUntrackedFiles no
             echo -n "Set ssh url? (y/N) "
             read response
-            if [ $response = "y" ]; then
+            if [ "$response" = "y" ]; then
                 dotfiles remote set-url origin $REPOSSH
             fi
             echo -n "Set upstream? (y/N) "
             read response
-            if [ $response = "y" ]; then
+            if [ "$response" = "y" ]; then
                 dotfiles push --set-upstream origin master
             fi
         else
@@ -57,7 +57,7 @@ fi
 
 echo -n "Run post-installation? (y/N) "
 read response
-if [ $response = "y" ]; then
+if [ "$response" = "y" ]; then
     ethernetcard="$(ls /sys/class/net | grep enp)"
     wificard="$(ls /sys/class/net | grep wlp)"
     cputhermalzone="$(for i in /sys/class/thermal/thermal_zone*; do

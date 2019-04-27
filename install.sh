@@ -58,15 +58,21 @@ fi
 echo -n "Run post-installation? (y/N) "
 read response
 if [ "$response" = "y" ]; then
-    ethernetcard="$(ls /sys/class/net | grep enp)"
     wificard="$(ls /sys/class/net | grep wlp)"
+    ethernetcard="$(ls /sys/class/net | grep enp)"
     cputhermalzone="$(for i in /sys/class/thermal/thermal_zone*; do
                           if [ $(cat $i/type) = "x86_pkg_temp" ]; then
                               echo $i
                           fi
                       done | grep -oP "\d+")"
 
-    sed -i "s/enp0s20f0u2/$ethernetcard/g" ~/.config/polybar/config
-    sed -i "s/wlp2s0/$wificard/g" ~/.config/polybar/config
-    sed -i "s/thermal-zone\ =\ 10/thermal-zone\ =\ $cputhermalzone/g" ~/.config/polybar/config
+    if [ -n "$wificard" ]; then
+        sed -i "s/wlp2s0/$wificard/g" ~/.config/polybar/config
+    fi
+    if [ -n "$ethernetcard" ]; then
+        sed -i "s/enp0s20f0u2/$ethernetcard/g" ~/.config/polybar/config
+    fi
+    if [ -n "$cpuethernetcard" ]; then
+        sed -i "s/thermal-zone\ =\ 10/thermal-zone\ =\ $cputhermalzone/g" ~/.config/polybar/config
+    fi
 fi

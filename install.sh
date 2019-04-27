@@ -1,5 +1,15 @@
 #!/bin/sh
 
+echo -n "Install trizen (AUR helper)? (y/N) "
+read response
+if [ "$response" = "y" ]; then
+    git clone https://aur.archlinux.org/trizen.git
+    cd trizen
+    makepkg -si
+    cd ..
+    rm -rf trizen
+fi
+
 echo -n "Install recommended packages? (y/N) "
 read response
 if [ "$response" = "y" ]; then

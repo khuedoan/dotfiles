@@ -80,3 +80,9 @@ if [ "$response" = "y" ]; then
     [ "$ethernetcard" ] && sed -i "s/enp0s20f0u2/$ethernetcard/g" ~/.config/polybar/config
     [ "$cpuethernetcard" ] && sed -i "s/thermal-zone\ =\ 10/thermal-zone\ =\ $cputhermalzone/g" ~/.config/polybar/config
 fi
+
+echo -n "Install system configuration files? (y/N) "
+read response
+if [ "$response" = "y" ]; then
+    sudo cp -riv .root/* /
+fi

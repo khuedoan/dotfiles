@@ -20,7 +20,7 @@ if [ "$response" = "y" ]; then
     sudo pacman --noconfirm -S ttf-dejavu
     trizen --noconfirm -S nerd-fonts-source-code-pro ttf-mac-fonts ttf-ms-fonts
     echo "Installing extra packages"
-    sudo pacman --noconfirm -S alsa-utils xorg-xbacklight maim xclip dunst libnotify feh bc translate-shell playerctl htop glances
+    sudo pacman --noconfirm -S alsa-utils xorg-xbacklight maim xclip dunst libnotify feh bc translate-shell playerctl htop glances xorg-xsetroot
     sudo pacman --noconfirm -S firefox rxvt-unicode
     sudo pacman --noconfirm -S pcmanfm zathura zathura-pdf-mupdf mpv youtube-dl
     sudo pacman --noconfirm -S fzf zsh-completions zsh-autosuggestions zsh-syntax-highlighting

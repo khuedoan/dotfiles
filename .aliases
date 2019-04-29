@@ -34,5 +34,8 @@ alias dfc='dotfiles commit'
 alias dfp='dotfiles push'
 alias dfl='dotfiles ls-tree -r master --name-only'
 
+# AUR
+alias aur='trizen'
+
 # feh
 alias feh='feh --scale-down --auto-zoom'

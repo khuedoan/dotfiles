@@ -14,7 +14,7 @@ echo -n "Install recommended packages? (y/N) "
 read response
 if [ "$response" = "y" ]; then
     echo "Installing basic packages"
-    sudo pacman --noconfirm -S xorg-server xorg-xinit xorg-setxkbmap xcape bspwm sxhkd
+    sudo pacman --noconfirm -S xf86-video-intel xorg-server xorg-xinit xorg-setxkbmap xcape bspwm sxhkd
     trizen --noconfirm -S polybar dmenu2 i3lock-next-git compton-tryone-git
     echo "Installing fonts"
     sudo pacman --noconfirm -S ttf-dejavu

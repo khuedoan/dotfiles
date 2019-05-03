@@ -1,5 +1,6 @@
 # Keybindings
 bindkey -v
+export KEYTIMEOUT=1
 
 # History
 HISTSIZE=10000

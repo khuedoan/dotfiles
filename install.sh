@@ -4,6 +4,7 @@ echo -n "Install trizen (AUR helper)? (y/N) " && read aur
 echo -n "Install bumblebee (for optimus NVIDIA card)? (y/N) " && read bb
 [ "$bb" ] || (echo -n "Install Intel graphics driver? (y/N) " && read intel)
 echo -n "Install recommended packages? (y/N) " && read pkg
+echo -n "Install Vietnamese input method (fcitx-unikey)? (y/N) " && read vnim
 echo -n "Install zsh plugins? (y/N) " && read zplug
 echo -n "Install dotfiles? (y/N) " && read dot
 echo -n "Run post-installation (auto detect hardware for polybar)? (y/N) " && read post
@@ -38,6 +39,10 @@ fi
 
 if [ "$intel" = "y" ]; then
     sudo pacman -S xf86-video-intel
+fi
+
+if [ "$vnim" = "y" ]; then
+    sudo pacman -S fcitx fcitx-unikey fcitx-im fcitx-configtool
 fi
 
 if [ "$dot" = "y" ]; then

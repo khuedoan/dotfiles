@@ -1,17 +1,11 @@
 #!/bin/sh
 
-echo -n "Install trizen (AUR helper)? (y/N) "
-read aur
-echo -n "Install recommended packages? (y/N) "
-read pkg
-echo -n "Install zsh plugins? (y/N) "
-read zplug
-echo -n "Install dotfiles? (y/N) "
-read dot
-echo -n "Run post-installation (auto detect hardware for polybar)? (y/N) "
-read post
-echo -n "Install system configuration files (login logo, touchpad, backlight)? (y/N) "
-read sysconf
+echo -n "Install trizen (AUR helper)? (y/N) " && read aur
+echo -n "Install recommended packages? (y/N) " && read pkg
+echo -n "Install zsh plugins? (y/N) " && read zplug
+echo -n "Install dotfiles? (y/N) " && read dot
+echo -n "Run post-installation (auto detect hardware for polybar)? (y/N) " && read post
+echo -n "Install system configuration files (login logo, touchpad, backlight)? (y/N) " && read sysconf
 
 if [ "$aur" = "y" ]; then
     git clone https://aur.archlinux.org/trizen.git

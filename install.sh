@@ -18,7 +18,7 @@ if [ "$aur" = "y" ]; then
 fi
 
 if [ "$pkg" = "y" ]; then
-    sudo pacman --noconfirm -S xf86-video-intel xorg-server xorg-xinit xorg-setxkbmap xcape bspwm sxhkd ttf-dejavu alsa-utils xorg-xbacklight maim xclip dunst libnotify feh bc translate-shell playerctl htop glances powertop xorg-xsetroot firefox rxvt-unicode pcmanfm zathura zathura-pdf-mupdf xarchiver unrar unzip zip mpv youtube-dl tlp fzf lxappearance arc-gtk-theme papirus-icon-theme
+    sudo pacman --noconfirm -S xorg-server xorg-xinit xorg-setxkbmap xcape bspwm sxhkd ttf-dejavu alsa-utils xorg-xbacklight maim xclip dunst libnotify feh bc translate-shell playerctl htop glances powertop xorg-xsetroot firefox rxvt-unicode pcmanfm zathura zathura-pdf-mupdf xarchiver unrar unzip zip mpv youtube-dl tlp fzf lxappearance arc-gtk-theme papirus-icon-theme
     trizen --noconfirm -S polybar dmenu2 i3lock-next-git compton-tryone-git ttf-ms-fonts
 fi
 
@@ -26,6 +26,18 @@ if [ "$zplug" = "y" ]; then
     git clone https://github.com/romkatv/powerlevel10k ~/.zsh/powerlevel10k
     git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
     git clone https://github.com/zsh-users/zsh-syntax-highlighting ~/.zsh/zsh-syntax-highlighting
+fi
+
+if [ "$bb" = "y" ]; then
+    sudo pacman -S bumblebee mesa xf86-video-intel nvidia lib32-nvidia-utils lib32-virtualgl nvidia-settings bbswitch
+    sudo gpasswd -a $USER bumblebee
+    sudo gpasswd -a $USER video
+    sudo systemctl enable bumblebeed.service
+    # Run NVIDIA settings with optirun -b none /usr/bin/nvidia-settings -c :8
+fi
+
+if [ "$intel" = "y" ]; then
+    sudo pacman -S xf86-video-intel
 fi
 
 if [ "$dot" = "y" ]; then

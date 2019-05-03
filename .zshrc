@@ -21,12 +21,12 @@ zstyle ':completion:*' menu select
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}'
 
 # Plugins
-# trizen -S zsh-theme-powerlevel10k-git
-source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
-# sudo pacman -S zsh-autosuggestions
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-# sudo pacman -S zsh-syntax-highlighting
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# git clone https://github.com/romkatv/powerlevel10k ~/.zsh/powerlevel10k
+source ~/.zsh/powerlevel10k/powerlevel10k.zsh-theme
+# git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+# git clone https://github.com/zsh-users/zsh-syntax-highlighting ~/.zsh/zsh-syntax-highlighting
+source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # sudo pacman -S fzf
 source /usr/share/fzf/key-bindings.zsh
 source /usr/share/fzf/completion.zsh

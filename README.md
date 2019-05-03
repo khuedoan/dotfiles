@@ -40,6 +40,8 @@ Optional:
 
 `chmod +x install.sh`
 
+Optionally edit the install script. Then run it:
+
 `./install.sh`
 
 #### The better way

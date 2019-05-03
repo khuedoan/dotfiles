@@ -30,7 +30,7 @@ if [ "$zplug" = "y" ]; then
 fi
 
 if [ "$bb" = "y" ]; then
-    sudo pacman -S bumblebee mesa xf86-video-intel nvidia lib32-nvidia-utils lib32-virtualgl nvidia-settings bbswitch
+    sudo pacman --noconfirm -S bumblebee mesa xf86-video-intel nvidia lib32-nvidia-utils lib32-virtualgl nvidia-settings bbswitch
     sudo gpasswd -a $USER bumblebee
     sudo gpasswd -a $USER video
     sudo systemctl enable bumblebeed.service
@@ -38,11 +38,11 @@ if [ "$bb" = "y" ]; then
 fi
 
 if [ "$intel" = "y" ]; then
-    sudo pacman -S xf86-video-intel
+    sudo pacman --noconfirm -S xf86-video-intel
 fi
 
 if [ "$vnim" = "y" ]; then
-    sudo pacman -S fcitx fcitx-unikey fcitx-im fcitx-configtool
+    sudo pacman --noconfirm -S fcitx fcitx-unikey fcitx-im fcitx-configtool
 fi
 
 if [ "$dot" = "y" ]; then

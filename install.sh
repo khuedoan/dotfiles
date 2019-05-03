@@ -1,8 +1,17 @@
 #!/bin/sh
 
 echo -n "Install trizen (AUR helper)? (y/N) "
-read response
-if [ "$response" = "y" ]; then
+read aur
+echo -n "Install recommended packages? (y/N) "
+read pkg
+echo -n "Install dotfiles? (y/N) "
+read dot
+echo -n "Run post-installation? (y/N) "
+read post
+echo -n "Install system configuration files? (y/N) "
+read sysconf
+
+if [ "$aur" = "y" ]; then
     git clone https://aur.archlinux.org/trizen.git
     cd trizen
     makepkg -si
@@ -10,9 +19,7 @@ if [ "$response" = "y" ]; then
     rm -rf trizen
 fi
 
-echo -n "Install recommended packages? (y/N) "
-read response
-if [ "$response" = "y" ]; then
+if [ "$pkg" = "y" ]; then
     echo "Installing basic packages"
     sudo pacman --noconfirm -S xf86-video-intel xorg-server xorg-xinit xorg-setxkbmap xcape bspwm sxhkd
     trizen --noconfirm -S polybar dmenu2 i3lock-next-git compton-tryone-git
@@ -27,9 +34,7 @@ if [ "$response" = "y" ]; then
     trizen --noconfirm -S zsh-theme-powerlevel10k-git
 fi
 
-echo -n "Install dotfiles? (y/N) "
-read response
-if [ "$response" = "y" ]; then
+if [ "$dot" = "y" ]; then
     REPO="https://github.com/khuedoan98/dotfiles.git"
     REPOSSH="git@github.com:khuedoan98/dotfiles.git"
     GITDIR=$HOME/.dotfiles/
@@ -65,9 +70,7 @@ if [ "$response" = "y" ]; then
     fi
 fi
 
-echo -n "Run post-installation? (y/N) "
-read response
-if [ "$response" = "y" ]; then
+if [ "$post" = "y" ]; then
     wificard="$(ls /sys/class/net | grep wlp)"
     ethernetcard="$(ls /sys/class/net | grep enp)"
     cputhermalzone="$(for i in /sys/class/thermal/thermal_zone*; do
@@ -81,8 +84,6 @@ if [ "$response" = "y" ]; then
     [ "$cpuethernetcard" ] && sed -i "s/thermal-zone\ =\ 10/thermal-zone\ =\ $cputhermalzone/g" ~/.config/polybar/config
 fi
 
-echo -n "Install system configuration files? (y/N) "
-read response
-if [ "$response" = "y" ]; then
+if [ "$sysconf" = "y" ]; then
     sudo cp -riv .root/* /
 fi

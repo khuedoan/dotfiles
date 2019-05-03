@@ -4,6 +4,8 @@ echo -n "Install trizen (AUR helper)? (y/N) "
 read aur
 echo -n "Install recommended packages? (y/N) "
 read pkg
+echo -n "Install zsh plugins? (y/N) "
+read zplug
 echo -n "Install dotfiles? (y/N) "
 read dot
 echo -n "Run post-installation (auto detect hardware for polybar)? (y/N) "
@@ -20,8 +22,14 @@ if [ "$aur" = "y" ]; then
 fi
 
 if [ "$pkg" = "y" ]; then
-    sudo pacman --noconfirm -S xf86-video-intel xorg-server xorg-xinit xorg-setxkbmap xcape bspwm sxhkd ttf-dejavu alsa-utils xorg-xbacklight maim xclip dunst libnotify feh bc translate-shell playerctl htop glances powertop xorg-xsetroot firefox rxvt-unicode pcmanfm zathura zathura-pdf-mupdf xarchiver unrar unzip zip mpv youtube-dl tlp fzf zsh-completions zsh-autosuggestions zsh-syntax-highlighting lxappearance arc-gtk-theme papirus-icon-theme
-    trizen --noconfirm -S polybar dmenu2 i3lock-next-git compton-tryone-git ttf-ms-fonts zsh-theme-powerlevel10k-git
+    sudo pacman --noconfirm -S xf86-video-intel xorg-server xorg-xinit xorg-setxkbmap xcape bspwm sxhkd ttf-dejavu alsa-utils xorg-xbacklight maim xclip dunst libnotify feh bc translate-shell playerctl htop glances powertop xorg-xsetroot firefox rxvt-unicode pcmanfm zathura zathura-pdf-mupdf xarchiver unrar unzip zip mpv youtube-dl tlp fzf lxappearance arc-gtk-theme papirus-icon-theme
+    trizen --noconfirm -S polybar dmenu2 i3lock-next-git compton-tryone-git ttf-ms-fonts
+fi
+
+if [ "$zplug" = "y" ]; then
+    git clone https://github.com/romkatv/powerlevel10k ~/.zsh/powerlevel10k
+    git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
+    git clone https://github.com/zsh-users/zsh-syntax-highlighting ~/.zsh/zsh-syntax-highlighting
 fi
 
 if [ "$dot" = "y" ]; then

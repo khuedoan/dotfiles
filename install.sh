@@ -20,18 +20,8 @@ if [ "$aur" = "y" ]; then
 fi
 
 if [ "$pkg" = "y" ]; then
-    echo "Installing basic packages"
-    sudo pacman --noconfirm -S xf86-video-intel xorg-server xorg-xinit xorg-setxkbmap xcape bspwm sxhkd
-    trizen --noconfirm -S polybar dmenu2 i3lock-next-git compton-tryone-git
-    echo "Installing fonts"
-    sudo pacman --noconfirm -S ttf-dejavu
-    trizen --noconfirm -S nerd-fonts-source-code-pro ttf-mac-fonts ttf-ms-fonts
-    echo "Installing extra packages"
-    sudo pacman --noconfirm -S alsa-utils xorg-xbacklight maim xclip dunst libnotify feh bc translate-shell playerctl htop glances xorg-xsetroot
-    sudo pacman --noconfirm -S firefox rxvt-unicode
-    sudo pacman --noconfirm -S pcmanfm zathura zathura-pdf-mupdf mpv youtube-dl
-    sudo pacman --noconfirm -S fzf zsh-completions zsh-autosuggestions zsh-syntax-highlighting
-    trizen --noconfirm -S zsh-theme-powerlevel10k-git
+    sudo pacman --noconfirm -S xf86-video-intel xorg-server xorg-xinit xorg-setxkbmap xcape bspwm sxhkd ttf-dejavu alsa-utils xorg-xbacklight maim xclip dunst libnotify feh bc translate-shell playerctl htop glances xorg-xsetroot firefox rxvt-unicode pcmanfm zathura zathura-pdf-mupdf mpv youtube-dl fzf zsh-completions zsh-autosuggestions zsh-syntax-highlighting
+    trizen --noconfirm -S polybar dmenu2 i3lock-next-git compton-tryone-git nerd-fonts-source-code-pro ttf-mac-fonts ttf-ms-fonts zsh-theme-powerlevel10k-git
 fi
 
 if [ "$dot" = "y" ]; then

@@ -60,7 +60,7 @@ if [ "$dot" = "y" ]; then
         echo -n "All of the above files will be deleted, are you sure? (y/N) "
         read response
         if [ "$response" = "y" ]; then
-            dotfiles checkout 2>&1 | egrep "^\s+" | awk {'print $1'} | xargs -I {} rm -v {}
+            dotfiles checkout 2>&1 | egrep "^\s+" | awk {'print $1'} | xargs -I {} rm -v "{}"
             dotfiles checkout
             dotfiles config status.showUntrackedFiles no
         else

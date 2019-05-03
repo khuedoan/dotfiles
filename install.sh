@@ -21,7 +21,7 @@ fi
 
 if [ "$pkg" = "y" ]; then
     sudo pacman --noconfirm -S xf86-video-intel xorg-server xorg-xinit xorg-setxkbmap xcape bspwm sxhkd ttf-dejavu alsa-utils xorg-xbacklight maim xclip dunst libnotify feh bc translate-shell playerctl htop glances xorg-xsetroot firefox rxvt-unicode pcmanfm zathura zathura-pdf-mupdf mpv youtube-dl fzf zsh-completions zsh-autosuggestions zsh-syntax-highlighting lxappearance arc-gtk-theme papirus-icon-theme
-    trizen --noconfirm -S polybar dmenu2 i3lock-next-git compton-tryone-git nerd-fonts-source-code-pro ttf-mac-fonts ttf-ms-fonts zsh-theme-powerlevel10k-git
+    trizen --noconfirm -S polybar dmenu2 i3lock-next-git compton-tryone-git nerd-fonts-source-code-pro ttf-ms-fonts zsh-theme-powerlevel10k-git
 fi
 
 if [ "$dot" = "y" ]; then

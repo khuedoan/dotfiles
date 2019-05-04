@@ -9,7 +9,7 @@ dmenu_themed() {
           "$@"
 }
 
-vm=$(VBoxManage list vms \
+vm=$(vboxmanage list vms \
          | sed 's/"\(.*\)".*/\1/' \
          | dmenu_themed -l 25 -p "VirtualBox" -i)
 

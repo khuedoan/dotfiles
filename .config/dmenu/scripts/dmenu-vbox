@@ -3,13 +3,14 @@
 dmenu_themed() {
     dmenu -nb "#282A36" \
           -nf "#F8F8F2" \
-          -sb "#50FA7B" \
+          -sb "#BFBFBF" \
           -sf "#282A36" \
           -fn "Mono-12.5" \
           "$@"
 }
 
-VBoxManage list vms \
-    | sed -E 's/ \{.*//g' \
-    | dmenu_themed -l 25 -p "VirtualBox" -i \
-    | xargs VBoxSDL -vm
+vm=$(VBoxManage list vms \
+         | sed 's/"\(.*\)".*/\1/' \
+         | dmenu_themed -l 25 -p "VirtualBox" -i)
+
+[ "$vm" ] && VBoxSDL -vm "$vm"

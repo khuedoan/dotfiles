@@ -13,6 +13,8 @@ vm=$(VBoxManage list vms \
          | sed 's/"\(.*\)".*/\1/' \
          | dmenu_themed -l 25 -p "VirtualBox" -i)
 
-[ "$vm" ] && VBoxSDL -vm "$vm"
+[ -z "$vm" ] && exit 1
 
-[ "$?" = "1" ] && notify-send "VirtualBox" "$vm already running"
+VBoxSDL -vm "$vm"
+
+[ "$?" = "1" ] && notify-send "VirtualBox" "$vm is already running"

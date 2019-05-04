@@ -1,0 +1,15 @@
+#!/bin/sh
+
+dmenu_themed() {
+    dmenu -nb "#282A36" \
+          -nf "#F8F8F2" \
+          -sb "#50FA7B" \
+          -sf "#282A36" \
+          -fn "Mono-12.5" \
+          "$@"
+}
+
+VBoxManage list vms \
+    | sed -E 's/ \{.*//g' \
+    | dmenu_themed -l 25 -p "VirtualBox" -i \
+    | xargs VBoxSDL -vm

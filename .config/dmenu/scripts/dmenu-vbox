@@ -15,6 +15,6 @@ vm=$(VBoxManage list vms \
 
 [ -z "$vm" ] && exit 1
 
-VBoxSDL -vm "$vm"
+vboxmanage startvm --type gui "$vm"
 
 [ "$?" = "1" ] && notify-send "VirtualBox" "$vm is already running"

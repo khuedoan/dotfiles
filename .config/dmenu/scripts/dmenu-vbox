@@ -14,3 +14,5 @@ vm=$(VBoxManage list vms \
          | dmenu_themed -l 25 -p "VirtualBox" -i)
 
 [ "$vm" ] && VBoxSDL -vm "$vm"
+
+[ "$?" = "1" ] && notify-send "VirtualBox" "$vm already running"

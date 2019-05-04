@@ -83,7 +83,7 @@ if [ "$post" = "y" ]; then
 
     [ "$wificard" ] && sed -i "s/wlp2s0/$wificard/g" ~/.config/polybar/config
     [ "$ethernetcard" ] && sed -i "s/enp0s20f0u2/$ethernetcard/g" ~/.config/polybar/config
-    [ "$cpuethernetcard" ] && sed -i "s/thermal-zone\ =\ 10/thermal-zone\ =\ $cputhermalzone/g" ~/.config/polybar/config
+    [ "$cputhermalzone" ] && sed -i "s/thermal-zone\ =\ 10/thermal-zone\ =\ $cputhermalzone/g" ~/.config/polybar/config
 fi
 
 if [ "$sysconf" = "y" ]; then

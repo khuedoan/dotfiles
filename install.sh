@@ -7,6 +7,7 @@ echo -n "Install recommended packages? (y/N) " && read pkg
 echo -n "Install Vietnamese input method (fcitx-unikey)? (y/N) " && read vnim
 echo -n "Install zsh plugins? (y/N) " && read zplug
 echo -n "Install dotfiles? (y/N) " && read dot
+echo -n "Install firefox theme? (y/N) " && read ff
 echo -n "Run post-installation (auto detect hardware for polybar)? (y/N) " && read post
 echo -n "Install system configuration files (login logo, touchpad, backlight)? (y/N) " && read sysconf
 
@@ -70,6 +71,13 @@ if [ "$dot" = "y" ]; then
                 exit 1
         fi
     fi
+fi
+
+if [ "$ff" = "y" ]; then
+    profile=$(grep 'Path=' ~/.mozilla/firefox/profiles.ini | sed s/^Path=//)
+    chromedir=$HOME/.mozilla/firefox/$profile/chrome
+    mkdir $chromedir
+    curl https://raw.githubusercontent.com/khuedoan98/minimal-firefox/master/userChrome.css > $chromedir/userChrome.css
 fi
 
 if [ "$post" = "y" ]; then

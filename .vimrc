@@ -55,6 +55,7 @@ Plug 'justinmk/vim-sneak'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 Plug 'tpope/vim-surround'
 Plug 'jiangmiao/auto-pairs'
+Plug 'tpope/vim-fugitive'
 call plug#end()
 
 """"""""""""""""""

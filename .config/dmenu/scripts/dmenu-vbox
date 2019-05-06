@@ -24,6 +24,6 @@ fi
 
 [ -z "$type" ] && exit 1
 
-vboxmanage startvm --type gui "$vm"
+vboxmanage startvm --type "$type" "$vm"
 
 [ "$?" = "1" ] && notify-send "VirtualBox" "$vm is already running"

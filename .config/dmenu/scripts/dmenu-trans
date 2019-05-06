@@ -11,10 +11,7 @@ dmenu_themed() {
 
 text=$(echo "$(xclip -o)" | dmenu_themed -p "Google Translate")
 
-if [ -z $text ]; then
-    exit 1
-fi
-
+[ -z $text ] && exit 1
 
 if [ -z "$1" ]; then
     languages=$(echo -e ":vi\n:en\n:ko" | \
@@ -23,8 +20,6 @@ else
     languages=$1
 fi
 
-if [ -z "$languages" ]; then
-    exit 1
-fi
+[ -z "$languages" ] && exit 1
 
 notify-send "Translate" "$(trans --no-ansi "$languages" "$text")"

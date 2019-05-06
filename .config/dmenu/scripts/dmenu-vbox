@@ -24,8 +24,8 @@ fi
 
 [ -z "$type" ] && exit 1
 
-[ "$type" = "headless" ] && notify-send "VirtualBox" "Starting $vm in headless mode"
-vboxmanage startvm --type "$type" "$vm"
+vboxmanage startvm --type "$type" "$vm" &&
+[ "$type" = "headless" ] && notify-send "VirtualBox" "Started $vm in headless mode"
 
 if [ "$?" = "1" ]; then
     notify-send "VirtualBox" "$vm is already running"

@@ -94,10 +94,10 @@ super + f
 super + d
     zathura
 # Virtual machine manager
-super + v
-    $HOME/.config/dmenu/scripts/dmenu-vbox
+super + {_,shift + }v
+    $HOME/.config/dmenu/scripts/dmenu-vbox {gui,_}
 # Translator
-super + {_,shift +}t
+super + {_,shift + }t
     $HOME/.config/dmenu/scripts/dmenu-trans {en:vi,_}
 # Calculator
 super + c

@@ -15,6 +15,15 @@ vm=$(vboxmanage list vms \
 
 [ -z "$vm" ] && exit 1
 
+if [ -z "$1" ]; then
+    type=$(echo -e "gui\nheadless" \
+               | dmenu_themed -p "Select type")
+else
+    type=$1
+fi
+
+[ -z "$type" ] && exit 1
+
 vboxmanage startvm --type gui "$vm"
 
 [ "$?" = "1" ] && notify-send "VirtualBox" "$vm is already running"

@@ -27,4 +27,9 @@ fi
 [ "$type" = "headless" ] && notify-send "VirtualBox" "Starting $vm in headless mode"
 vboxmanage startvm --type "$type" "$vm"
 
-[ "$?" = "1" ] && notify-send "VirtualBox" "$vm is already running"
+if [ "$?" = "1" ]; then
+    notify-send "VirtualBox" "$vm is already running"
+    action=$(echo -e "pause\nresume\nreset\npoweroff\nsavestate" \
+               | dmenu_themed -p "Control VM")
+    vboxmanage controlvm "$vm" "$action"
+fi

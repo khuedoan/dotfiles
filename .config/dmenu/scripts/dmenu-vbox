@@ -26,11 +26,13 @@ fi
 
 vboxmanage startvm --type "$type" "$vm"
 
-if [ "$?" = "1" ]; then
+startcode="$?"
+
+if [ "$startcode" = "1" ]; then
     action=$(echo -e "pause\nresume\nreset\npoweroff\nsavestate" \
                | dmenu_themed -p "Control VM")
     vboxmanage controlvm "$vm" "$action" &&
         notify-send "VirtualBox" "Successfully $action $vm"
-elif [ "$?" = "0" ]; then
+elif [ "$startcode" = "0" ]; then
     [ "$type" = "headless" ] && notify-send "VirtualBox" "Started $vm in headless mode"
 fi

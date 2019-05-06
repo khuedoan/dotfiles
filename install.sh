@@ -101,4 +101,5 @@ fi
 
 if [ "$sysconf" = "y" ]; then
     sudo cp -riv .root/* /
+    sudo systemctl enable powertop
 fi

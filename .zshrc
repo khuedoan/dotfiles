@@ -13,6 +13,7 @@ source ~/.aliases
 
 # Options
 setopt autocd autopushd
+setopt noflowcontrol
 
 # Completion
 autoload -Uz compinit

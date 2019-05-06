@@ -2,6 +2,7 @@
 
 echo -n "Install trizen (AUR helper)? (y/N) " && read aur
 echo -n "Install bumblebee (for optimus NVIDIA card)? (y/N) " && read bb
+[ "$bb" = "y" ] && (echo -n "Enable multilib repository for bumblebee? (y/N) " && read multilib)
 [ "$bb" = "y" ] || (echo -n "Install Intel graphics driver? (y/N) " && read intel)
 echo -n "Install recommended packages? (y/N) " && read pkg
 echo -n "Install Vietnamese input method (fcitx-unikey)? (y/N) " && read vnim
@@ -29,6 +30,10 @@ if [ "$zplug" = "y" ]; then
     git clone https://github.com/romkatv/powerlevel10k ~/.zsh/powerlevel10k
     git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
     git clone https://github.com/zsh-users/zsh-syntax-highlighting ~/.zsh/zsh-syntax-highlighting
+fi
+
+if [ "$multilib" = "y" ]; then
+    sudo vim /etc/pacman.conf
 fi
 
 if [ "$bb" = "y" ]; then

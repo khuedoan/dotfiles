@@ -2,7 +2,6 @@
 
 echo -n "Install trizen (AUR helper)? (y/N) " && read aur
 echo -n "Install bumblebee (for optimus NVIDIA card)? (y/N) " && read bb
-[ "$bb" = "y" ] && (echo -n "Enable multilib repository for bumblebee? (y/N) " && read multilib)
 [ "$bb" = "y" ] || (echo -n "Install Intel graphics driver? (y/N) " && read intel)
 echo -n "Install recommended packages? (y/N) " && read pkg
 echo -n "Install Vietnamese input method (fcitx-unikey)? (y/N) " && read vnim
@@ -21,7 +20,6 @@ if [ "$aur" = "y" ]; then
 fi
 
 if [ "$pkg" = "y" ]; then
-
     sudo pacman --noconfirm -S alsa-utils arc-gtk-theme aria2 bc bspwm dunst feh firefox fzf glances htop libnotify lxappearance maim mpv papirus-icon-theme pcmanfm playerctl powertop rxvt-unicode sxhkd tlp translate-shell ttf-dejavu unrar unzip xarchiver xautolock xcape xclip xorg-server xorg-setxkbmap xorg-xbacklight xorg-xinit xorg-xsetroot youtube-dl zathura zathura-pdf-mupdf zip
     trizen --noconfirm -S compton-tryone-git dmenu2 i3lock-next-git polybar ttf-ms-fonts
 fi
@@ -30,10 +28,6 @@ if [ "$zplug" = "y" ]; then
     git clone https://github.com/romkatv/powerlevel10k ~/.zsh/powerlevel10k
     git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
     git clone https://github.com/zsh-users/zsh-syntax-highlighting ~/.zsh/zsh-syntax-highlighting
-fi
-
-if [ "$multilib" = "y" ]; then
-    sudo vim /etc/pacman.conf
 fi
 
 if [ "$bb" = "y" ]; then

@@ -15,7 +15,7 @@ echo -n "Install system configuration files (login logo, touchpad, backlight)? (
 if [ "$aur" = "y" ]; then
     git clone https://aur.archlinux.org/trizen.git
     cd trizen
-    makepkg -si
+    makepkg -si --noconfirm
     cd ..
     rm -rf trizen
 fi

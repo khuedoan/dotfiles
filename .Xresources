@@ -4,6 +4,7 @@ URxvt.boldFont: xft:SauceCodePro Nerd Font Mono:style=Black:size=10:minsize=Fals
 URxvt.scrollBar: false
 URxvt.secondaryScreen: 1
 URxvt.secondaryScroll: 0
+URxvt.iso14755: false*
 
 ! Dracula theme
 *.foreground:     #F8F8F2

@@ -1,3 +1,6 @@
+# Prompt theme
+PROMPT=$'%{\e[0;34m%}%B┌[%b%{\e[0m%}%{\e[1;32m%}%n%{\e[1;30m%}@%{\e[0m%}%{\e[0;36m%}%m%{\e[0;34m%}%B]%b%{\e[0m%} - %b%{\e[0;34m%}%B[%b%{\e[1;37m%}%~%{\e[0;34m%}%B]%b%{\e[0m%} - %{\e[0;34m%}%B[%b%{\e[0;33m%}'%D{"%a %b %d, %H:%M"}%b$'%{\e[0;34m%}%B]%b%{\e[0m%}\n%{\e[0;34m%}%B└%B[%{\e[1;35m%}$%{\e[0;34m%}%B]>%{\e[0m%}%b '
+PS2=$' \e[0;34m%}%B>%{\e[0m%}%b '
 # Keybindings
 bindkey -v
 export KEYTIMEOUT=1
@@ -22,8 +25,6 @@ zstyle ':completion:*' menu select
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}'
 
 # Plugins
-# git clone https://github.com/romkatv/powerlevel10k ~/.zsh/powerlevel10k
-source ~/.zsh/powerlevel10k/powerlevel10k.zsh-theme
 # git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 # git clone https://github.com/zsh-users/zsh-syntax-highlighting ~/.zsh/zsh-syntax-highlighting

@@ -20,7 +20,7 @@ if [ "$aur" = "y" ]; then
 fi
 
 if [ "$pkg" = "y" ]; then
-    sudo pacman --noconfirm -S alsa-utils arc-gtk-theme aria2 bc bspwm dunst feh firefox fzf glances htop libnotify lxappearance maim mpv papirus-icon-theme pcmanfm playerctl powertop rxvt-unicode sxhkd tlp translate-shell ttf-dejavu unrar unzip xarchiver xautolock xcape xclip xorg-server xorg-setxkbmap xorg-xbacklight xorg-xinit xorg-xsetroot youtube-dl zathura zathura-pdf-mupdf zip
+    sudo pacman --noconfirm -S alsa-utils arc-gtk-theme aria2 bc bspwm dunst feh firefox fzf glances htop libnotify lxappearance maim mpv noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra papirus-icon-theme pcmanfm playerctl powertop rxvt-unicode sxhkd tlp translate-shell ttf-dejavu unrar unzip xarchiver xautolock xcape xclip xorg-server xorg-setxkbmap xorg-xbacklight xorg-xinit xorg-xsetroot youtube-dl zathura zathura-pdf-mupdf zip
     trizen --noconfirm -S compton-tryone-git dmenu2 i3lock-next-git polybar ttf-ms-fonts
 fi
 

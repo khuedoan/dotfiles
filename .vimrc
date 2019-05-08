@@ -24,9 +24,9 @@ set cursorline      " Highlight the screen line of the cursor
 hi CursorLine cterm=none ctermbg=060
 
 " Change cursor shape in different modes
-let &t_EI = "\<Esc>[2 q" " NORMAL  █
-let &t_SI = "\<Esc>[5 q" " INSERT  |
-let &t_SR = "\<Esc>[3 q" " REPLACE _
+let &t_EI = "\033[2 q" " NORMAL  █
+let &t_SI = "\033[5 q" " INSERT  |
+let &t_SR = "\033[3 q" " REPLACE _
 
 """""""""""
 " Key map "

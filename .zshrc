@@ -1,5 +1,5 @@
 # Prompt theme
-PROMPT=$'%F{green}%S %n %s%{\e[46m%}%{\e[0m%}%f%F{cyan}%S %M %s%{\e[43m%}%{\e[0m%}%f%F{yellow}%S %~ %s%{\e[44m%}%{\e[0m%}%f%F{blue}%S %(!.#.$) %s %f' 
+PROMPT=$'%F{blue}%S %n %s%{\e[42m%}%{\e[0m%}%f%F{green}%S %M %s%{\e[46m%}%{\e[0m%}%f%F{cyan}%S %~ %s%{\e[43m%}%{\e[0m%}%f%F{yellow}%S %(!.#.$) %s %f' 
 RPROMPT=$'%(?..%F{red}%S %? %s%f)'
 
 # Vi mode

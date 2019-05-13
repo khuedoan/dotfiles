@@ -1,6 +1,6 @@
 # Prompt theme
-PROMPT='%B%F{blue}[%f%F{green}%n%f%F{red}@%f%F{cyan}%M%f %F{yellow}%~%f%F{blue}]%f%(!.%F{red}#%f.%F{magenta}$%f)%b ' 
-RPROMPT='%(?..%B%F{red}%?%f%b)'
+PROMPT=$'%F{green}%S %n %s%{\e[46m%}%{\e[0m%}%f%F{cyan}%S %M %s%{\e[43m%}%{\e[0m%}%f%F{yellow}%S %~ %s%{\e[44m%}%{\e[0m%}%f%F{blue}%S %(!.#.$) %s %f' 
+RPROMPT=$'%(?..%F{red}%S %? %s%f)'
 
 # Vi mode
 bindkey -v

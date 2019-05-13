@@ -1,5 +1,5 @@
 # Prompt theme
-PROMPT='%B%F{blue}[%f%F{green}%n%f%F{white}@%f%F{cyan}%M%f %F{yellow}%~%f%F{blue}]%f%(!.%F{red}#%f.%F{magenta}$%f)%b ' 
+PROMPT='%B%F{blue}[%f%F{green}%n%f%F{red}@%f%F{cyan}%M%f %F{yellow}%~%f%F{blue}]%f%(!.%F{red}#%f.%F{magenta}$%f)%b ' 
 RPROMPT='%(?..%B%F{red}%?%f%b)'
 
 # Vi mode

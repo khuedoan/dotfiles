@@ -25,7 +25,6 @@ if [ "$pkg" = "y" ]; then
 fi
 
 if [ "$zplug" = "y" ]; then
-    git clone https://github.com/romkatv/powerlevel10k ~/.zsh/powerlevel10k
     git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
     git clone https://github.com/zsh-users/zsh-syntax-highlighting ~/.zsh/zsh-syntax-highlighting
 fi

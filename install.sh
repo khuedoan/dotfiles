@@ -7,8 +7,8 @@ if [ -z "$@" ]; then
     echo -n "Install firefox theme? (y/N) " && read ff
     echo -n "Install trizen (AUR helper)? (y/N) " && read aur
     echo -n "Install recommended packages? (y/N) " && read pkg
+    echo -n "Install Intel graphics driver? (y/N) " && read intel
     echo -n "Install bumblebee (for optimus NVIDIA card)? (y/N) " && read bb
-    [ "$bb" = "y" ] || (echo -n "Install Intel graphics driver? (y/N) " && read intel)
     echo -n "Install Vietnamese input method (fcitx-unikey)? (y/N) " && read vnim
     echo -n "Install system configuration files (login logo, touchpad, backlight)? (y/N) " && read sysconf
 fi
@@ -31,16 +31,16 @@ if [ "$zplug" = "y" ] || [ "$1" = "-y" ]; then
     git clone https://github.com/zsh-users/zsh-syntax-highlighting ~/.zsh/zsh-syntax-highlighting
 fi
 
+if [ "$intel" = "y" ]; then
+    sudo pacman --noconfirm -S xf86-video-intel
+fi
+
 if [ "$bb" = "y" ] || [ "$1" = "-y" ]; then
-    sudo pacman --noconfirm -S bumblebee mesa xf86-video-intel nvidia lib32-nvidia-utils lib32-virtualgl nvidia-settings bbswitch
+    sudo pacman --noconfirm -S bumblebee nvidia lib32-nvidia-utils lib32-virtualgl nvidia-settings bbswitch
     sudo gpasswd -a $USER bumblebee
     sudo gpasswd -a $USER video
     sudo systemctl enable bumblebeed.service
     # Run NVIDIA settings with optirun -b none /usr/bin/nvidia-settings -c :8
-fi
-
-if [ "$intel" = "y" ]; then
-    sudo pacman --noconfirm -S xf86-video-intel
 fi
 
 if [ "$vnim" = "y" ] || [ "$1" = "-y" ]; then

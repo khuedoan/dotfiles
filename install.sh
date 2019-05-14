@@ -1,14 +1,14 @@
 #!/bin/sh
 
+echo -n "Install dotfiles? (y/N) " && read dot
+echo -n "Install zsh plugins? (y/N) " && read zplug
+echo -n "Run post-installation (auto detect hardware for polybar)? (y/N) " && read post
+echo -n "Install firefox theme? (y/N) " && read ff
 echo -n "Install trizen (AUR helper)? (y/N) " && read aur
+echo -n "Install recommended packages? (y/N) " && read pkg
 echo -n "Install bumblebee (for optimus NVIDIA card)? (y/N) " && read bb
 [ "$bb" = "y" ] || (echo -n "Install Intel graphics driver? (y/N) " && read intel)
-echo -n "Install recommended packages? (y/N) " && read pkg
 echo -n "Install Vietnamese input method (fcitx-unikey)? (y/N) " && read vnim
-echo -n "Install zsh plugins? (y/N) " && read zplug
-echo -n "Install dotfiles? (y/N) " && read dot
-echo -n "Install firefox theme? (y/N) " && read ff
-echo -n "Run post-installation (auto detect hardware for polybar)? (y/N) " && read post
 echo -n "Install system configuration files (login logo, touchpad, backlight)? (y/N) " && read sysconf
 
 if [ "$aur" = "y" ]; then

@@ -40,7 +40,7 @@ if [ "$bb" = "y" ] || [ "$1" = "-y" ]; then
     sudo gpasswd -a $USER bumblebee
     sudo gpasswd -a $USER video
     sudo systemctl enable bumblebeed.service
-    sudo sed -i -e "s/#RUNTIME_PM_BLACKLIST=.*/RUNTIME_PM_BLACKLIST=$(lspci | grep NVIDIA | sed 's/\s.*$//')/g" /etc/default/tlp
+    sudo sed -i -e "s/#RUNTIME_PM_BLACKLIST=.*/RUNTIME_PM_BLACKLIST=\"$(lspci | grep NVIDIA | cut -b -7)\"/g" /etc/default/tlp
     # Run NVIDIA settings with optirun -b none /usr/bin/nvidia-settings -c :8
 fi
 

@@ -1,17 +1,19 @@
 #!/bin/sh
 
-echo -n "Install dotfiles? (y/N) " && read dot
-echo -n "Install zsh plugins? (y/N) " && read zplug
-echo -n "Run post-installation (auto detect hardware for polybar)? (y/N) " && read post
-echo -n "Install firefox theme? (y/N) " && read ff
-echo -n "Install trizen (AUR helper)? (y/N) " && read aur
-echo -n "Install recommended packages? (y/N) " && read pkg
-echo -n "Install bumblebee (for optimus NVIDIA card)? (y/N) " && read bb
-[ "$bb" = "y" ] || (echo -n "Install Intel graphics driver? (y/N) " && read intel)
-echo -n "Install Vietnamese input method (fcitx-unikey)? (y/N) " && read vnim
-echo -n "Install system configuration files (login logo, touchpad, backlight)? (y/N) " && read sysconf
+if [ -z "$@" ]; then
+    echo -n "Install dotfiles? (y/N) " && read dot
+    echo -n "Install zsh plugins? (y/N) " && read zplug
+    echo -n "Run post-installation (auto detect hardware for polybar)? (y/N) " && read post
+    echo -n "Install firefox theme? (y/N) " && read ff
+    echo -n "Install trizen (AUR helper)? (y/N) " && read aur
+    echo -n "Install recommended packages? (y/N) " && read pkg
+    echo -n "Install bumblebee (for optimus NVIDIA card)? (y/N) " && read bb
+    [ "$bb" = "y" ] || (echo -n "Install Intel graphics driver? (y/N) " && read intel)
+    echo -n "Install Vietnamese input method (fcitx-unikey)? (y/N) " && read vnim
+    echo -n "Install system configuration files (login logo, touchpad, backlight)? (y/N) " && read sysconf
+fi
 
-if [ "$aur" = "y" ]; then
+if [ "$aur" = "y" ] || [ "$1" = "-y" ]; then
     git clone https://aur.archlinux.org/trizen.git
     cd trizen
     makepkg -si --noconfirm
@@ -19,17 +21,17 @@ if [ "$aur" = "y" ]; then
     rm -rf trizen
 fi
 
-if [ "$pkg" = "y" ]; then
+if [ "$pkg" = "y" ] || [ "$1" = "-y" ]; then
     sudo pacman --noconfirm -S alsa-utils arc-gtk-theme aria2 bc bspwm dunst feh firefox fzf glances htop libnotify lxappearance maim mpv noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra papirus-icon-theme pcmanfm playerctl powertop rxvt-unicode sxhkd tlp translate-shell ttf-dejavu unrar unzip xarchiver xautolock xcape xclip xorg-server xorg-setxkbmap xorg-xbacklight xorg-xinit xorg-xsetroot youtube-dl zathura zathura-pdf-mupdf zip
     trizen --noconfirm -S compton-tryone-git dmenu2 i3lock-next-git polybar ttf-ms-fonts
 fi
 
-if [ "$zplug" = "y" ]; then
+if [ "$zplug" = "y" ] || [ "$1" = "-y" ]; then
     git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
     git clone https://github.com/zsh-users/zsh-syntax-highlighting ~/.zsh/zsh-syntax-highlighting
 fi
 
-if [ "$bb" = "y" ]; then
+if [ "$bb" = "y" ] || [ "$1" = "-y" ]; then
     sudo pacman --noconfirm -S bumblebee mesa xf86-video-intel nvidia lib32-nvidia-utils lib32-virtualgl nvidia-settings bbswitch
     sudo gpasswd -a $USER bumblebee
     sudo gpasswd -a $USER video
@@ -41,11 +43,11 @@ if [ "$intel" = "y" ]; then
     sudo pacman --noconfirm -S xf86-video-intel
 fi
 
-if [ "$vnim" = "y" ]; then
+if [ "$vnim" = "y" ] || [ "$1" = "-y" ]; then
     sudo pacman --noconfirm -S fcitx fcitx-unikey fcitx-im fcitx-configtool
 fi
 
-if [ "$dot" = "y" ]; then
+if [ "$dot" = "y" ] || [ "$1" = "-y" ]; then
     REPO="https://github.com/khuedoan98/dotfiles.git"
     REPOSSH="git@github.com:khuedoan98/dotfiles.git"
     GITDIR=$HOME/.dotfiles/
@@ -71,7 +73,7 @@ if [ "$dot" = "y" ]; then
     fi
 fi
 
-if [ "$ff" = "y" ]; then
+if [ "$ff" = "y" ] || [ "$1" = "-f" ]; then
     profile=$(grep 'Path=' ~/.mozilla/firefox/profiles.ini | sed s/^Path=//)
     chromedir=$HOME/.mozilla/firefox/$profile/chrome
     mkdir $chromedir
@@ -92,7 +94,7 @@ if [ "$post" = "y" ]; then
     [ "$cputhermalzone" ] && sed -i "s/thermal-zone\ =\ 10/thermal-zone\ =\ $cputhermalzone/g" ~/.config/polybar/config
 fi
 
-if [ "$sysconf" = "y" ]; then
+if [ "$sysconf" = "y" ] || [ "$1" = "-y" ]; then
     sudo cp -riv .root/* /
     sudo systemctl enable powertop
 fi

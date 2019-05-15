@@ -95,7 +95,7 @@ super + d
     zathura
 # Virtual machine manager
 super + {_,shift + }v
-    $HOME/.config/dmenu/scripts/dmenu-vbox {gui,_}
+    {$HOME/.config/dmenu/scripts/dmenu-vbox,virtualbox}
 # Translator
 super + {_,shift + }t
     $HOME/.config/dmenu/scripts/dmenu-trans {en:vi,_}

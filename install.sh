@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -x
+
 if [ -z "$@" ]; then
     echo -n "Install dotfiles? (y/N) " && read dot
     echo -n "Install zsh plugins? (y/N) " && read zplug

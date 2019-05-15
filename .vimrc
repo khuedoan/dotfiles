@@ -33,7 +33,7 @@ let &t_SR = "\033[3 q" " REPLACE _
 """""""""""
 
 " Save as root
-cmap w!! w !sudo /usr/bin/tee > /dev/null %
+cmap W w !sudo /usr/bin/tee > /dev/null %
 
 """""""""""
 " Plugins "

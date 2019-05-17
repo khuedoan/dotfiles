@@ -1,6 +1,6 @@
 #!/bin/sh
 
-install_list=$(whiptail --notags --title "Dotfiles" --checklist "Install list" 20 45 11 \
+install_list=( $(whiptail --notags --title "Dotfiles" --checklist "Install list" 20 45 11 \
     install_dotfiles "All config files" on \
     install_zsh_plugins "Plugins for zsh" on \
     run_post_installation "Auto detect hardware for polybar" off \
@@ -12,9 +12,7 @@ install_list=$(whiptail --notags --title "Dotfiles" --checklist "Install list" 2
     install_unikey "Unikey" on \
     install_system_config "System config files" on \
     install_firefox_theme "Firefox theme" off \
-    3>&1 1>&2 2>&3 | sed 's/"//g')
-
-function_list=( $install_list )
+    3>&1 1>&2 2>&3 | sed 's/"//g') )
 
 install_dotfiles() {
     REPO="https://github.com/khuedoan98/dotfiles.git"
@@ -114,6 +112,6 @@ install_firefox_theme() {
     curl https://raw.githubusercontent.com/khuedoan98/minimal-firefox/master/userChrome.css > $chromedir/userChrome.css
 }
 
-for install_function in "${function_list[@]}"; do
+for install_function in "${install_list[@]}"; do
     $install_function
 done

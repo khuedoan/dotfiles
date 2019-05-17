@@ -9,6 +9,7 @@ if [ -z "$@" ]; then
     echo -n "Install firefox theme? (y/N) " && read ff
     echo -n "Install trizen (AUR helper)? (y/N) " && read aur
     echo -n "Install recommended packages? (y/N) " && read pkg
+    echo -n "Install extra packages? (y/N) " && read xpkg
     echo -n "Install Intel graphics driver? (y/N) " && read intel
     echo -n "Install bumblebee (for optimus NVIDIA card)? (y/N) " && read bb
     echo -n "Install Vietnamese input method (fcitx-unikey)? (y/N) " && read vnim
@@ -24,8 +25,19 @@ if [ "$aur" = "y" ] || [ "$1" = "-y" ]; then
 fi
 
 if [ "$pkg" = "y" ] || [ "$1" = "-y" ]; then
-    sudo pacman --noconfirm -S alsa-utils arc-gtk-theme aria2 bc bspwm dunst feh firefox fzf glances htop libnotify lxappearance maim mpv noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra papirus-icon-theme pcmanfm playerctl powertop rxvt-unicode surf sxhkd tlp translate-shell ttf-dejavu unrar unzip w3m xarchiver xautolock xcape xclip xorg-server xorg-setxkbmap xorg-xbacklight xorg-xinit xorg-xsetroot youtube-dl zathura zathura-pdf-mupdf zip
+    sudo pacman --noconfirm -S alsa-utils bc bspwm dunst feh fzf libnotify maim mpv pcmanfm playerctl powertop surf sxhkd tlp translate-shell ttf-dejavu xautolock xcape xclip xorg-server xorg-setxkbmap xorg-xbacklight xorg-xinit xorg-xsetroot
     trizen --noconfirm -S compton-tryone-git dmenu2 i3lock-next-git polybar ttf-ms-fonts
+
+    git clone https://github.com/khuedoan98/st
+    cd st
+    sudo make clean install && sudo make clean
+    cd ..
+    rm -rf st
+fi
+
+if [ "$xpkg" = "y" ] || [ "$1" = "-y" ]; then
+    sudo pacman --noconfirm -S arc-gtk-theme aria2 firefox glances htop lxappearance noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra papirus-icon-theme ranger tmux unrar unzip w3m xarchiver youtube-dl zathura zathura-pdf-mupdf zip
+    trizen --noconfirm -S ttf-ms-fonts
 fi
 
 if [ "$zplug" = "y" ] || [ "$1" = "-y" ]; then

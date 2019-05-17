@@ -69,7 +69,6 @@ label-disconnected      = Disconnected
 
 [module/cpu]
 type = internal/cpu
-format = %{A1:urxvt -e glances:}<label>%{A}
 format-prefix = " "
 
 [module/temperature]
@@ -86,7 +85,6 @@ ramp-4 = 
 
 [module/memory]
 type = internal/memory
-format        = %{A1:urxvt -e htop:}<label>%{A}
 format-prefix = " "
 label         = %gb_used%
 

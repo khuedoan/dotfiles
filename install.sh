@@ -25,8 +25,8 @@ if [ "$aur" = "y" ] || [ "$1" = "-y" ]; then
 fi
 
 if [ "$pkg" = "y" ] || [ "$1" = "-y" ]; then
-    sudo pacman --noconfirm -S alsa-utils bc bspwm dunst feh fzf libnotify maim mpv pcmanfm playerctl powertop surf sxhkd tlp translate-shell ttf-dejavu xautolock xcape xclip xorg-server xorg-setxkbmap xorg-xbacklight xorg-xinit xorg-xsetroot
-    trizen --noconfirm -S compton-tryone-git dmenu2 i3lock-next-git polybar ttf-ms-fonts
+    sudo pacman --noconfirm -S alsa-utils bc bspwm dunst feh fzf libnotify maim playerctl surf sxhkd translate-shell ttf-dejavu xautolock xcape xclip xorg-server xorg-setxkbmap xorg-xbacklight xorg-xinit xorg-xsetroot
+    trizen --noconfirm -S compton-tryone-git dmenu2 i3lock-next-git polybar
 
     git clone https://github.com/khuedoan98/st
     cd st
@@ -36,7 +36,7 @@ if [ "$pkg" = "y" ] || [ "$1" = "-y" ]; then
 fi
 
 if [ "$xpkg" = "y" ] || [ "$1" = "-y" ]; then
-    sudo pacman --noconfirm -S arc-gtk-theme aria2 firefox glances htop lxappearance noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra papirus-icon-theme ranger tmux unrar unzip w3m xarchiver youtube-dl zathura zathura-pdf-mupdf zip
+    sudo pacman --noconfirm -S arc-gtk-theme aria2 firefox glances htop lxappearance mpv noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra papirus-icon-theme pcmanfm powertop ranger tlp tmux unrar unzip w3m xarchiver youtube-dl zathura zathura-pdf-mupdf zip
     trizen --noconfirm -S ttf-ms-fonts
 fi
 

@@ -25,8 +25,8 @@ if [ "$aur" = "y" ] || [ "$1" = "-y" ]; then
 fi
 
 if [ "$pkg" = "y" ] || [ "$1" = "-y" ]; then
-    sudo pacman --noconfirm -S alsa-utils bc bspwm dunst feh fzf libnotify maim playerctl surf sxhkd translate-shell ttf-dejavu xautolock xcape xclip xorg-server xorg-setxkbmap xorg-xbacklight xorg-xinit xorg-xsetroot
-    trizen --noconfirm -S compton-tryone-git dmenu2 i3lock-next-git polybar
+    sudo pacman --noconfirm --needed -S alsa-utils bc bspwm dunst feh fzf libnotify maim playerctl surf sxhkd translate-shell ttf-dejavu xautolock xcape xclip xorg-server xorg-setxkbmap xorg-xbacklight xorg-xinit xorg-xsetroot
+    trizen --noconfirm --needed -S compton-tryone-git dmenu2 i3lock-next-git polybar
 
     git clone https://github.com/khuedoan98/st
     cd st
@@ -36,8 +36,8 @@ if [ "$pkg" = "y" ] || [ "$1" = "-y" ]; then
 fi
 
 if [ "$xpkg" = "y" ] || [ "$1" = "-y" ]; then
-    sudo pacman --noconfirm -S arc-gtk-theme aria2 firefox glances htop lxappearance mpv noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra papirus-icon-theme pcmanfm powertop ranger tlp tmux unrar unzip w3m xarchiver youtube-dl zathura zathura-pdf-mupdf zip
-    trizen --noconfirm -S ttf-ms-fonts
+    sudo pacman --noconfirm --needed -S arc-gtk-theme aria2 firefox glances htop lxappearance mpv noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra papirus-icon-theme pcmanfm powertop ranger tlp tmux unrar unzip w3m xarchiver youtube-dl zathura zathura-pdf-mupdf zip
+    trizen --noconfirm --needed -S ttf-ms-fonts
 fi
 
 if [ "$zplug" = "y" ] || [ "$1" = "-y" ]; then
@@ -46,11 +46,11 @@ if [ "$zplug" = "y" ] || [ "$1" = "-y" ]; then
 fi
 
 if [ "$intel" = "y" ]; then
-    sudo pacman --noconfirm -S xf86-video-intel
+    sudo pacman --noconfirm --needed -S xf86-video-intel
 fi
 
 if [ "$bb" = "y" ] || [ "$1" = "-y" ]; then
-    sudo pacman --noconfirm -S bumblebee nvidia lib32-nvidia-utils lib32-virtualgl nvidia-settings bbswitch
+    sudo pacman --noconfirm --needed -S bumblebee nvidia lib32-nvidia-utils lib32-virtualgl nvidia-settings bbswitch
     sudo gpasswd -a $USER bumblebee
     sudo gpasswd -a $USER video
     sudo systemctl enable bumblebeed.service
@@ -59,7 +59,7 @@ if [ "$bb" = "y" ] || [ "$1" = "-y" ]; then
 fi
 
 if [ "$vnim" = "y" ] || [ "$1" = "-y" ]; then
-    sudo pacman --noconfirm -S fcitx fcitx-unikey fcitx-im fcitx-configtool
+    sudo pacman --noconfirm --needed -S fcitx fcitx-unikey fcitx-im fcitx-configtool
 fi
 
 if [ "$dot" = "y" ] || [ "$1" = "-y" ]; then

@@ -14,7 +14,7 @@ super + {_,ctrl + }{1-9,0}
 {super,alt} + Tab
 	bspc {desktop,node} -f last
 # Preselect the direction
-super + shift + {h,j,k,l}
+super + p ; {h,j,k,l}
 	bspc node -p {west,south,north,east}
 # Cancel the preselection for the focused desktop
 super + Escape

@@ -30,7 +30,7 @@ startcode="$?"
 
 if [ "$startcode" = "1" ]; then
     action=$(echo -e "pause\nresume\nreset\npoweroff\nsavestate" \
-               | dmenu_themed -p "Control VM")
+                 | dmenu_themed -p "Control VM")
     vboxmanage controlvm "$vm" "$action" &&
         notify-send "VirtualBox" "Successfully $action $vm"
 elif [ "$startcode" = "0" ]; then

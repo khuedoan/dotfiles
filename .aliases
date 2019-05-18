@@ -39,6 +39,7 @@ alias aur='trizen'
 
 # battery
 alias W='bc -l <<< "$(cat /sys/class/power_supply/BAT0/voltage_now)*$(cat /sys/class/power_supply/BAT0/current_now)/10^12" | cut -b -4'
+alias up='uptime -p'
 
 # feh
 alias feh='feh --scale-down --auto-zoom'

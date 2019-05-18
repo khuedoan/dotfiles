@@ -7,7 +7,7 @@ sxhkd &
 xsetroot -cursor_name left_ptr &
 fcitx &
 compton &
-xautolock -time 10 -locker i3lock-next &
+xautolock -time 1 -corners ---- -locker i3lock-next &
 
 # Workspace
 bspc monitor -d 1 2 3 4 5 6 7 8 9 0

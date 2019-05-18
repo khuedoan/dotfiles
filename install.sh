@@ -109,7 +109,7 @@ install_firefox_theme() {
     profile=$(grep 'Path=' ~/.mozilla/firefox/profiles.ini | sed s/^Path=//)
     chromedir=$HOME/.mozilla/firefox/$profile/chrome
     mkdir -p $chromedir
-    curl https://raw.githubusercontent.com/khuedoan98/minimal-firefox/master/userChrome.css > $chromedir/userChrome.css
+    curl https://raw.githubusercontent.com/khuedoan98/one-line-firefox/master/userChrome.css > $chromedir/userChrome.css
 }
 
 for install_function in "${install_list[@]}"; do

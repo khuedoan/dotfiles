@@ -80,7 +80,7 @@ install_core_packages() {
 
 install_extra_packages() {
     sudo pacman --noconfirm --needed -S arc-gtk-theme aria2 firefox glances htop lxappearance mpv noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra papirus-icon-theme pcmanfm powertop ranger tlp tmux unrar unzip w3m xarchiver youtube-dl zathura zathura-pdf-mupdf zip
-    trizen --noconfirm --needed -S ttf-ms-fonts
+    trizen --noconfirm --needed -S ttf-ms-fonts intel-undervolt
 }
 
 install_intel_graphics() {
@@ -104,6 +104,7 @@ install_system_config() {
     sed -i "s/khuedoan/$USER/g" .root/etc/systemd/system/getty@tty1.service.d/override.conf
     sudo cp -riv .root/* /
     sudo systemctl enable powertop
+    sudo intel-undervolt apply
 }
 
 install_firefox_theme() {

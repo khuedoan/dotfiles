@@ -21,7 +21,7 @@ Base:
 `sxhkd`
 [`dmenu2`](https://aur.archlinux.org/packages/dmenu2/)
 [`polybar`](https://aur.archlinux.org/packages/polybar/)
-`rxvt-unicode`
+[`st`](https://github.com/khuedoan98/st)
 
 Fonts:
 [`nerd-fonts-source-code-pro`](https://aur.archlinux.org/packages/nerd-fonts-source-code-pro/)

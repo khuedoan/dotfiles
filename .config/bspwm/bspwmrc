@@ -29,9 +29,6 @@ bspc config single_monocle     true
 
 # Float
 bspc rule -a Lxappearance         state=floating
-bspc rule -a Nm-connection-editor state=floating
 bspc rule -a mpv                  state=floating
-bspc rule -a Pcmanfm              state=floating
 bspc rule -a Surf                 state=tiled
-bspc rule -a Xarchiver            state=floating
 bspc rule -a Zathura              state=tiled

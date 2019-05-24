@@ -15,7 +15,6 @@ The install script below assumes you installed Arch with [my instruction](https:
 You will need at least these packages for this rice to be usable (use the install script bellow for automatic installation):
 
 Base:
-`dash`
 `xorg-server`
 `xorg-xinit`
 `bspwm`

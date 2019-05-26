@@ -35,10 +35,10 @@ xkb_symbols "basic" {
     key <AC03> {	[	  d,	D		]	};
     key <AC04> {	[	  f,	F		]	};
     key <AC05> {	[	  g,	G		]	};
-    key <AC06> {	[	  h,	H,	    Left,	   Left ] };
-    key <AC07> {	[	  j,	J,	    Down,	   Down ] };
-    key <AC08> {	[	  k,	K,	      Up,	     Up ] };
-    key <AC09> {	[	  l,	L,	   Right,	  Right ] };
+    key <AC06> {	[	  h,	H,  Left,  Left ]	};
+    key <AC07> {	[	  j,	J,  Down,  Down ]	};
+    key <AC08> {	[	  k,	K,    Up,    Up ]	};
+    key <AC09> {	[	  l,	L, Right, Right ]	};
     key <AC10> {	[ semicolon,	colon		]	};
     key <AC11> {	[ apostrophe,	quotedbl	]	};
 

@@ -52,13 +52,6 @@ super + alt + q
 # Reload bspwm and sxhkd
 super + alt + r
     pkill -USR1 -x sxhkd && bspc wm -r
-# Toggle gaps
-super + alt + g
-    if [ "$(bspc config window_gap)" = 0 ]; then \
-        bspc config window_gap 20; \
-    else \
-        bspc config window_gap 0; \
-    fi
 
 ##############
 # Media keys #

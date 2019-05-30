@@ -20,9 +20,10 @@ PS2=$'%
 %{\e[97;49m%} %{\e[0m%}%
 '
 
-# Vi mode
+# Key bindings
 bindkey -v
 export KEYTIMEOUT=1
+bindkey '^[[P' delete-char
 
 # Change cursor shape based on vi mode
 function zle-keymap-select zle-line-init zle-line-finish {

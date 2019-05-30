@@ -13,11 +13,16 @@ super + {_,shift + }grave
 # Focus the last window
 super + Tab
 	bspc {desktop,node} -f last
+
+#############
+# Preselect #
+#############
+
 # Preselect the direction
 super + p ; {h,j,k,l}
 	bspc node -p {west,south,north,east}
 # Cancel the preselection for the focused desktop
-super + Escape
+super + p ; c
 	bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
 
 ##################

@@ -11,7 +11,7 @@ install_list=( $(whiptail --notags --title "Dotfiles" --checklist "Install list"
     install_bumblebee "Bumblebee for NVIDIA Optimus" on \
     install_unikey "Unikey" on \
     install_system_config "System config files" on \
-    install_firefox_theme "Firefox theme" on \
+    install_firefox_theme "Firefox theme" off \
     3>&1 1>&2 2>&3 | sed 's/"//g') )
 
 install_dotfiles() {

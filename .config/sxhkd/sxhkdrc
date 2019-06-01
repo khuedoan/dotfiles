@@ -46,16 +46,16 @@ alt + ctrl + s
 # System #
 ##########
 # Lock screen
-super + alt + l
+super + l
     i3lock-next
 # Power menu
-super + alt + p
+super + p
     $HOME/.config/dmenu/scripts/dmenu-power
 # Quit bspwm
-super + alt + q
+super + q
     bspc quit
 # Reload bspwm and sxhkd
-super + alt + r
+super + r
     pkill -USR1 -x sxhkd && bspc wm -r
 
 ##############

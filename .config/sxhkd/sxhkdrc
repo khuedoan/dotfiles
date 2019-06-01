@@ -2,16 +2,16 @@
 # Focus and move #
 ##################
 # Focus or swap window in the current workspace
-super + {_,ctrl + }{h,j,k,l}
+alt + {_,ctrl + }{h,j,k,l}
 	bspc node -{f,s} {west,south,north,east}
 # Focus the given workspace or move window to that workspace
-super + {_,ctrl + }{1-9,0}
+alt + {_,ctrl + }{1-9,0}
 	bspc {desktop -f, node -d} '^{1-9,10}'
 # Focus the next/previous window
-super + {_,shift + }grave
+alt + {_,shift + }grave
 	bspc {desktop,node} -f {next,prev}.local
 # Focus the last window
-super + Tab
+alt + Tab
 	bspc {desktop,node} -f last
 
 #############
@@ -19,27 +19,27 @@ super + Tab
 #############
 
 # Preselect the direction
-super + p ; {h,j,k,l}
+alt + p ; {h,j,k,l}
 	bspc node -p {west,south,north,east}
 # Cancel the preselection for the focused desktop
-super + p ; c
+alt + p ; c
 	bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
 
 ##################
 # Window control #
 ##################
 # Close or kill window
-super + ctrl + {_,shift + }q
+alt + ctrl + {_,shift + }q
 	bspc node -{c,k}
 # Toggle floating state
-super + ctrl + f
+alt + ctrl + f
     if [ -z "$(bspc query -N -n focused.floating)" ]; then \                    
         bspc node focused -t floating; \                                        
     else \                                                                      
         bspc node focused -t tiled; \                                           
     fi
 # Toggle sticky flag
-super + ctrl + s
+alt + ctrl + s
 	bspc node -g sticky
 
 ##########
@@ -84,7 +84,7 @@ shift + {_,ctrl + ,alt + }Print
 # Quick launch #
 ################
 # Run command
-super + space
+alt + space
     dmenu_run -nb "#282A36" \
               -nf "#F8F8F2" \
               -sb "#BD93F9" \
@@ -92,29 +92,29 @@ super + space
               -fn "Mono-12.5" \
               -p  "Run"
 # Terminal
-super + Return
+alt + Return
 	st
 # Web browser
-super + {_,shift + }w
+alt + {_,shift + }w
     firefox {_,--private-window}
 # File manager
-super + f
+alt + f
     pcmanfm
 # Document viewer
-super + d
+alt + d
     zathura
 # Virtual machine manager
-super + {_,shift + }v
+alt + {_,shift + }v
     {$HOME/.config/dmenu/scripts/dmenu-vbox,virtualbox}
 # Translator
-super + {_,shift + }t
+alt + {_,shift + }t
     $HOME/.config/dmenu/scripts/dmenu-trans {en:vi,_}
 # Calculator
-super + c
+alt + c
     $HOME/.config/dmenu/scripts/dmenu-calc
 # Network menu
-super + n
+alt + n
     $HOME/.config/dmenu/scripts/dmenu-wifi
 # Key bindings list
-super + slash
+alt + slash
     $HOME/.config/dmenu/scripts/dmenu-help

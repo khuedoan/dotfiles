@@ -74,11 +74,11 @@ super + alt + r
 {_,ctrl + ,alt + }Print
     maim {_,-s,-i $(xdotool getactivewindow)} --noopengl \
         | xclip -selection clipboard -t image/png -i && \
-        notify-send -u low "Sceenshot" "Copied to clipboard"
+        notify-send -t 1000 "Sceenshot" "Copied to clipboard"
 shift + {_,ctrl + ,alt + }Print
     maim {_,-s,-i $(xdotool getactivewindow)} --noopengl \
         $HOME/Pictures/Screenshots/$(date +screenshot-%Y%m%d-%H%M%S.png) && \
-        notify-send -u low "Sceenshot" "Saved in ~/Pictures/Screenshots"
+        notify-send -t 1000 "Sceenshot" "Saved in ~/Pictures/Screenshots"
 
 ################
 # Quick launch #

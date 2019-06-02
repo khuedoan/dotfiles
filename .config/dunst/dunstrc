@@ -111,14 +111,6 @@
 [experimental]
     per_monitor_dpi = false
 
-[shortcuts]
-    # Available modifiers are "ctrl", "mod1" (the alt-key), "mod2",
-    # "mod3" and "mod4" (windows-key).
-    close = mod4+mod1+d
-    close_all = mod4+shift+mod1+d
-    history = ctrl+grave
-    context = ctrl+shift+period
-
 [urgency_low]
     background = "#282a36"
     foreground = "#f8f8f2"

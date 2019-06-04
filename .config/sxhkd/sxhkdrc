@@ -9,10 +9,10 @@ alt + {_,ctrl + }{1-9,0}
 	bspc {desktop -f, node -d} '^{1-9,10}'
 # Focus the next/previous window
 alt + {_,shift + }grave
-	bspc {desktop,node} -f {next,prev}.local
+	bspc node -f {next,prev}.local
 # Focus the last window
 alt + Tab
-	bspc {desktop,node} -f last
+	bspc node -f last
 
 #############
 # Preselect #

@@ -42,6 +42,11 @@ alt + ctrl + f
 alt + ctrl + s
 	bspc node -g sticky
 
+# Toggle monocle layout
+alt + ctrl + m
+    bspc desktop -l next
+
+
 ##########
 # System #
 ##########

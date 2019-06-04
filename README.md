@@ -67,13 +67,13 @@ I know the above one is not the best, so please help me to find out ;)
 
 #### Quick start
 
-`super + /`        for help
+`alt + /`        for help
 
-`super + enter`    for terminal
+`alt + enter`    for terminal
 
-`super + space`    for app launcher
+`alt + space`    for app launcher
 
-`super + ctrl + q` to quit app
+`alt + ctrl + q` to quit app
 
 The Capslock key is now Escape when tapping and Control when holding.
 

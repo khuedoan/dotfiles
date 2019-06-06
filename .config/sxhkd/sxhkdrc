@@ -2,10 +2,10 @@
 # Focus and move #
 ##################
 # Focus or swap window in the current workspace
-super + {_,ctrl + }{h,j,k,l}
+super + {_,shift + }{h,j,k,l}
 	bspc node -{f,s} {west,south,north,east}
 # Focus the given workspace or move window to that workspace
-super + {_,ctrl + }{1-9,0}
+super + {_,shift + }{1-9,0}
 	bspc {desktop -f, node -d} '^{1-9,10}'
 # Focus the next/previous window
 super + {_,shift + }grave
@@ -29,21 +29,21 @@ super + p ; c
 # Window control #
 ##################
 # Close or kill window
-super + ctrl + {_,shift + }q
+super + shift + {_,ctrl + }q
 	bspc node -{c,k}
 # Toggle floating state
-super + ctrl + f
+super + shift + f
     if [ -z "$(bspc query -N -n focused.floating)" ]; then \                    
         bspc node focused -t floating; \                                        
     else \                                                                      
         bspc node focused -t tiled; \                                           
     fi
 # Toggle sticky flag
-super + ctrl + s
+super + shift + s
 	bspc node -g sticky
 
 # Toggle monocle layout
-super + ctrl + m
+super + shift + m
     bspc desktop -l next
 
 

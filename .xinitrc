@@ -9,7 +9,6 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
  unset f
 fi
 
-setxkbmap -option ctrl:nocaps,shift:both_capslock,lv3:lalt_switch &
-sleep 1 && xcape -e 'Control_L=Escape' &
+setxkbmap -option caps:escape,ctrl:swap_lalt_lctl,lv3:ralt_switch &
 sxhkd &
 exec bspwm

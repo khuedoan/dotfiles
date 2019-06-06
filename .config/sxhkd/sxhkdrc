@@ -2,16 +2,16 @@
 # Focus and move #
 ##################
 # Focus or swap window in the current workspace
-alt + {_,ctrl + }{h,j,k,l}
+super + {_,ctrl + }{h,j,k,l}
 	bspc node -{f,s} {west,south,north,east}
 # Focus the given workspace or move window to that workspace
-alt + {_,ctrl + }{1-9,0}
+super + {_,ctrl + }{1-9,0}
 	bspc {desktop -f, node -d} '^{1-9,10}'
 # Focus the next/previous window
-alt + {_,shift + }grave
+super + {_,shift + }grave
 	bspc node -f {next,prev}.local
 # Focus the last window
-alt + Tab
+super + Tab
 	bspc node -f last
 
 #############
@@ -19,31 +19,31 @@ alt + Tab
 #############
 
 # Preselect the direction
-alt + p ; {h,j,k,l}
+super + p ; {h,j,k,l}
 	bspc node -p {west,south,north,east}
 # Cancel the preselection for the focused desktop
-alt + p ; c
+super + p ; c
 	bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
 
 ##################
 # Window control #
 ##################
 # Close or kill window
-alt + ctrl + {_,shift + }q
+super + ctrl + {_,shift + }q
 	bspc node -{c,k}
 # Toggle floating state
-alt + ctrl + f
+super + ctrl + f
     if [ -z "$(bspc query -N -n focused.floating)" ]; then \                    
         bspc node focused -t floating; \                                        
     else \                                                                      
         bspc node focused -t tiled; \                                           
     fi
 # Toggle sticky flag
-alt + ctrl + s
+super + ctrl + s
 	bspc node -g sticky
 
 # Toggle monocle layout
-alt + ctrl + m
+super + ctrl + m
     bspc desktop -l next
 
 
@@ -51,16 +51,16 @@ alt + ctrl + m
 # System #
 ##########
 # Lock screen
-alt + s ; l
+super + s ; l
     i3lock-next
 # Power menu
-alt + s ; p
+super + s ; p
     $HOME/.config/dmenu/scripts/dmenu-power
 # Quit bspwm
-alt + s ; q
+super + s ; q
     bspc quit
 # Reload bspwm and sxhkd
-alt + s ; r
+super + s ; r
     pkill -USR1 -x sxhkd && bspc wm -r
 
 ##############
@@ -89,7 +89,7 @@ shift + {_,ctrl + ,alt + }Print
 # Quick launch #
 ################
 # Run command
-alt + space
+super + space
     dmenu_run -nb "#282A36" \
               -nf "#F8F8F2" \
               -sb "#BD93F9" \
@@ -97,29 +97,29 @@ alt + space
               -fn "Mono-12.5" \
               -p  "Run"
 # Terminal
-alt + Return
+super + Return
 	st
 # Web browser
-alt + {_,shift + }w
+super + {_,shift + }w
     firefox {_,--private-window}
 # File manager
-alt + f
+super + f
     pcmanfm
 # Document viewer
-alt + d
+super + d
     zathura
 # Virtual machine manager
-alt + {_,shift + }v
+super + {_,shift + }v
     {$HOME/.config/dmenu/scripts/dmenu-vbox,virtualbox}
 # Translator
-alt + {_,shift + }t
+super + {_,shift + }t
     $HOME/.config/dmenu/scripts/dmenu-trans {en:vi,_}
 # Calculator
-alt + c
+super + c
     $HOME/.config/dmenu/scripts/dmenu-calc
 # Network menu
-alt + n
+super + n
     $HOME/.config/dmenu/scripts/dmenu-wifi
 # Key bindings list
-alt + slash
+super + slash
     $HOME/.config/dmenu/scripts/dmenu-help

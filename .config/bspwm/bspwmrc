@@ -17,9 +17,6 @@ bspc config border_width 2
 # Gap
 bspc config window_gap   20
 
-# Moving or resizing windows
-bspc config pointer_modifier mod1
-
 # Color
 bspc config normal_border_color   "#282A36"
 bspc config focused_border_color  "#CAA9FA"

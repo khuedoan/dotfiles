@@ -1,6 +1,10 @@
-##################
-# Focus and move #
-##################
+###########
+# Windows #
+###########
+
+# Close or kill window
+super + shift + {_,ctrl + }q
+	bspc node -{c,k}
 # Focus or swap window in the current workspace
 super + {_,shift + }{h,j,k,l}
 	bspc node -{f,s} {west,south,north,east}
@@ -25,47 +29,46 @@ super + p ; {h,j,k,l}
 super + p ; c
 	bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
 
-##################
-# Window control #
-##################
-# Close or kill window
-super + shift + {_,ctrl + }q
-	bspc node -{c,k}
+##############
+# Properties #
+##############
+
 # Toggle floating state
-super + shift + f
+super + f
     if [ -z "$(bspc query -N -n focused.floating)" ]; then \                    
         bspc node focused -t floating; \                                        
     else \                                                                      
         bspc node focused -t tiled; \                                           
     fi
 # Toggle sticky flag
-super + shift + s
+super + s
 	bspc node -g sticky
-
 # Toggle monocle layout
-super + shift + m
+super + m
     bspc desktop -l next
 
 
 ##########
 # System #
 ##########
+
 # Lock screen
-super + s ; l
+super + {_,shift + }s ; l
     i3lock-next
 # Power menu
-super + s ; p
+super + {_,shift + }s ; p
     $HOME/.config/dmenu/scripts/dmenu-power
 # Quit bspwm
-super + s ; q
+super + {_,shift + }s ; q
     bspc quit
 # Reload bspwm and sxhkd
-super + s ; r
+super + {_,shift + }s ; r
     pkill -USR1 -x sxhkd && bspc wm -r
 
 ##############
 # Media keys #
 ##############
+
 # Volume
 {XF86AudioMute,XF86AudioLowerVolume,XF86AudioRaiseVolume}
 	amixer -q set Master {toggle,10%- unmute,10%+ unmute}
@@ -88,6 +91,7 @@ shift + {_,ctrl + ,alt + }Print
 ################
 # Quick launch #
 ################
+
 # Run command
 super + space
     dmenu_run -nb "#282A36" \
@@ -102,12 +106,6 @@ super + Return
 # Web browser
 super + {_,shift + }w
     firefox {_,--private-window}
-# File manager
-super + f
-    pcmanfm
-# Document viewer
-super + d
-    zathura
 # Virtual machine manager
 super + {_,shift + }v
     {$HOME/.config/dmenu/scripts/dmenu-vbox,virtualbox}

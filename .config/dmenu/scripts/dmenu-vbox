@@ -1,23 +1,16 @@
 #!/bin/sh
 
-dmenu_themed() {
-    dmenu -nb "#282A36" \
-          -nf "#F8F8F2" \
-          -sb "#BFBFBF" \
-          -sf "#282A36" \
-          -fn "Mono-12.5" \
-          "$@"
-}
+sb="#BFBFBF"
 
 vm=$(vboxmanage list vms \
          | sed 's/"\(.*\)".*/\1/' \
-         | dmenu_themed -l 25 -p "VirtualBox" -i)
+         | dmenu -sb "$sb" -p "VirtualBox" -l 25 -i)
 
 [ -z "$vm" ] && exit 1
 
 if [ -z "$1" ]; then
     type=$(echo -e "gui\nheadless" \
-               | dmenu_themed -p "Select type")
+               | dmenu -sb "$sb" -p "Select type")
 else
     type=$1
 fi
@@ -30,7 +23,7 @@ startcode="$?"
 
 if [ "$startcode" = "1" ]; then
     action=$(echo -e "pause\nresume\nreset\npoweroff\nsavestate" \
-                 | dmenu_themed -p "Control VM")
+                 | dmenu -sb "$sb" -p "Control VM")
     vboxmanage controlvm "$vm" "$action" &&
         notify-send "VirtualBox" "Successfully $action $vm"
 elif [ "$startcode" = "0" ]; then

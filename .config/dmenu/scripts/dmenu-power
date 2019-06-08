@@ -1,13 +1,10 @@
 #!/bin/sh
 
+sb="#FF5555"
+
 OPTIONS="Poweroff\nReboot\nSuspend"
 
-case "$(echo -e $OPTIONS | dmenu -p  "Power" -i \
-                                 -nb "#282A36" \
-                                 -nf "#F8F8F2" \
-                                 -sb "#FF5555" \
-                                 -sf "#282A36" \
-                                 -fn "Mono-12.5")" in
+case "$(echo -e $OPTIONS | dmenu -sb "$sb" -p "Power" -i)" in
     Poweroff) systemctl poweroff;;
     Reboot)   systemctl reboot;;
     Suspend)  systemctl suspend && i3lock-next;;

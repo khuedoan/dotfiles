@@ -1,24 +1,17 @@
 #!/bin/sh
 
-dmenu_themed() {
-    dmenu -nb "#282A36" \
-          -nf "#F8F8F2" \
-          -sb "#50FA7B" \
-          -sf "#282A36" \
-          -fn "Mono-12.5" \
-          "$@"
-}
+sb="#50FA7B"
 
 notify-send -t 2000 "NetworkManager" "Scanning wifi..."
 
 ssid=$(nmcli -g SSID device wifi list \
-           | dmenu_themed -l 25 -p "Wifi" -i)
+           | dmenu -sb "$sb" -p "Wifi" -l 25 -i)
 
 if [ -z "$ssid" ]; then
     exit 1
 fi
 
-password=$(dmenu_themed -p "Password for $ssid" <&-)
+password=$(dmenu -sb "$sb" -p "Password for $ssid" <&-)
 
 if [ -z "$password" ]; then
     nmcli dev wifi connect "$ssid"

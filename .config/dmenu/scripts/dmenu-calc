@@ -1,21 +1,16 @@
 #!/bin/sh
 
-dmenu_themed() {
-    dmenu -nb "#282A36" \
-          -nf "#F8F8F2" \
-          -sb "#F1FA8C" \
-          -sf "#282A36" \
-          -fn "Mono-12.5" \
-          "$@"
-}
+set -x
 
-expression=$(dmenu_themed -p "Calculator" <&-)
+sb="#F1FA8C"
+
+expression=$(dmenu -sb "$sb" -p "Calculator" <&-)
 
 if [ -z "$expression" ]; then
     exit 1
 fi
 
-result=$(echo "$expression" | bc -l | dmenu_themed -p "Result")
+result=$(echo "$expression" | bc -l | dmenu -sb "$sb" -p "Result")
 
 if [ -z "$result" ]; then
     exit 1

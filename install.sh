@@ -70,13 +70,21 @@ install_aur_helper() {
 
 install_core_packages() {
     sudo pacman --noconfirm --needed -S alsa-utils bc bspwm dunst feh fzf libnotify maim playerctl surf sxhkd translate-shell ttf-dejavu xautolock xcape xclip xdotool xorg-server xorg-setxkbmap xorg-xbacklight xorg-xinit xorg-xsetroot
-    trizen --noconfirm --needed -S compton-tryone-git dmenu2 i3lock-next-git nerd-fonts-source-code-pro polybar ttf-mac-fonts
+    trizen --noconfirm --needed -S compton-tryone-git i3lock-next-git nerd-fonts-source-code-pro polybar ttf-mac-fonts
 
+    # st
     git clone https://github.com/khuedoan98/st
     cd st
     sudo make clean install && sudo make clean
     cd ..
     rm -rf st
+
+    # dmenu
+    git clone https://github.com/khuedoan98/dmenu
+    cd dmenu
+    sudo make clean install && sudo make clean
+    cd ..
+    rm -rf dmenu
 }
 
 install_extra_packages() {

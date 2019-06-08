@@ -11,6 +11,7 @@ install_list=( $(whiptail --notags --title "Dotfiles" --checklist "Install list"
     install_bumblebee "Bumblebee for NVIDIA Optimus" on \
     install_unikey "Unikey" on \
     install_system_config "System config files" on \
+    install_battery_saver "Install battery saver for laptop" on \
     install_firefox_theme "Firefox theme" off \
     3>&1 1>&2 2>&3 | sed 's/"//g') )
 
@@ -79,8 +80,8 @@ install_core_packages() {
 }
 
 install_extra_packages() {
-    sudo pacman --noconfirm --needed -S arc-gtk-theme aria2 firefox glances htop lxappearance mpv noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra papirus-icon-theme pcmanfm powertop ranger tlp tmux unrar unzip w3m xarchiver youtube-dl zathura zathura-pdf-mupdf zip
-    trizen --noconfirm --needed -S ttf-ms-fonts intel-undervolt
+    sudo pacman --noconfirm --needed -S arc-gtk-theme aria2 firefox glances htop lxappearance mpv noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra papirus-icon-theme pcmanfm ranger tmux unrar unzip w3m xarchiver youtube-dl zathura zathura-pdf-mupdf zip
+    trizen --noconfirm --needed -S ttf-ms-fonts
 }
 
 install_intel_graphics() {
@@ -103,8 +104,15 @@ install_unikey() {
 install_system_config() {
     sed -i "s/khuedoan/$USER/g" .root/etc/systemd/system/getty@tty1.service.d/override.conf
     sudo cp -riv .root/* /
-    sudo systemctl enable powertop
+}
+
+install_battery_saver() {
+    sudo pacman --noconfirm --needed -S tlp powertop
+    trizen --noconfirm --needed -S intel-undervolt
+    sudo systemctl enable tlp.service
+    sudo systemctl enable tlp-sleep.service
     sudo intel-undervolt apply
+    sudo systemctl enable intel-undervolt.service
 }
 
 install_firefox_theme() {

@@ -54,7 +54,7 @@ super + m
 
 # Lock screen
 super + {_,shift + }s ; l
-    i3lock-next
+    slock
 # Power menu
 super + {_,shift + }s ; p
     $HOME/.config/dmenu/scripts/dmenu-power

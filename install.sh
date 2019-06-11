@@ -11,7 +11,6 @@ install_list=( $(whiptail --notags --title "Dotfiles" --checklist "Install list"
     install_unikey "Unikey" on \
     install_system_config "System config files" on \
     install_battery_saver "Install battery saver for laptop" on \
-    install_firefox_theme "Firefox theme" off \
     3>&1 1>&2 2>&3 | sed 's/"//g') )
 
 install_dotfiles() {
@@ -135,13 +134,6 @@ install_battery_saver() {
     sudo systemctl enable tlp-sleep.service
     sudo intel-undervolt apply
     sudo systemctl enable intel-undervolt.service
-}
-
-install_firefox_theme() {
-    profile=$(grep 'Path=' ~/.mozilla/firefox/profiles.ini | sed s/^Path=//)
-    chromedir=$HOME/.mozilla/firefox/$profile/chrome
-    mkdir -p $chromedir
-    curl https://raw.githubusercontent.com/khuedoan98/minimal-firefox/master/userChrome.css > $chromedir/userChrome.css
 }
 
 for install_function in "${install_list[@]}"; do

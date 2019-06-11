@@ -35,19 +35,3 @@ let &t_SR = "\033[3 q" " REPLACE _
 
 " Save as root
 cmap W w !sudo /usr/bin/tee > /dev/null %
-
-"""""""""""
-" Plugins "
-"""""""""""
-
-" Automatically install vim-plug
-if empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-endif
-
-" Plugins list
-call plug#begin('~/.vim/plugged')
-Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
-call plug#end()

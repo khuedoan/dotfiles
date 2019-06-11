@@ -2,7 +2,6 @@
 
 install_list=( $(whiptail --notags --title "Dotfiles" --checklist "Install list" 20 45 11 \
     install_dotfiles "All config files" on \
-    install_zsh_plugins "Plugins for zsh" on \
     run_post_installation "Auto detect hardware for polybar" off \
     install_aur_helper "AUR helper (trizen)" on \
     install_core_packages "Recommended packages" on \
@@ -41,11 +40,6 @@ install_dotfiles() {
     fi
 }
 
-install_zsh_plugins() {
-    git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
-    git clone https://github.com/zsh-users/zsh-syntax-highlighting ~/.zsh/zsh-syntax-highlighting
-}
-
 run_post_installation() {
     wificard="$(ls /sys/class/net | grep wlp)"
     ethernetcard="$(ls /sys/class/net | grep enp)"
@@ -71,6 +65,10 @@ install_aur_helper() {
 install_core_packages() {
     sudo pacman --noconfirm --needed -S alsa-utils bc bspwm dunst feh fzf libnotify maim playerctl sxhkd translate-shell ttf-dejavu xautolock xcape xclip xdotool xorg-server xorg-setxkbmap xorg-xbacklight xorg-xinit xorg-xsetroot
     trizen --noconfirm --needed -S compton-tryone-git nerd-fonts-source-code-pro polybar ttf-mac-fonts
+
+    # zsh plugins
+    git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
+    git clone https://github.com/zsh-users/zsh-syntax-highlighting ~/.zsh/zsh-syntax-highlighting
 
     # st
     git clone https://github.com/khuedoan98/st

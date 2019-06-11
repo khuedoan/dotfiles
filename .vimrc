@@ -5,15 +5,15 @@
 " Options
 set backspace=indent,eol,start " Allow backspacing over everything in insert mode
 set cursorline                 " Highlight the current line of the cursor
+set display=truncate           " Show @@@ in the last line if it is truncated
 set expandtab                  " Use spaces when tab is inserted
 set history=200		           " Keep 200 lines of command line history
-set ruler                      " Show the cursor position all the time
 set incsearch                  " Highlight match while typing search pattern
 set nocompatible               " Use Vim settings, rather than Vi settings
-set display=truncate           " Show @@@ in the last line if it is truncated
 set nrformats-=octal           " Do not recognize octal numbers for Ctrl-A and Ctrl-X
 set number                     " Print the line number
 set relativenumber             " Show relative line number
+set ruler                      " Show the cursor position all the time
 set scrolloff=1                " Minimum number of lines above and below cursor
 set shiftwidth=4               " Number of spaces to use for indent step
 set showcmd		               " Display incomplete commands

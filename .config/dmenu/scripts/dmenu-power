@@ -2,13 +2,13 @@
 
 sb="#FF5555"
 
-OPTIONS="Lock\nReload\nPoweroff\nReboot\nSuspend\nLogout"
+OPTIONS="lock\npoweroff\nreboot\nreload\nlogout\nsuspend"
 
 case "$(echo -e $OPTIONS | dmenu -sb "$sb" -p "Power" -i)" in
-    Lock)     slock;;
-    Poweroff) systemctl poweroff;;
-    Reboot)   systemctl reboot;;
-    Suspend)  systemctl suspend && i3lock-next;;
-    Reload)   killall compton & pkill -USR1 -x sxhkd && bspc wm -r;;
-    Logout)   bspc quit;;
+    lock)     slock;;
+    poweroff) systemctl poweroff;;
+    reboot)   systemctl reboot;;
+    reload)   killall compton & pkill -USR1 -x sxhkd && bspc wm -r;;
+    logout)   bspc quit;;
+    suspend)  systemctl suspend && i3lock-next;;
 esac

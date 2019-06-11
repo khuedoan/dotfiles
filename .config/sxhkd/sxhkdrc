@@ -47,24 +47,6 @@ super + s
 super + m
     bspc desktop -l next
 
-
-##########
-# System #
-##########
-
-# Lock screen
-super + {_,shift + }s ; l
-    slock
-# Power menu
-super + {_,shift + }s ; p
-    $HOME/.config/dmenu/scripts/dmenu-power
-# Quit bspwm
-super + {_,shift + }s ; q
-    bspc quit
-# Reload bspwm and sxhkd
-super + {_,shift + }s ; r
-    pkill -USR1 -x sxhkd && bspc wm -r
-
 ##############
 # Media keys #
 ##############
@@ -116,3 +98,6 @@ super + n
 # Key bindings list
 super + slash
     $HOME/.config/dmenu/scripts/dmenu-help
+# Power menu
+super + shift + p
+    $HOME/.config/dmenu/scripts/dmenu-power

@@ -2,7 +2,7 @@
 
 sb="#FF5555"
 
-OPTIONS="lock\npoweroff\nreboot\nreload\nlogout\nsuspend"
+OPTIONS=" lock\n襤 poweroff\nﰇ reboot\n勒 reload\n logout\n suspend"
 
 case "$(echo -e $OPTIONS | dmenu -sb "$sb" -p "Power" -i)" in
     lock)     slock;;

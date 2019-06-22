@@ -1,6 +1,6 @@
 # Arch Linux Rice
 
-![Screenshot](Pictures/Screenshots/screenshot-20190419-021103.jpeg)
+![Screenshot](https://imgur.com/zMZTAkm)
 
 Pretending to be busy while watching YouTube video in Picture-in-Picture mode
 

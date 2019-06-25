@@ -72,4 +72,5 @@ nnoremap <silent> <C-l> :wincmd l<CR>
 " Plugins list
 call plug#begin('~/.vim/plugged')
 Plug 'itchyny/lightline.vim'
+Plug 'christoomey/vim-tmux-navigator'
 call plug#end()

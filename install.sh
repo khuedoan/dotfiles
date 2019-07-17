@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 install_list=( $(whiptail --notags --title "Dotfiles" --checklist "Install list" 20 45 11 \
     install_dotfiles "All config files" on \
@@ -25,17 +25,19 @@ install_dotfiles() {
     }
 
     if ! dotfiles checkout; then
-        echo -n "All of the above files will be deleted, are you sure? (y/N) "
-        read response
+                echo "All of the above files will be deleted, are you sure? (y/N) "
+        read -r response
         if [ "$response" = "y" ]; then
-            dotfiles checkout 2>&1 | egrep "^\s+" | sed -e 's/^[ \t]*//' | xargs -d "\n" -I {} rm -v {}
+            dotfiles checkout 2>&1 | grep -E "^\s+" | sed -e 's/^[ \t]*//' | xargs -d "\n" -I {} rm -v {}
             dotfiles checkout
             dotfiles config status.showUntrackedFiles no
         else
-                rm -rf $GITDIR
-                echo "Installation cancelled"
-                exit 1
+            rm -rf $GITDIR
+            echo "Installation cancelled"
+            exit 1
         fi
+    else
+        dotfiles config status.showUntrackedFiles no
     fi
 }
 

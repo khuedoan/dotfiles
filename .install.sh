@@ -15,7 +15,6 @@ install_list=( $(whiptail --notags --title "Dotfiles" --checklist "Install list"
 
 install_dotfiles() {
     REPO="https://github.com/khuedoan98/dotfiles.git"
-    REPOSSH="git@github.com:khuedoan98/dotfiles.git"
     GITDIR=$HOME/.dotfiles/
 
     git clone --bare $REPO $GITDIR

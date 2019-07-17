@@ -1,0 +1,31 @@
+#!/bin/sh
+
+sb="#BFBFBF"
+
+vm=$(vboxmanage list vms \
+         | sed 's/"\(.*\)".*/\1/' \
+         | dmenu -sb "$sb" -p "VirtualBox" -l 25 -i)
+
+[ -z "$vm" ] && exit 1
+
+if [ -z "$1" ]; then
+    type=$(echo -e "gui\nheadless" \
+               | dmenu -sb "$sb" -p "Select type")
+else
+    type=$1
+fi
+
+[ -z "$type" ] && exit 1
+
+vboxmanage startvm --type "$type" "$vm"
+
+startcode="$?"
+
+if [ "$startcode" = "1" ]; then
+    action=$(echo -e "pause\nresume\nreset\npoweroff\nsavestate" \
+                 | dmenu -sb "$sb" -p "Control VM")
+    vboxmanage controlvm "$vm" "$action" &&
+        notify-send "VirtualBox" "Successfully $action $vm"
+elif [ "$startcode" = "0" ]; then
+    [ "$type" = "headless" ] && notify-send "VirtualBox" "Started $vm in headless mode"
+fi

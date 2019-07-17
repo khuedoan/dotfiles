@@ -24,7 +24,7 @@ install_dotfiles() {
     }
 
     if ! dotfiles checkout; then
-                echo "All of the above files will be deleted, are you sure? (y/N) "
+        echo "All of the above files will be deleted, are you sure? (y/N) "
         read -r response
         if [ "$response" = "y" ]; then
             dotfiles checkout 2>&1 | grep -E "^\s+" | sed -e 's/^[ \t]*//' | xargs -d "\n" -I {} rm -v {}

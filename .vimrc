@@ -24,7 +24,6 @@ set splitright                 " New window is put right of the current one
 set tabstop=4                  " Number of spaces that Tab in file uses
 set ttimeout		           " Time out for key codes
 set ttimeoutlen=100	           " Wait up to 100ms after Esc for special key
-set undofile                   " Maintain undo history between sessions
 set wildmenu		           " Display completion matches in a status line
 filetype plugin indent on      " Enable file type detection
 syntax on                      " Turn on syntax highlighting
@@ -59,15 +58,15 @@ map Q gq
 " Save as root
 cmap W w !sudo /usr/bin/tee > /dev/null %
 
-" Simple split navigation
-nnoremap <silent> <C-h> :wincmd h<CR>
-nnoremap <silent> <C-j> :wincmd j<CR>
-nnoremap <silent> <C-k> :wincmd k<CR>
-nnoremap <silent> <C-l> :wincmd l<CR>
-
 "+---------+
 "| PLUGINS |
 "+---------+
+
+" Auto install plugin manager
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
 
 " Plugins list
 call plug#begin('~/.vim/plugged')

@@ -1,0 +1,103 @@
+###########
+# Windows #
+###########
+
+# Close or kill window
+super + shift + {_,ctrl + }q
+	bspc node -{c,k}
+# Focus or swap window in the current workspace
+super + {_,shift + }{h,j,k,l}
+	bspc node -{f,s} {west,south,north,east}
+# Focus the given workspace or move window to that workspace
+super + {_,shift + }{1-9,0}
+	bspc {desktop -f, node -d} '^{1-9,10}'
+# Focus the next/previous window
+super + {_,shift + }grave
+	bspc node -f {next,prev}.local
+# Focus the last window
+super + Tab
+	bspc node -f last
+
+#############
+# Preselect #
+#############
+
+# Preselect the direction
+super + p ; {h,j,k,l}
+	bspc node -p {west,south,north,east}
+# Cancel the preselection for the focused desktop
+super + p ; c
+	bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
+
+##############
+# Properties #
+##############
+
+# Toggle floating state
+super + f
+    if [ -z "$(bspc query -N -n focused.floating)" ]; then \                    
+        bspc node focused -t floating; \                                        
+    else \                                                                      
+        bspc node focused -t tiled; \                                           
+    fi
+# Toggle sticky flag
+super + s
+	bspc node -g sticky
+# Toggle monocle layout
+super + m
+    bspc desktop -l next
+
+##############
+# Media keys #
+##############
+
+# Volume
+{XF86AudioMute,XF86AudioLowerVolume,XF86AudioRaiseVolume}
+	amixer -q set Master {toggle,10%- unmute,10%+ unmute}
+# Player
+{XF86AudioPrev,XF86AudioPlay,XF86AudioNext}
+	playerctl {previous,play-pause,next}
+# Brightness
+{XF86MonBrightnessDown,XF86MonBrightnessUp}
+	xbacklight {-,+}10
+# Screenshot
+{_,ctrl + ,alt + }Print
+    maim {_,-s,-i $(xdotool getactivewindow)} --noopengl \
+        | xclip -selection clipboard -t image/png -i && \
+        notify-send -t 1000 "Sceenshot" "Copied to clipboard"
+shift + {_,ctrl + ,alt + }Print
+    maim {_,-s,-i $(xdotool getactivewindow)} --noopengl \
+        $HOME/Pictures/Screenshots/$(date +screenshot-%Y%m%d-%H%M%S.png) && \
+        notify-send -t 1000 "Sceenshot" "Saved in ~/Pictures/Screenshots"
+
+################
+# Quick launch #
+################
+
+# Run command
+super + space
+    dmenu_run -p  "Run"
+# Terminal
+super + Return
+	st
+# Web browser
+super + {_,shift + }w
+    firefox {_,--private-window}
+# Virtual machine manager
+super + {_,shift + }v
+    {$HOME/.config/dmenu/scripts/dmenu-vbox,virtualbox}
+# Translator
+super + {_,shift + }t
+    $HOME/.config/dmenu/scripts/dmenu-trans {en:vi,_}
+# Calculator
+super + c
+    $HOME/.config/dmenu/scripts/dmenu-calc
+# Network menu
+super + n
+    $HOME/.config/dmenu/scripts/dmenu-wifi
+# Key bindings list
+super + slash
+    $HOME/.config/dmenu/scripts/dmenu-help
+# Power menu
+super + shift + p
+    $HOME/.config/dmenu/scripts/dmenu-power

@@ -1,0 +1,14 @@
+#!/bin/sh
+
+sb="#FF5555"
+
+OPTIONS=" lock\n襤 poweroff\nﰇ reboot\n勒 reload\n logout\n suspend"
+
+case "$(echo -e $OPTIONS | dmenu -sb "$sb" -p "Power" -i | cut -c 5-)" in
+    lock)     slock;;
+    poweroff) systemctl poweroff;;
+    reboot)   systemctl reboot;;
+    reload)   killall compton & pkill -USR1 -x sxhkd && bspc wm -r;;
+    logout)   bspc quit;;
+    suspend)  systemctl suspend && i3lock-next;;
+esac

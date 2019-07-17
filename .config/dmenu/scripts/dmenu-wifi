@@ -1,0 +1,20 @@
+#!/bin/sh
+
+sb="#50FA7B"
+
+notify-send -t 2000 "NetworkManager" "Scanning wifi..."
+
+ssid=$(nmcli -g SSID device wifi list \
+           | dmenu -sb "$sb" -p "Wifi" -l 25 -i)
+
+if [ -z "$ssid" ]; then
+    exit 1
+fi
+
+password=$(dmenu -sb "$sb" -p "Password for $ssid" <&-)
+
+if [ -z "$password" ]; then
+    nmcli dev wifi connect "$ssid"
+else
+    nmcli dev wifi connect "$ssid" password "$password"
+fi

@@ -1,21 +1,21 @@
 # Prompt theme
+setopt prompt_subst
+autoload -U colors && colors
+
 PROMPT=$'%
-%{\e[30;44m%} %m %{\e[0m%}%
-%{\e[34;42m%}%{\e[0m%}%
-%{\e[30;42m%} %n %{\e[0m%}%
-%{\e[32;43m%}%{\e[0m%}%
-%{\e[30;43m%} %1~ %{\e[0m%}%
-%{\e[33;49m%} %{\e[0m%}%
-'
-RPROMPT=$'%
+%{$fg[white]%}%~%{$reset_color%}\n%
+%{$fg[black]$bg[blue]%} %m %{$reset_color%}%
+%{$fg[blue]$bg[green]%}%{$reset_color%}%
+%{$fg[black]$bg[green]%} %n %{$reset_color%}%
+%{$fg[green]$bg[yellow]%}%{$reset_color%}%
+%{$fg[black]$bg[yellow]%} %1~ %{$reset_color%}%
 %(?.%
-%{\e[36;49m%}%{\e[0m%}%
+%{$fg[yellow]%} %{$reset_color%}%
 .%
-%{\e[31;49m%}%{\e[0m%}%
-%{\e[30;41m%} %? %{\e[0m%}%
-%{\e[36;41m%}%{\e[0m%}%
+%{$fg[yellow]$bg[red]%}%{$reset_color%}%
+%{$fg[black]$bg[red]%} %? %{$reset_color%}%
+%{$fg[red]%} %{$reset_color%}%
 )%
-%{\e[30;46m%} %T %{\e[0m%}%
 '
 
 # Key bindings
@@ -38,11 +38,11 @@ zle -N zle-keymap-select
 # History
 HISTSIZE=10000
 SAVEHIST=10000
-HISTFILE=~/.zsh_history
+HISTFILE=$HOME/.zsh_history
 setopt histignorealldups sharehistory
 
 # Aliases
-source ~/.aliases
+source $HOME/.aliases
 
 # Options
 setopt autocd autopushd
@@ -55,9 +55,13 @@ zstyle ':completion:*' menu select
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}'
 
 # Plugins
-source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh \
-    || git clone https://github.com/zsh-users/zsh-autosuggestions $HOME/.zsh/zsh-autosuggestions
-source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh \
-    || git clone https://github.com/zsh-users/zsh-syntax-highlighting $HOME/.zsh/zsh-syntax-highlighting
-source /usr/share/fzf/key-bindings.zsh
-source /usr/share/fzf/completion.zsh
+source $HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh \
+    || git clone --depth 1 https://github.com/zsh-users/zsh-autosuggestions.git $HOME/.zsh/zsh-autosuggestions
+source $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh \
+    || git clone --depth 1 https://github.com/zsh-users/zsh-syntax-highlighting.git $HOME/.zsh/zsh-syntax-highlighting
+source $HOME/.zsh/fzf/shell/completion.zsh && source $HOME/.zsh/fzf/shell/key-bindings.zsh \
+    || (git clone --depth 1 https://github.com/junegunn/fzf.git $HOME/.zsh/fzf && $HOME/.zsh/fzf/install --bin)
+
+# fzf settings
+export PATH="${PATH:+${PATH}:}$HOME/.zsh/fzf/bin" 
+export FZF_CTRL_T_COMMAND='find .'

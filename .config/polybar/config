@@ -53,7 +53,7 @@ date-alt = %A, %B %d, %Y
 
 [module/ethernet]
 type = internal/network
-interface = enp0s20f0u2
+interface = enp0s20f0u2u3
 format-connected-prefix    = " "
 label-connected         = %local_ip%
 

@@ -75,6 +75,7 @@ install_core_packages() {
         https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
     # compton
+    sudo pacman --noconfirm --needed -S asciidoc libconfig
     git clone https://github.com/tryone144/compton.git
     cd compton
     make PREFIX=/usr/local

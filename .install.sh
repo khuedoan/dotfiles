@@ -108,7 +108,7 @@ install_extra_packages() {
 }
 
 install_intel_graphics() {
-    sudo pacman --noconfirm --needed -S xf86-video-intel
+    sudo pacman --noconfirm --needed -S xf86-video-intel libva-intel-driver
 }
 
 install_bumblebee() {

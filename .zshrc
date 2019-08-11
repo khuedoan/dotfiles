@@ -3,18 +3,20 @@ setopt prompt_subst
 autoload -U colors && colors
 
 PROMPT=$'%
-%{$fg[white]%}%~%{$reset_color%}\n%
 %{$fg[black]$bg[blue]%} %m %{$reset_color%}%
 %{$fg[blue]$bg[green]%}%{$reset_color%}%
 %{$fg[black]$bg[green]%} %n %{$reset_color%}%
 %{$fg[green]$bg[yellow]%}%{$reset_color%}%
 %{$fg[black]$bg[yellow]%} %1~ %{$reset_color%}%
-%(?.%
 %{$fg[yellow]%} %{$reset_color%}%
+'
+
+RPROMPT=$'%
+%(?.%
+%{$fg[white]%}%~%{$reset_color%}%
 .%
-%{$fg[yellow]$bg[red]%}%{$reset_color%}%
+%{$fg[red]%} %{$reset_color%}%
 %{$fg[black]$bg[red]%} %? %{$reset_color%}%
-%{$fg[red]%} %{$reset_color%}%
 )%
 '
 

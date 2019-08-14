@@ -64,8 +64,10 @@ format-connected    = %{A1:$HOME/.config/dmenu/scripts/dmenu-wifi:}<label-connec
 format-disconnected = %{A1:$HOME/.config/dmenu/scripts/dmenu-wifi:}<label-disconnected>%{A}
 format-connected-prefix    = "直 "
 format-disconnected-prefix = "睊 "
+format-disconnected-prefix-foreground = ${colors.red}
 label-connected         = %essid%
 label-disconnected      = Disconnected
+label-disconnected-foreground = ${colors.red}
 
 [module/cpu]
 type = internal/cpu

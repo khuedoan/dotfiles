@@ -34,6 +34,9 @@ alias dfc='dotfiles commit'
 alias dfp='dotfiles push'
 alias dfl='dotfiles ls-tree -r master --name-only'
 
+# download
+alias dl='aria2c -x 16'
+
 # battery
 alias W='bc -l <<< "$(cat /sys/class/power_supply/BAT0/voltage_now)*$(cat /sys/class/power_supply/BAT0/current_now)/10^12" | cut -b -4'
 alias up='uptime -p'

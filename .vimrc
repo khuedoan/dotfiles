@@ -7,7 +7,7 @@ set backspace=indent,eol,start " Allow backspacing over everything in insert mod
 set cursorline                 " Highlight the current line of the cursor
 set display=truncate           " Show @@@ in the last line if it is truncated
 set expandtab                  " Use spaces when tab is inserted
-set history=200		           " Keep 200 lines of command line history
+set history=200                " Keep 200 lines of command line history
 set incsearch                  " Highlight match while typing search pattern
 set laststatus=2               " Always show status line
 set nocompatible               " Use Vim settings, rather than Vi settings
@@ -18,13 +18,14 @@ set relativenumber             " Show relative line number
 set ruler                      " Show the cursor position all the time
 set scrolloff=1                " Minimum number of lines above and below cursor
 set shiftwidth=4               " Number of spaces to use for indent step
-set showcmd		               " Display incomplete commands
+set showcmd                    " Display incomplete commands
 set splitbelow                 " New window from split is below the current one
 set splitright                 " New window is put right of the current one
 set tabstop=4                  " Number of spaces that Tab in file uses
-set ttimeout		           " Time out for key codes
-set ttimeoutlen=100	           " Wait up to 100ms after Esc for special key
-set wildmenu		           " Display completion matches in a status line
+set ttimeout                   " Time out for key codes
+set ttimeoutlen=100            " Wait up to 100ms after Esc for special key
+set wildmenu                   " Display completion matches in a status line
+set hidden                     " Allow loading a buffer in a window that currently has a modified buffer
 filetype plugin indent on      " Enable file type detection
 syntax on                      " Turn on syntax highlighting
 
@@ -58,6 +59,9 @@ map Q gq
 " Save as root
 cmap W w !sudo /usr/bin/tee > /dev/null %
 
+" Quick buffer switching
+nnoremap <C-t> :ls<CR>:buffer<Space>
+
 "+---------+
 "| PLUGINS |
 "+---------+
@@ -70,6 +74,8 @@ endif
 
 " Plugins list
 call plug#begin('~/.vim/plugged')
+Plug 'bling/vim-bufferline'
+Plug 'christoomey/vim-tmux-navigator'
 Plug 'itchyny/lightline.vim'
 Plug 'justinmk/vim-sneak'
 call plug#end()

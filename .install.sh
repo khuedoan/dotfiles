@@ -2,7 +2,6 @@
 
 install_list=( $(whiptail --notags --title "Dotfiles" --checklist "Install list" 20 45 11 \
     install_dotfiles "All config files" on \
-    run_post_installation "Auto detect hardware for polybar" off \
     install_aur_helper "AUR helper (trizen)" on \
     install_core_packages "Recommended packages" on \
     install_extra_packages "Extra packages" on \
@@ -38,20 +37,6 @@ install_dotfiles() {
     else
         dotfiles config status.showUntrackedFiles no
     fi
-}
-
-run_post_installation() {
-    wificard="$(ls /sys/class/net | grep wlp)"
-    ethernetcard="$(ls /sys/class/net | grep enp)"
-    cputhermalzone="$(for i in /sys/class/thermal/thermal_zone*; do
-                          if [ $(cat $i/type) = "x86_pkg_temp" ]; then
-                              echo $i
-                          fi
-                      done | grep -oP "\d+")"
-
-    [ "$wificard" ] && sed -i "s/wlp2s0/$wificard/g" ~/.config/polybar/config
-    [ "$ethernetcard" ] && sed -i "s/enp0s20f0u2u3/$ethernetcard/g" ~/.config/polybar/config
-    [ "$cputhermalzone" ] && sed -i "s/thermal-zone\ =\ 10/thermal-zone\ =\ $cputhermalzone/g" ~/.config/polybar/config
 }
 
 install_aur_helper() {

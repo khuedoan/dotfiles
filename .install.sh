@@ -1,5 +1,17 @@
 #!/bin/bash
 
+OS=$(uname -s)
+
+if [ "$1" = "cli" ] || [ "$OS" = "Darwin" ]; then
+    cli_config_files=".aliases .hushlogin .tmux.conf .vimrc .zshenv .zshrc"
+
+    for file in $cli_config_files; do
+        ln -s $(pwd)/$file $HOME/$file
+    done
+
+    exit 0
+fi
+
 install_list=( $(whiptail --notags --title "Dotfiles" --checklist "Install list" 20 45 11 \
     install_dotfiles "All config files" on \
     install_aur_helper "AUR helper (trizen)" on \

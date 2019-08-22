@@ -1,3 +1,6 @@
+# OS info
+os=$(uname -s)
+
 # Prompt theme
 setopt prompt_subst
 autoload -U colors && colors
@@ -23,7 +26,11 @@ RPROMPT=$'%
 # Key bindings
 bindkey -v
 export KEYTIMEOUT=1
-bindkey '^[[P' delete-char
+if [ "$os" = "Darwin" ]; then
+    bindkey '^[[3~' delete-char
+else
+    bindkey '^[[P' delete-char
+fi
 
 # Change cursor shape based on vi mode
 function zle-keymap-select zle-line-init zle-line-finish {
@@ -61,9 +68,11 @@ source $HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh \
     || git clone --depth 1 https://github.com/zsh-users/zsh-autosuggestions.git $HOME/.zsh/zsh-autosuggestions
 source $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh \
     || git clone --depth 1 https://github.com/zsh-users/zsh-syntax-highlighting.git $HOME/.zsh/zsh-syntax-highlighting
-source $HOME/.zsh/fzf/shell/completion.zsh && source $HOME/.zsh/fzf/shell/key-bindings.zsh \
-    || (git clone --depth 1 https://github.com/junegunn/fzf.git $HOME/.zsh/fzf && $HOME/.zsh/fzf/install --bin)
+if [ "$os" = "Darwin" ]; then
+    source /usr/local/opt/fzf/shell/key-bindings.zsh
+else
+    source /usr/share/fzf/key-bindings.zsh
+fi
 
 # fzf settings
-export PATH="${PATH:+${PATH}:}$HOME/.zsh/fzf/bin" 
 export FZF_CTRL_T_COMMAND='find .'

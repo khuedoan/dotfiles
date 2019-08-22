@@ -1,6 +1,3 @@
-# OS info
-os=$(uname -s)
-
 # Prompt theme
 setopt prompt_subst
 autoload -U colors && colors
@@ -26,10 +23,10 @@ RPROMPT=$'%
 # Key bindings
 bindkey -v
 export KEYTIMEOUT=1
-if [ "$os" = "Darwin" ]; then
-    bindkey '^[[3~' delete-char
-else
+if [ "$OS" = "Linux" ]; then
     bindkey '^[[P' delete-char
+elif [ "$OS" = "Darwin" ]; then
+    bindkey '^[[3~' delete-char
 fi
 
 # Change cursor shape based on vi mode
@@ -68,10 +65,10 @@ source $HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh \
     || git clone --depth 1 https://github.com/zsh-users/zsh-autosuggestions.git $HOME/.zsh/zsh-autosuggestions
 source $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh \
     || git clone --depth 1 https://github.com/zsh-users/zsh-syntax-highlighting.git $HOME/.zsh/zsh-syntax-highlighting
-if [ "$os" = "Darwin" ]; then
-    source /usr/local/opt/fzf/shell/key-bindings.zsh
-else
+elif [ "$OS" = "Linux" ]; then
     source /usr/share/fzf/key-bindings.zsh
+elif [ "$OS" = "Darwin" ]; then
+    source /usr/local/opt/fzf/shell/key-bindings.zsh
 fi
 
 # fzf settings

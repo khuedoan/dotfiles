@@ -1,7 +1,13 @@
 # ls
-alias ls='ls -F --color=auto'
-alias l='ls -Flh --color=auto'
-alias ll='ls -Flha --color=auto'
+if [ "$OS" = "Linux" ]; then
+    alias ls='ls -F --color=auto'
+    alias l='ls -Flh --color=auto'
+    alias ll='ls -Flha --color=auto'
+elif [ "$OS" = "Darwin" ]; then
+    alias ls='ls -FG'
+    alias l='ls -FlhG'
+    alias ll='ls -FlhaG'
+fi
 
 # grep
 alias grep='grep --color=auto'
@@ -18,7 +24,7 @@ alias mkdir='mkdir -v'
 alias rmdir='rmdir -v'
 
 # git
-alias gs='git status'
+alias gs='git status --short'
 alias gd='git diff'
 alias ga='git add'
 alias gc='git commit'
@@ -27,7 +33,7 @@ alias gl='git ls-tree -r master --name-only'
 
 # dotfiles
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-alias dfs='dotfiles status'
+alias dfs='dotfiles status --short'
 alias dfd='dotfiles diff'
 alias dfa='dotfiles add'
 alias dfc='dotfiles commit'
@@ -38,8 +44,14 @@ alias dfl='dotfiles ls-tree -r master --name-only'
 alias dl='aria2c -x 16'
 
 # battery
-alias W='bc -l <<< "$(cat /sys/class/power_supply/BAT0/voltage_now)*$(cat /sys/class/power_supply/BAT0/current_now)/10^12" | cut -b -4'
-alias up='uptime -p'
+if [ "$OS" = "Linux" ]; then
+    alias W='bc -l <<< "$(cat /sys/class/power_supply/BAT0/voltage_now)*$(cat /sys/class/power_supply/BAT0/current_now)/10^12" | cut -b -4'
+    alias up='uptime -p'
+fi
 
 # feh
 alias feh='feh --scale-down --auto-zoom'
+
+# tmux
+alias t='tmux'
+alias ta='tmux attach'

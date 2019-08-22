@@ -65,7 +65,7 @@ source $HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh \
     || git clone --depth 1 https://github.com/zsh-users/zsh-autosuggestions.git $HOME/.zsh/zsh-autosuggestions
 source $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh \
     || git clone --depth 1 https://github.com/zsh-users/zsh-syntax-highlighting.git $HOME/.zsh/zsh-syntax-highlighting
-elif [ "$OS" = "Linux" ]; then
+if [ "$OS" = "Linux" ]; then
     source /usr/share/fzf/key-bindings.zsh
 elif [ "$OS" = "Darwin" ]; then
     source /usr/local/opt/fzf/shell/key-bindings.zsh

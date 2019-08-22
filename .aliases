@@ -32,13 +32,15 @@ alias gp='git push'
 alias gl='git ls-tree -r master --name-only'
 
 # dotfiles
-alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-alias dfs='dotfiles status --short'
-alias dfd='dotfiles diff'
-alias dfa='dotfiles add'
-alias dfc='dotfiles commit'
-alias dfp='dotfiles push'
-alias dfl='dotfiles ls-tree -r master --name-only'
+if [ -d "$HOME/.dotfiles" ] && [ ! -d "$HOME/.dotfiles/.git" ]; then
+    alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+    alias dfs='dotfiles status --short'
+    alias dfd='dotfiles diff'
+    alias dfa='dotfiles add'
+    alias dfc='dotfiles commit'
+    alias dfp='dotfiles push'
+    alias dfl='dotfiles ls-tree -r master --name-only'
+fi
 
 # download
 alias dl='aria2c -x 16'

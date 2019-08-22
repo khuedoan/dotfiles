@@ -42,7 +42,7 @@ if [ -d "$HOME/.dotfiles" ] && [ ! -d "$HOME/.dotfiles/.git" ]; then
     alias dfl='dotfiles ls-tree -r master --name-only'
 fi
 
-# download
+# aria2
 alias dl='aria2c -x 16'
 
 # battery

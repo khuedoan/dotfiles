@@ -81,8 +81,8 @@ super + space
 super + Return
 	st
 # Web browser
-super + {_,shift + }w
-    firefox {_,--private-window}
+super + w
+    chromium
 # Virtual machine manager
 super + {_,shift + }v
     {$HOME/.config/dmenu/scripts/dmenu-vbox,virtualbox}

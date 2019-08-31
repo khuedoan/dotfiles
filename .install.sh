@@ -17,8 +17,8 @@ sudo -v
 
 # Update existing sudo time stamp if the script is still running
 while true; do
-    sudo -v
     sleep 60
+    sudo -v
     kill -0 "$$" || exit
 done 2>/dev/null &
 

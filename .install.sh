@@ -12,7 +12,10 @@ if [ "$1" = "cli" ] || [ "$OS" = "Darwin" ]; then
     exit 0
 fi
 
-# Update existing sudo time stamp every 60 seconds if the script is still running
+# Ask for sudo password up front
+sudo -v
+
+# Update existing sudo time stamp if the script is still running
 while true; do
     sudo -v
     sleep 60

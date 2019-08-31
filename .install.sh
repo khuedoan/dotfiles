@@ -12,6 +12,13 @@ if [ "$1" = "cli" ] || [ "$OS" = "Darwin" ]; then
     exit 0
 fi
 
+# Update existing sudo time stamp every 60 seconds if the script is still running
+while true; do
+    sudo -v
+    sleep 60
+    kill -0 "$$" || exit
+done 2>/dev/null &
+
 install_list=( $(whiptail --notags --title "Dotfiles" --checklist "Install list" 20 45 11 \
     install_dotfiles "All config files" on \
     install_aur_helper "AUR helper (trizen)" on \

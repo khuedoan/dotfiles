@@ -1,7 +1,5 @@
 #!/bin/sh
 
-set -x
-
 sb="#F1FA8C"
 
 expression=$(dmenu -sb "$sb" -p "Calculator" <&-)

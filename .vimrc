@@ -10,6 +10,7 @@ set expandtab                  " Use spaces when tab is inserted
 set history=200                " Keep 200 lines of command line history
 set incsearch                  " Highlight match while typing search pattern
 set laststatus=2               " Always show status line
+set mouse=a                    " Enable mouse in all modes
 set nocompatible               " Use Vim settings, rather than Vi settings
 set noshowmode                 " Hide mode infomation on the last line
 set nrformats-=octal           " Do not recognize octal numbers for Ctrl-A and Ctrl-X

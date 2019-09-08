@@ -66,6 +66,7 @@ super + m
         | xclip -selection clipboard -t image/png -i && \
         notify-send -t 1000 "Sceenshot" "Copied to clipboard"
 shift + {_,ctrl + ,alt + }Print
+    mkdir -p $HOME/Pictures/Screenshots/ && \
     maim {_,-s,-i $(xdotool getactivewindow)} --noopengl \
         $HOME/Pictures/Screenshots/$(date +screenshot-%Y%m%d-%H%M%S.png) && \
         notify-send -t 1000 "Sceenshot" "Saved in ~/Pictures/Screenshots"

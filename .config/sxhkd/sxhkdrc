@@ -100,5 +100,5 @@ super + n
 super + slash
     $HOME/.config/dmenu/scripts/dmenu-help
 # Power menu
-super + shift + p
+super + Escape
     $HOME/.config/dmenu/scripts/dmenu-power

@@ -43,7 +43,7 @@ if [ -d "$HOME/.dotfiles" ] && [ ! -d "$HOME/.dotfiles/.git" ]; then
 fi
 
 # aria2
-alias dl='aria2c -x 16'
+alias dl='aria2c -x 16 -s 16'
 
 # battery
 if [ "$OS" = "Linux" ]; then

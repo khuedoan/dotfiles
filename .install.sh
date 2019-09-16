@@ -70,7 +70,7 @@ install_aur_helper() {
 }
 
 install_core_packages() {
-    sudo pacman --noconfirm --needed -S alsa-utils bc bspwm dunst feh fzf git libnotify maim playerctl sxhkd translate-shell ttf-dejavu xautolock xcape xclip xdotool xorg-server xorg-setxkbmap xorg-xbacklight xorg-xinit xorg-xsetroot
+    sudo pacman --noconfirm --needed -S alsa-utils bc bspwm dunst feh fzf git libnotify maim playerctl sxhkd translate-shell ttf-dejavu wmctrl xautolock xcape xclip xdotool xorg-server xorg-setxkbmap xorg-xbacklight xorg-xinit xorg-xsetroot
     trizen --noconfirm --needed -S nerd-fonts-source-code-pro polybar ttf-mac-fonts
 
     # zsh plugins

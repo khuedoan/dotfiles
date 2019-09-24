@@ -65,8 +65,8 @@ nnoremap <C-t> :ls<CR>:buffer<Space>
 
 " Copy and paste with system clipboard
 vmap <C-c> "+y
-nmap <C-v> "+P
-imap <C-v> <esc>"+pi
+nmap <C-v> "+gP
+imap <C-v> <esc>"+gpi
 
 "+---------+
 "| PLUGINS |

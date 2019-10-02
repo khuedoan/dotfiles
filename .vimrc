@@ -63,10 +63,8 @@ cmap W w !sudo /usr/bin/tee > /dev/null %
 " Quick buffer switching
 nnoremap <C-t> :ls<CR>:buffer<Space>
 
-" Copy and paste with system clipboard
+" Copy to system clipboard
 vmap <C-c> "+y
-nmap <C-v> "+gP
-imap <C-v> <esc>"+gpi
 
 "+---------+
 "| PLUGINS |

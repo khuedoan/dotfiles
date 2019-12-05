@@ -20,16 +20,6 @@ if [ "$1" = "cli" ]; then
     exit 0
 fi
 
-# Ask for sudo password up front
-sudo -v
-
-# Update existing sudo time stamp if the script is still running
-while true; do
-    sleep 60
-    sudo -v
-    kill -0 "$$" || exit
-done 2>/dev/null &
-
 install_list=( $(whiptail --notags --title "Dotfiles" --checklist "Install list" 20 45 11 \
     install_dotfiles "All config files" on \
     install_aur_helper "AUR helper (trizen)" on \

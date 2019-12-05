@@ -2,7 +2,15 @@
 
 OS=$(uname -s)
 
-if [ "$1" = "cli" ] || [ "$OS" = "Darwin" ]; then
+if [ "$OS" = "Linux" ]; then
+    DISTRO="$(lsb_release -is)"
+elif [ "$OS" = "Darwin" ]; then
+    DISTRO="macOS"
+fi
+
+echo "Installing on $DISTRO"
+
+if [ "$1" = "cli" ]; then
     cli_config_files=".aliases .hushlogin .tmux.conf .vimrc .zshenv .zshrc"
 
     for file in $cli_config_files; do

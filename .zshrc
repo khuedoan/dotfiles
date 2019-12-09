@@ -1,3 +1,6 @@
+# Disable software flow control
+stty -ixon
+
 # Prompt theme
 setopt prompt_subst
 autoload -U colors && colors
@@ -23,11 +26,7 @@ RPROMPT=$'%
 # Key bindings
 bindkey -v
 export KEYTIMEOUT=1
-if [ "$OS" = "Linux" ]; then
-    bindkey '^[[P' delete-char
-elif [ "$OS" = "Darwin" ]; then
-    bindkey '^[[3~' delete-char
-fi
+bindkey '^[[3~' delete-char
 
 # Change cursor shape based on vi mode
 function zle-keymap-select zle-line-init zle-line-finish {
@@ -65,11 +64,7 @@ source $HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh \
     || git clone --depth 1 https://github.com/zsh-users/zsh-autosuggestions.git $HOME/.zsh/zsh-autosuggestions
 source $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh \
     || git clone --depth 1 https://github.com/zsh-users/zsh-syntax-highlighting.git $HOME/.zsh/zsh-syntax-highlighting
-if [ "$OS" = "Linux" ]; then
-    source /usr/share/fzf/key-bindings.zsh
-elif [ "$OS" = "Darwin" ]; then
-    source /usr/local/opt/fzf/shell/key-bindings.zsh
-fi
+source /usr/share/fzf/key-bindings.zsh
 
 # fzf settings
 export FZF_CTRL_T_COMMAND='find .'

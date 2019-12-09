@@ -19,7 +19,7 @@ Base:
 `xorg-xinit`
 `bspwm`
 `sxhkd`
-[`dmenu2`](https://aur.archlinux.org/packages/dmenu2/)
+[`dmenu`](https://github.com/khuedoan98/dmenu)
 [`polybar`](https://aur.archlinux.org/packages/polybar/)
 [`st`](https://github.com/khuedoan98/st)
 

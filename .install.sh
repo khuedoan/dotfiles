@@ -2,7 +2,15 @@
 
 OS=$(uname -s)
 
-if [ "$1" = "cli" ] || [ "$OS" = "Darwin" ]; then
+if [ "$OS" = "Linux" ]; then
+    DISTRO="$(lsb_release -is)"
+elif [ "$OS" = "Darwin" ]; then
+    DISTRO="macOS"
+fi
+
+echo "Installing on $DISTRO"
+
+if [ "$1" = "cli" ]; then
     cli_config_files=".aliases .hushlogin .tmux.conf .vimrc .zshenv .zshrc"
 
     for file in $cli_config_files; do
@@ -11,16 +19,6 @@ if [ "$1" = "cli" ] || [ "$OS" = "Darwin" ]; then
 
     exit 0
 fi
-
-# Ask for sudo password up front
-sudo -v
-
-# Update existing sudo time stamp if the script is still running
-while true; do
-    sleep 60
-    sudo -v
-    kill -0 "$$" || exit
-done 2>/dev/null &
 
 install_list=( $(whiptail --notags --title "Dotfiles" --checklist "Install list" 20 45 11 \
     install_dotfiles "All config files" on \

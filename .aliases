@@ -24,7 +24,7 @@ alias gd='git diff'
 alias ga='git add'
 alias gc='git commit'
 alias gp='git push'
-alias gl='git ls-tree -r master --name-only'
+alias gt='git ls-tree -r "$(git rev-parse --abbrev-ref HEAD)" --name-only'
 
 # dotfiles
 if [ -d "$HOME/.dotfiles" ] && [ ! -d "$HOME/.dotfiles/.git" ]; then
@@ -35,7 +35,7 @@ if [ -d "$HOME/.dotfiles" ] && [ ! -d "$HOME/.dotfiles/.git" ]; then
     alias dfa='dotfiles add'
     alias dfc='dotfiles commit'
     alias dfp='dotfiles push'
-    alias dfl='dotfiles ls-tree -r master --name-only'
+    alias dft='dotfiles ls-tree -r "$(dotfiles rev-parse --abbrev-ref HEAD)" --name-only'
 fi
 
 # aria2

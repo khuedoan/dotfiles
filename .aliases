@@ -53,5 +53,11 @@ alias up='uptime -p'
 alias t='tmux'
 alias ta='tmux attach'
 
+# less
+alias less='less --raw-control-chars'
+
+# diff
+alias diff='git diff --no-index'
+
 # feh
 alias feh='feh --scale-down --auto-zoom'

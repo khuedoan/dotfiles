@@ -5,13 +5,28 @@ stty -ixon
 setopt prompt_subst
 autoload -U colors && colors
 
+prompt_color1="cyan"
+prompt_color2="blue"
+
+function prompt_git_status {
+    branch=$(git rev-parse --abbrev-ref HEAD 2>/dev/null)
+    if [ "$?" = "0" ]; then
+        if [ -z "$(git status --porcelain)" ]; then
+            prompt_color_git="green"
+        else
+            prompt_color_git="yellow"
+        fi
+        echo "%{$fg[$prompt_color2]$bg[$prompt_color_git]%}%{$reset_color%}%{$fg[black]$bg[$prompt_color_git]%} $branch %{$reset_color%}%{$fg[$prompt_color_git]%} %{$reset_color%}"
+    else
+        echo "%{$fg[$prompt_color2]%} %{$reset_color%}"
+    fi
+}
+
 PROMPT=$'%
-%{$fg[black]$bg[blue]%} %m %{$reset_color%}%
-%{$fg[blue]$bg[green]%}%{$reset_color%}%
-%{$fg[black]$bg[green]%} %n %{$reset_color%}%
-%{$fg[green]$bg[yellow]%}%{$reset_color%}%
-%{$fg[black]$bg[yellow]%} %1~ %{$reset_color%}%
-%{$fg[yellow]%} %{$reset_color%}%
+%{$fg[black]$bg[$prompt_color1]%} %n@%m %{$reset_color%}%
+%{$fg[$prompt_color1]$bg[$prompt_color2]%}%{$reset_color%}%
+%{$fg[black]$bg[$prompt_color2]%} %1~ %{$reset_color%}%
+$(prompt_git_status)%
 '
 
 RPROMPT=$'%

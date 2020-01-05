@@ -99,9 +99,6 @@ super + n
 # Key bindings list
 super + slash
     $HOME/.config/dmenu/scripts/dmenu-help
-# Lock Screen
-super + Escape
-    slock
 # Power menu
-super + BackSpace
+super + Escape
     $HOME/.config/dmenu/scripts/dmenu-power

@@ -75,7 +75,7 @@ format-prefix = " "
 
 [module/temperature]
 type = internal/temperature
-thermal-zone = 10
+thermal-zone = 11
 format = <ramp> <label>
 format-warn = <ramp> <label-warn>
 label-warn-foreground = ${colors.red}

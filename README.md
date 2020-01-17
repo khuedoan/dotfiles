@@ -37,7 +37,7 @@ Fonts:
 
 Optional:
 [`compton-tryone-git`](https://aur.archlinux.org/packages/compton-tryone-git/)
-[`i3lock-next-git`](https://aur.archlinux.org/packages/i3lock-next-git/)
+[`slock`](https://github.com/khuedoan98/slock)
 
 ### Installation
 

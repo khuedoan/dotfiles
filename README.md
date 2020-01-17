@@ -71,19 +71,13 @@ Don't use the other if you don't know what you're doing:
 
 2. Edit the `REPO` variable in `install.sh` and commit.
 
-3. Clone with `git clone https://github.com/YOURGITHUBUSERNAME/YOURREPONAME.git"`
+3. Clone with `git clone https://github.com/YOUR_USER_NAME/dotfiles.git"`
 
 4. Run the install script
 
-`cd YOURREPONAME`
-
-`chmod +x install.sh`
+`cd dotfiles`
 
 `./install.sh`
-
-#### The best way
-
-I know the above one is not the best, so please help me to find out ;)
 
 ### Usage
 

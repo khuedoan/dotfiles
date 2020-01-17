@@ -8,6 +8,14 @@ Pretending to be busy while watching YouTube video in Picture-in-Picture mode
 
 You can install this rice right after Arch Linux installation
 
+**Important**:
+
+- The install script is only tested on my machine, use it at your own risk (install dotfiles and packages only unless you know what you're doing)
+- If the script is not doing everything automatically (except enter your password), there is a bug, please open an issue
+- Capslock is now Ctrl when held and Esc when tapped
+- Left Alt and Left Super is swapped
+- Multi monitor is not working properly yet, please open a PR if you have a solution
+
 ### Prerequisites
 
 The install script below assumes you installed Arch with [my instruction](https://github.com/khuedoan98/archguide). You can also install these dotfiles manually

@@ -83,15 +83,18 @@ Don't use the other if you don't know what you're doing:
 
 #### Quick start
 
-`alt + /`        for help
+Remember the key changes, you can change this in `.xinitrc`:
 
-`alt + enter`    for terminal
+- Capslock is now Ctrl when held and Esc when tapped
+- Left Alt and Left Super is swapped
 
-`alt + space`    for app launcher
+`super + /`        for help
 
-`alt + ctrl + q` to quit app
+`super + enter`    for terminal
 
-The Capslock key is now Escape when tapping and Control when holding.
+`super + space`    for app launcher
+
+`super + shift + q` to quit app
 
 #### Version control
 

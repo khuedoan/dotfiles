@@ -51,6 +51,8 @@ Optionally edit the install script. Then run it:
 
 `./install.sh`
 
+![Screenshot](https://i.imgur.com/IIvcyZc.jpg)
+
 The safe options are:
 
 - All config files

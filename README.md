@@ -43,13 +43,27 @@ Optional:
 
 #### The lazy way
 
-`curl https://khuedoan.me/dotfiles/install.sh > install.sh`
+`curl -O https://khuedoan.me/dotfiles/install.sh`
 
 `chmod +x install.sh`
 
 Optionally edit the install script. Then run it:
 
 `./install.sh`
+
+The safe options are:
+
+- All config files
+- AUR helper (trizen)
+- Recommended packages
+- Extra packages
+
+Don't use the other if you don't know what you're doing:
+
+- Intel graphics driver and Bumblebee is pretty safe if you are using laptop with Intel and NVIDIA GPU
+- Unikey is for Vietnamese input method
+- System config files: undervolt profile, keyboard layout remap (to use AltGr + HJKL for arrow keys)...
+- Battery saver: TLP, undervolt
 
 #### The better way
 

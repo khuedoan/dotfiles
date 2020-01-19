@@ -115,3 +115,4 @@ Check out `.aliases` for more
 ## Acknowledgments
 
 - **thugcee** for [show sxhkd key bindings with fuzzy search script](https://www.reddit.com/r/bspwm/comments/aejyze/tip_show_sxhkd_keybindings_with_fuzzy_search/)
+- **ymkins** for [installer colors](https://gist.github.com/ymkins/bb0885326f3e38850bc444d89291987a)

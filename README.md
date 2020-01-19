@@ -51,7 +51,7 @@ Optionally edit the install script. Then run it:
 
 `./install.sh`
 
-![Screenshot](https://i.imgur.com/IIvcyZc.jpg)
+![Screenshot](https://i.imgur.com/aAlJu8T.jpg)
 
 The safe options are:
 

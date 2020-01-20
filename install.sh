@@ -154,7 +154,7 @@ install_bumblebee() {
 }
 
 install_unikey() {
-    sudo pacman --noconfirm --needed -S fcitx fcitx-unikey fcitx-im fcitx-configtool
+    sudo pacman --noconfirm --needed -S ibus-unikey
 }
 
 install_system_config() {

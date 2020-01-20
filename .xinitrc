@@ -18,4 +18,5 @@ fi
 slock &
 xcape -e 'Control_L=Escape' &
 sxhkd &
+ibus-daemon -drx &
 exec bspwm

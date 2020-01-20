@@ -171,6 +171,24 @@ install_battery_saver() {
     sudo systemctl enable intel-undervolt.service
 }
 
+create_ssh_key() {
+    email=$(whiptail --inputbox "Enter email for SSH key" 10 20 3>&1 1>&2 2>&3)
+    ssh-keygen -t rsa -b 4096 -C "${email}"
+    eval "$(ssh-agent -s)"
+    ssh-add ~/.ssh/id_rsa
+}
+
+install_dev_tools() {
+    # VirtualBox
+    sudo pacman --noconfirm --needed -S virtualbox virtualbox-host-modules-arch virtualbox-guest-iso
+    trizen --noconfirm --needed -S --sudo-autorepeat-at-runtime virtualbox-ext-oracle
+    # Docker
+    sudo pacman --noconfirm --needed -S docker-compose
+    sudo usermod -aG docker $USER
+    # Python
+    sudo pacman --noconfirm --needed -S python-pipenv
+}
+
 for install_function in "${install_list[@]}"; do
     $install_function
 done

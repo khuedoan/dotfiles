@@ -126,7 +126,7 @@ For example:
 
 Check out `.aliases` for more
 
-## Acknowledgments
+## Acknowledgements
 
 - **StreakyCobra** for [manage dotfiles using git bare](https://news.ycombinator.com/item?id=11070797)
 - **thugcee** for [show sxhkd key bindings with fuzzy search script](https://www.reddit.com/r/bspwm/comments/aejyze/tip_show_sxhkd_keybindings_with_fuzzy_search/)

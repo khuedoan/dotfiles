@@ -73,6 +73,10 @@ To download just the minimum for `zsh`, `vim`, and `tmux`
 
 `./install.sh --minimal`
 
+To run selected features, add the feature's flag in the table above, for example:
+
+`./install.sh --dotfiles --packages --extra-packages`
+
 To install everything (don't use this if you don't know what it actually does, read the script first):
 
 `./install.sh --all`

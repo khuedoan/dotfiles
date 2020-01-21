@@ -189,5 +189,37 @@ else
         install_battery_saver
         install_dev_tools
         create_ssh_key
+    else
+        if [[ "$@" == *"--dotfiles"* ]]; then
+            install_dotfiles
+        fi
+        if [[ "$@" == *"--aur-helper"* ]]; then
+            install_aur_helper
+        fi
+        if [[ "$@" == *"--packages"* ]]; then
+            install_core_packages
+        fi
+        if [[ "$@" == *"--extra-packages"* ]]; then
+            install_extra_packages
+        fi
+        if [[ "$@" == *"--graphics-driver"* ]]; then
+            install_intel_graphics
+            install_bumblebee
+        fi
+        if [[ "$@" == *"--unikey"* ]]; then
+            install_unikey
+        fi
+        if [[ "$@" == *"--system-config"* ]]; then
+            install_system_config
+        fi
+        if [[ "$@" == *"--battery-saver"* ]]; then
+            install_battery_saver
+        fi
+        if [[ "$@" == *"--dev-tools"* ]]; then
+            install_dev_tools
+        fi
+        if [[ "$@" == *"--ssh-key"* ]]; then
+            create_ssh_key
+        fi
     fi
 fi

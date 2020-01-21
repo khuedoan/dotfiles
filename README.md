@@ -41,45 +41,41 @@ Optional:
 
 ### Installation
 
-#### The lazy way
+I recommend forking this repo, edit the REPO variable in the `install.sh` script so you can customize and sync your changes with GitHub using the method in the next section below,
+but if you just want to try it out you can directly download the install script:
 
 `curl -O https://khuedoan.me/dotfiles/install.sh`
 
 `chmod +x install.sh`
 
-Optionally edit the install script. Then run it:
+Available features in the install script:
+
+| Description                           | CLI flag           | TUI installer      |
+| :------------------------------------ | :----------------- | :----------------: |
+| All config files                      | `--dotfiles`       | :heavy_check_mark: |
+| AUR helper (trizen)                   | `--trizen  `       | :heavy_check_mark: |
+| Recommended packages                  | `--packages`       | :heavy_check_mark: |
+| Extra packages                        | `--extra-packages` | :heavy_check_mark: |
+| Intel graphics driver and Bumblebee   | `--optimus-driver` |                    |
+| Unikey is for Vietnamese input method | `--unikey`         |                    |
+| System config files (in `/`)          | `--system-config`  |                    |
+| Battery saver                         | `--battery-saver`  |                    |
+
+For a TUI installer:
 
 `./install.sh`
 
 ![Screenshot](https://i.imgur.com/Z8LkkRv.jpg)
 
-The safe options are:
+For advanced features, use CLI:
 
-- All config files
-- AUR helper (trizen)
-- Recommended packages
-- Extra packages
+To download just the minimum for `zsh`, `vim`, and `tmux`
 
-Don't use the other if you don't know what you're doing:
+`./install.sh --minimal`
 
-- Intel graphics driver and Bumblebee is pretty safe if you are using laptop with Intel and NVIDIA GPU
-- Unikey is for Vietnamese input method
-- System config files: undervolt profile, keyboard layout remap (to use AltGr + HJKL for arrow keys)...
-- Battery saver: TLP, undervolt
+To install everything (don't use this if you don't know what it actually does, read the script first):
 
-#### The better way
-
-1. Fork this repo.
-
-2. Edit the `REPO` variable in `install.sh` and commit.
-
-3. Clone with `git clone https://github.com/YOUR_USER_NAME/dotfiles.git"`
-
-4. Run the install script
-
-`cd dotfiles`
-
-`./install.sh`
+`./install.sh --all`
 
 ### Usage
 
@@ -90,11 +86,11 @@ Remember the key changes, you can change this in `.xinitrc`:
 - Capslock is now Ctrl when held and Esc when tapped
 - Left Alt and Left Super is swapped
 
-`super + /`        for help
+`super + /`         for help
 
-`super + enter`    for terminal
+`super + enter`     for terminal
 
-`super + space`    for app launcher
+`super + space`     for app launcher
 
 `super + shift + q` to quit app
 

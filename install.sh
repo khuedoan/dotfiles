@@ -1,63 +1,5 @@
 #!/bin/bash
 
-OS=$(uname -s)
-
-if [ "$OS" = "Linux" ]; then
-    DISTRO="$(lsb_release -is)"
-elif [ "$OS" = "Darwin" ]; then
-    DISTRO="macOS"
-fi
-
-echo "Installing on $DISTRO"
-
-if [ "$1" = "cli" ]; then
-    cli_config_files=".aliases .hushlogin .tmux.conf .vimrc .zshrc"
-
-    for file in $cli_config_files; do
-        ln -s $(pwd)/$file $HOME/$file
-    done
-
-    exit 0
-fi
-
-export NEWT_COLORS='
-    root=white,black
-    border=black,lightgray
-    window=lightgray,lightgray
-    shadow=black,gray
-    title=black,lightgray
-    button=white,black
-    actbutton=white,black
-    compactbutton=black,lightgray
-    checkbox=black,lightgray
-    actcheckbox=lightgray,black
-    entry=black,lightgray
-    disentry=gray,lightgray
-    label=black,lightgray
-    listbox=black,lightgray
-    actlistbox=white,black
-    sellistbox=lightgray,black
-    actsellistbox=lightgray,black
-    textbox=black,lightgray
-    acttextbox=white,black
-    emptyscale=,gray
-    fullscale=,black
-    helpline=white,black
-    roottext=lightgrey,black
-'
-
-install_list=( $(whiptail --notags --title "Dotfiles" --checklist "Install list" 20 45 11 \
-    install_dotfiles "All config files" on \
-    install_aur_helper "AUR helper (trizen)" on \
-    install_core_packages "Recommended packages" on \
-    install_extra_packages "Extra packages" on \
-    install_intel_graphics "Intel graphics driver" on \
-    install_bumblebee "Bumblebee for NVIDIA Optimus" on \
-    install_unikey "Unikey" on \
-    install_system_config "System config files" on \
-    install_battery_saver "Install battery saver for laptop" on \
-    3>&1 1>&2 2>&3 | sed 's/"//g') )
-
 install_dotfiles() {
     REPO="https://github.com/khuedoan98/dotfiles.git"
     GITDIR=$HOME/.dotfiles/
@@ -176,6 +118,7 @@ create_ssh_key() {
     ssh-keygen -t rsa -b 4096 -C "${email}"
     eval "$(ssh-agent -s)"
     ssh-add ~/.ssh/id_rsa
+    # dotfiles remote set-url origin git@github.com:khuedoan98/dotfiles.git
 }
 
 install_dev_tools() {
@@ -189,6 +132,62 @@ install_dev_tools() {
     sudo pacman --noconfirm --needed -S python-pipenv
 }
 
-for install_function in "${install_list[@]}"; do
-    $install_function
-done
+# TUI
+if [ "$#" -eq 0 ]; then
+    export NEWT_COLORS='
+        root=white,black
+        border=black,lightgray
+        window=lightgray,lightgray
+        shadow=black,gray
+        title=black,lightgray
+        button=white,black
+        actbutton=white,black
+        compactbutton=black,lightgray
+        checkbox=black,lightgray
+        actcheckbox=lightgray,black
+        entry=black,lightgray
+        disentry=gray,lightgray
+        label=black,lightgray
+        listbox=black,lightgray
+        actlistbox=white,black
+        sellistbox=lightgray,black
+        actsellistbox=lightgray,black
+        textbox=black,lightgray
+        acttextbox=white,black
+        emptyscale=,gray
+        fullscale=,black
+        helpline=white,black
+        roottext=lightgrey,black
+    '
+
+    install_list=( $(whiptail --notags --title "Dotfiles" --checklist "Install list" 20 45 11 \
+        install_dotfiles "All config files" on \
+        install_aur_helper "AUR helper (trizen)" on \
+        install_core_packages "Recommended packages" on \
+        install_extra_packages "Extra packages" on \
+        3>&1 1>&2 2>&3 | sed 's/"//g') )
+
+    for install_function in "${install_list[@]}"; do
+        $install_function
+    done
+# CLI
+else
+    if [ "$1" = "--minimal" ]; then
+        cli_config_files=".aliases .tmux.conf .vimrc .zshrc"
+
+        for file in $cli_config_files; do
+            curl https://raw.githubusercontent.com/khuedoan98/dotfiles/master/$file > $HOME/$file
+        done
+    elif [ "$1" = "--all" ]; then
+        install_dotfiles
+        install_aur_helper
+        install_core_packages
+        install_extra_packages
+        install_intel_graphics
+        install_bumblebee
+        install_system_config
+        install_battery_saver
+        install_dev_tools
+        create_ssh_key
+    fi
+fi

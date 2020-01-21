@@ -110,7 +110,7 @@ Remember the key changes, you can change this in `.xinitrc`:
 Not available in minimal installation.
 You can update by running `./install.sh --minimal` again.
 
-The following `dotfiles `command is an alias to [manage dotfiles using git bare](https://news.ycombinator.com/item?id=11070797)
+The following `dotfiles` command is an alias to [manage dotfiles using git bare](https://news.ycombinator.com/item?id=11070797)
 
 Make change to the dotfiles to suit your needs, then use `dotfiles` command instead of `git` for version control
 

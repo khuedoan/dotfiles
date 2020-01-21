@@ -100,6 +100,9 @@ Remember the key changes, you can change this in `.xinitrc`:
 
 #### Version control
 
+Not available in minimal installation.
+You can update by running `./install.sh --minimal` again.
+
 Make change to the dotfiles to suit your needs, then use `dotfiles` command instead of `git` for version control
 
 For example:
@@ -109,6 +112,8 @@ For example:
 `dotfiles commit`
 
 `dotfiles push`
+
+`dotfiles pull`
 
 Check out `.aliases` for more
 

@@ -11,7 +11,7 @@ fi
 echo "Installing on $DISTRO"
 
 if [ "$1" = "cli" ]; then
-    cli_config_files=".aliases .hushlogin .tmux.conf .vimrc .zshenv .zshrc"
+    cli_config_files=".aliases .hushlogin .tmux.conf .vimrc .zshrc"
 
     for file in $cli_config_files; do
         ln -s $(pwd)/$file $HOME/$file

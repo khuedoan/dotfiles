@@ -41,8 +41,13 @@ Optional:
 
 ### Installation
 
-I recommend forking this repo, edit the REPO variable in the `install.sh` script so you can customize and sync your changes with GitHub using the method in the next section below,
-but if you just want to try it out you can directly download the install script:
+Notes:
+
+- Using the method below, you can update new features from my repo using `dotfiles pull`, but you can't push your own customization to GitHub
+- If you want to push your customization to GitHub (please read the next section for version control instruction), you need to fork this repo, change the `REPO` variable in `install.sh`, then continue running the script with the instruction below, but you can't update new features automatically with `dotfiles pull`
+- If anyone has a better solution, please create a PR or issue, and any other improvement is welcome
+
+Download the install script:
 
 `curl -O https://khuedoan.me/dotfiles/install.sh`
 
@@ -52,7 +57,7 @@ Available features in the install script:
 
 | Description                           | CLI flag            | TUI installer      |
 | :------------------------------------ | :-----------------  | :----------------: |
-| All config files                      | `--dotfiles`        | :heavy_check_mark: |
+| All config files (using git bare)     | `--dotfiles`        | :heavy_check_mark: |
 | AUR helper (trizen)                   | `--trizen  `        | :heavy_check_mark: |
 | Recommended packages                  | `--packages`        | :heavy_check_mark: |
 | Extra packages                        | `--extra-packages`  | :heavy_check_mark: |

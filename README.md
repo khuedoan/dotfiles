@@ -50,16 +50,18 @@ but if you just want to try it out you can directly download the install script:
 
 Available features in the install script:
 
-| Description                           | CLI flag           | TUI installer      |
-| :------------------------------------ | :----------------- | :----------------: |
-| All config files                      | `--dotfiles`       | :heavy_check_mark: |
-| AUR helper (trizen)                   | `--trizen  `       | :heavy_check_mark: |
-| Recommended packages                  | `--packages`       | :heavy_check_mark: |
-| Extra packages                        | `--extra-packages` | :heavy_check_mark: |
-| Intel graphics driver and Bumblebee   | `--optimus-driver` |                    |
-| Unikey is for Vietnamese input method | `--unikey`         |                    |
-| System config files (in `/`)          | `--system-config`  |                    |
-| Battery saver                         | `--battery-saver`  |                    |
+| Description                           | CLI flag            | TUI installer      |
+| :------------------------------------ | :-----------------  | :----------------: |
+| All config files                      | `--dotfiles`        | :heavy_check_mark: |
+| AUR helper (trizen)                   | `--trizen  `        | :heavy_check_mark: |
+| Recommended packages                  | `--packages`        | :heavy_check_mark: |
+| Extra packages                        | `--extra-packages`  | :heavy_check_mark: |
+| Intel graphics driver and Bumblebee   | `--graphics-driver` |                    |
+| Unikey is for Vietnamese input method | `--unikey`          |                    |
+| System config files (in `/`)          | `--system-config `  |                    |
+| Battery saver                         | `--battery-saver`   |                    |
+| Development tools                     | `--dev-tools    `   |                    |
+| Create SSH key                        | `--ssh-key      `   |                    |
 
 For a TUI installer:
 

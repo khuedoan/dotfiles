@@ -45,6 +45,7 @@ Notes:
 
 - Using the method below, you can update new features from my repo using `dotfiles pull`, but you can't push your own customization to GitHub
 - If you want to push your customization to GitHub (please read the next section for version control instruction), you need to fork this repo, change the `REPO` variable in `install.sh`, then continue running the script with the instruction below, but you can't update new features automatically with `dotfiles pull`
+- If you want to start fresh, check out my [Arch install script](https://github.com/khuedoan98/archguide/blob/master/install.sh) which will also install this rice
 - If anyone has a better solution, please create a PR or issue, and any other improvement is welcome
 
 Download the install script:

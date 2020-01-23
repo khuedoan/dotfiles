@@ -62,7 +62,7 @@ hi VertSplit cterm=none ctermbg=none
 map Q gq
 
 " Save and quit
-cmap W w !sudo /usr/bin/tee > /dev/null %
+cmap sudow w !sudo /usr/bin/tee > /dev/null %
 nnoremap <C-S> :w<CR>
 nnoremap <C-Q> :q<CR>
 

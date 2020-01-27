@@ -16,6 +16,7 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
 fi
 
 slock -m "Enter your password" &
+xss-lock -- slock -m "Enter your password" &
 xcape -e 'Control_L=Escape' &
 sxhkd &
 ibus-daemon -drx &

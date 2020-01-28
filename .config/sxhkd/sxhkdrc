@@ -104,4 +104,4 @@ super + Escape
     $HOME/.config/dmenu/scripts/dmenu-power
 # Lock screen
 super + BackSpace
-    slock -m "Enter your password"
+    slock

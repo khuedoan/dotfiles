@@ -15,8 +15,8 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
  unset f
 fi
 
-slock -m "Enter your password" &
-xss-lock -- slock -m "Enter your password" &
+slock &
+xss-lock slock &
 xcape -e 'Control_L=Escape' &
 sxhkd &
 ibus-daemon -drx &

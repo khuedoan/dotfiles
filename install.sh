@@ -76,7 +76,7 @@ install_core_packages() {
 }
 
 install_extra_packages() {
-    sudo pacman --noconfirm --needed -S arc-gtk-theme aria2 glances gvfs htop mpv noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra ntfs-3g papirus-icon-theme pcmanfm-gtk3 ranger tmux tree unrar unzip w3m xarchiver xdg-user-dirs-gtk youtube-dl zathura zathura-pdf-mupdf zip
+    sudo pacman --noconfirm --needed -S arc-gtk-theme aria2 glances gvfs htop man mpv noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra ntfs-3g papirus-icon-theme pcmanfm-gtk3 ranger tmux tree unrar unzip w3m xarchiver xdg-user-dirs-gtk youtube-dl zathura zathura-pdf-mupdf zip
     trizen --noconfirm --needed -S mpv-tools ttf-ms-fonts
     xdg-user-dirs-update
 }

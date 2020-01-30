@@ -1,7 +1,7 @@
 #! /bin/sh
 
 # Autostart
-feh --bg-fill ~/Pictures/Wallpapers/PurpleInk.jpg &
+feh --bg-fill ~/Pictures/Wallpapers/NeonCircle.jpg &
 $HOME/.config/polybar/launch &
 xsetroot -cursor_name left_ptr &
 fcitx &

@@ -82,8 +82,8 @@ super + space
 super + Return
 	st
 # Web browser
-super + {_,shift + }w
-    chromium {_, --incognito}
+super + w
+    qutebrowser
 # Virtual machine manager
 super + {_,shift + }v
     {$HOME/.config/dmenu/scripts/dmenu-vbox,virtualbox}

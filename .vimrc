@@ -98,6 +98,7 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/fzf.vim'
 Plug 'justinmk/vim-sneak'
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
+Plug 'rlue/vim-barbaric'
 Plug 'ryanoasis/vim-devicons'
 Plug 'scrooloose/nerdtree'
 Plug 'sheerun/vim-polyglot'

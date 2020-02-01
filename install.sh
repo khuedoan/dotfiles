@@ -78,7 +78,7 @@ install_core_packages() {
 install_extra_packages() {
     sudo pacman --noconfirm --needed -S arc-gtk-theme aria2 glances gvfs htop man mpv noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra ntfs-3g papirus-icon-theme pcmanfm-gtk3 ranger tmux tree unrar unzip w3m xarchiver xdg-user-dirs-gtk youtube-dl zathura zathura-pdf-mupdf zip
     gpg --recv-keys EB4F9E5A60D32232BB52150C12C87A28FEAC6B20
-    trizen --noconfirm --needed -S chromium-vaapi-bin mpv-tools ttf-ms-fonts
+    trizen --noconfirm --needed -S chromium-widevine chromium-vaapi-bin mpv-tools ttf-ms-fonts
     xdg-user-dirs-update
 }
 

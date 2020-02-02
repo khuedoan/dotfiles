@@ -10,6 +10,7 @@ blue   = #0000FF
 yellow = #FFFF00
 
 [bar/topbar]
+enable-ipc = true
 wm-restack = bspwm
 height = 22
 foreground = ${colors.foreground}

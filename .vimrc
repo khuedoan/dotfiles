@@ -3,6 +3,7 @@
 "+----------+
 
 " Options
+set background=dark            " Use colors that look good on a dark background
 set backspace=indent,eol,start " Allow backspacing over everything in insert mode
 set cursorline                 " Highlight the current line of the cursor
 set display=truncate           " Show @@@ in the last line if it is truncated

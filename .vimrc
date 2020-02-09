@@ -78,6 +78,12 @@ vmap <C-c> "+y
 vmap <C-v> c<ESC>"+p
 imap <C-v> <ESC>"+pa
 
+" Basic Emacs bindings in Insert mode
+inoremap <C-b> <Left>
+inoremap <C-f> <Right>
+inoremap <C-a> <Home>
+inoremap <C-e> <End>
+
 "+---------+
 "| PLUGINS |
 "+---------+

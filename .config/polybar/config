@@ -20,7 +20,7 @@ font-1 = SauceCodePro Nerd Font:style=Black:size=10;2
 font-2 = SauceCodePro Nerd Font:style=Black:size=10;1
 padding-right = 2
 module-margin = 2
-modules-left   = bspwm title
+modules-left   = bspwm
 modules-center = date
 modules-right  = ethernet wlan cpu temperature memory battery xbacklight alsa
 cursor-click = pointer
@@ -38,10 +38,6 @@ label-urgent-padding   = 2
 label-empty-padding    = 2
 label-focused-background  = ${colors.background-focused}
 label-urgent-background   = ${colors.background-urgent}
-
-[module/title]
-type = internal/xwindow
-label-maxlen = 80
 
 [module/date]
 type = internal/date

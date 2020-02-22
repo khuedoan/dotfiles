@@ -37,7 +37,7 @@ install_aur_helper() {
 
 install_core_packages() {
     sudo pacman --noconfirm --needed -S alsa-utils bc bspwm dunst feh fzf git libnotify maim npm playerctl sxhkd translate-shell ttf-dejavu wmctrl xautolock xcape xclip xdotool xorg-server xorg-setxkbmap xorg-xbacklight xorg-xinit xorg-xrandr xorg-xsetroot xss-lock
-    trizen --noconfirm --needed -S nerd-fonts-source-code-pro polybar ttf-mac-fonts
+    trizen --noconfirm --needed -S mons nerd-fonts-source-code-pro polybar ttf-mac-fonts
 
     # zsh plugins
     git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions

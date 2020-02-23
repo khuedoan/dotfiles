@@ -86,22 +86,22 @@ super + {_,shift + }w
     chromium {_, --incognito}
 # Virtual machine manager
 super + {_,shift + }v
-    {$HOME/.config/dmenu/scripts/dmenu-vbox,virtualbox}
+    {dmenu-vbox,virtualbox}
 # Translator
 super + {_,shift + }t
-    $HOME/.config/dmenu/scripts/dmenu-trans {en:vi,_}
+    dmenu-trans {en:vi,_}
 # Calculator
 super + c
-    $HOME/.config/dmenu/scripts/dmenu-calc
+    dmenu-calc
 # Network menu
 super + n
-    $HOME/.config/dmenu/scripts/dmenu-wifi
+    dmenu-wifi
 # Key bindings list
 super + slash
-    $HOME/.config/dmenu/scripts/dmenu-help
+    dmenu-help
 # Power menu
 super + Escape
-    $HOME/.config/dmenu/scripts/dmenu-power
+    dmenu-power
 # Lock screen
 super + BackSpace
     slock

@@ -42,6 +42,10 @@ RPROMPT=$'%
 bindkey -v
 export KEYTIMEOUT=1
 bindkey '^[[3~' delete-char
+bindkey '^B' backward-char
+bindkey '^F' forward-char
+bindkey '^A' beginning-of-line
+bindkey '^E' end-of-line
 
 # Change cursor shape based on vi mode
 function zle-keymap-select zle-line-init zle-line-finish {

@@ -25,6 +25,7 @@ set signcolumn=yes             " Always display sign column
 set splitbelow                 " New window from split is below the current one
 set splitright                 " New window is put right of the current one
 set tabstop=4                  " Number of spaces that Tab in file uses
+set termguicolors              " Use 24-bit color
 set ttimeout                   " Time out for key codes
 set ttimeoutlen=100            " Wait up to 100ms after Esc for special key
 set wildmenu                   " Display completion matches in a status line
@@ -42,9 +43,6 @@ augroup resCur
     autocmd!
     autocmd BufWinEnter * call ResCur()
 augroup END
-
-" Cursor line
-hi CursorLine cterm=none ctermbg=060
 
 " Change cursor shape in different modes
 let &t_EI = "\033[2 q" " NORMAL  █
@@ -117,6 +115,10 @@ call plug#end()
 "+----------------+
 "| PLUGINS CONFIG |
 "+----------------+
+
+" Theme
+autocmd ColorScheme * highlight Normal ctermbg=NONE guibg=NONE
+colorscheme dracula
 
 " Airline
 let g:airline_theme = 'dracula'

@@ -1,0 +1,10 @@
+#!/bin/sh
+
+bookmark=$(cat ~/Documents/bookmarks | dmenu -p 'Load Bookmark' -l 25 -i)
+url=$(echo $bookmark | cut -d ' ' -f2)
+
+if [ -z "$url" ]; then
+    exit 1
+fi
+
+chromium "$url"

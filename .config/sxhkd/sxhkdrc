@@ -84,6 +84,9 @@ super + Return
 # Web browser
 super + {_,shift + }w
     chromium {_, --incognito}
+# Bookmarks
+super + b
+    dmenu-bookmarks
 # Virtual machine manager
 super + {_,shift + }v
     {dmenu-vbox,virtualbox}

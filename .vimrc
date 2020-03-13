@@ -94,22 +94,17 @@ endif
 
 " Plugins list
 call plug#begin('~/.vim/plugged')
-Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'Yggdroot/indentLine'
 Plug 'airblade/vim-gitgutter'
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/fzf.vim'
 Plug 'justinmk/vim-sneak'
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 Plug 'rlue/vim-barbaric'
-Plug 'ryanoasis/vim-devicons'
-Plug 'scrooloose/nerdtree'
 Plug 'sheerun/vim-polyglot'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'dracula/vim', { 'as': 'dracula' }
 call plug#end()
 
 "+----------------+
@@ -120,10 +115,8 @@ call plug#end()
 autocmd ColorScheme * highlight Normal ctermbg=NONE guibg=NONE
 colorscheme dracula
 
-" Airline
-let g:airline_theme = 'dracula'
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#tabline#enabled = 1
+" Sneak
+let g:sneak#label = 1
 
 " Conquer of Completion
 inoremap <silent><expr> <TAB>
@@ -136,16 +129,6 @@ function! s:check_back_space() abort
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
-" NERDTree
-map <C-n> :NERDTreeToggle<CR>
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-
-" indentLine
-let g:indentLine_char = '│'
-let g:indentLine_color_term = 240
-
 " GitGutter
 autocmd BufWritePost * GitGutter
 let g:gitgutter_sign_added = '▌'
@@ -157,6 +140,3 @@ highlight GitGutterAdd          ctermfg=Green
 highlight GitGutterChange       ctermfg=Yellow
 highlight GitGutterDelete       ctermfg=Red
 highlight GitGutterChangeDelete ctermfg=Blue
-
-" Sneak
-let g:sneak#label = 1

@@ -11,6 +11,7 @@ set expandtab                  " Use spaces when tab is inserted
 set hidden                     " Allow loading a buffer in a window that currently has a modified buffer
 set history=200                " Keep 200 lines of command line history
 set incsearch                  " Highlight match while typing search pattern
+set laststatus=2               " Always show status line
 set mouse=a                    " Enable mouse in all modes
 set nocompatible               " Use Vim settings, rather than Vi settings
 set noshowmode                 " Hide mode infomation on the last line
@@ -99,6 +100,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
+Plug 'itchyny/lightline.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/fzf.vim'
 Plug 'justinmk/vim-sneak'
@@ -114,6 +116,13 @@ call plug#end()
 " Theme
 autocmd ColorScheme * highlight Normal ctermbg=NONE guibg=NONE
 colorscheme dracula
+
+" Lightline
+let g:lightline = {
+    \ 'colorscheme': 'dracula',
+    \ 'separator': { 'left': '', 'right': '' },
+    \ 'subseparator': { 'left': '', 'right': '' }
+    \ }
 
 " Sneak
 let g:sneak#label = 1

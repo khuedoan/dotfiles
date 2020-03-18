@@ -95,7 +95,6 @@ endif
 
 " Plugins list
 call plug#begin('~/.vim/plugged')
-Plug 'Yggdroot/indentLine'
 Plug 'airblade/vim-gitgutter'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'dracula/vim', { 'as': 'dracula' }

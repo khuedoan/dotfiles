@@ -185,6 +185,7 @@ else
         install_extra_packages
         install_intel_graphics
         install_bumblebee
+        install_unikey
         install_system_config
         install_battery_saver
         install_dev_tools

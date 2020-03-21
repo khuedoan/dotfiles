@@ -9,4 +9,5 @@ before_script:
 install:
   stage: build
   script:
+    - echo $GITLAB_USER_NAME
     - /bin/su -c "/build/$GITLAB_USER_NAME/install.sh --all" - $GITLAB_USER_NAME

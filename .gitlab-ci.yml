@@ -1,12 +1,12 @@
 image: archlinux:latest
 
 before_script:
+  - ls -laFh && pwd
   - pacman --noconfirm -Syyu
   - pacman --noconfirm --needed -S git vim zsh sudo
-  - useradd -d /builds/{GITLAB_USER} -g users -M -N builder
-  - chown -R builder:users ..
+  - useradd -m -G wheel -s /bin/zsh builder
 
 install:
   stage: build
   script:
-    - sudo -H -i -u builder ./install.sh --all
+    - /bin/su -c "./install.sh --all" - builder

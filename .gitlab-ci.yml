@@ -5,6 +5,7 @@ before_script:
   - pacman --noconfirm -Syyu
   - pacman --noconfirm --needed -S git vim zsh sudo
   - useradd -m $GITLAB_USER_NAME
+  - echo $GITLAB_USER_NAME
 
 install:
   stage: build

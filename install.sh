@@ -101,7 +101,7 @@ install_unikey() {
 
 install_system_config() {
     sed -i "s/khuedoan/$USER/g" .root/etc/systemd/system/getty@tty1.service.d/override.conf
-    sudo cp -riv .root/* /
+    sudo cp -rv .root/* /
 }
 
 install_battery_saver() {

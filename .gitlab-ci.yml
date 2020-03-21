@@ -1,9 +1,12 @@
 image: archlinux:latest
 
 before_script:
-  - pacman --noconfirm --needed -Syyu git vim zsh
+  - ls -laFh && pwd
+  - pacman --noconfirm -Syyu
+  - pacman --noconfirm --needed -S git vim zsh sudo
+  - useradd -m -G wheel -s /bin/zsh "$GITLAB_USER_LOGIN"
 
-test:
-  stage: test
+install:
+  stage: build
   script:
-    - su -c "/builds/$GITLAB_USER_LOGIN/dotfiles/install.sh --dotfiles" - nobody
+    - /bin/su -c "/builds/$GITLAB_USER_LOGIN/dotfiles/install.sh --dotfiles" - $GITLAB_USER_LOGIN

@@ -8,4 +8,4 @@ before_script:
 test:
   stage: test
   script:
-    - /bin/su -c "/builds/$GITLAB_USER_LOGIN/dotfiles/install.sh --all" - $GITLAB_USER_LOGIN
+    - /bin/su -c "/builds/$GITLAB_USER_LOGIN/dotfiles/install.sh --all -y" - $GITLAB_USER_LOGIN

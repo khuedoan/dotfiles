@@ -1,0 +1,10 @@
+image: archlinux:latest
+
+before_script:
+  - pacman --noconfirm -Syyu
+  - pacman --noconfirm --needed -S git vim zsh
+
+install:
+  stage: install
+  script:
+    - ./install.sh --all

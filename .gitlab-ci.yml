@@ -1,7 +1,7 @@
 image: archlinux:latest
 
 before_script:
-  - pacman --noconfirm --needed -Syyu fakeroot strip git vim zsh sudo
+  - pacman --noconfirm --needed -Syyu base base-devel git vim zsh
   - useradd -m -G wheel -s /bin/zsh "$GITLAB_USER_LOGIN"
   - sed -i '/%wheel\sALL=(ALL)\sNOPASSWD:\sALL/s/^#\s//g' /etc/sudoers
 

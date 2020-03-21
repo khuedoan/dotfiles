@@ -9,4 +9,4 @@ before_script:
 install:
   stage: build
   script:
-    - /bin/su -c "/builds/$GITLAB_USER_LOGIN/dotfiles/install.sh --all" - $GITLAB_USER_LOGIN
+    - /bin/su -c "/builds/$GITLAB_USER_LOGIN/dotfiles/install.sh --dotfiles" - $GITLAB_USER_LOGIN

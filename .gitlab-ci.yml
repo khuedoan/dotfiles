@@ -3,9 +3,9 @@ image: archlinux:latest
 before_script:
   - pacman --noconfirm --needed -Syyu git vim zsh sudo
   - useradd -m -G wheel -s /bin/zsh "$GITLAB_USER_LOGIN"
-  - cat /etc/sudoers
+  - sed -i '/%wheel\sALL=(ALL)\sNOPASSWD:\sALL/s/^#\s//g' /etc/sudoers
 
-install:
-  stage: build
+test:
+  stage: test
   script:
-    - /bin/su -c "/builds/$GITLAB_USER_LOGIN/dotfiles/install.sh --dotfiles" - $GITLAB_USER_LOGIN
+    - /bin/su -c "/builds/$GITLAB_USER_LOGIN/dotfiles/install.sh --all" - $GITLAB_USER_LOGIN

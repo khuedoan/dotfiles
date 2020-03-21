@@ -25,7 +25,7 @@ alias ga='git add'
 alias gc='git commit'
 alias gp='git push'
 alias gl='git log --all --decorate --oneline --graph'
-alias gL='git log'
+alias gL='git log -p'
 alias gt='git ls-tree -r "$(git rev-parse --abbrev-ref HEAD)" --name-only'
 
 # dotfiles
@@ -38,7 +38,7 @@ if [ -d "$HOME/.dotfiles" ] && [ ! -d "$HOME/.dotfiles/.git" ]; then
     alias dfc='dotfiles commit'
     alias dfp='dotfiles push'
     alias dfl='dotfiles log --all --decorate --oneline --graph'
-    alias dfL='dotfiles log'
+    alias dfL='dotfiles log -p'
     alias dft='dotfiles ls-tree -r "$(dotfiles rev-parse --abbrev-ref HEAD)" --name-only'
 fi
 

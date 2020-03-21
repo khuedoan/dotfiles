@@ -4,9 +4,9 @@ before_script:
   - ls -laFh && pwd
   - pacman --noconfirm -Syyu
   - pacman --noconfirm --needed -S git vim zsh sudo
-  - useradd -m -G wheel -s /bin/zsh builder
+  - useradd -m -G wheel -s /bin/zsh ${GITLAB_USER}
 
 install:
   stage: build
   script:
-    - /bin/su -c "./install.sh --all" - builder
+    - /bin/su -c "/build/${GITLAB_USER}/install.sh --all" - ${GITLAB_USER}

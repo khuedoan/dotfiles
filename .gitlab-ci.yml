@@ -9,4 +9,4 @@ test:
   stage: test
   script:
     - /bin/su -c "/builds/$GITLAB_USER_LOGIN/dotfiles/install.sh --dotfiles --aur-helper --packages --extra-packages -y" - $GITLAB_USER_LOGIN
-    - vim -E -s -u "/builds/$GITLAB_USER_LOGIN/dotfiles/.vimrc" +PlugInstall +qa
+    - vim -E -s -u "/builds/$GITLAB_USER_LOGIN/dotfiles/.vimrc" +qa

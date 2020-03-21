@@ -1,5 +1,7 @@
 # Arch Linux Rice
 
+![Badge](https://gitlab.com/khuedoan/dotfiles/badges/master/pipeline.svg)
+
 ![Screenshot](https://i.imgur.com/K02TzjR.jpg)
 
 Pretending to be busy while watching YouTube video in Picture-in-Picture mode

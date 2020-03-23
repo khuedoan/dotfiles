@@ -103,6 +103,8 @@ Plug 'itchyny/lightline.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/fzf.vim'
 Plug 'justinmk/vim-sneak'
+Plug 'mattn/vim-gist'
+Plug 'mattn/webapi-vim'
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 Plug 'rlue/vim-barbaric'
 Plug 'sheerun/vim-polyglot'

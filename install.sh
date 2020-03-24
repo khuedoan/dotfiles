@@ -134,32 +134,6 @@ install_dev_tools() {
 
 # TUI
 if [ "$#" -eq 0 ]; then
-    export NEWT_COLORS='
-        root=white,black
-        border=black,lightgray
-        window=lightgray,lightgray
-        shadow=black,gray
-        title=black,lightgray
-        button=white,black
-        actbutton=white,black
-        compactbutton=black,lightgray
-        checkbox=black,lightgray
-        actcheckbox=lightgray,black
-        entry=black,lightgray
-        disentry=gray,lightgray
-        label=black,lightgray
-        listbox=black,lightgray
-        actlistbox=white,black
-        sellistbox=lightgray,black
-        actsellistbox=lightgray,black
-        textbox=black,lightgray
-        acttextbox=white,black
-        emptyscale=,gray
-        fullscale=,black
-        helpline=white,black
-        roottext=lightgrey,black
-    '
-
     install_list=( $(whiptail --notags --title "Dotfiles" --checklist "Install list" 20 45 11 \
         install_dotfiles "All config files" on \
         install_aur_helper "AUR helper (trizen)" on \

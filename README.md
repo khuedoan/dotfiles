@@ -75,7 +75,7 @@ For a TUI installer:
 
 `./install.sh`
 
-![Screenshot](https://i.imgur.com/6aqIAgp.jpg)
+![Screenshot](https://i.imgur.com/EBTG8mx.jpg)
 
 For advanced features, use CLI:
 

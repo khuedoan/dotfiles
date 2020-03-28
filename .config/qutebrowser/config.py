@@ -13,6 +13,8 @@ config.set('content.javascript.enabled', True, 'qute://*/*')
 config.set('content.notifications', True, 'https://www.reddit.com')
 config.set('content.notifications', True, 'https://www.facebook.com')
 config.set('content.notifications', True, 'https://www.youtube.com')
+c.input.insert_mode.auto_load = True
+c.tabs.mode_on_change = 'restore'
 c.hints.chars = 'sadfjklewcmpgh'
 c.hints.uppercase = True
 c.statusbar.widgets = ['keypress', 'history', 'tabs', 'progress']
@@ -104,8 +106,8 @@ c.colors.statusbar.command.bg = palette['background']
 c.colors.statusbar.command.fg = palette['pink']
 c.colors.statusbar.command.private.bg = palette['background']
 c.colors.statusbar.command.private.fg = palette['foreground-alt']
-c.colors.statusbar.insert.bg = palette['background-attention']
-c.colors.statusbar.insert.fg = palette['foreground-attention']
+c.colors.statusbar.insert.bg = palette['foreground-attention']
+c.colors.statusbar.insert.fg = palette['background-attention']
 c.colors.statusbar.normal.bg = palette['background']
 c.colors.statusbar.normal.fg = palette['foreground']
 c.colors.statusbar.passthrough.bg = palette['background']

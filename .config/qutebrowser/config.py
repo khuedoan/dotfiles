@@ -47,18 +47,6 @@ palette = {
     'yellow': '#f1fa8c'
 }
 
-spacing = {
-    'vertical': 6,
-    'horizontal': 8
-}
-
-padding = {
-    'top': spacing['vertical'],
-    'right': spacing['horizontal'],
-    'bottom': spacing['vertical'],
-    'left': spacing['horizontal']
-}
-
 c.colors.completion.category.bg = palette['background']
 c.colors.completion.category.border.bottom = palette['border']
 c.colors.completion.category.border.top = palette['border']
@@ -139,6 +127,3 @@ c.colors.tabs.pinned.selected.even.bg = palette['background']
 c.colors.tabs.pinned.selected.even.fg = palette['foreground']
 c.colors.tabs.pinned.selected.odd.bg = palette['background']
 c.colors.tabs.pinned.selected.odd.fg = palette['foreground']
-c.tabs.padding = padding
-c.tabs.indicator.width = 1
-c.tabs.favicons.scale = 1

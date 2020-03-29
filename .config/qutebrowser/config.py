@@ -1,32 +1,51 @@
+#+----------+
+#| SETTINGS |
+#+----------+
+
 c.auto_save.session = True
-config.set('content.headers.user_agent', 'Mozilla/5.0 ({os_info}) AppleWebKit/{webkit_version} (KHTML, like Gecko) {upstream_browser_key}/{upstream_browser_version} Safari/{webkit_version}', 'https://web.whatsapp.com/')
-config.set('content.headers.user_agent', 'Mozilla/5.0 ({os_info}; rv:71.0) Gecko/20100101 Firefox/71.0', 'https://accounts.google.com/*')
-config.set('content.headers.user_agent', 'Mozilla/5.0 ({os_info}) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99 Safari/537.36', 'https://*.slack.com/*')
-config.set('content.headers.user_agent', 'Mozilla/5.0 ({os_info}; rv:71.0) Gecko/20100101 Firefox/71.0', 'https://docs.google.com/*')
-config.set('content.images', True, 'chrome-devtools://*')
-config.set('content.images', True, 'devtools://*')
 config.set('content.autoplay', False)
-config.set('content.javascript.enabled', True, 'chrome-devtools://*')
-config.set('content.javascript.enabled', True, 'devtools://*')
-config.set('content.javascript.enabled', True, 'chrome://*/*')
-config.set('content.javascript.enabled', True, 'qute://*/*')
-config.set('content.notifications', True, 'https://www.reddit.com')
-config.set('content.notifications', True, 'https://www.facebook.com')
-config.set('content.notifications', True, 'https://www.youtube.com')
 c.input.insert_mode.auto_load = True
 c.tabs.mode_on_change = 'restore'
-c.hints.chars = 'sadfjklewcmpgh'
+c.hints.chars = 'sadfjklewcmpgh;'
 c.hints.uppercase = True
 c.statusbar.widgets = ['keypress', 'history', 'tabs', 'progress']
 c.tabs.background = True
 c.url.default_page = 'https://www.google.com/'
 c.url.searchengines = {'DEFAULT': 'https://www.google.com/search?q={}'}
 c.url.start_pages = 'https://www.google.com/'
+
+# Notifications
+config.set('content.notifications', True, 'https://www.reddit.com')
+config.set('content.notifications', True, 'https://www.facebook.com')
+config.set('content.notifications', True, 'https://www.youtube.com')
+config.set('content.notifications', True, 'https://www.messenger.com')
+
+#+--------------+
+#| KEY BINDINGS |
+#+--------------+
+
 config.bind('M', 'hint links spawn umpv {hint-url}')
 config.bind('<Ctrl+Tab>', 'tab-next')
 config.bind('<Ctrl+Shift+Tab>', 'tab-prev')
 
-# Theme
+#+-------+
+#| THEME |
+#+-------+
+
+# Palette
+colors = {
+    'black': '#282a36',
+    'red': '#ff5555',
+    'green': '#50fa7b',
+    'yellow': '#f1fa8c',
+    'blue': '#bd93f9',
+    'magenta': '#ff79c6',
+    'cyan': '#8be9fd',
+    'white': '#f8f8f2',
+    'background': "#282a36",
+    'foreground': "#f8f8f2",
+}
+
 palette = {
     'background': '#282a36',
     'background-alt': '#282a36',
@@ -47,6 +66,8 @@ palette = {
     'yellow': '#f1fa8c'
 }
 
+
+# Completion
 c.colors.completion.category.bg = palette['background']
 c.colors.completion.category.border.bottom = palette['border']
 c.colors.completion.category.border.top = palette['border']
@@ -61,11 +82,15 @@ c.colors.completion.item.selected.fg = palette['foreground']
 c.colors.completion.match.fg = palette['orange']
 c.colors.completion.scrollbar.bg = palette['background']
 c.colors.completion.scrollbar.fg = palette['foreground']
+
+# Downloads
 c.colors.downloads.bar.bg = palette['background']
 c.colors.downloads.error.bg = palette['background']
 c.colors.downloads.error.fg = palette['red']
 c.colors.downloads.stop.bg = palette['background']
 c.colors.downloads.system.bg = 'none'
+
+# Hints
 c.colors.hints.bg = palette['background']
 c.colors.hints.fg = palette['foreground']
 c.hints.border = '1px solid ' + palette['background-alt']
@@ -73,6 +98,8 @@ c.colors.hints.match.fg = palette['purple']
 c.colors.keyhint.bg = palette['background']
 c.colors.keyhint.fg = palette['purple']
 c.colors.keyhint.suffix.fg = palette['selection']
+
+# Messages
 c.colors.messages.error.bg = palette['background']
 c.colors.messages.error.border = palette['background-alt']
 c.colors.messages.error.fg = palette['red']
@@ -82,10 +109,14 @@ c.colors.messages.info.fg = palette['comment']
 c.colors.messages.warning.bg = palette['background']
 c.colors.messages.warning.border = palette['background-alt']
 c.colors.messages.warning.fg = palette['red']
+
+# Prompts
 c.colors.prompts.bg = palette['background']
 c.colors.prompts.border = '1px solid ' + palette['background-alt']
 c.colors.prompts.fg = palette['cyan']
 c.colors.prompts.selected.bg = palette['selection']
+
+# Status bar
 c.colors.statusbar.caret.bg = palette['background']
 c.colors.statusbar.caret.fg = palette['orange']
 c.colors.statusbar.caret.selection.bg = palette['background']
@@ -106,6 +137,8 @@ c.colors.statusbar.progress.bg = palette['background']
 c.colors.statusbar.url.error.fg = palette['red']
 c.colors.statusbar.url.fg = palette['foreground']
 c.colors.statusbar.url.hover.fg = palette['cyan']
+
+# Tabs
 c.colors.tabs.bar.bg = palette['selection']
 c.colors.tabs.even.bg = palette['selection']
 c.colors.tabs.even.fg = palette['foreground']

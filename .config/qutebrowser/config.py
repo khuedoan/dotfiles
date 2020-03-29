@@ -69,7 +69,7 @@ c.colors.completion.item.selected.bg = foreground
 c.colors.completion.item.selected.border.bottom = foreground
 c.colors.completion.item.selected.border.top = foreground
 c.colors.completion.item.selected.fg = background
-c.colors.completion.match.fg = yellow
+c.colors.completion.match.fg = green
 c.colors.completion.scrollbar.bg = background
 c.colors.completion.scrollbar.fg = foreground
 
@@ -112,7 +112,7 @@ c.colors.statusbar.caret.fg = yellow
 c.colors.statusbar.caret.selection.bg = background
 c.colors.statusbar.caret.selection.fg = yellow
 c.colors.statusbar.command.bg = background
-c.colors.statusbar.command.fg = red
+c.colors.statusbar.command.fg = foreground
 c.colors.statusbar.command.private.bg = background
 c.colors.statusbar.command.private.fg = foreground
 c.colors.statusbar.insert.bg = foreground

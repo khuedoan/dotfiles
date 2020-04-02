@@ -83,7 +83,7 @@ super + Return
 	st
 # Web browser
 super + {_,shift + }w
-    chromium {_, --incognito}
+    qutebrowser {_, ':open -p'}
 # Bookmarks
 super + b
     dmenu-bookmarks

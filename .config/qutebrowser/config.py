@@ -14,10 +14,13 @@ c.hints.uppercase = True
 # Status bar
 c.statusbar.widgets = ['keypress', 'history', 'tabs', 'progress']
 
+# Downloads
+c.downloads.position = 'bottom'
+
 # Tabs
 c.tabs.background = True
 c.tabs.mode_on_change = 'restore'
-c.tabs.padding = {'top': 4, 'right': 4, 'bottom': 4, 'left': 4}
+c.tabs.padding = {'top': 3, 'right': 3, 'bottom': 3, 'left': 3}
 c.tabs.indicator.width = 1
 c.tabs.indicator.padding = {"bottom": 0, "left": 0, "right": 10, "top": 0}
 
@@ -121,7 +124,7 @@ c.colors.statusbar.normal.bg = background
 c.colors.statusbar.normal.fg = foreground
 c.colors.statusbar.passthrough.bg = background
 c.colors.statusbar.passthrough.fg = yellow
-c.colors.statusbar.private.bg = background
+c.colors.statusbar.private.bg = blue
 c.colors.statusbar.private.fg = foreground
 c.colors.statusbar.progress.bg = background
 c.colors.statusbar.url.error.fg = red

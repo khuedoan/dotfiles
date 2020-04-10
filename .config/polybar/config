@@ -15,7 +15,7 @@ wm-restack = bspwm
 height = 22
 foreground = ${colors.foreground}
 background = ${colors.background}
-font-0 = SauceCodePro Nerd Font:style=Semibold:size=10;2
+font-0 = SauceCodePro Nerd Font:style=Bold:size=10;2
 padding-right = 1
 module-margin = 1
 modules-left   = bspwm
@@ -116,13 +116,13 @@ ramp-volume-1 = 奔
 ramp-volume-2 = 墳
 bar-volume-width     = 11
 bar-volume-indicator =
-bar-volume-fill      = ─
-bar-volume-empty     = ─
+bar-volume-fill      = -
+bar-volume-empty     = -
 bar-volume-empty-foreground = ${colors.foreground-alt}
 
 [module/xbacklight]
 type = internal/xbacklight
-format = <ramp>
+format = <ramp> <label>
 ramp-0 = 
 ramp-1 = 
 ramp-2 = 

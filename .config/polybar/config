@@ -15,11 +15,9 @@ wm-restack = bspwm
 height = 22
 foreground = ${colors.foreground}
 background = ${colors.background}
-font-0 = Lucida Grande:style=Bold:size=9;2
-font-1 = SauceCodePro Nerd Font:style=Black:size=10;2
-font-2 = SauceCodePro Nerd Font:style=Black:size=10;1
-padding-right = 2
-module-margin = 2
+font-0 = SauceCodePro Nerd Font:style=Semibold:size=10;2
+padding-right = 1
+module-margin = 1
 modules-left   = bspwm
 modules-center = date
 modules-right  = ethernet wlan cpu temperature memory battery xbacklight alsa
@@ -32,10 +30,10 @@ label-focused  = %{T2}%name%
 label-occupied = %{T2}%name%
 label-urgent   = %{T2}%name%
 label-empty    = %{T2}·
-label-focused-padding  = 2
-label-occupied-padding = 2
-label-urgent-padding   = 2
-label-empty-padding    = 2
+label-focused-padding  = 1
+label-occupied-padding = 1
+label-urgent-padding   = 1
+label-empty-padding    = 1
 label-focused-background  = ${colors.background-focused}
 label-urgent-background   = ${colors.background-urgent}
 
@@ -84,7 +82,7 @@ ramp-4 = 
 
 [module/memory]
 type = internal/memory
-format-prefix = " "
+format-prefix = "﬙ "
 label         = %gb_used%
 
 [module/battery]
@@ -96,17 +94,17 @@ format-charging    = <animation-charging> <label-charging>
 format-full        = <ramp-capacity> <label-full>
 format-charging-foreground = ${colors.yellow}
 format-full-foreground     = ${colors.green}
-ramp-capacity-0 = 
-ramp-capacity-1 = 
-ramp-capacity-2 = 
-ramp-capacity-3 = 
-ramp-capacity-4 = 
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
 animation-charging-framerate = 1000
-animation-charging-0 = 
-animation-charging-1 = 
-animation-charging-2 = 
-animation-charging-3 = 
-animation-charging-4 = 
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-3 = 
+animation-charging-4 = 
 
 [module/alsa]
 type = internal/alsa
@@ -120,8 +118,6 @@ bar-volume-width     = 11
 bar-volume-indicator =
 bar-volume-fill      = ─
 bar-volume-empty     = ─
-bar-volume-fill-font      = 3
-bar-volume-empty-font     = 3
 bar-volume-empty-foreground = ${colors.foreground-alt}
 
 [module/xbacklight]

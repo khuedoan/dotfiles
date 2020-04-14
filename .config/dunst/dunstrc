@@ -15,7 +15,7 @@
     sort = yes
     idle_threshold = 120
 
-    font = Lucida Grande 10
+    font = SauceCodePro Nerd Font 10
     line_height = 0
     markup    = full
     format    = "<b>%s</b>\n%b"

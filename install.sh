@@ -130,6 +130,10 @@ install_dev_tools() {
     sudo usermod -aG docker $USER
     # Python
     sudo pacman --noconfirm --needed -S python-pipenv
+    # Markdown to PDF
+    sudo pacman --noconfirm --needed -S wkhtmltopd
+    curl -s https://raw.githubusercontent.com/khuedoan98/mdtopdf/master/mdtopdf > $HOME/.local/bin/mdtopdf
+    chmod +x $HOME/.local/bin/mdtopdf
 }
 
 # TUI

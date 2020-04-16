@@ -15,4 +15,4 @@ fi
 
 [ -z "$languages" ] && exit 1
 
-notify-send "Translate" "$(trans --no-ansi "$languages" "$text")"
+notify-send "Translate" "$(trans --brief --no-ansi "$languages" "$text")"

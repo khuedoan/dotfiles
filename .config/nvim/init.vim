@@ -10,10 +10,12 @@ set number         " Print the line number
 set relativenumber " Show relative line number
 set scrolloff=1    " Minimum number of lines above and below cursor
 set shiftwidth=4   " Number of spaces to use for indent step
+set signcolumn=yes " Always display sign column
 set splitbelow     " New window from split is below the current one
 set splitright     " New window is put right of the current one
 set tabstop=4      " Number of spaces that Tab in file uses
 set termguicolors  " Use 24-bit color
+set updatetime=100 " Delay before writing to swap file
 
 " Jumps to the last known position in a file after opening it
 autocmd BufReadPost *
@@ -50,8 +52,17 @@ inoremap <C-e> <End>
 
 " List of plugins
 call plug#begin()
+Plug 'airblade/vim-gitgutter'
+Plug 'christoomey/vim-tmux-navigator'
 Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 Plug 'itchyny/lightline.vim'
+Plug 'jiangmiao/auto-pairs'
+Plug 'junegunn/fzf.vim'
+Plug 'justinmk/vim-sneak'
+Plug 'mattn/vim-gist'
+Plug 'mattn/webapi-vim'
+Plug 'rlue/vim-barbaric'
 Plug 'sheerun/vim-polyglot'
 call plug#end()
 
@@ -66,3 +77,5 @@ let g:lightline = {
     \ 'subseparator': { 'left': '', 'right': '' }
     \ }
 
+" Sneak
+let g:sneak#label = 1

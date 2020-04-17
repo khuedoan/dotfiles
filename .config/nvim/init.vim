@@ -15,6 +15,12 @@ set splitright     " New window is put right of the current one
 set tabstop=4      " Number of spaces that Tab in file uses
 set termguicolors  " Use 24-bit color
 
+" Jumps to the last known position in a file after opening it
+autocmd BufReadPost *
+    \ if line("'\"") >= 1 && line("'\"") <= line("$") && &ft !~# 'commit'
+    \ |   exe "normal! g`\""
+    \ | endif
+
 "+-------------+
 "| KEY MAPPING |
 "+-------------+

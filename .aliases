@@ -62,5 +62,5 @@ alias diff='git diff --no-index'
 # feh
 alias feh='feh --scale-down --auto-zoom'
 
-# vim
-alias v='vim'
+# nvim
+alias v='nvim'

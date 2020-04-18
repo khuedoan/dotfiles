@@ -79,7 +79,7 @@ For a TUI installer:
 
 For advanced features, use CLI:
 
-To download just the minimum for `zsh`, `vim`, and `tmux`
+To download just the minimum for `zsh`, `neovim`, and `tmux`
 
 `./install.sh --minimal`
 

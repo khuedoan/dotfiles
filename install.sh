@@ -151,7 +151,7 @@ if [ "$#" -eq 0 ]; then
 # CLI
 else
     if [ "$1" = "--minimal" ]; then
-        cli_config_files=".aliases .tmux.conf .vimrc .zshrc"
+        cli_config_files=".aliases .config/nvim/init.vim .tmux.conf .zshrc"
 
         for file in $cli_config_files; do
             curl https://raw.githubusercontent.com/khuedoan98/dotfiles/master/$file > $HOME/$file

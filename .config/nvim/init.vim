@@ -32,7 +32,6 @@ nnoremap <C-s> :w<CR>
 nnoremap <C-q> :q<CR>
 
 " Buffer
-nnoremap <C-t> :Files<CR>
 nnoremap <TAB> :bnext<CR>
 nnoremap <S-TAB> :bprevious<CR>
 nnoremap <LEADER>d :bp<CR>:bd #<CR>
@@ -62,6 +61,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'justinmk/vim-sneak'
 Plug 'mattn/vim-gist'
 Plug 'mattn/webapi-vim'
+Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 Plug 'rlue/vim-barbaric'
 Plug 'sheerun/vim-polyglot'
 call plug#end()
@@ -77,5 +77,19 @@ let g:lightline = {
     \ 'subseparator': { 'left': '', 'right': '' }
     \ }
 
+" fzf
+nnoremap <C-t> :Files<CR>
+
 " Sneak
 let g:sneak#label = 1
+
+" Conquer of Completion
+inoremap <silent><expr> <TAB>
+    \ pumvisible() ? "\<C-n>" :
+    \ <SID>check_back_space() ? "\<TAB>" :
+    \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction

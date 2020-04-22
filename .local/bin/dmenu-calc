@@ -1,14 +1,12 @@
 #!/bin/sh
 
-sb="#F1FA8C"
-
-expression=$(dmenu -sb "$sb" -p "Calculator" <&-)
+expression=$(dmenu -p "Calculator" <&-)
 
 if [ -z "$expression" ]; then
     exit 1
 fi
 
-result=$(echo "$expression" | bc -l | dmenu -sb "$sb" -p "Result")
+result=$(echo "$expression" | bc -l | dmenu -p "Result")
 
 if [ -z "$result" ]; then
     exit 1

@@ -1,14 +1,12 @@
 #!/bin/sh
 
-sb="#8BE9FD"
-
-text=$(echo "$(xclip -o)" | dmenu -sb "$sb" -p "Google Translate")
+text=$(echo "$(xclip -o)" | dmenu -p "Google Translate")
 
 [ -z $text ] && exit 1
 
 if [ -z "$1" ]; then
     languages=$(echo -e ":vi\n:en\n:ko" | \
-                dmenu -sb "$sb" -p "Select [SOURCE]:[TARGET] languages")
+                dmenu -p "Select [SOURCE]:[TARGET] languages")
 else
     languages=$1
 fi

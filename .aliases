@@ -64,3 +64,6 @@ alias feh='feh --scale-down --auto-zoom'
 
 # nvim
 alias v='nvim'
+
+# reboot to windows
+alias win='sudo efibootmgr --bootnext 0001 && reboot'

@@ -23,7 +23,8 @@ function prompt_git_status {
 }
 
 PROMPT=$'%
-%{$fg[black]$bg[$prompt_color1]%} %n@%m %{$reset_color%}%
+%{$fg[$prompt_color1]%}%{$reset_color%}%
+%{$fg[black]$bg[$prompt_color1]%}%n %{$reset_color%}%
 %{$fg[$prompt_color1]$bg[$prompt_color2]%}%{$reset_color%}%
 %{$fg[black]$bg[$prompt_color2]%} %1~ %{$reset_color%}%
 $(prompt_git_status)%
@@ -34,7 +35,8 @@ RPROMPT=$'%
 %{$fg[white]%}%~%{$reset_color%}%
 .%
 %{$fg[red]%} %{$reset_color%}%
-%{$fg[black]$bg[red]%} %? %{$reset_color%}%
+%{$fg[black]$bg[red]%} %?%{$reset_color%}%
+%{$fg[red]%}%{$reset_color%}%
 )%
 '
 

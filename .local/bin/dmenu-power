@@ -6,7 +6,7 @@ case "$(echo -e $OPTIONS | dmenu -p "Power" -i | cut -c 5-)" in
     lock)     slock;;
     poweroff) systemctl poweroff;;
     reboot)   systemctl reboot;;
-    reload)   killall picom & pkill -USR1 -x sxhkd && bspc wm -r;;
+    reload)   killall compton & pkill -USR1 -x sxhkd && bspc wm -r;;
     logout)   bspc quit;;
     suspend)  systemctl suspend && i3lock-next;;
 esac

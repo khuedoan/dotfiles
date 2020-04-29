@@ -1,9 +1,9 @@
 [colors]
 foreground     = #FFFFFF
 foreground-alt = #666666
-background         = #88282A36
-background-focused = #88666666
-background-urgent  = #88FF0000
+background         = #282A36
+background-focused = #666666
+background-urgent  = #FF0000
 red    = #FF0000
 green  = #00FF00
 blue   = #0000FF

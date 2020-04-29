@@ -5,3 +5,6 @@ MOZ_USE_XINPUT2=1
 GTK_IM_MODULE=ibus
 QT_IM_MODULE=ibus
 XMODIFIERS=@im=ibus
+
+# Vim
+VISUAL=nvim

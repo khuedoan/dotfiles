@@ -24,17 +24,21 @@ tray-position = right
 
 [module/bspwm]
 type = internal/bspwm
-label-focused  = %name%
-label-occupied = %name%
-label-urgent   = %name%
-label-empty    = ·
-label-focused-padding  = 1
-label-occupied-padding = 1
-label-urgent-padding   = 1
-label-empty-padding    = 1
-label-focused-foreground  = ${colors.background}
-label-focused-background  = ${colors.foreground}
-label-urgent-foreground   = ${colors.red}
+label-focused       = %name%
+label-focused-empty = ·
+label-occupied      = %name%
+label-urgent        = %name%
+label-empty         = ·
+label-focused-padding        = 1
+label-focused-empty-padding  = 1
+label-occupied-padding       = 1
+label-urgent-padding         = 1
+label-empty-padding          = 1
+label-focused-foreground       = ${colors.background}
+label-focused-background       = ${colors.foreground}
+label-focused-empty-foreground = ${colors.background}
+label-focused-empty-background = ${colors.foreground}
+label-urgent-foreground        = ${colors.red}
 
 [module/date]
 type = internal/date

@@ -1,5 +1,5 @@
 [colors]
-foreground     = #FFFFFF
+foreground     = #F8F8F2
 foreground-alt = #666666
 background         = #282A36
 background-urgent  = #FF0000

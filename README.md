@@ -52,7 +52,7 @@ Notes:
 
 Download the install script:
 
-`curl -O https://khuedoan.me/dotfiles/install.sh`
+`curl -O https://raw.githubusercontent.com/khuedoan98/dotfiles/master/install.sh`
 
 `chmod +x install.sh`
 

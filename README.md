@@ -2,7 +2,7 @@
 
 ![Badge](https://gitlab.com/khuedoan/dotfiles/badges/master/pipeline.svg)
 
-![Screenshot](https://i.imgur.com/1NbSLxk.jpg)
+![Screenshot](https://i.imgur.com/34u3YI9.jpg)
 
 ## Getting Started
 

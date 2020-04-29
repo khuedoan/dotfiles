@@ -2,7 +2,6 @@
 foreground     = #FFFFFF
 foreground-alt = #666666
 background         = #282A36
-background-focused = #666666
 background-urgent  = #FF0000
 red    = #FF0000
 green  = #00FF00
@@ -34,7 +33,8 @@ label-focused-padding  = 1
 label-occupied-padding = 1
 label-urgent-padding   = 1
 label-empty-padding    = 1
-label-focused-background  = ${colors.background-focused}
+label-focused-foreground  = ${colors.background}
+label-focused-background  = ${colors.foreground}
 label-urgent-background   = ${colors.background-urgent}
 
 [module/date]

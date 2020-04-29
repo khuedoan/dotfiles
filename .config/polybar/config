@@ -2,7 +2,6 @@
 foreground     = #F8F8F2
 foreground-alt = #666666
 background         = #282A36
-background-urgent  = #FF0000
 red    = #FF0000
 green  = #00FF00
 blue   = #0000FF
@@ -25,17 +24,17 @@ tray-position = right
 
 [module/bspwm]
 type = internal/bspwm
-label-focused  = %{T2}%name%
-label-occupied = %{T2}%name%
-label-urgent   = %{T2}%name%
-label-empty    = %{T2}·
+label-focused  = %name%
+label-occupied = %name%
+label-urgent   = %name%
+label-empty    = ·
 label-focused-padding  = 1
 label-occupied-padding = 1
 label-urgent-padding   = 1
 label-empty-padding    = 1
 label-focused-foreground  = ${colors.background}
 label-focused-background  = ${colors.foreground}
-label-urgent-background   = ${colors.background-urgent}
+label-urgent-foreground   = ${colors.red}
 
 [module/date]
 type = internal/date

@@ -25,6 +25,10 @@ install_dotfiles() {
     else
         dotfiles config status.showUntrackedFiles no
     fi
+
+    wallpapers_dir=$HOME/Pictures/Wallpapers
+    mkdir -p $wallpapers_dir
+    curl https://i.redd.it/v1lgvqk9lxn31.jpg > $wallpapers_dir/Waterfall.jpg
 }
 
 install_aur_helper() {

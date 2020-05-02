@@ -5,6 +5,7 @@
 " Options
 set cursorline     " Highlight the current line of the cursor
 set expandtab      " Use spaces when tab is inserted
+set mouse=a        " Enable mouse support
 set noshowmode     " Hide mode infomation on the last line
 set number         " Print the line number
 set relativenumber " Show relative line number

@@ -65,6 +65,7 @@ Plug 'mattn/webapi-vim'
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 Plug 'rlue/vim-barbaric'
 Plug 'sheerun/vim-polyglot'
+Plug 'tpope/vim-commentary'
 call plug#end()
 
 " Theme

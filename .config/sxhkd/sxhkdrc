@@ -23,10 +23,10 @@ super + Tab
 #############
 
 # Preselect the direction
-super + p ; {h,j,k,l}
+super + p ; super + {h,j,k,l}
 	bspc node -p {west,south,north,east}
 # Cancel the preselection for the focused desktop
-super + p ; c
+super + p ; super + Escape
 	bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
 
 ##############

@@ -15,7 +15,7 @@
     sort = yes
     idle_threshold = 120
 
-    font = SauceCodePro Nerd Font 10
+    font = SauceCodePro Nerd Font Medium 10
     line_height = 0
     markup    = full
     format    = "<b>%s</b>\n%b"
@@ -40,7 +40,7 @@
     max_icon_size = 32
 
     # Paths to default icons.
-    icon_path = /usr/share/icons/Papirus-Dark/16x16/status/:/usr/share/icons/Papirus-Dark/16x16/devices/
+    icon_path = /usr/share/icons/Papirus-Dark/32x32/status/:/usr/share/icons/Papirus-Dark/32x32/devices/:/usr/share/icons/Papirus-Dark/32x32/apps/
 
     ### History ###
 
@@ -104,9 +104,9 @@
     #              invoke it. If there are multiple and no default, open the context menu.
     # * close_current: Close current notification.
     # * close_all: Close all notifications.
-    mouse_left_click = close_current
-    mouse_middle_click = do_action
-    mouse_right_click = close_all
+    mouse_left_click = do_action
+    mouse_middle_click = close_all
+    mouse_right_click = close_current
 
 [experimental]
     per_monitor_dpi = false

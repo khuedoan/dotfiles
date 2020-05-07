@@ -18,7 +18,7 @@ padding-right = 1
 module-margin = 1
 modules-left   = bspwm
 modules-center = date
-modules-right  = ethernet wlan cpu temperature memory battery xbacklight alsa
+modules-right  = ethernet wlan cpu temperature memory battery backlight alsa
 cursor-click = pointer
 tray-position = right
 
@@ -123,8 +123,9 @@ bar-volume-fill      = -
 bar-volume-empty     = -
 bar-volume-empty-foreground = ${colors.foreground-alt}
 
-[module/xbacklight]
-type = internal/xbacklight
+[module/backlight]
+type = internal/backlight
+card = intel_backlight
 format = <ramp> <label>
 ramp-0 = 
 ramp-1 = 

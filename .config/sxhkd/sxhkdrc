@@ -59,7 +59,7 @@ super + m
 	playerctl {previous,play-pause,next}
 # Brightness
 {XF86MonBrightnessDown,XF86MonBrightnessUp}
-	xbacklight {-,+}10
+	light {-U,-A} 10
 # Screenshot
 {_,ctrl + ,alt + }Print
     maim {_,-s,-i $(xdotool getactivewindow)} --noopengl \

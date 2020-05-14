@@ -1,13 +1,12 @@
 [colors]
-foreground         = #F8F8F2
+foreground         = #f8f8f2
 foreground-alt     = #666666
-foreground-focused = #282A36
-background         = #282A36
-background-focused = #F8F8F2
-red    = #FF0000
-green  = #00FF00
-blue   = #0000FF
-yellow = #FFFF00
+foreground-focused = #282a36
+background         = #282a36
+background-focused = #f8f8f2
+red    = #ff5555
+green  = #50fa7b
+yellow = #f1fa8c
 
 [bar/topbar]
 enable-ipc = true

@@ -29,6 +29,10 @@ autocmd BufReadPost *
 "| KEY MAPPING |
 "+-------------+
 
+" Leader key
+noremap <SPACE> <NOP>
+let mapleader = " "
+
 " Save and quit
 nnoremap <C-s> :w<CR>
 nnoremap <C-q> :q<CR>

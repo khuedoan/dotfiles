@@ -40,6 +40,7 @@ if [ -d "$HOME/.dotfiles" ] && [ ! -d "$HOME/.dotfiles/.git" ]; then
     alias dfl='dotfiles log --all --decorate --oneline --graph'
     alias dfL='dotfiles log -p'
     alias dft='dotfiles ls-tree -r "$(dotfiles rev-parse --abbrev-ref HEAD)" --name-only'
+    alias dfe='config_file=$(dft | fzf) && vim "$config_file"'
 fi
 
 # aria2

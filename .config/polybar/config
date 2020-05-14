@@ -1,7 +1,9 @@
 [colors]
-foreground     = #F8F8F2
-foreground-alt = #666666
+foreground         = #F8F8F2
+foreground-alt     = #666666
+foreground-focused = #282A36
 background         = #282A36
+background-focused = #F8F8F2
 red    = #FF0000
 green  = #00FF00
 blue   = #0000FF
@@ -34,10 +36,10 @@ label-focused-empty-padding  = 1
 label-occupied-padding       = 1
 label-urgent-padding         = 1
 label-empty-padding          = 1
-label-focused-foreground       = ${colors.background}
-label-focused-background       = ${colors.foreground}
-label-focused-empty-foreground = ${colors.background}
-label-focused-empty-background = ${colors.foreground}
+label-focused-foreground       = ${colors.foreground-focused}
+label-focused-background       = ${colors.background-focused}
+label-focused-empty-foreground = ${colors.foreground-focused}
+label-focused-empty-background = ${colors.background-focused}
 label-urgent-foreground        = ${colors.red}
 
 [module/date]

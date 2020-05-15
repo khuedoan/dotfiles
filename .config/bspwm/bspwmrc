@@ -32,3 +32,6 @@ bspc rule -a Lxappearance         state=floating
 bspc rule -a mpv                  state=floating
 bspc rule -a Surf                 state=tiled
 bspc rule -a Zathura              state=tiled
+
+# Mouse
+bspc config swallow_first_click true

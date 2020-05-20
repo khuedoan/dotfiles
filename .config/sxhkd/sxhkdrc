@@ -96,6 +96,9 @@ super + {_,shift + }t
 # Calculator
 super + c
     dmenu-calc
+# Documents
+super + d
+    dmenu-doc
 # Network menu
 super + n
     dmenu-wifi

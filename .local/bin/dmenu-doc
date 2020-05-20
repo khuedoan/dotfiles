@@ -1,0 +1,9 @@
+#!/bin/sh
+
+pdf=$(find ~/Downloads ~/Documents \
+       -type f -iname '*.pdf' \
+       | dmenu -p "Document" -l 25 -i)
+
+[ -z "$pdf" ] && exit 1
+
+zathura "$pdf"

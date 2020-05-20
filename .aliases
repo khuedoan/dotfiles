@@ -69,3 +69,6 @@ alias v='nvim'
 
 # reboot to windows
 alias win='sudo efibootmgr --bootnext 0001 && reboot'
+
+# convert to PDF
+alias officetopdf='libreoffice --convert-to pdf'

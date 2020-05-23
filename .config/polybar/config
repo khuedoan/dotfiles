@@ -64,7 +64,7 @@ format-disconnected = %{A1:dmenu-wifi:}<label-disconnected>%{A}
 format-connected-prefix    = "直 "
 format-disconnected-prefix = "睊 "
 format-disconnected-prefix-foreground = ${colors.red}
-label-connected         = %essid%
+label-connected         = %essid% ( %upspeed%  %downspeed%)
 label-disconnected      = Disconnected
 label-disconnected-foreground = ${colors.red}
 

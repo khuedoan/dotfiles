@@ -9,6 +9,7 @@ green  = #50fa7b
 yellow = #f1fa8c
 
 [bar/topbar]
+monitor = ${env:MONITOR}
 enable-ipc = true
 wm-restack = bspwm
 height = 22
@@ -52,13 +53,13 @@ date-alt = %A, %B %d, %Y
 
 [module/ethernet]
 type = internal/network
-interface = ${env:ethernetcard}
+interface = ${env:ETHERNET}
 format-connected-prefix    = " "
 label-connected         = %local_ip%
 
 [module/wlan]
 type = internal/network
-interface = ${env:wificard}
+interface = ${env:WLAN}
 format-connected    = %{A1:dmenu-wifi:}<label-connected>%{A}
 format-disconnected = %{A1:dmenu-wifi:}<label-disconnected>%{A}
 format-connected-prefix    = "直 "
@@ -74,7 +75,7 @@ format-prefix = " "
 
 [module/temperature]
 type = internal/temperature
-thermal-zone = ${env:cputhermalzone}
+thermal-zone = ${env:THERMAL}
 format = <ramp> <label>
 format-warn = <ramp> <label-warn>
 label-warn-foreground = ${colors.red}

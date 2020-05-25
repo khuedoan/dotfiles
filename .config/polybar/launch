@@ -4,17 +4,15 @@
 polybar-msg cmd quit
 
 # Auto detect hardware
-export wificard="$(ls /sys/class/net | grep wlp)"
-export ethernetcard="$(ls /sys/class/net | grep enp)"
-export cputhermalzone="$(for i in /sys/class/thermal/thermal_zone*; do
+export WLAN="$(ls /sys/class/net | grep wlp)"
+export ETHERNET="$(ls /sys/class/net | grep enp)"
+export THERMAL="$(for i in /sys/class/thermal/thermal_zone*; do
                       if [ $(cat $i/type) = "x86_pkg_temp" ]; then
                           echo $i
                       fi
                   done | grep -oP "\d+")"
 
-[ "$wificard" ] && sed -i "s/wlp2s0/$wificard/g" ~/.config/polybar/config
-[ "$ethernetcard" ] && sed -i "s/enp0s20f0u2u3/$ethernetcard/g" ~/.config/polybar/config
-[ "$cputhermalzone" ] && sed -i "s/thermal-zone\ =\ 10/thermal-zone\ =\ $cputhermalzone/g" ~/.config/polybar/config
-
 # Launch Polybar, using default config location ~/.config/polybar/config
-polybar topbar &
+for m in $(polybar --list-monitors | cut -d":" -f1); do
+    MONITOR=$m polybar --reload topbar &
+done

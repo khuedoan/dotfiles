@@ -87,9 +87,6 @@ super + {_,shift + }w
 # Bookmarks
 super + b
     dmenu-bookmarks
-# Virtual machine manager
-super + {_,shift + }v
-    {dmenu-vbox,virtualbox}
 # Translator
 super + {_,shift + }t
     dmenu-trans {en:vi,_}

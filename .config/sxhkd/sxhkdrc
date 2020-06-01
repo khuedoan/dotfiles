@@ -105,6 +105,9 @@ super + slash
 # Power menu
 super + Escape
     dmenu-power
+# Monitor menu
+super + shift + m
+    dmenu-monitor
 # Lock screen
 super + BackSpace
     slock

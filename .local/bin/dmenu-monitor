@@ -1,0 +1,7 @@
+#!/bin/sh
+
+OPTIONS="Single\nDuplicate\nExtend"
+
+case "$(echo -e "$OPTIONS" | dmenu -p "Monitors" -i)" in
+    Extend)   arandr;;
+esac

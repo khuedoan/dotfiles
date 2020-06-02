@@ -7,5 +7,5 @@ case "$(echo -e $OPTIONS | dmenu -p "Power" -i | cut -c 5-)" in
     poweroff) systemctl poweroff;;
     reboot)   systemctl reboot;;
     logout)   bspc quit;;
-    suspend)  systemctl suspend && i3lock-next;;
+    suspend)  systemctl suspend;;
 esac

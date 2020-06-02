@@ -1,7 +1,25 @@
 #!/bin/sh
 
-OPTIONS="Single\nDuplicate\nExtend"
+MONITORS="$(xrandr | grep " connected " | cut -d ' ' -f 1)"
+
+echo "$MONITORS"
+
+if [ "$(echo "$MONITORS" | wc -l)" = "1" ]; then
+    notify-send "Monitor" "Only one monitor detected"
+    exit 1
+fi
+
+single_monitor() {
+    MONITOR1="$(echo "$MONITORS" | dmenu -p "Select monitor" -i)"
+    MONITOR2="$(echo "$MONITORS" | grep -v "^$MONITOR1")"
+
+    xrandr --output "$MONITOR2" --off \
+           --output "$MONITOR1" --primary --auto
+}
+
+OPTIONS="Single\nExtend"
 
 case "$(echo -e "$OPTIONS" | dmenu -p "Monitors" -i)" in
+    Single)   single_monitor;;
     Extend)   arandr;;
 esac

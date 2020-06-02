@@ -1,0 +1,11 @@
+#!/bin/sh
+
+OPTIONS="bspwm\nsxhkd\npolybar\ncompton\nkeymap"
+
+case "$(echo -e $OPTIONS | dmenu -p "Reload" -i | cut -c 5-)" in
+    bspwm)   bspc wm -r;;
+    sxhkd)   pkill -USR1 -x sxhkd;;
+    polybar) $HOME/.config/polybar/launch;;
+    compton) killall compton; compton;;
+    keymap)  setxkbmap -option ctrl:nocaps,shift:both_capslock,altwin:swap_lalt_lwin,lv3:ralt_switch && xcape;;
+esac

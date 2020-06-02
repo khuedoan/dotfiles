@@ -19,7 +19,7 @@ c.downloads.position = 'bottom'
 
 # Tabs
 c.tabs.position = 'left'
-c.tabs.width = '15%'
+c.tabs.width = '20%'
 c.tabs.background = True
 c.tabs.mode_on_change = 'restore'
 c.tabs.padding = {'top': 3, 'right': 3, 'bottom': 3, 'left': 3}

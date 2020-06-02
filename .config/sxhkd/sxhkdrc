@@ -105,6 +105,9 @@ super + slash
 # Power menu
 super + Escape
     dmenu-power
+# Reload menu
+super + r
+    dmenu-reload
 # Monitor menu
 super + shift + m
     dmenu-monitor

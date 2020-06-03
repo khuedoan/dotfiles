@@ -2,7 +2,7 @@
 
 OPTIONS="bspwm\nsxhkd\npolybar\ncompton\nkeymap"
 
-case "$(echo -e $OPTIONS | dmenu -p "Reload" -i | cut -c 5-)" in
+case "$(echo -e $OPTIONS | dmenu -p "Reload" -i)" in
     bspwm)   bspc wm -r;;
     sxhkd)   pkill -USR1 -x sxhkd;;
     polybar) $HOME/.config/polybar/launch;;

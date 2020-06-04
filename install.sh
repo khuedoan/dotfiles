@@ -100,7 +100,7 @@ install_bumblebee() {
 }
 
 install_unikey() {
-    sudo pacman --noconfirm --needed -S ibus-unikey
+    trizen --noconfirm --needed -S ibus-bamboo
 }
 
 install_system_config() {

@@ -108,6 +108,9 @@ super + Escape
 # Reload menu
 super + r
     dmenu-reload
+# Monitor menu
+super + shift + m
+    dmenu-monitor
 # Lock screen
 super + BackSpace
     slock

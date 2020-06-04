@@ -75,6 +75,7 @@ Plug 'justinmk/vim-sneak'
 Plug 'mattn/vim-gist'
 Plug 'mattn/webapi-vim'
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
+Plug 'preservim/nerdtree'
 Plug 'rlue/vim-barbaric'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-commentary'
@@ -116,3 +117,7 @@ function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
+
+" NERDTree
+map <C-n> :NERDTreeToggle<CR>
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif

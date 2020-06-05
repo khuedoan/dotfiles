@@ -6,7 +6,7 @@ if [ -z "$expression" ]; then
     exit 1
 fi
 
-result=$(echo "$expression" | bc -l | numfmt --grouping | dmenu -p "Result")
+result=$(echo "$expression" | bc -l | dmenu -p "Result")
 
 if [ -z "$result" ]; then
     exit 1

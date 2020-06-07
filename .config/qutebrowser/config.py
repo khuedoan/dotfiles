@@ -6,6 +6,7 @@
 c.auto_save.session = True
 c.content.autoplay = False
 c.input.insert_mode.auto_load = True
+c.input.forward_unbound_keys = 'none'
 
 # Hints
 c.hints.chars = 'sadfjklewcmpgh;'

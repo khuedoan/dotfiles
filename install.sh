@@ -103,11 +103,6 @@ install_unikey() {
     trizen --noconfirm --needed -S ibus-bamboo
 }
 
-install_system_config() {
-    sed -i "s/khuedoan/$USER/g" .root/etc/systemd/system/getty@tty1.service.d/override.conf
-    sudo cp -rv .root/* /
-}
-
 install_battery_saver() {
     sudo pacman --noconfirm --needed -S tlp powertop
     trizen --noconfirm --needed -S intel-undervolt
@@ -168,7 +163,6 @@ else
         install_intel_graphics
         install_bumblebee
         install_unikey
-        install_system_config
         install_battery_saver
         install_dev_tools
         create_ssh_key
@@ -191,9 +185,6 @@ else
         fi
         if [[ "$@" == *"--unikey"* ]]; then
             install_unikey
-        fi
-        if [[ "$@" == *"--system-config"* ]]; then
-            install_system_config
         fi
         if [[ "$@" == *"--battery-saver"* ]]; then
             install_battery_saver

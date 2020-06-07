@@ -65,6 +65,7 @@ endif
 " List of plugins
 call plug#begin()
 Plug 'airblade/vim-gitgutter'
+Plug 'ap/vim-buftabline'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }

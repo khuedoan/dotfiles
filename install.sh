@@ -82,25 +82,8 @@ install_core_packages() {
 install_extra_packages() {
     sudo pacman --noconfirm --needed -S arc-gtk-theme aria2 glances gvfs htop man mpv noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra ntfs-3g papirus-icon-theme pcmanfm-gtk3 qutebrowser ranger tmux tree unrar unzip w3m xarchiver xdg-user-dirs-gtk youtube-dl zathura zathura-pdf-mupdf zip
     gpg --recv-keys EB4F9E5A60D32232BB52150C12C87A28FEAC6B20
-    trizen --noconfirm --needed -S chromium-widevine ttf-ms-fonts
+    trizen --noconfirm --needed -S chromium-widevine ttf-ms-fonts ibus-bamboo
     xdg-user-dirs-update
-}
-
-install_intel_graphics() {
-    sudo pacman --noconfirm --needed -S libva-intel-driver
-}
-
-install_bumblebee() {
-    sudo pacman --noconfirm --needed -S bumblebee nvidia lib32-nvidia-utils lib32-virtualgl nvidia-settings bbswitch
-    sudo gpasswd -a $USER bumblebee
-    sudo gpasswd -a $USER video
-    sudo systemctl enable bumblebeed.service
-    sudo sed -i -e "s/#RUNTIME_PM_BLACKLIST=.*/RUNTIME_PM_BLACKLIST=\"$(lspci | grep NVIDIA | cut -b -7)\"/g" /etc/default/tlp
-    # Run NVIDIA settings with optirun -b none /usr/bin/nvidia-settings -c :8
-}
-
-install_unikey() {
-    trizen --noconfirm --needed -S ibus-bamboo
 }
 
 install_battery_saver() {
@@ -160,9 +143,6 @@ else
         install_aur_helper
         install_core_packages
         install_extra_packages
-        install_intel_graphics
-        install_bumblebee
-        install_unikey
         install_battery_saver
         install_dev_tools
         create_ssh_key

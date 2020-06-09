@@ -46,6 +46,9 @@ super + s
 # Toggle monocle layout
 super + m
     bspc desktop -l next
+# Toggle game mode
+super + g
+    killall xcape || xcape; killall compton || compton
 
 ##############
 # Media keys #

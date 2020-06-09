@@ -94,29 +94,6 @@ install_battery_saver() {
     sudo systemctl enable intel-undervolt.service
 }
 
-create_ssh_key() {
-    email=$(whiptail --inputbox "Enter email for SSH key" 10 20 3>&1 1>&2 2>&3)
-    ssh-keygen -t rsa -b 4096 -C "${email}"
-    eval "$(ssh-agent -s)"
-    ssh-add ~/.ssh/id_rsa
-    # dotfiles remote set-url origin git@github.com:khuedoan98/dotfiles.git
-}
-
-install_dev_tools() {
-    # VirtualBox
-    sudo pacman --noconfirm --needed -S virtualbox virtualbox-host-modules-arch virtualbox-guest-iso
-    trizen --noconfirm --needed -S --sudo-autorepeat-at-runtime virtualbox-ext-oracle
-    # Docker
-    sudo pacman --noconfirm --needed -S docker-compose
-    sudo usermod -aG docker $USER
-    # Python
-    sudo pacman --noconfirm --needed -S python-pipenv
-    # Markdown to PDF
-    sudo pacman --noconfirm --needed -S wkhtmltopdf
-    curl -s https://raw.githubusercontent.com/khuedoan98/mdtopdf/master/mdtopdf > $HOME/.local/bin/mdtopdf
-    chmod +x $HOME/.local/bin/mdtopdf
-}
-
 # TUI
 if [ "$#" -eq 0 ]; then
     install_list=( $(whiptail --notags --title "Dotfiles" --checklist "Install list" 20 45 11 \
@@ -143,8 +120,6 @@ else
         install_core_packages
         install_extra_packages
         install_battery_saver
-        install_dev_tools
-        create_ssh_key
     else
         if [[ "$@" == *"--dotfiles"* ]]; then
             install_dotfiles
@@ -158,21 +133,8 @@ else
         if [[ "$@" == *"--extra-packages"* ]]; then
             install_extra_packages
         fi
-        if [[ "$@" == *"--graphics-driver"* ]]; then
-            install_intel_graphics
-            install_bumblebee
-        fi
-        if [[ "$@" == *"--unikey"* ]]; then
-            install_unikey
-        fi
         if [[ "$@" == *"--battery-saver"* ]]; then
             install_battery_saver
-        fi
-        if [[ "$@" == *"--dev-tools"* ]]; then
-            install_dev_tools
-        fi
-        if [[ "$@" == *"--ssh-key"* ]]; then
-            create_ssh_key
         fi
     fi
 fi

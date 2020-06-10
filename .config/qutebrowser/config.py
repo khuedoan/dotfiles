@@ -9,7 +9,7 @@ c.input.insert_mode.auto_load = True
 c.input.forward_unbound_keys = 'none'
 
 # Hints
-c.hints.chars = 'sadfjklewcmpgh;'
+c.hints.chars = 'asdfghjklcvnm'
 c.hints.uppercase = True
 
 # Status bar

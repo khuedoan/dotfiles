@@ -1,10 +1,9 @@
 #!/bin/sh
 
-bookmark=$(cat ~/Documents/bookmarks | column --table | dmenu -p 'Load Bookmark' -l 25 -i)
-url=$(echo $bookmark | cut -d ' ' -f2)
+bookmark=$(cat $HOME/.config/qutebrowser/quickmarks | \
+           column --table | \
+           dmenu -p 'Load Bookmark' -l 25 -i)
 
-if [ -z "$url" ]; then
-    exit 1
-fi
+[ "$bookmark" ] || exit 1
 
-qutebrowser "$url"
+qutebrowser "${bookmark##* }"

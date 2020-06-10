@@ -1,0 +1,34 @@
+{
+  "InputMethod": "Telex W",
+  "InputMethodDefinitions": {
+    "Telex W": {
+      "a": "A_Â",
+      "d": "D_Đ",
+      "e": "E_Ê",
+      "f": "DauHuyen",
+      "j": "DauNang",
+      "o": "O_Ô",
+      "r": "DauHoi",
+      "s": "DauSac",
+      "w": "UOA_ƯƠĂ__Ư",
+      "x": "DauNga",
+      "z": "XoaDauThanh"
+    }
+  },
+  "OutputCharset": "Unicode",
+  "Flags": 7,
+  "IBflags": 283632,
+  "JupiterFlags": 0,
+  "DefaultInputMode": 1,
+  "InputModeMapping": {
+    "qutebrowser:qutebrowser": 3,
+    "xterm-256color:xterm-256color": 3
+  },
+  "ExceptedList": null,
+  "PreeditWhiteList": null,
+  "X11ClipboardWhiteList": null,
+  "ForwardKeyWhiteList": null,
+  "SLForwardKeyWhiteList": null,
+  "DirectForwardKeyWhiteList": null,
+  "SurroundingTextWhiteList": null
+}

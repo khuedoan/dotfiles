@@ -7,13 +7,21 @@ feh --bg-fill --randomize ~/Pictures/Wallpapers/*.jpg &
 $HOME/.config/polybar/launch &
 
 # Compositor
+killall compton
 compton &
 
 # Use correct pointer
 xsetroot -cursor_name left_ptr &
 
 # Key map
-setxkbmap -option ctrl:nocaps,shift:both_capslock,altwin:swap_lalt_lwin,lv3:ralt_switch && xcape && sxhkd &
+killall xcape
+killall sxhkd
+setxkbmap -option "ctrl:nocaps, \
+                  shift:both_capslock, \
+                  altwin:swap_lalt_lwin, \
+                  lv3:ralt_switch"
+xcape
+sxhkd &
 ibus-daemon -drx &
 
 # Auto lock screen

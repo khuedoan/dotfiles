@@ -1,0 +1,11 @@
+#!/bin/sh
+
+systemctl is-active --quiet optimus-manager.service &&
+gpu="$(echo -e "intel\nnvidia" | dmenu -p "Select GPU" -i)" &&
+current_gpu="$(optimus-manager --print-mode | cut -d ' ' -f 5 -s)" &&
+
+if [ "$current_gpu" = $gpu ]; then
+    notify-send "Optimus Manager" "The $current_gpu GPU is already in use"
+else
+    optimus-manager --switch "$gpu" --no-confirm
+fi

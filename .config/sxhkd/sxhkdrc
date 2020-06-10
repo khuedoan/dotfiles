@@ -117,3 +117,6 @@ super + shift + m
 # Lock screen
 super + BackSpace
     slock
+# Switch GPU
+super + shift + g
+    dmenu-gpu

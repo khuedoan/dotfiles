@@ -43,6 +43,9 @@ install_core_packages() {
     sudo pacman --noconfirm --needed -S alsa-utils arandr autorandr bc bspwm dunst feh fzf git libnotify light maim npm playerctl sxhkd translate-shell ttf-dejavu wmctrl xautolock xcape xclip xdotool xorg-server xorg-setxkbmap xorg-xinit xorg-xrandr xorg-xsetroot xss-lock
     trizen --noconfirm --needed -S mons nerd-fonts-source-code-pro polybar
 
+    # Add user to video group to adjust backlight
+    sudo usermod -aG video $USER
+
     # zsh plugins
     git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
     git clone https://github.com/zsh-users/zsh-syntax-highlighting ~/.zsh/zsh-syntax-highlighting

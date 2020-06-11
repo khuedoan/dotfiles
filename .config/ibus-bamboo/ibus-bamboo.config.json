@@ -21,6 +21,7 @@
   "JupiterFlags": 0,
   "DefaultInputMode": 1,
   "InputModeMapping": {
+    "libreoffice:libreoffice-writer": 3,
     "qutebrowser:qutebrowser": 3,
     "xterm-256color:xterm-256color": 3
   },

@@ -5,4 +5,7 @@ use-global-engine=true
 version='1.5.22'
 
 [general/hotkey]
-triggers=['<Alt>space']
+triggers=['<Super><Shift>space']
+
+[panel]
+show-icon-on-systray=false

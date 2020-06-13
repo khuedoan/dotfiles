@@ -106,6 +106,7 @@ let g:lightline = {
 
 " fzf
 nnoremap <C-t> :Files<CR>
+nnoremap <LEADER>b :Buffers<CR>
 
 " Sneak
 let g:sneak#label = 1

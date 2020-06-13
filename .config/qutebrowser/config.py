@@ -51,6 +51,11 @@ config.bind('<Ctrl+Shift+Tab>', 'tab-prev')
 #| THEME |
 #+-------+
 
+# Fonts
+
+c.fonts.default_family = 'Source Code Pro'
+c.fonts.tabs = 'default_size Cantarell'
+
 # Palette
 black = '#282a36'
 red = '#ff5555'

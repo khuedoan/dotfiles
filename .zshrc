@@ -50,7 +50,7 @@ setopt no_auto_remove_slash
 
 # Plugins
 source $HOME/.zsh/powerlevel10k/powerlevel10k.zsh-theme \
-    || git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/.zsh/powerlevel10k
+    || git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $HOME/.zsh/powerlevel10k
 source $HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh \
     || git clone --depth 1 https://github.com/zsh-users/zsh-autosuggestions.git $HOME/.zsh/zsh-autosuggestions
 source $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh \
@@ -58,7 +58,7 @@ source $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh \
 source /usr/share/fzf/key-bindings.zsh
 
 # Powerlevel10k settings
-source $HOME/.zsh/powerlevel10k/p10k.zsh
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # fzf settings
 export FZF_CTRL_T_COMMAND='find .'

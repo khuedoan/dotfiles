@@ -125,6 +125,9 @@ endfunction
 " NERDTree
 map <C-n> :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+autocmd FileType nerdtree noremap <buffer> <TAB> <nop>
+autocmd FileType nerdtree noremap <buffer> <S-TAB> <nop>
+autocmd FileType nerdtree noremap <buffer> <LEADER>d <nop>
 
 " Barbaric
 let g:barbaric_default = 'xkb:us::eng'

@@ -1,44 +1,10 @@
 # Disable software flow control
 stty -ixon
 
-# Prompt theme
-setopt prompt_subst
-autoload -U colors && colors
-
-prompt_color1="cyan"
-prompt_color2="blue"
-
-function prompt_git_status {
-    branch=$(git rev-parse --abbrev-ref HEAD 2>/dev/null)
-    if [ "$?" = "0" ]; then
-        if [ -z "$(git status --porcelain)" ]; then
-            prompt_color_git="green"
-        else
-            prompt_color_git="yellow"
-        fi
-        echo "%{$fg[$prompt_color2]$bg[$prompt_color_git]%}%{$reset_color%}%{$fg[black]$bg[$prompt_color_git]%} $branch %{$reset_color%}%{$fg[$prompt_color_git]%} %{$reset_color%}"
-    else
-        echo "%{$fg[$prompt_color2]%} %{$reset_color%}"
-    fi
-}
-
-PROMPT=$'%
-%{$fg[$prompt_color1]%}%{$reset_color%}%
-%{$fg[black]$bg[$prompt_color1]%}%n %{$reset_color%}%
-%{$fg[$prompt_color1]$bg[$prompt_color2]%}%{$reset_color%}%
-%{$fg[black]$bg[$prompt_color2]%} %1~ %{$reset_color%}%
-$(prompt_git_status)%
-'
-
-RPROMPT=$'%
-%(?.%
-%{$fg[white]%}%~%{$reset_color%}%
-.%
-%{$fg[red]%} %{$reset_color%}%
-%{$fg[black]$bg[red]%} %?%{$reset_color%}%
-%{$fg[red]%}%{$reset_color%}%
-)%
-'
+# Enable Powerlevel10k instant prompt
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
 
 # Key bindings
 bindkey -v
@@ -83,11 +49,16 @@ setopt complete_aliases
 setopt no_auto_remove_slash
 
 # Plugins
+source $HOME/.zsh/powerlevel10k/powerlevel10k.zsh-theme \
+    || git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $HOME/.zsh/powerlevel10k
 source $HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh \
     || git clone --depth 1 https://github.com/zsh-users/zsh-autosuggestions.git $HOME/.zsh/zsh-autosuggestions
 source $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh \
     || git clone --depth 1 https://github.com/zsh-users/zsh-syntax-highlighting.git $HOME/.zsh/zsh-syntax-highlighting
 source /usr/share/fzf/key-bindings.zsh
+
+# Powerlevel10k settings
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # fzf settings
 export FZF_CTRL_T_COMMAND='find .'

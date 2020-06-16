@@ -75,6 +75,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'justinmk/vim-sneak'
 Plug 'mattn/vim-gist'
 Plug 'mattn/webapi-vim'
+Plug 'mzlogin/vim-markdown-toc'
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 Plug 'preservim/nerdtree'
 Plug 'rlue/vim-barbaric'

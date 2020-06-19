@@ -1,4 +1,8 @@
 {
   "InputMethod": "Telex W",
-  "DefaultInputMode": 6
+  "DefaultInputMode": 3,
+  "InputModeMapping": {
+    "qutebrowser:qutebrowser": 3,
+    "libreoffice:libreoffice-writer": 2
+  }
 }

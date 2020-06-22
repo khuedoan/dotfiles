@@ -10,6 +10,7 @@ fi
 bindkey -v
 export KEYTIMEOUT=1
 bindkey '^[[3~' delete-char
+bindkey '^?' backward-delete-char
 bindkey '^B' backward-char
 bindkey '^F' forward-char
 bindkey '^A' beginning-of-line

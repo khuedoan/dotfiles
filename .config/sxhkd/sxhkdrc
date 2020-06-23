@@ -17,6 +17,9 @@ super + {_,shift + }grave
 # Focus the last workspace
 super + Tab
 	bspc desktop -f last
+# Move floating windows
+super + ctrl + {h,j,k,l}
+	bspc node -v {-50 0,0 50,0 -50,50 0}
 
 #############
 # Preselect #

@@ -1,9 +1,0 @@
-#!/bin/sh
-
-bookmark=$(cat $HOME/.config/qutebrowser/quickmarks | \
-           column --table | \
-           dmenu -p 'Load Bookmark' -l 25 -i)
-
-[ "$bookmark" ] || exit 1
-
-qutebrowser "${bookmark##* }"

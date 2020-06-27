@@ -91,9 +91,6 @@ super + Return
 # Web browser
 super + {_,shift + }w
     qutebrowser {_, ':open -p'}
-# Bookmarks
-super + b
-    dmenu-bookmarks
 # Translator
 super + {_,shift + }t
     dmenu-trans {en:vi,_}

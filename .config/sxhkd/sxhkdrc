@@ -90,7 +90,7 @@ super + Return
 	st
 # Web browser
 super + {_,shift + }w
-    qutebrowser {_, ':open -p'}
+    firefox {_,--private-window}
 # Translator
 super + {_,shift + }t
     dmenu-trans {en:vi,_}

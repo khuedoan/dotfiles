@@ -22,7 +22,7 @@ set updatetime=100 " Delay before writing to swap file
 " Jumps to the last known position in a file after opening it
 autocmd BufReadPost *
     \ if line("'\"") >= 1 && line("'\"") <= line("$") && &ft !~# 'commit'
-    \ |   exe "normal! g`\""
+    \ |     exe "normal! g`\""
     \ | endif
 
 "+-------------+
@@ -85,6 +85,12 @@ Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 call plug#end()
+
+" Auto install missing plugin
+autocmd VimEnter *
+  \ if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
+  \ |     PlugInstall --sync | q
+  \ | endif
 
 " Theme
 autocmd ColorScheme * highlight Normal ctermbg=NONE guibg=NONE

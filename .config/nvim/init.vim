@@ -88,9 +88,9 @@ call plug#end()
 
 " Auto install missing plugin
 autocmd VimEnter *
-  \ if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
-  \ |     PlugInstall --sync | q
-  \ | endif
+    \ if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
+    \ |     PlugInstall --sync | q
+    \ | endif
 
 " Theme
 autocmd ColorScheme * highlight Normal ctermbg=NONE guibg=NONE
@@ -131,14 +131,14 @@ function! s:check_back_space() abort
 endfunction
 
 let g:coc_global_extensions = [
-    \'coc-css',
-    \'coc-highlight',
-    \'coc-html',
-    \'coc-json',
-    \'coc-python',
-    \'coc-tsserver',
-    \'coc-yaml',
-    \]
+    \ 'coc-css',
+    \ 'coc-highlight',
+    \ 'coc-html',
+    \ 'coc-json',
+    \ 'coc-python',
+    \ 'coc-tsserver',
+    \ 'coc-yaml',
+    \ ]
 
 " NERDTree
 map <C-n> :NERDTreeToggle<CR>

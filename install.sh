@@ -92,7 +92,6 @@ install_battery_saver() {
     sudo pacman --noconfirm --needed -S tlp powertop
     trizen --noconfirm --needed -S intel-undervolt
     sudo systemctl enable tlp.service
-    sudo systemctl enable tlp-sleep.service
     sudo intel-undervolt apply
     sudo systemctl enable intel-undervolt.service
 }

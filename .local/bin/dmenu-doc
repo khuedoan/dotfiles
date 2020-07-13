@@ -1,6 +1,6 @@
 #!/bin/sh
 
-pdf=$(find ~/Documents \
+pdf=$(find ~ \
        -type f -iname '*.pdf' \
        -maxdepth 3 \
        | dmenu -p "Document" -l 25 -i)

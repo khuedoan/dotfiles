@@ -2,7 +2,7 @@
 
 pdf=$(find ~ \
        -type f -iname '*.pdf' \
-       -maxdepth 3 \
+       -maxdepth 4 \
        | dmenu -p "Document" -l 25 -i)
 
 [ -z "$pdf" ] && exit 1

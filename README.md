@@ -18,9 +18,9 @@ Install the following packages:
 - `bspwm`
 - `sxhkd`
 - [`polybar`](https://aur.archlinux.org/packages/polybar/)
-- [`dmenu`](https://github.com/khuedoan98/dmenu)
-- [`st`](https://github.com/khuedoan98/st)
-- [`slock`](https://github.com/khuedoan98/slock)
+- [`dmenu`](https://github.com/khuedoan/dmenu)
+- [`st`](https://github.com/khuedoan/st)
+- [`slock`](https://github.com/khuedoan/slock)
 - [`compton-tryone-git`](https://aur.archlinux.org/packages/compton-tryone-git/)
 - [`nerd-fonts-source-code-pro`](https://aur.archlinux.org/packages/nerd-fonts-source-code-pro/)
 
@@ -32,7 +32,7 @@ If you want to push your customization to GitHub, you need to fork this repo, ch
 
 Get the install script:
 
-`curl -O https://raw.githubusercontent.com/khuedoan98/dotfiles/master/install.sh`
+`curl -O https://raw.githubusercontent.com/khuedoan/dotfiles/master/install.sh`
 
 `chmod +x install.sh`
 

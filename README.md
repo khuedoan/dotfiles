@@ -4,6 +4,8 @@
 
 ![Screenshot](https://i.imgur.com/34u3YI9.jpg)
 
+## Table of contents
+
 <!-- vim-markdown-toc GFM -->
 
 * [Getting Started](#getting-started)

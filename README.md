@@ -4,6 +4,18 @@
 
 ![Screenshot](https://i.imgur.com/34u3YI9.jpg)
 
+<!-- vim-markdown-toc GFM -->
+
+* [Getting Started](#getting-started)
+    * [Prerequisites](#prerequisites)
+    * [Installation](#installation)
+    * [Quick usage instruction](#quick-usage-instruction)
+* [Features](#features)
+    * [Version control](#version-control)
+* [Acknowledgements](#acknowledgements)
+
+<!-- vim-markdown-toc -->
+
 ## Getting Started
 
 ### Prerequisites

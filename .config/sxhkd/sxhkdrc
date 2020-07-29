@@ -91,6 +91,9 @@ super + Return
 # Web browser
 super + {_,shift + }w
     firefox {_,--private-window}
+# File explorer
+super + e
+    pcmanfm
 # Translator
 super + {_,shift + }t
     dmenu-trans {en:vi,_}

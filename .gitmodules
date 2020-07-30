@@ -1,9 +1,9 @@
 [submodule ".local/src/st"]
 	path = .local/src/st
-	url = git@github.com:khuedoan/st.git
+	url = https://github.com/khuedoan/st.git
 [submodule ".local/src/dmenu"]
 	path = .local/src/dmenu
-	url = git@github.com:khuedoan/dmenu.git
+	url = https://github.com/khuedoan/dmenu.git
 [submodule ".local/src/slock"]
 	path = .local/src/slock
-	url = git@github.com:khuedoan/slock.git
+	url = https://github.com/khuedoan/slock.git

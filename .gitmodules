@@ -1,0 +1,3 @@
+[submodule ".local/src/st"]
+	path = .local/src/st
+	url = git@github.com:khuedoan/st.git

@@ -1,3 +1,6 @@
 [submodule ".local/src/st"]
 	path = .local/src/st
 	url = git@github.com:khuedoan/st.git
+[submodule ".local/src/dmenu"]
+	path = .local/src/dmenu
+	url = git@github.com:khuedoan/dmenu.git

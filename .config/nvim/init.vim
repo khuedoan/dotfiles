@@ -51,6 +51,9 @@ inoremap <C-f> <Right>
 inoremap <C-a> <Home>
 inoremap <C-e> <End>
 
+" Clear last search highlighting
+nnoremap <C-c> :noh<CR>
+
 "+---------+
 "| PLUGINS |
 "+---------+

@@ -9,7 +9,7 @@ fi
 # Key bindings
 bindkey -v
 export KEYTIMEOUT=1
-bindkey '^[[3~' delete-char
+bindkey '^[[P' delete-char
 
 # Change cursor shape based on vi mode
 function zle-keymap-select zle-line-init zle-line-finish {

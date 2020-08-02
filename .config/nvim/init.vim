@@ -45,12 +45,6 @@ nnoremap <LEADER>d :bp<CR>:bd #<CR>
 " Copy with system clipboard
 vmap <C-c> "+y
 
-" Basic Emacs bindings in Insert mode
-inoremap <C-b> <Left>
-inoremap <C-f> <Right>
-inoremap <C-a> <Home>
-inoremap <C-e> <End>
-
 " Clear last search highlighting
 nnoremap <C-c> :noh<CR>
 

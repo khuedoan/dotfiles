@@ -16,6 +16,7 @@ install_dotfiles() {
         if [ "$response" = "y" ] || [[ "$@" == *"-y"* ]]; then
             dotfiles checkout 2>&1 | grep -E "^\s+" | sed -e 's/^[ \t]*//' | xargs -d "\n" -I {} rm -v {}
             dotfiles checkout
+            dotfiles submodule update --init --recursive
             dotfiles config status.showUntrackedFiles no
         else
             rm -rf $GITDIR
@@ -45,10 +46,6 @@ install_core_packages() {
 
     # Add user to video group to adjust backlight
     sudo usermod -aG video $USER
-
-    # zsh plugins
-    git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
-    git clone https://github.com/zsh-users/zsh-syntax-highlighting ~/.zsh/zsh-syntax-highlighting
 
     # compton
     sudo pacman --noconfirm --needed -S asciidoc libconfig

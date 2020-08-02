@@ -46,12 +46,9 @@ setopt complete_aliases
 setopt no_auto_remove_slash
 
 # Plugins
-source $HOME/.zsh/powerlevel10k/powerlevel10k.zsh-theme \
-    || git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $HOME/.zsh/powerlevel10k
-source $HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh \
-    || git clone --depth 1 https://github.com/zsh-users/zsh-autosuggestions.git $HOME/.zsh/zsh-autosuggestions
-source $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh \
-    || git clone --depth 1 https://github.com/zsh-users/zsh-syntax-highlighting.git $HOME/.zsh/zsh-syntax-highlighting
+source $HOME/.zsh/powerlevel10k/powerlevel10k.zsh-theme
+source $HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /usr/share/fzf/key-bindings.zsh
 
 # Powerlevel10k settings

@@ -7,3 +7,6 @@
 [submodule ".local/src/slock"]
 	path = .local/src/slock
 	url = https://github.com/khuedoan/slock.git
+[submodule ".zsh/zsh-autosuggestions"]
+	path = .zsh/zsh-autosuggestions
+	url = https://github.com/zsh-users/zsh-autosuggestions.git

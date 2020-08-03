@@ -64,10 +64,10 @@ call plug#begin()
 Plug 'airblade/vim-gitgutter'
 Plug 'ap/vim-buftabline'
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 Plug 'itchyny/lightline.vim'
 Plug 'jiangmiao/auto-pairs'
+Plug 'joshdick/onedark.vim'
 Plug 'junegunn/fzf.vim'
 Plug 'justinmk/vim-sneak'
 Plug 'mattn/vim-gist'
@@ -91,7 +91,7 @@ autocmd VimEnter *
 
 " Theme
 autocmd ColorScheme * highlight Normal ctermbg=NONE guibg=NONE
-colorscheme dracula
+colorscheme onedark
 
 " Tmux navigator
 let g:tmux_navigator_no_mappings = 1
@@ -103,7 +103,7 @@ nnoremap <silent> <M-`> :TmuxNavigatePrevious<cr>
 
 " Lightline
 let g:lightline = {
-    \ 'colorscheme': 'dracula',
+    \ 'colorscheme': 'onedark',
     \ 'separator': { 'left': '', 'right': '' },
     \ 'subseparator': { 'left': '', 'right': '' }
     \ }

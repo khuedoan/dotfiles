@@ -3,21 +3,23 @@
 "+----------+
 
 " Options
-set cursorline     " Highlight the current line of the cursor
-set expandtab      " Use spaces when tab is inserted
-set incsearch      " Highlight match while typing search pattern
-set mouse=a        " Enable mouse support
-set noshowmode     " Hide mode infomation on the last line
-set number         " Print the line number
-set relativenumber " Show relative line number
-set scrolloff=1    " Minimum number of lines above and below cursor
-set shiftwidth=4   " Number of spaces to use for indent step
-set signcolumn=yes " Always display sign column
-set splitbelow     " New window from split is below the current one
-set splitright     " New window is put right of the current one
-set tabstop=4      " Number of spaces that Tab in file uses
-set termguicolors  " Use 24-bit color
-set updatetime=100 " Delay before writing to swap file
+set cursorline                  " Highlight the current line of the cursor
+set expandtab                   " Use spaces when tab is inserted
+set incsearch                   " Highlight match while typing search pattern
+set mouse=a                     " Enable mouse support
+set noshowmode                  " Hide mode infomation on the last line
+set number                      " Print the line number
+set relativenumber              " Show relative line number
+set scrolloff=1                 " Minimum number of lines above and below cursor
+set shiftwidth=4                " Number of spaces to use for indent step
+set signcolumn=yes              " Always display sign column
+set splitbelow                  " New window from split is below the current one
+set splitright                  " New window is put right of the current one
+set tabstop=4                   " Number of spaces that Tab in file uses
+set termguicolors               " Use 24-bit color
+set updatetime=100              " Delay before writing to swap file
+set showtabline=2               " Always show tab line
+set switchbuf=usetab            " Behavior when switching between buffers
 
 " Jumps to the last known position in a file after opening it
 autocmd BufReadPost *
@@ -38,8 +40,8 @@ nnoremap <C-s> :w<CR>
 nnoremap <C-q> :q<CR>
 
 " Buffer
-nnoremap <TAB> :bnext<CR>
-nnoremap <S-TAB> :bprevious<CR>
+nnoremap <TAB> :sbnext<CR>
+nnoremap <S-TAB> :sbprevious<CR>
 nnoremap <LEADER>d :bp<CR>:bd #<CR>
 
 " Copy with system clipboard
@@ -62,7 +64,6 @@ endif
 " List of plugins
 call plug#begin()
 Plug 'airblade/vim-gitgutter'
-Plug 'ap/vim-buftabline'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 Plug 'itchyny/lightline.vim'
@@ -72,6 +73,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'justinmk/vim-sneak'
 Plug 'mattn/vim-gist'
 Plug 'mattn/webapi-vim'
+Plug 'mengelbrecht/lightline-bufferline'
 Plug 'mzlogin/vim-markdown-toc'
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 Plug 'preservim/nerdtree'
@@ -106,8 +108,13 @@ nnoremap <silent> <M-`> :TmuxNavigatePrevious<cr>
 let g:lightline = {
     \ 'colorscheme': 'onedark',
     \ 'separator': { 'left': '', 'right': '' },
-    \ 'subseparator': { 'left': '', 'right': '' }
+    \ 'subseparator': { 'left': '', 'right': '' },
+    \ 'tabline': { 'left': [ [ 'buffers'] ], 'right': [ [ 'tabs' ] ] },
+    \ 'component_expand': { 'buffers': 'lightline#bufferline#buffers' },
+    \ 'component_type': { 'buffers': 'tabsel' },
+    \ 'component_raw': { 'buffers': 1 }
     \ }
+let g:lightline#bufferline#clickable = 1
 
 " fzf
 nnoremap <C-t> :Files<CR>
@@ -142,10 +149,7 @@ let g:coc_global_extensions = [
 
 " NERDTree
 map <C-n> :NERDTreeToggle<CR>
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-autocmd FileType nerdtree noremap <buffer> <TAB> <nop>
-autocmd FileType nerdtree noremap <buffer> <S-TAB> <nop>
-autocmd FileType nerdtree noremap <buffer> <LEADER>d <nop>
+autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " Barbaric
 let g:barbaric_default = 'xkb:us::eng'

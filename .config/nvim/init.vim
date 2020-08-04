@@ -18,6 +18,7 @@ set splitright                  " New window is put right of the current one
 set tabstop=4                   " Number of spaces that Tab in file uses
 set termguicolors               " Use 24-bit color
 set updatetime=100              " Delay before writing to swap file
+set showtabline=2               " Always show tab line
 
 " Jumps to the last known position in a file after opening it
 autocmd BufReadPost *
@@ -62,7 +63,6 @@ endif
 " List of plugins
 call plug#begin()
 Plug 'airblade/vim-gitgutter'
-Plug 'ap/vim-buftabline'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
@@ -72,6 +72,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'justinmk/vim-sneak'
 Plug 'mattn/vim-gist'
 Plug 'mattn/webapi-vim'
+Plug 'mengelbrecht/lightline-bufferline'
 Plug 'mzlogin/vim-markdown-toc'
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 Plug 'preservim/nerdtree'
@@ -106,8 +107,13 @@ nnoremap <silent> <M-`> :TmuxNavigatePrevious<cr>
 let g:lightline = {
     \ 'colorscheme': 'dracula',
     \ 'separator': { 'left': '', 'right': '' },
-    \ 'subseparator': { 'left': '', 'right': '' }
+    \ 'subseparator': { 'left': '', 'right': '' },
+    \ 'tabline': { 'left': [ [ 'buffers'] ], 'right': [ [ 'tabs' ] ] },
+    \ 'component_expand': { 'buffers': 'lightline#bufferline#buffers' },
+    \ 'component_type': { 'buffers': 'tabsel' },
+    \ 'component_raw': { 'buffers': 1 }
     \ }
+let g:lightline#bufferline#clickable = 1
 
 " fzf
 nnoremap <C-t> :Files<CR>

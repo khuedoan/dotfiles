@@ -19,6 +19,7 @@ set tabstop=4                   " Number of spaces that Tab in file uses
 set termguicolors               " Use 24-bit color
 set updatetime=100              " Delay before writing to swap file
 set showtabline=2               " Always show tab line
+set switchbuf=usetab            " Behavior when switching between buffers
 
 " Jumps to the last known position in a file after opening it
 autocmd BufReadPost *
@@ -39,8 +40,8 @@ nnoremap <C-s> :w<CR>
 nnoremap <C-q> :q<CR>
 
 " Buffer
-nnoremap <TAB> :bnext<CR>
-nnoremap <S-TAB> :bprevious<CR>
+nnoremap <TAB> :sbnext<CR>
+nnoremap <S-TAB> :sbprevious<CR>
 nnoremap <LEADER>d :bp<CR>:bd #<CR>
 
 " Copy with system clipboard
@@ -148,10 +149,7 @@ let g:coc_global_extensions = [
 
 " NERDTree
 map <C-n> :NERDTreeToggle<CR>
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-autocmd FileType nerdtree noremap <buffer> <TAB> <nop>
-autocmd FileType nerdtree noremap <buffer> <S-TAB> <nop>
-autocmd FileType nerdtree noremap <buffer> <LEADER>d <nop>
+autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " Barbaric
 let g:barbaric_default = 'xkb:us::eng'

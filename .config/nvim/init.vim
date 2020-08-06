@@ -93,7 +93,6 @@ autocmd VimEnter *
     \ | endif
 
 " Theme
-autocmd ColorScheme * highlight Normal ctermbg=NONE guibg=NONE
 colorscheme onedark
 
 " Tmux navigator

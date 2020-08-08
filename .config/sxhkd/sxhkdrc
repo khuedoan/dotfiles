@@ -61,6 +61,8 @@ super + g
 # Volume
 {XF86AudioMute,XF86AudioLowerVolume,XF86AudioRaiseVolume}
 	amixer -q set Master {toggle,10%- unmute,10%+ unmute}
+super + {button2,button5,button4}
+	amixer -q set Master {toggle,10%- unmute,10%+ unmute}
 # Player
 {XF86AudioPrev,XF86AudioPlay,XF86AudioNext}
 	playerctl {previous,play-pause,next}

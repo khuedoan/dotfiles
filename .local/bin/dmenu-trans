@@ -1,6 +1,6 @@
 #!/bin/sh
 
-text=$(echo "$(xclip -o)" | dmenu -p "Google Translate")
+text=$(xclip -selection clipboard -o | dmenu -p "Google Translate")
 
 [ -z $text ] && exit 1
 

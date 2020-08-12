@@ -9,7 +9,7 @@
     padding            = 20
     horizontal_padding = 20
     frame_width = 0
-    frame_color = "#ffffff"
+    frame_color = "#5c6370"
     separator_height = 1
     separator_color  = auto
     sort = yes
@@ -62,16 +62,16 @@
     per_monitor_dpi = false
 
 [urgency_low]
-    background = "#282a36"
-    foreground = "#f8f8f2"
+    background = "#282c34"
+    foreground = "#abb2bf"
     timeout = 5
 
 [urgency_normal]
-    background = "#f8f8f2"
-    foreground = "#282a36"
+    background = "#282c34"
+    foreground = "#abb2bf"
     timeout = 10
 
 [urgency_critical]
-    background = "#900000"
-    foreground = "#f8f8f2"
+    background = "#282c34"
+    foreground = "#e06c75"
     timeout = 0

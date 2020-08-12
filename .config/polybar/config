@@ -1,14 +1,14 @@
 ; vim:ft=dosini
 
 [colors]
-foreground         = #f8f8f2
+foreground         = #abb2bf
 foreground-alt     = #666666
-foreground-focused = #282a36
-background         = #88282a36
-background-focused = #f8f8f2
-red    = #ff5555
-green  = #50fa7b
-yellow = #f1fa8c
+foreground-focused = #282c34
+background         = #88282c34
+background-focused = #abb2bf
+red    = #be5046
+green  = #98c379
+yellow = #d19a66
 
 [bar/topbar]
 monitor = ${env:MONITOR}

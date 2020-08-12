@@ -1,4 +1,4 @@
-# Arch Linux Rice
+# My ~
 
 ![Screenshot](https://i.imgur.com/HhjEfA3.png)
 

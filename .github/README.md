@@ -1,6 +1,6 @@
 # Arch Linux Rice
 
-![Screenshot](https://i.imgur.com/cygYEpi.png)
+![Screenshot](https://i.imgur.com/HhjEfA3.png)
 
 ## Table of contents
 

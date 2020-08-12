@@ -1,7 +1,5 @@
 # Arch Linux Rice
 
-![Badge](https://gitlab.com/khuedoan/dotfiles/badges/master/pipeline.svg)
-
 ![Screenshot](https://i.imgur.com/34u3YI9.jpg)
 
 ## Table of contents

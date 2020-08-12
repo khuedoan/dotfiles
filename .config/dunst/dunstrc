@@ -8,7 +8,7 @@
     notification_height = 100
     padding            = 20
     horizontal_padding = 20
-    frame_width = 1
+    frame_width = 0
     frame_color = "#5c6370"
     separator_height = 1
     separator_color  = auto

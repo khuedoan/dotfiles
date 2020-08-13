@@ -12,6 +12,7 @@
     * [Quick usage instruction](#quick-usage-instruction)
 * [Features](#features)
     * [Version control](#version-control)
+    * [Wallpapers](#wallpapers)
 * [Acknowledgements](#acknowledgements)
 
 <!-- vim-markdown-toc -->
@@ -87,6 +88,12 @@ Make change to the config files to suit your needs, then use `dotfiles` command 
 `dotfiles pull`
 
 Check out `.aliases` for more
+
+### Wallpapers
+
+| Original | Blured|
+| :-- | :-- |
+| ![Original](https://i.imgur.com/ZlvUiIZ.jpg) | ![Blured](https://i.imgur.com/C3tCYsp.jpg) |
 
 ## Acknowledgements
 

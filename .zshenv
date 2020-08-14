@@ -11,3 +11,6 @@ export XMODIFIERS=@im=ibus
 
 # Vim
 export VISUAL=nvim
+
+# Fix Java application renders as a plain gray box
+export _JAVA_AWT_WM_NONREPARENTING=1

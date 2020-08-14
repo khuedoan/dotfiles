@@ -51,6 +51,7 @@ alias W='bc -l <<< "$(cat /sys/class/power_supply/BAT0/voltage_now)*$(cat /sys/c
 alias up='uptime -p'
 
 # tmux
+alias tmux='tmux -f $HOME/.config/tmux/tmux.conf'
 alias t='tmux'
 alias ta='tmux attach'
 

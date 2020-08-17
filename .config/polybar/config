@@ -62,8 +62,6 @@ label-connected         = %local_ip%
 [module/wlan]
 type = internal/network
 interface = ${env:WLAN}
-format-connected    = %{A1:dmenu-wifi:}<label-connected>%{A}
-format-disconnected = %{A1:dmenu-wifi:}<label-disconnected>%{A}
 format-connected-prefix    = "直 "
 format-disconnected-prefix = "睊 "
 format-disconnected-prefix-foreground = ${colors.red}

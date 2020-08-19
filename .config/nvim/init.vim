@@ -84,6 +84,7 @@ Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
+Plug 'voldikss/vim-floaterm'
 call plug#end()
 
 " Auto install missing plugin
@@ -151,3 +152,6 @@ autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 
 " Barbaric
 let g:barbaric_default = 'xkb:us::eng'
+
+" Floating terminal
+let g:floaterm_keymap_toggle = '<M-t>'

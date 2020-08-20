@@ -29,21 +29,6 @@ alias gl='git log --all --decorate --oneline --graph'
 alias gL='git log -p'
 alias gt='git ls-tree -r "$(git rev-parse --abbrev-ref HEAD)" --name-only'
 
-# dotfiles
-if [ -d "$HOME/.dotfiles" ] && [ ! -d "$HOME/.dotfiles/.git" ]; then
-    alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-    alias dfs='dotfiles status --short'
-    alias dfS='dotfiles status'
-    alias dfd='dotfiles diff'
-    alias dfa='dotfiles add'
-    alias dfc='dotfiles commit'
-    alias dfp='dotfiles push'
-    alias dfl='dotfiles log --all --decorate --oneline --graph'
-    alias dfL='dotfiles log -p'
-    alias dft='dotfiles ls-tree -r "$(dotfiles rev-parse --abbrev-ref HEAD)" --name-only'
-    alias dfe='config_file=$(dft | fzf) && vim "$config_file"'
-fi
-
 # aria2
 alias dl='aria2c -x 16 -s 16'
 

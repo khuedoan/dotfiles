@@ -45,7 +45,7 @@ If you want to push your customization to GitHub, you need to fork this repo, ch
 
 Get the install script:
 
-`curl -O https://raw.githubusercontent.com/khuedoan/linux-setup/master/misc/install-dotfiles.sh`
+`curl -O https://raw.githubusercontent.com/khuedoan/linux-setup/master/scripts/install-dotfiles.sh`
 
 `chmod +x install-dotfiles.sh`
 

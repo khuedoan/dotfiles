@@ -1,24 +1,18 @@
 [submodule ".local/src/st"]
-    path = .local/src/st
-    url = https://github.com/khuedoan/st.git
-    branch = master
+	path = .local/src/st
+	url = https://github.com/khuedoan/st.git
 [submodule ".local/src/dmenu"]
-    path = .local/src/dmenu
-    url = https://github.com/khuedoan/dmenu.git
-    branch = master
+	path = .local/src/dmenu
+	url = https://github.com/khuedoan/dmenu.git
 [submodule ".local/src/slock"]
-    path = .local/src/slock
-    url = https://github.com/khuedoan/slock.git
-    branch = master
+	path = .local/src/slock
+	url = https://github.com/khuedoan/slock.git
 [submodule ".zsh/zsh-autosuggestions"]
-    path = .zsh/zsh-autosuggestions
-    url = https://github.com/zsh-users/zsh-autosuggestions.git
-    branch = master
+	path = .zsh/zsh-autosuggestions
+	url = https://github.com/zsh-users/zsh-autosuggestions.git
 [submodule ".zsh/zsh-syntax-highlighting"]
-    path = .zsh/zsh-syntax-highlighting
-    url = https://github.com/zsh-users/zsh-syntax-highlighting.git
-    branch = master
+	path = .zsh/zsh-syntax-highlighting
+	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
 [submodule ".zsh/powerlevel10k"]
-    path = .zsh/powerlevel10k
-    url = https://github.com/romkatv/powerlevel10k.git
-    branch = master
+	path = .zsh/powerlevel10k
+	url = https://github.com/romkatv/powerlevel10k.git

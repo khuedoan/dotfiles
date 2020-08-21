@@ -6,6 +6,10 @@ single_monitor() {
     MONITOR1="$(echo "$MONITORS" | dmenu -p "Select monitor" -i)"
     MONITOR2="$(echo "$MONITORS" | grep -v "^$MONITOR1")"
 
+    if [ -z "$MONITOR1" ]; then
+        exit 1
+    fi
+
     xrandr --output "$MONITOR2" --off \
            --output "$MONITOR1" --primary --auto
 

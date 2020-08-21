@@ -13,7 +13,12 @@ single_monitor() {
 }
 
 save_profile() {
-    profile_name="$(ls $HOME/.config/autorandr/ | dmenu -p "Profile name")"
+    profile_name="$( \
+        echo $HOME/.config/autorandr/*/ \
+        | xargs -n 1 basename \
+        | dmenu -p "Profile name (new or overwrite)"
+    )"
+
     autorandr --save "$profile_name" --force
 }
 

@@ -153,3 +153,4 @@ let g:barbaric_default = 'xkb:us::eng'
 
 " Floating terminal
 let g:floaterm_keymap_toggle = '<M-t>'
+let g:floaterm_wintitle = v:false

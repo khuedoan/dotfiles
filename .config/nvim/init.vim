@@ -19,7 +19,6 @@ set tabstop=4                   " Number of spaces that Tab in file uses
 set termguicolors               " Use 24-bit color
 set updatetime=100              " Delay before writing to swap file
 set showtabline=2               " Always show tab line
-set switchbuf=usetab            " Behavior when switching between buffers
 
 " Jumps to the last known position in a file after opening it
 autocmd BufReadPost *
@@ -40,8 +39,6 @@ nnoremap <C-s> :w<CR>
 nnoremap <C-q> :q<CR>
 
 " Buffer
-nnoremap <TAB> :sbnext<CR>
-nnoremap <S-TAB> :sbprevious<CR>
 nnoremap <LEADER>d :bp<CR>:bd #<CR>
 
 " Copy with system clipboard
@@ -117,8 +114,9 @@ let g:lightline = {
 let g:lightline#bufferline#clickable = 1
 
 " fzf
+let g:fzf_buffers_jump = 1
 nnoremap <C-t> :Files<CR>
-nnoremap <LEADER>b :Buffers<CR>
+nnoremap <TAB> :Buffers<CR>
 
 " Sneak
 let g:sneak#label = 1

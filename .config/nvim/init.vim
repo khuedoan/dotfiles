@@ -40,8 +40,8 @@ nnoremap <C-s> :w<CR>
 nnoremap <C-q> :q<CR>
 
 " Buffer
-nnoremap <TAB> :bnext<CR>
-nnoremap <S-TAB> :bprevious<CR>
+nnoremap <TAB> :sbnext<CR>
+nnoremap <S-TAB> :sbprevious<CR>
 nnoremap <LEADER>d :bp<CR>:bd #<CR>
 
 " Copy with system clipboard

@@ -39,7 +39,7 @@ Install the following packages:
 
 ### Installation
 
-Using the method bellow, you can update new features from my repo using `dotfiles pull`, but you can't push your own customization to GitHub.
+Using the method bellow, you can update new features from my repo using `git pull`, but you can't push your own customization to GitHub.
 
 If you want to push your customization to GitHub, you need to fork this repo, change the `REPO` variable in `install-dotfiles.sh`, then continue running the script with the instruction below. You can't update new features from me automatically with `dotfiles pull`, but you can [do that manually](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/syncing-a-fork).
 
@@ -75,19 +75,17 @@ Some basic key bindings:
 
 ### Version control
 
-The following `dotfiles` command is an alias to [manage dotfiles using git bare](https://news.ycombinator.com/item?id=11070797).
+Make change to the config files to suit your needs, then use the `git` for version control like normal. For example:
 
-Make change to the config files to suit your needs, then use `dotfiles` command instead of `git` for version control. For example:
+```sh
+cd ~
+git add .config/foo
+git commit
+git push
+git pull
+```
 
-`dotfiles add .config/foo`
-
-`dotfiles commit`
-
-`dotfiles push`
-
-`dotfiles pull`
-
-Check out `.aliases` for more
+I used to manage my dotfiles using git bare with a `dotfiles` command but now I switched to normal `git` command.
 
 ### Wallpapers
 

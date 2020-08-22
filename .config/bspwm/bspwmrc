@@ -18,8 +18,7 @@ killall xcape
 killall sxhkd
 setxkbmap -option "ctrl:nocaps, \
                   shift:both_capslock, \
-                  altwin:swap_lalt_lwin, \
-                  lv3:ralt_switch"
+                  altwin:swap_lalt_lwin"
 xcape
 sxhkd &
 ibus-daemon -drx &

@@ -44,6 +44,9 @@ nnoremap <LEADER>d :bp<CR>:bd #<CR>
 " Copy with system clipboard
 vmap <C-c> "+y
 
+" Replace last search
+nnoremap <LEADER>r :%s///g<LEFT><LEFT>
+
 " Clear last search highlighting
 nnoremap <C-c> :noh<CR>
 

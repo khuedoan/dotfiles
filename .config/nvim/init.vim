@@ -63,6 +63,7 @@ endif
 
 " List of plugins
 call plug#begin()
+Plug 'APZelos/blamer.nvim'
 Plug 'airblade/vim-gitgutter'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'ferrine/md-img-paste.vim'
@@ -96,6 +97,11 @@ autocmd VimEnter *
 
 " Theme
 colorscheme onedark
+
+" Git blame
+let g:blamer_enabled = 1
+let g:blamer_show_in_visual_modes = 0
+let g:blamer_relative_time = 1
 
 " Tmux navigator
 let g:tmux_navigator_no_mappings = 1

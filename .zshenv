@@ -14,3 +14,6 @@ export VISUAL=nvim
 
 # Fix Java application renders as a plain gray box
 export _JAVA_AWT_WM_NONREPARENTING=1
+
+# Hide emojis
+export PIPENV_HIDE_EMOJIS=1

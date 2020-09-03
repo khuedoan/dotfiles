@@ -20,12 +20,6 @@ set termguicolors               " Use 24-bit color
 set updatetime=100              " Delay before writing to swap file
 set showtabline=2               " Always show tab line
 
-" Jumps to the last known position in a file after opening it
-autocmd BufReadPost *
-    \ if line("'\"") >= 1 && line("'\"") <= line("$") && &ft !~# 'commit'
-    \ |     exe "normal! g`\""
-    \ | endif
-
 "+-------------+
 "| KEY MAPPING |
 "+-------------+
@@ -66,6 +60,7 @@ call plug#begin()
 Plug 'APZelos/blamer.nvim'
 Plug 'airblade/vim-gitgutter'
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'farmergreg/vim-lastplace'
 Plug 'ferrine/md-img-paste.vim'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 Plug 'itchyny/lightline.vim'

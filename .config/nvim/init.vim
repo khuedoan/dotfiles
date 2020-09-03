@@ -80,6 +80,7 @@ Plug 'sheerun/vim-polyglot'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-surround'
 Plug 'voldikss/vim-floaterm'
 call plug#end()
@@ -144,6 +145,7 @@ endfunction
 
 let g:coc_global_extensions = [
     \ 'coc-css',
+    \ 'coc-go',
     \ 'coc-highlight',
     \ 'coc-html',
     \ 'coc-json',

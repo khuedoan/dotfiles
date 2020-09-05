@@ -32,10 +32,6 @@ alias gt='git ls-tree -r "$(git rev-parse --abbrev-ref HEAD)" --name-only'
 # aria2
 alias dl='aria2c -x 16 -s 16'
 
-# battery
-alias W='bc -l <<< "$(cat /sys/class/power_supply/BAT0/voltage_now)*$(cat /sys/class/power_supply/BAT0/current_now)/10^12" | cut -b -4'
-alias up='uptime -p'
-
 # tmux
 alias tmux='tmux -f $HOME/.config/tmux/tmux.conf'
 alias t='tmux'

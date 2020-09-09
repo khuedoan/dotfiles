@@ -54,5 +54,8 @@ source /usr/share/fzf/key-bindings.zsh
 # Powerlevel10k settings
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
+# Disable right prompt indent
+ZLE_RPROMPT_INDENT=0
+
 # fzf settings
 export FZF_CTRL_T_COMMAND='find .'

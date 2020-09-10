@@ -33,7 +33,6 @@ alias gt='git ls-tree -r "$(git rev-parse --abbrev-ref HEAD)" --name-only'
 alias dl='aria2c -x 16 -s 16'
 
 # tmux
-alias tmux='tmux -f $HOME/.config/tmux/tmux.conf'
 alias t='tmux'
 alias ta='tmux attach'
 

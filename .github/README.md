@@ -34,7 +34,7 @@ Install the following packages:
 - [`dmenu`](https://github.com/khuedoan/dmenu)
 - [`st`](https://github.com/khuedoan/st)
 - [`slock`](https://github.com/khuedoan/slock)
-- [`compton-tryone-git`](https://aur.archlinux.org/packages/compton-tryone-git/)
+- [`picom-git`](https://aur.archlinux.org/packages/picom-git/)
 - [`nerd-fonts-source-code-pro`](https://aur.archlinux.org/packages/nerd-fonts-source-code-pro/)
 
 ### Installation

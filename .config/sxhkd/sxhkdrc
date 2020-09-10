@@ -52,7 +52,7 @@ super + m
 # Toggle game mode
 super + g
     killall xcape || xcape; \
-    killall compton || compton
+    killall picom || picom --experimental-backends
 
 ##############
 # Media keys #

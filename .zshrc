@@ -1,16 +1,25 @@
-# Disable software flow control
-stty -ixon
-
 # Enable Powerlevel10k instant prompt
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-# Key bindings
-bindkey -v
-export KEYTIMEOUT=1
-bindkey '^[[P' delete-char
-bindkey '^?' backward-delete-char
+# Plugin manager
+source ~/.zsh/zinit/zinit.zsh || \
+    git clone https://github.com/zdharma/zinit.git ~/.zsh/zinit
+
+# Plugin list
+zinit wait lucid atload"zicompinit; zicdreplay" blockf for zsh-users/zsh-completions
+zinit light zdharma/fast-syntax-highlighting
+zinit light zsh-users/zsh-autosuggestions
+zinit light romkatv/powerlevel10k
+zinit light hlissner/zsh-autopair
+zinit snippet https://github.com/junegunn/fzf/blob/master/shell/key-bindings.zsh
+
+# Powerlevel10k config
+source ~/.p10k.zsh
+
+# Disable right prompt indent
+ZLE_RPROMPT_INDENT=0
 
 # Change cursor shape based on vi mode
 function zle-keymap-select zle-line-init zle-line-finish {
@@ -30,32 +39,11 @@ SAVEHIST=10000
 HISTFILE=$HOME/.zsh_history
 setopt histignorealldups sharehistory
 
+# Key bindings
+bindkey -v
+export KEYTIMEOUT=1
+bindkey '^[[P' delete-char
+bindkey '^?' backward-delete-char
+
 # Aliases
 source $HOME/.aliases
-
-# Options
-setopt autocd autopushd
-setopt noflowcontrol
-
-# Completion
-autoload -Uz compinit
-compinit
-zstyle ':completion:*' menu select
-zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}'
-setopt complete_aliases
-setopt no_auto_remove_slash
-
-# Plugins
-source $HOME/.zsh/powerlevel10k/powerlevel10k.zsh-theme
-source $HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-source $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source /usr/share/fzf/key-bindings.zsh
-
-# Powerlevel10k settings
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-# Disable right prompt indent
-ZLE_RPROMPT_INDENT=0
-
-# fzf settings
-export FZF_CTRL_T_COMMAND='find .'

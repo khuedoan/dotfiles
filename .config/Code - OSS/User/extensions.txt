@@ -1,0 +1,12 @@
+asvetliakov.vscode-neovim
+eamodio.gitlens
+golang.go
+ms-azuretools.vscode-docker
+ms-kubernetes-tools.vscode-kubernetes-tools
+ms-python.python
+ms-vscode.cpptools
+redhat.vscode-yaml
+rust-lang.rust
+VisualStudioExptTeam.vscodeintellicode
+vscoss.vscode-ansible
+zhuangtongfa.material-theme

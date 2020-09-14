@@ -1,0 +1,20 @@
+{
+    "editor.lineNumbers": "relative",
+    "editor.minimap.enabled": false,
+    "editor.occurrencesHighlight": false,
+    "editor.suggestSelection": "first",
+
+    "files.trimTrailingWhitespace": true,
+
+    "telemetry.enableCrashReporter": false,
+    "telemetry.enableTelemetry": false,
+
+    "workbench.colorTheme": "One Dark Pro",
+    "workbench.enableExperiments": false,
+
+    "window.enableMenuBarMnemonics": false,
+    "window.menuBarVisibility": "toggle",
+
+    "vscode-neovim.neovimExecutablePaths.linux": "/tmp/nvim/bin/nvim",
+    "vscode-neovim.neovimInitVimPaths.linux": "$HOME/.config/Code - OSS/User/init.vim"
+}

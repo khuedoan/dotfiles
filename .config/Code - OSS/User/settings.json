@@ -1,4 +1,5 @@
 {
+    "editor.fontFamily": "'SauceCodePro Nerd Font'",
     "editor.lineNumbers": "relative",
     "editor.minimap.enabled": false,
     "editor.occurrencesHighlight": false,

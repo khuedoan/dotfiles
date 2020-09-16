@@ -9,4 +9,5 @@ redhat.vscode-yaml
 rust-lang.rust
 VisualStudioExptTeam.vscodeintellicode
 vscoss.vscode-ansible
+yzhang.markdown-all-in-one
 zhuangtongfa.material-theme

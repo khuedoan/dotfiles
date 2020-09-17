@@ -17,5 +17,5 @@
     "window.menuBarVisibility": "toggle",
 
     "vscode-neovim.neovimExecutablePaths.linux": "nvim",
-    "vscode-neovim.neovimInitVimPaths.linux": "$HOME/.config/Code - OSS/User/init.vim"
+    "vscode-neovim.neovimInitVimPaths.linux": "/dev/null"
 }

@@ -147,6 +147,7 @@ endfunction
 let g:coc_global_extensions = [
     \ 'coc-css',
     \ 'coc-docker',
+    \ 'coc-emmet',
     \ 'coc-go',
     \ 'coc-html',
     \ 'coc-json',

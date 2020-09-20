@@ -126,7 +126,7 @@ let g:lightline#bufferline#clickable = 1
 
 " fzf
 let g:fzf_buffers_jump = 1
-nnoremap <C-t> :Files<CR>
+nnoremap <C-p> :Files<CR>
 nnoremap <TAB> :Buffers<CR>
 
 " Sneak

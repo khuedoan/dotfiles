@@ -35,8 +35,9 @@ nnoremap <C-q> :q<CR>
 " Buffer
 nnoremap <LEADER>d :bp<CR>:bd #<CR>
 
-" Copy with system clipboard
-vmap <C-c> "+y
+" Copy and paste with system clipboard
+vnoremap <C-c> "+y
+inoremap <C-v> <C-r>+
 
 " Replace last search
 nnoremap <LEADER>r :%s///g<LEFT><LEFT>

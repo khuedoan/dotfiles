@@ -113,6 +113,11 @@ nnoremap <silent> <M-`> :TmuxNavigatePrevious<cr>
 autocmd FileType markdown nmap <buffer><silent> <M-v> :call mdip#MarkdownClipboardImage()<CR>
 let g:mdip_imgdir = 'images'
 
+" Markdown preview
+let g:mkdp_preview_options = {
+    \ 'content_editable': v:true
+    \ }
+
 " Lightline
 let g:lightline = {
     \ 'colorscheme': 'onedark',

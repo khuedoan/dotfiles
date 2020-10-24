@@ -28,7 +28,7 @@ zle -N zle-keymap-select
 HISTSIZE=10000
 SAVEHIST=10000
 HISTFILE=$HOME/.zsh_history
-setopt histignorealldups sharehistory
+setopt histignorealldups histignorespace sharehistory
 
 # Aliases
 source $HOME/.aliases

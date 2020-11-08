@@ -60,7 +60,7 @@ Plug 'mattn/vim-gist'
 Plug 'mattn/webapi-vim'
 Plug 'mengelbrecht/lightline-bufferline'
 Plug 'mzlogin/vim-markdown-toc'
-Plug 'neoclide/coc.nvim', { 'branch': 'release', 'do': { -> coc#util#install() } }
+Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 Plug 'norcalli/nvim-colorizer.lua'
 Plug 'preservim/nerdtree'
 Plug 'rlue/vim-barbaric'

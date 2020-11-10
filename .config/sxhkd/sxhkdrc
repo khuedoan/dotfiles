@@ -52,6 +52,7 @@ super + m
 # Toggle game mode
 super + g
     killall xcape || xcape; \
+    killall ibus-daemon || ibus-daemon; \
     killall picom || picom --experimental-backends
 
 ##############

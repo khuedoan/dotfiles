@@ -122,6 +122,7 @@ let g:lightline#bufferline#clickable = 1
 let g:fzf_buffers_jump = 1
 nnoremap <C-p> :Files<CR>
 nnoremap <TAB> :Buffers<CR>
+nnoremap <C-f> :Rg<CR>
 
 " Sneak
 let g:sneak#label = 1

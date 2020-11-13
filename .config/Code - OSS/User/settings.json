@@ -1,0 +1,25 @@
+{
+    "editor.fontFamily": "'SauceCodePro Nerd Font'",
+    "editor.lineNumbers": "relative",
+    "editor.minimap.enabled": false,
+    "editor.occurrencesHighlight": false,
+    "editor.suggestSelection": "first",
+
+    "files.trimTrailingWhitespace": true,
+
+    "telemetry.enableCrashReporter": false,
+    "telemetry.enableTelemetry": false,
+
+    "workbench.colorTheme": "One Dark Pro",
+    "workbench.enableExperiments": false,
+
+    "window.enableMenuBarMnemonics": false,
+    "window.menuBarVisibility": "toggle",
+
+    "emmet.includeLanguages": {
+        "javascript": "javascriptreact"
+    },
+
+    "vscode-neovim.neovimExecutablePaths.linux": "nvim",
+    "vscode-neovim.neovimInitVimPaths.linux": "/dev/null"
+}

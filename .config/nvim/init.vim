@@ -1,7 +1,3 @@
-"+----------+
-"| SETTINGS |
-"+----------+
-
 " Options
 set cursorline                  " Highlight the current line of the cursor
 set expandtab                   " Use spaces when tab is inserted
@@ -20,10 +16,6 @@ set termguicolors               " Use 24-bit color
 set updatetime=100              " Delay before writing to swap file
 set showtabline=2               " Always show tab line
 
-"+-------------+
-"| KEY MAPPING |
-"+-------------+
-
 " Leader key
 noremap <SPACE> <NOP>
 let mapleader = " "
@@ -35,19 +27,15 @@ nnoremap <C-q> :q<CR>
 " Buffer
 nnoremap <LEADER>d :bp<CR>:bd #<CR>
 
-" Copy with system clipboard
-vmap <C-c> "+y
+" Copy and paste with system clipboard
+vnoremap <C-c> "+y
+inoremap <C-v> <C-r>+
 
 " Replace last search
 nnoremap <LEADER>r :%s///g<LEFT><LEFT>
 
 " Clear last search highlighting
 nnoremap <C-c> :noh<CR>
-
-"+---------+
-"| PLUGINS |
-"+---------+
-
 " Auto install plugin manager
 if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
     silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
@@ -62,7 +50,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'farmergreg/vim-lastplace'
 Plug 'ferrine/md-img-paste.vim'
-Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 Plug 'itchyny/lightline.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'joshdick/onedark.vim'
@@ -72,7 +60,8 @@ Plug 'mattn/vim-gist'
 Plug 'mattn/webapi-vim'
 Plug 'mengelbrecht/lightline-bufferline'
 Plug 'mzlogin/vim-markdown-toc'
-Plug 'neoclide/coc.nvim', { 'branch': 'release' }
+Plug 'neoclide/coc.nvim'
+Plug 'norcalli/nvim-colorizer.lua'
 Plug 'preservim/nerdtree'
 Plug 'rlue/vim-barbaric'
 Plug 'sheerun/vim-polyglot'
@@ -80,6 +69,7 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-surround'
+Plug 'unblevable/quick-scope'
 Plug 'voldikss/vim-floaterm'
 call plug#end()
 
@@ -110,6 +100,11 @@ nnoremap <silent> <M-`> :TmuxNavigatePrevious<cr>
 autocmd FileType markdown nmap <buffer><silent> <M-v> :call mdip#MarkdownClipboardImage()<CR>
 let g:mdip_imgdir = 'images'
 
+" Markdown preview
+let g:mkdp_preview_options = {
+    \ 'content_editable': v:true
+    \ }
+
 " Lightline
 let g:lightline = {
     \ 'colorscheme': 'onedark',
@@ -124,7 +119,7 @@ let g:lightline#bufferline#clickable = 1
 
 " fzf
 let g:fzf_buffers_jump = 1
-nnoremap <C-t> :Files<CR>
+nnoremap <C-p> :Files<CR>
 nnoremap <TAB> :Buffers<CR>
 
 " Sneak
@@ -144,15 +139,20 @@ endfunction
 
 let g:coc_global_extensions = [
     \ 'coc-css',
+    \ 'coc-docker',
+    \ 'coc-emmet',
     \ 'coc-go',
-    \ 'coc-highlight',
     \ 'coc-html',
     \ 'coc-json',
+    \ 'coc-markdownlint',
     \ 'coc-pyright',
     \ 'coc-rust-analyzer',
     \ 'coc-tsserver',
     \ 'coc-yaml',
     \ ]
+
+" Colorizer
+lua require'colorizer'.setup()
 
 " NERDTree
 map <C-n> :NERDTreeToggle<CR>
@@ -160,6 +160,10 @@ autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 
 " Barbaric
 let g:barbaric_default = 'xkb:us::eng'
+
+" Quick scope
+highlight QuickScopePrimary gui=bold,underline cterm=underline
+highlight QuickScopeSecondary gui=underline cterm=underline
 
 " Floating terminal
 let g:floaterm_keymap_toggle = '<M-t>'

@@ -118,6 +118,9 @@ let g:lightline = {
     \ }
 let g:lightline#bufferline#clickable = 1
 
+" Markdown table of contents
+let g:vmt_list_item_char = '-'
+
 " fzf
 let g:fzf_buffers_jump = 1
 nnoremap <C-p> :Files<CR>

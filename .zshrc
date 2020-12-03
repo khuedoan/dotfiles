@@ -8,7 +8,6 @@ source ~/.zsh/zinit/zinit.zsh || \
     git clone https://github.com/zdharma/zinit.git ~/.zsh/zinit
 
 # Plugin list
-zinit wait lucid atload"zicompinit; zicdreplay" blockf for zsh-users/zsh-completions
 zinit light zdharma/fast-syntax-highlighting
 zinit light zsh-users/zsh-autosuggestions
 zinit light romkatv/powerlevel10k

@@ -35,7 +35,7 @@ inoremap <C-v> <C-r>+
 nnoremap <LEADER>r :%s///g<LEFT><LEFT>
 
 " Clear last search highlighting
-nnoremap <C-c> :noh<CR>
+nnoremap <ESC><ESC> :noh<CR>
 " Auto install plugin manager
 if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
     silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs

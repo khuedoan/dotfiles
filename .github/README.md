@@ -6,14 +6,14 @@
 
 <!-- vim-markdown-toc GFM -->
 
-* [Getting Started](#getting-started)
-    * [Prerequisites](#prerequisites)
-    * [Installation](#installation)
-    * [Quick usage instruction](#quick-usage-instruction)
-* [Features](#features)
-    * [Version control](#version-control)
-    * [Wallpapers](#wallpapers)
-* [Acknowledgements](#acknowledgements)
+- [Getting Started](#getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+  - [Quick usage instruction](#quick-usage-instruction)
+- [Features](#features)
+  - [Version control](#version-control)
+  - [Wallpapers](#wallpapers)
+- [Acknowledgements](#acknowledgements)
 
 <!-- vim-markdown-toc -->
 

@@ -62,7 +62,6 @@ Plug 'mattn/webapi-vim'
 Plug 'mengelbrecht/lightline-bufferline'
 Plug 'mzlogin/vim-markdown-toc'
 Plug 'neoclide/coc.nvim'
-Plug 'norcalli/nvim-colorizer.lua'
 Plug 'preservim/nerdtree'
 Plug 'rlue/vim-barbaric'
 Plug 'sheerun/vim-polyglot'
@@ -155,9 +154,6 @@ let g:coc_global_extensions = [
     \ 'coc-tsserver',
     \ 'coc-yaml',
     \ ]
-
-" Colorizer
-lua require'colorizer'.setup()
 
 " NERDTree
 map <C-n> :NERDTreeToggle<CR>

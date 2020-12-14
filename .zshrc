@@ -13,6 +13,7 @@ zinit light zsh-users/zsh-autosuggestions
 zinit light romkatv/powerlevel10k
 zinit light hlissner/zsh-autopair
 zinit snippet https://github.com/junegunn/fzf/blob/master/shell/key-bindings.zsh
+zinit snippet https://github.com/ahmetb/kubectl-aliases/blob/master/.kubectl_aliases
 
 # Powerlevel10k config
 source ~/.p10k.zsh

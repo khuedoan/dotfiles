@@ -12,12 +12,8 @@ k9s:
       activeColor: black
     status:
       newColor: green
-      modifyColor: powderblue
-      addColor: lightskyblue
+      pendingColor: yellow
       errorColor: red
-      highlightcolor: royalblue
-      killColor: slategray
-      completedColor: gray
     title:
       fgColor: white
       bgColor: default

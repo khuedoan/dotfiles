@@ -10,6 +10,7 @@ export QT_IM_MODULE=ibus
 export XMODIFIERS=@im=ibus
 
 # Vim
+export EDITOR=nvim
 export VISUAL=nvim
 
 # Fix Java application renders as a plain gray box

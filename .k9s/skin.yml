@@ -1,0 +1,41 @@
+k9s:
+  body:
+    fgColor: white
+    bgColor: default
+  frame:
+    border:
+      fgColor: white
+      focusColor: white
+    crumbs:
+      fgColor: white
+      bgColor: default
+      activeColor: black
+    status:
+      newColor: green
+      modifyColor: powderblue
+      addColor: lightskyblue
+      errorColor: red
+      highlightcolor: royalblue
+      killColor: slategray
+      completedColor: gray
+    title:
+      fgColor: white
+      bgColor: default
+  views:
+    table:
+      fgColor: white
+      bgColor: default
+      header:
+        fgColor: black
+        bgColor: white
+        sorterColor: black
+    yaml:
+      keyColor: red
+      colonColor: blue
+      valueColor: white
+    logs:
+      fgColor: white
+      bgColor: default
+      indicator:
+        fgColor: black
+        bgColor: white

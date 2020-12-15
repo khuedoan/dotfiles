@@ -1,0 +1,4 @@
+k9s:
+  enableMouse: true
+  headless: true
+  noIcons: true

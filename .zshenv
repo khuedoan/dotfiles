@@ -1,6 +1,9 @@
 # Include custom scripts in $PATH
 export PATH="$PATH:$HOME/.local/bin"
 
+# Go
+export GOPATH="$HOME/.local"
+
 # Pixel-perfect Firefox touchpad scrolling
 export MOZ_USE_XINPUT2=1
 

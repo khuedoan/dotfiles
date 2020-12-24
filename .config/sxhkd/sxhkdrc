@@ -51,9 +51,8 @@ super + m
     bspc desktop -l next
 # Toggle game mode
 super + g
-    killall xcape || xcape; \
-    killall ibus-daemon || ibus-daemon; \
-    killall picom || picom --experimental-backends
+    killall xcape picom ibus-daemon \
+    || (xcape && ibus-daemon -drx && picom --daemon --experimental-backends)
 
 ##############
 # Media keys #

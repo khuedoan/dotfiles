@@ -59,10 +59,10 @@ Plug 'junegunn/fzf.vim'
 Plug 'justinmk/vim-sneak'
 Plug 'mattn/vim-gist'
 Plug 'mattn/webapi-vim'
+Plug 'mcchrish/nnn.vim'
 Plug 'mengelbrecht/lightline-bufferline'
 Plug 'mzlogin/vim-markdown-toc'
 Plug 'neoclide/coc.nvim'
-Plug 'preservim/nerdtree'
 Plug 'rlue/vim-barbaric'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-commentary'
@@ -104,6 +104,10 @@ let g:mdip_imgdir = 'images'
 let g:mkdp_preview_options = {
     \ 'content_editable': v:true
     \ }
+
+" nnn
+let g:nnn#set_default_mappings = 0
+nnoremap <C-n> :NnnPicker<CR>
 
 " Lightline
 let g:lightline = {
@@ -154,10 +158,6 @@ let g:coc_global_extensions = [
     \ 'coc-tsserver',
     \ 'coc-yaml',
     \ ]
-
-" NERDTree
-map <C-n> :NERDTreeToggle<CR>
-autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " Barbaric
 let g:barbaric_default = 'xkb:us::eng'

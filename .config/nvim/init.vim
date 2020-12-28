@@ -83,55 +83,8 @@ autocmd VimEnter *
 autocmd ColorScheme * highlight Normal ctermbg=NONE guibg=NONE
 colorscheme onedark
 
-" Git blame
-let g:blamer_enabled = 1
-let g:blamer_show_in_visual_modes = 0
-let g:blamer_relative_time = 1
-
-" Tmux navigator
-let g:tmux_navigator_no_mappings = 1
-nnoremap <silent> <M-h> :TmuxNavigateLeft<cr>
-nnoremap <silent> <M-j> :TmuxNavigateDown<cr>
-nnoremap <silent> <M-k> :TmuxNavigateUp<cr>
-nnoremap <silent> <M-l> :TmuxNavigateRight<cr>
-nnoremap <silent> <M-`> :TmuxNavigatePrevious<cr>
-
-" Markdown image paste
-autocmd FileType markdown nmap <buffer><silent> <M-v> :call mdip#MarkdownClipboardImage()<CR>
-let g:mdip_imgdir = 'images'
-
-" Markdown preview
-let g:mkdp_preview_options = {
-    \ 'content_editable': v:true
-    \ }
-
-" nnn
-let g:nnn#set_default_mappings = 0
-nnoremap <C-n> :NnnPicker<CR>
-
-" Lightline
-let g:lightline = {
-    \ 'colorscheme': 'onedark',
-    \ 'separator': { 'left': '', 'right': '' },
-    \ 'subseparator': { 'left': '', 'right': '' },
-    \ 'tabline': { 'left': [ [ 'buffers'] ], 'right': [ [ 'tabs' ] ] },
-    \ 'component_expand': { 'buffers': 'lightline#bufferline#buffers' },
-    \ 'component_type': { 'buffers': 'tabsel' },
-    \ 'component_raw': { 'buffers': 1 }
-    \ }
-let g:lightline#bufferline#clickable = 1
-
-" Markdown table of contents
-let g:vmt_list_item_char = '-'
-
-" fzf
-let g:fzf_buffers_jump = 1
-nnoremap <C-p> :Files<CR>
-nnoremap <TAB> :Buffers<CR>
-nnoremap <C-f> :Rg<CR>
-
-" Sneak
-let g:sneak#label = 1
+" Barbaric
+let g:barbaric_default = 'xkb:us::eng'
 
 " Conquer of Completion
 inoremap <silent><expr> <TAB>
@@ -159,13 +112,60 @@ let g:coc_global_extensions = [
     \ 'coc-yaml',
     \ ]
 
-" Barbaric
-let g:barbaric_default = 'xkb:us::eng'
+" Floating terminal
+let g:floaterm_keymap_toggle = '<M-t>'
+let g:floaterm_wintitle = v:false
+
+" fzf
+let g:fzf_buffers_jump = 1
+nnoremap <C-p> :Files<CR>
+nnoremap <TAB> :Buffers<CR>
+nnoremap <C-f> :Rg<CR>
+
+" Git blame
+let g:blamer_enabled = 1
+let g:blamer_show_in_visual_modes = 0
+let g:blamer_relative_time = 1
+
+" Lightline
+let g:lightline = {
+    \ 'colorscheme': 'onedark',
+    \ 'separator': { 'left': '', 'right': '' },
+    \ 'subseparator': { 'left': '', 'right': '' },
+    \ 'tabline': { 'left': [ [ 'buffers'] ], 'right': [ [ 'tabs' ] ] },
+    \ 'component_expand': { 'buffers': 'lightline#bufferline#buffers' },
+    \ 'component_type': { 'buffers': 'tabsel' },
+    \ 'component_raw': { 'buffers': 1 }
+    \ }
+let g:lightline#bufferline#clickable = 1
+
+" Markdown image paste
+autocmd FileType markdown nmap <buffer><silent> <M-v> :call mdip#MarkdownClipboardImage()<CR>
+let g:mdip_imgdir = 'images'
+
+" Markdown preview
+let g:mkdp_preview_options = {
+    \ 'content_editable': v:true
+    \ }
+
+" Markdown table of contents
+let g:vmt_list_item_char = '-'
+
+" nnn
+let g:nnn#set_default_mappings = 0
+nnoremap <C-n> :NnnPicker<CR>
 
 " Quick scope
 highlight QuickScopePrimary gui=bold,underline cterm=underline
 highlight QuickScopeSecondary gui=underline cterm=underline
 
-" Floating terminal
-let g:floaterm_keymap_toggle = '<M-t>'
-let g:floaterm_wintitle = v:false
+" Sneak
+let g:sneak#label = 1
+
+" Tmux navigator
+let g:tmux_navigator_no_mappings = 1
+nnoremap <silent> <M-h> :TmuxNavigateLeft<cr>
+nnoremap <silent> <M-j> :TmuxNavigateDown<cr>
+nnoremap <silent> <M-k> :TmuxNavigateUp<cr>
+nnoremap <silent> <M-l> :TmuxNavigateRight<cr>
+nnoremap <silent> <M-`> :TmuxNavigatePrevious<cr>

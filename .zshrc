@@ -18,6 +18,8 @@ zinit wait lucid is-snippet for \
 
 # Options
 setopt \
+    autocd \
+    autopushd \
     histignorealldups \
     histignorespace \
     sharehistory

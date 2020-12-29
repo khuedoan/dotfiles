@@ -4,11 +4,11 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 # Plugin manager
-source ~/.zsh/zinit/zinit.zsh || \
-    git clone https://github.com/zdharma/zinit.git ~/.zsh/zinit
+source $HOME/.zsh/zinit/zinit.zsh || \
+    git clone https://github.com/zdharma/zinit.git $HOME/.zsh/zinit
 
 # Plugin list
-zinit ice blockf atpull'zinit creinstall -q .' depth=1
+zinit ice depth=1 blockf atpull="zinit creinstall -q ."
 zinit light zsh-users/zsh-completions
 autoload compinit
 compinit
@@ -19,7 +19,7 @@ zinit light zdharma/fast-syntax-highlighting
 zinit ice depth=1
 zinit light zsh-users/zsh-autosuggestions
 
-zinit ice depth=1 atload'source ~/.p10k.zsh'
+zinit ice depth=1 atload="source $HOME/.p10k.zsh"
 zinit light romkatv/powerlevel10k
 
 zinit ice depth=1

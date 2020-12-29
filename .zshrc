@@ -4,8 +4,8 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 # Plugin manager
-source $HOME/.zsh/zinit/zinit.zsh || \
-    git clone https://github.com/zdharma/zinit.git $HOME/.zsh/zinit
+source $HOME/.zsh/zinit/zinit.zsh \
+    || git clone --depth 1 https://github.com/zdharma/zinit.git $HOME/.zsh/zinit
 
 # Plugin list
 zinit ice depth=1 blockf atpull="zinit creinstall -q ."

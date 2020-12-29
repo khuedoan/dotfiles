@@ -1,8 +1,3 @@
-# Enable Powerlevel10k instant prompt
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
 # Plugin manager
 source $HOME/.zsh/zinit/zinit.zsh \
     || git clone --depth 1 https://github.com/zdharma/zinit.git $HOME/.zsh/zinit

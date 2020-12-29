@@ -16,6 +16,12 @@ zinit wait lucid is-snippet for \
     https://github.com/ahmetb/kubectl-aliases/blob/master/.kubectl_aliases \
     as='completion' https://github.com/docker/cli/blob/master/contrib/completion/zsh/_docker
 
+# Options
+setopt \
+    histignorealldups \
+    histignorespace \
+    sharehistory
+
 # Disable right prompt indent
 ZLE_RPROMPT_INDENT=0
 
@@ -30,12 +36,6 @@ function zle-keymap-select zle-line-init zle-line-finish {
 zle -N zle-line-init
 zle -N zle-line-finish
 zle -N zle-keymap-select
-
-# History
-HISTSIZE=10000
-SAVEHIST=10000
-HISTFILE=$HOME/.zsh_history
-setopt histignorealldups histignorespace sharehistory
 
 # Key bindings
 bindkey -v

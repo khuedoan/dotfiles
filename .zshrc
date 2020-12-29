@@ -7,18 +7,19 @@ fi
 source $HOME/.zsh/zinit/zinit.zsh \
     || git clone --depth 1 https://github.com/zdharma/zinit.git $HOME/.zsh/zinit
 
-# Plugin list
-zinit ice depth=1 blockf atpull="zinit creinstall -q ."
-zinit light zsh-users/zsh-completions
+# Theme
+zinit ice depth=1 atload="source $HOME/.p10k.zsh"
+zinit light romkatv/powerlevel10k
+
+# Completion
 autoload compinit
 compinit
 
-zinit light-mode depth=1 for \
-    atload="source $HOME/.p10k.zsh" romkatv/powerlevel10k \
+# Plugin list
+zinit wait lucid light-mode depth=1 for \
     zdharma/fast-syntax-highlighting \
-    zsh-users/zsh-autosuggestions \
+    atload="_zsh_autosuggest_start" zsh-users/zsh-autosuggestions \
     hlissner/zsh-autopair
-
 zinit is-snippet for \
     https://github.com/junegunn/fzf/blob/master/shell/key-bindings.zsh \
     https://github.com/ahmetb/kubectl-aliases/blob/master/.kubectl_aliases \

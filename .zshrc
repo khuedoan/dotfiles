@@ -13,23 +13,16 @@ zinit light zsh-users/zsh-completions
 autoload compinit
 compinit
 
-zinit ice depth=1
-zinit light zdharma/fast-syntax-highlighting
+zinit light-mode depth=1 for \
+    atload="source $HOME/.p10k.zsh" romkatv/powerlevel10k \
+    zdharma/fast-syntax-highlighting \
+    zsh-users/zsh-autosuggestions \
+    hlissner/zsh-autopair
 
-zinit ice depth=1
-zinit light zsh-users/zsh-autosuggestions
-
-zinit ice depth=1 atload="source $HOME/.p10k.zsh"
-zinit light romkatv/powerlevel10k
-
-zinit ice depth=1
-zinit light hlissner/zsh-autopair
-
-zinit snippet https://github.com/junegunn/fzf/blob/master/shell/key-bindings.zsh
-
-zinit snippet https://github.com/ahmetb/kubectl-aliases/blob/master/.kubectl_aliases
-
-zinit snippet https://github.com/docker/cli/blob/master/contrib/completion/zsh/_docker
+zinit is-snippet for \
+    https://github.com/junegunn/fzf/blob/master/shell/key-bindings.zsh \
+    https://github.com/ahmetb/kubectl-aliases/blob/master/.kubectl_aliases \
+    https://github.com/docker/cli/blob/master/contrib/completion/zsh/_docker
 
 # Disable right prompt indent
 ZLE_RPROMPT_INDENT=0

@@ -81,7 +81,7 @@ autocmd VimEnter *
 
 " Theme
 autocmd ColorScheme * highlight Normal ctermbg=NONE guibg=NONE
-colorscheme onedark
+silent! colorscheme onedark
 
 " Barbaric
 let g:barbaric_default = 'xkb:us::eng'

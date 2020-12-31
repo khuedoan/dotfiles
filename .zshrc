@@ -42,6 +42,8 @@ zle -N zle-keymap-select
 
 # History
 HISTFILE=$HOME/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
 
 # Key bindings
 bindkey -v

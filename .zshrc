@@ -14,8 +14,7 @@ zinit wait lucid light-mode depth=1 for \
 zinit wait lucid is-snippet for \
     https://github.com/junegunn/fzf/blob/master/shell/key-bindings.zsh \
     https://github.com/ahmetb/kubectl-aliases/blob/master/.kubectl_aliases \
-    as='completion' https://github.com/docker/cli/blob/master/contrib/completion/zsh/_docker \
-    $HOME/.aliases
+    as='completion' https://github.com/docker/cli/blob/master/contrib/completion/zsh/_docker
 
 # Options
 setopt \
@@ -50,3 +49,6 @@ bindkey -v
 export KEYTIMEOUT=1
 bindkey '^[[P' delete-char
 bindkey '^?' backward-delete-char
+
+# Aliases
+source $HOME/.aliases

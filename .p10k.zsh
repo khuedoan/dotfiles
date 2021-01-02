@@ -40,6 +40,9 @@ local anchor_files=(
   .git
 )
 
+# git
+typeset -g POWERLEVEL9K_VCS_DISABLED_WORKDIR_PATTERN='~'
+
 # command_execution_time
 typeset -g POWERLEVEL9K_COMMAND_EXECUTION_TIME_PRECISION=0
 

@@ -98,6 +98,8 @@ function! s:check_back_space() abort
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
+nmap <silent> gd <Plug>(coc-definition)
+
 let g:coc_global_extensions = [
     \ 'coc-css',
     \ 'coc-docker',
@@ -108,6 +110,7 @@ let g:coc_global_extensions = [
     \ 'coc-markdownlint',
     \ 'coc-pyright',
     \ 'coc-rust-analyzer',
+    \ 'coc-snippets',
     \ 'coc-tsserver',
     \ 'coc-yaml',
     \ ]

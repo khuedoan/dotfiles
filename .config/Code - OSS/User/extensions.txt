@@ -1,5 +1,3 @@
-asvetliakov.vscode-neovim
-CoenraadS.bracket-pair-colorizer-2
 eamodio.gitlens
 golang.go
 hashicorp.terraform

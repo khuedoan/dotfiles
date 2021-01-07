@@ -12,14 +12,12 @@
 
     "workbench.colorTheme": "One Dark Pro",
     "workbench.enableExperiments": false,
+    "workbench.startupEditor": "newUntitledFile",
 
     "window.enableMenuBarMnemonics": false,
     "window.menuBarVisibility": "toggle",
 
     "emmet.includeLanguages": {
         "javascript": "javascriptreact"
-    },
-
-    "vscode-neovim.neovimExecutablePaths.linux": "nvim",
-    "vscode-neovim.neovimInitVimPaths.linux": "/dev/null"
+    }
 }

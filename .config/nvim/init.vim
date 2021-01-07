@@ -166,7 +166,7 @@ let g:vmt_list_item_char = '-'
 
 " nnn
 let g:nnn#set_default_mappings = 0
-nnoremap <C-n> :NnnPicker<CR>
+nnoremap <C-n> :NnnPicker %<CR>
 let g:nnn#action = {
     \ '<C-t>': 'tab split',
     \ '<C-x>': 'split',

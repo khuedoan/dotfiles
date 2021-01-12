@@ -15,6 +15,7 @@ set tabstop=4                   " Number of spaces that Tab in file uses
 set termguicolors               " Use 24-bit color
 set updatetime=100              " Delay before writing to swap file
 set showtabline=2               " Always show tab line
+set undofile                    " Enable persistent undo
 
 " Leader key
 noremap <SPACE> <NOP>

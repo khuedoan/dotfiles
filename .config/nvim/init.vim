@@ -35,8 +35,6 @@ inoremap <C-v> <C-r>+
 " Replace last search
 nnoremap <LEADER>r :%s///g<LEFT><LEFT>
 
-" Clear last search highlighting
-nnoremap <ESC><ESC> :noh<CR>
 " Auto install plugin manager
 if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
     silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
@@ -65,6 +63,7 @@ Plug 'mengelbrecht/lightline-bufferline'
 Plug 'mzlogin/vim-markdown-toc'
 Plug 'neoclide/coc.nvim'
 Plug 'rlue/vim-barbaric'
+Plug 'romainl/vim-cool'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'

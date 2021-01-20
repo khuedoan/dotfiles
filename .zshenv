@@ -1,5 +1,5 @@
 # Include custom scripts in $PATH
-export PATH="$PATH:/opt/local/bin:$HOME/.local/bin"
+export PATH="$PATH:$HOME/.local/bin"
 
 # Go
 export GOPATH="$HOME/.local"

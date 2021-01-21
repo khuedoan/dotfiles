@@ -70,7 +70,6 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-surround'
 Plug 'unblevable/quick-scope'
-Plug 'vimwiki/vimwiki'
 Plug 'voldikss/vim-floaterm'
 call plug#end()
 
@@ -187,12 +186,3 @@ nnoremap <silent> <M-j> :TmuxNavigateDown<cr>
 nnoremap <silent> <M-k> :TmuxNavigateUp<cr>
 nnoremap <silent> <M-l> :TmuxNavigateRight<cr>
 nnoremap <silent> <M-`> :TmuxNavigatePrevious<cr>
-
-" VimWiki
-let g:vimwiki_global_ext = 0
-let g:vimwiki_list = [{
-    \ 'path': '~/Documents/notes',
-    \ 'syntax': 'markdown',
-    \ 'ext': '.md',
-    \ 'index': 'README'
-    \ }]

@@ -22,8 +22,8 @@ noremap <SPACE> <NOP>
 let mapleader = " "
 
 " Save and quit
-nnoremap <C-s> :w<CR>
-nnoremap <C-q> :q<CR>
+nnoremap <C-s> :update<CR>
+nnoremap <C-q> :quit<CR>
 
 " Buffer
 nnoremap <LEADER>d :bp<CR>:bd #<CR>

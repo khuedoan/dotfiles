@@ -22,5 +22,10 @@
         "javascript": "javascriptreact"
     },
 
-    "python.languageServer": "Pylance"
+    "python.languageServer": "Pylance",
+
+    "vscode-neovim.neovimExecutablePaths.linux": "nvim",
+    "vscode-neovim.neovimExecutablePaths.darwin": "nvim",
+    "vscode-neovim.neovimInitVimPaths.darwin": "$HOME/.config/Code - OSS/User/init.vim",
+    "vscode-neovim.neovimInitVimPaths.linux": "$HOME/.config/Code - OSS/User/init.vim"
 }

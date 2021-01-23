@@ -164,7 +164,6 @@ let g:mkdp_preview_options = {
 let g:vmt_list_item_char = '-'
 
 " nnn
-let g:nnn#layout = { 'left': '~20%' }
 let g:nnn#set_default_mappings = 0
 nnoremap <C-n> :NnnPicker %<CR>
 let g:nnn#action = {

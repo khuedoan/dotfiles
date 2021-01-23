@@ -17,6 +17,7 @@ endif
 
 " List of plugins
 call plug#begin()
+Plug 'romainl/vim-cool'
 Plug 'unblevable/quick-scope'
 call plug#end()
 

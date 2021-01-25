@@ -1,7 +1,6 @@
 " Options
 set cursorline       " Highlight the current line of the cursor
 set expandtab        " Use spaces when tab is inserted
-set incsearch        " Highlight match while typing search pattern
 set mouse=a          " Enable mouse support
 set noshowmode       " Hide mode infomation on the last line
 set number           " Print the line number

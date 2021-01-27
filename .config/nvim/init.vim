@@ -48,6 +48,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'farmergreg/vim-lastplace'
 Plug 'ferrine/md-img-paste.vim'
+Plug 'honza/vim-snippets'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 Plug 'itchyny/lightline.vim'
 Plug 'jiangmiao/auto-pairs'
@@ -109,6 +110,7 @@ let g:coc_global_extensions = [
     \ 'coc-markdownlint',
     \ 'coc-pyright',
     \ 'coc-rust-analyzer',
+    \ 'coc-snippets',
     \ 'coc-tsserver',
     \ 'coc-yaml',
     \ ]

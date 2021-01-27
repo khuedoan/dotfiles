@@ -35,7 +35,7 @@ Install the following packages:
 - [`st`](https://github.com/khuedoan/st)
 - [`slock`](https://github.com/khuedoan/slock)
 - [`picom-git`](https://aur.archlinux.org/packages/picom-git/)
-- [`nerd-fonts-source-code-pro`](https://aur.archlinux.org/packages/nerd-fonts-source-code-pro/)
+- [`nerd-fonts-fira-mono`](https://aur.archlinux.org/packages/nerd-fonts-fira-mono/)
 
 ### Installation
 

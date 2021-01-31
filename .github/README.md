@@ -9,6 +9,8 @@
 - [Getting Started](#getting-started)
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
+    - [Linux](#linux)
+    - [macOS](#macos)
   - [Quick usage instruction](#quick-usage-instruction)
 - [Features](#features)
   - [Version control](#version-control)
@@ -39,23 +41,21 @@ Install the following packages:
 
 ### Installation
 
-Using the method bellow, you can update new features from my repo using `git pull`, but you can't push your own customization to GitHub.
+#### Linux
 
-If you want to push your customization to GitHub, you need to fork this repo, change the `REPO` variable in `install-dotfiles.sh`, then continue running the script with the instruction below. You can't update new features from me automatically with `dotfiles pull`, but you can [do that manually](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/syncing-a-fork).
+```
+git clone https://github.com/khuedoan/linux-setup
+cd linux-setup
+make init dotfiles
+```
 
-Get the install script:
+#### macOS
 
-`curl -O https://raw.githubusercontent.com/khuedoan/linux-setup/master/scripts/install-dotfiles.sh`
-
-`chmod +x install-dotfiles.sh`
-
-Run the TUI installer:
-
-`./install-dotfiles.sh`
-
-The install dotfiles option will work with any distro, but the install packages options only works with Arch Linux (PR for other distros are welcome).
-
-![Screenshot](https://i.imgur.com/EBTG8mx.jpg)
+```
+git clone https://github.com/khuedoan/macos-setup
+cd linux-setup
+make init dotfiles
+```
 
 ### Quick usage instruction
 

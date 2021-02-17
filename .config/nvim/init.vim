@@ -121,9 +121,9 @@ let g:floaterm_wintitle = v:false
 
 " fzf
 let g:fzf_buffers_jump = 1
-nnoremap <C-b> :Buffers<CR>
-nnoremap <C-f> :Rg<CR>
-nnoremap <C-p> :Files<CR>
+nnoremap <C-b> :Buffers!<CR>
+nnoremap <C-f> :Rg!<CR>
+nnoremap <C-p> :Files!<CR>
 
 " Git blame
 let g:blamer_enabled = 1

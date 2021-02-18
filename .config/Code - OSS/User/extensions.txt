@@ -10,7 +10,6 @@ ms-toolsai.jupyter
 ms-vscode.cpptools
 redhat.vscode-yaml
 rust-lang.rust
-skattyadz.vscode-quick-scope
 VisualStudioExptTeam.vscodeintellicode
 vscoss.vscode-ansible
 yzhang.markdown-all-in-one

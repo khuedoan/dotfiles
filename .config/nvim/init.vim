@@ -22,7 +22,7 @@ noremap <SPACE> <NOP>
 let mapleader = " "
 
 " Save and quit
-nnoremap <C-s> :update<CR>
+nnoremap <C-s> :write<CR>
 nnoremap <C-q> :quit<CR>
 
 " Buffer

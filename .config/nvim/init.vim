@@ -21,10 +21,6 @@ set updatetime=100     " Delay before writing to swap file
 noremap <SPACE> <NOP>
 let mapleader = " "
 
-" Save and quit
-nnoremap <C-s> :write<CR>
-nnoremap <C-q> :quit<CR>
-
 " Buffer
 nnoremap <LEADER>d :bp<CR>:bd #<CR>
 

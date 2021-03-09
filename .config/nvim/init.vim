@@ -8,7 +8,6 @@ set number             " Print the line number
 set relativenumber     " Show relative line number
 set scrolloff=1        " Minimum number of lines above and below cursor
 set shiftwidth=4       " Number of spaces to use for indent step
-set showtabline=2      " Always show tab line
 set signcolumn=yes     " Always display sign column
 set splitbelow         " New window from split is below the current one
 set splitright         " New window is put right of the current one
@@ -60,11 +59,11 @@ Plug 'justinmk/vim-sneak'
 Plug 'mattn/vim-gist'
 Plug 'mattn/webapi-vim'
 Plug 'mcchrish/nnn.vim'
-Plug 'mengelbrecht/lightline-bufferline'
 Plug 'mzlogin/vim-markdown-toc'
 Plug 'neoclide/coc.nvim'
 Plug 'rlue/vim-barbaric'
 Plug 'romainl/vim-cool'
+Plug 'romgrk/barbar.nvim'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
@@ -86,6 +85,13 @@ silent! colorscheme onedark
 
 " Barbaric
 let g:barbaric_default = 'xkb:us::eng'
+
+" Buffer line
+let bufferline = get(g:, 'bufferline', {})
+let bufferline.animation = v:false
+let bufferline.icons = v:false
+let bufferline.maximum_padding = 0
+nnoremap <silent> <C-b> :BufferPick<CR>
 
 " Conquer of Completion
 inoremap <silent><expr> <TAB>
@@ -122,7 +128,6 @@ let g:floaterm_wintitle = v:false
 
 " fzf
 let g:fzf_buffers_jump = 1
-nnoremap <C-b> :Buffers!<CR>
 nnoremap <C-f> :Rg!<CR>
 nnoremap <C-p> :Files!<CR>
 
@@ -146,12 +151,7 @@ let g:lightline = {
     \ 'colorscheme': 'onedark',
     \ 'separator': { 'left': '', 'right': '' },
     \ 'subseparator': { 'left': '', 'right': '' },
-    \ 'tabline': { 'left': [ [ 'buffers'] ], 'right': [ [ 'tabs' ] ] },
-    \ 'component_expand': { 'buffers': 'lightline#bufferline#buffers' },
-    \ 'component_type': { 'buffers': 'tabsel' },
-    \ 'component_raw': { 'buffers': 1 }
     \ }
-let g:lightline#bufferline#clickable = 1
 
 " Markdown image paste
 autocmd FileType markdown nmap <buffer><silent> <M-v> :call mdip#MarkdownClipboardImage()<CR>

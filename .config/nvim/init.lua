@@ -80,18 +80,18 @@ plug {'savq/paq-nvim', opt=true}
 
 -- Theme
 
-plug {'joshdick/onedark.vim'}
+plug 'joshdick/onedark.vim'
 
 cmd 'autocmd ColorScheme * highlight Normal ctermbg=NONE guibg=NONE'
 cmd 'colorscheme onedark'
 
 -- Auto pairs
 
-plug {'jiangmiao/auto-pairs'}
+plug 'jiangmiao/auto-pairs'
 
 -- Buffer line
 
-plug {'romgrk/barbar.nvim'}
+plug 'romgrk/barbar.nvim'
 
 g.bufferline = {
   animation = false,
@@ -103,22 +103,22 @@ map('n', '<LEADER><TAB>', ':BufferPick<CR>', {noremap = true, silent = true})
 
 -- Clear search
 
-plug {'romainl/vim-cool'}
+plug 'romainl/vim-cool'
 
 -- Comment
 
-plug {'tpope/vim-commentary'}
+plug 'tpope/vim-commentary'
 
 -- File explorer
 
-plug {'mcchrish/nnn.vim'}
+plug 'mcchrish/nnn.vim'
 
 map('n', '<C-n>', ':NnnPicker %<CR>', {noremap = true})
 
 -- Fuzzy search
 
-plug {'junegunn/fzf'}
-plug {'junegunn/fzf.vim'}
+plug 'junegunn/fzf'
+plug 'junegunn/fzf.vim'
 
 g.fzf_buffers_jump = 1
 
@@ -127,7 +127,7 @@ map('n', '<C-p>', ':Files!<CR>', {noremap = true})
 
 -- Git blame
 
-plug {'APZelos/blamer.nvim'}
+plug 'APZelos/blamer.nvim'
 
 g.blamer_enabled = 1
 g.blamer_show_in_visual_modes = 0
@@ -135,18 +135,19 @@ g.blamer_relative_time = 1
 
 -- Git gutter
 
-plug {'airblade/vim-gitgutter'}
+plug 'airblade/vim-gitgutter'
 
 -- Language packs
 
-plug {'sheerun/vim-polyglot'}
+plug 'sheerun/vim-polyglot'
 
 -- Language server protocol
 
-plug {'neovim/nvim-lspconfig'}
-plug {'nvim-lua/completion-nvim'}
+plug 'neovim/nvim-lspconfig'
+plug 'nvim-lua/completion-nvim'
 
 local servers = {
+  "bashls",
   "pyright",
   "rust_analyzer",
   "sumneko_lua",
@@ -166,11 +167,11 @@ map('i', '<S-TAB>', '<Plug>(completion_smart_s_tab)', {})
 
 -- Last cursor position
 
-plug {'farmergreg/vim-lastplace'}
+plug 'farmergreg/vim-lastplace'
 
 -- Sneak
 
-plug {'justinmk/vim-sneak'}
+plug 'justinmk/vim-sneak'
 
 g['sneak#label'] = 1
 
@@ -186,7 +187,7 @@ require('lualine').status({
 
 -- Tmux navigator
 
-plug {'christoomey/vim-tmux-navigator'}
+plug 'christoomey/vim-tmux-navigator'
 
 g.tmux_navigator_no_mappings = 1
 

@@ -16,6 +16,7 @@ local wo = vim.wo
 
 -- Global
 
+o.completeopt = 'menuone,noinsert,noselect'
 o.inccommand = 'nosplit'
 o.mouse = 'a'
 o.scrolloff = 1
@@ -143,8 +144,25 @@ plug {'sheerun/vim-polyglot'}
 -- Language server protocol
 
 plug {'neovim/nvim-lspconfig'}
+plug {'nvim-lua/completion-nvim'}
 
--- TODO
+local servers = {
+  "pyright",
+  "rust_analyzer",
+  "sumneko_lua",
+  "terraformls",
+  "tsserver",
+  "yamlls"
+}
+
+for _, lsp in ipairs(servers) do
+  require('lspconfig')[lsp].setup{
+    on_attach = require('completion').on_attach
+  }
+end
+
+map('i', '<TAB>',   '<Plug>(completion_smart_tab)',   {})
+map('i', '<S-TAB>', '<Plug>(completion_smart_s_tab)', {})
 
 -- Last cursor position
 

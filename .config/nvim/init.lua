@@ -174,6 +174,7 @@ plug 'farmergreg/vim-lastplace'
 plug 'justinmk/vim-sneak'
 
 g['sneak#label'] = 1
+cmd 'highlight link SneakLabel Search'
 
 -- Status line
 

@@ -1,6 +1,0 @@
-{
-  "markdownlint.config": {
-    "line_length": false
-  },
-  "rust-analyzer.serverPath": "rust-analyzer"
-}

@@ -147,12 +147,7 @@ plug 'neovim/nvim-lspconfig'
 plug 'nvim-lua/completion-nvim'
 
 local servers = {
-  "bashls",
   "pyright",
-  "rust_analyzer",
-  "sumneko_lua",
-  "terraformls",
-  "tsserver",
   "yamlls"
 }
 

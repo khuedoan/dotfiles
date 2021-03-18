@@ -181,6 +181,10 @@ require('lualine').status({
   }
 })
 
+-- Surround
+
+plug "tpope/vim-surround"
+
 -- Tmux navigator
 
 plug 'christoomey/vim-tmux-navigator'

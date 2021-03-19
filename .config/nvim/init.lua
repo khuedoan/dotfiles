@@ -175,7 +175,7 @@ cmd 'highlight link Sneak Search'
 
 plug 'hoob3rt/lualine.nvim'
 
-require('lualine').status({
+require('lualine').setup({
   options = {
     theme = 'onedark'
   }

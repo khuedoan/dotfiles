@@ -24,6 +24,7 @@ alias gP='git push --set-upstream origin HEAD'
 alias gl='git log --all --decorate --oneline --graph'
 alias gL='git log -p'
 alias gt='git ls-tree -r "$(git rev-parse --abbrev-ref HEAD)" --name-only'
+alias gw='git worktree'
 
 # aria2
 alias dl='aria2c -x 16 -s 16'

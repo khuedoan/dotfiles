@@ -22,6 +22,8 @@
         "javascript": "javascriptreact"
     },
 
+    "gitlens.showWelcomeOnInstall": false,
+
     "go.useLanguageServer": true,
 
     "python.languageServer": "Pylance",

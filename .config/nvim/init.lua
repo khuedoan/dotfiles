@@ -111,9 +111,13 @@ plug 'tpope/vim-commentary'
 
 -- File explorer
 
-plug 'mcchrish/nnn.vim'
+plug 'kyazdani42/nvim-tree.lua'
 
-map('n', '<C-n>', ':NnnPicker %<CR>', {noremap = true})
+g.nvim_tree_follow = 1
+g.nvim_tree_indent_markers = 1
+g.nvim_tree_quit_on_open = 1
+
+map('n', '<C-n>', ':NvimTreeToggle<CR>', {noremap = true})
 
 -- Fuzzy search
 

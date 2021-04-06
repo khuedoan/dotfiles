@@ -1,6 +1,6 @@
 # Plugin manager
 source $HOME/.zsh/zinit/zinit.zsh \
-    || git clone --depth 1 https://github.com/zdharma/zinit.git $HOME/.zsh/zinit
+    || (git clone --depth 1 https://github.com/zdharma/zinit.git $HOME/.zsh/zinit && exec zsh)
 
 # Theme
 zinit ice depth=1 atload="source $HOME/.p10k.zsh"

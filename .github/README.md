@@ -61,7 +61,6 @@ make init dotfiles
 
 Some key mapping are changed, you can change this in `.xinitrc`:
 
-- Capslock is now Ctrl when held and Esc when tapped using `xcape`
 - Left Alt and Left Super is swapped
 
 Some basic key bindings:

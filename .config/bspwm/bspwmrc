@@ -14,12 +14,10 @@ picom --experimental-backends &
 xsetroot -cursor_name left_ptr &
 
 # Key map
-killall xcape
 killall sxhkd
 setxkbmap -option "ctrl:nocaps, \
                   shift:both_capslock, \
                   altwin:swap_lalt_lwin"
-xcape
 sxhkd &
 ibus-daemon -drx &
 

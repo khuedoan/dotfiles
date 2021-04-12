@@ -4,6 +4,9 @@ export PATH="$PATH:$HOME/.local/bin"
 # Go
 export GOPATH="$HOME/.local"
 
+# Rust
+export CARGO_HOME="$HOME/.local"
+
 # Pixel-perfect Firefox touchpad scrolling
 export MOZ_USE_XINPUT2=1
 

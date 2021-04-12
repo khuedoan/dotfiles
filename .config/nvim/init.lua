@@ -78,20 +78,33 @@ cmd 'packadd paq-nvim'
 local plug = require('paq-nvim').paq
 plug {'savq/paq-nvim', opt=true}
 
--- Theme
+-- Plugin list
 
 plug 'joshdick/onedark.vim'
+plug 'jiangmiao/auto-pairs'
+plug 'romgrk/barbar.nvim'
+plug 'romainl/vim-cool'
+plug 'tpope/vim-commentary'
+plug 'kyazdani42/nvim-tree.lua'
+plug 'junegunn/fzf'
+plug 'junegunn/fzf.vim'
+plug 'APZelos/blamer.nvim'
+plug 'airblade/vim-gitgutter'
+plug 'sheerun/vim-polyglot'
+plug 'neovim/nvim-lspconfig'
+plug 'nvim-lua/completion-nvim'
+plug 'farmergreg/vim-lastplace'
+plug 'justinmk/vim-sneak'
+plug 'hoob3rt/lualine.nvim'
+plug "tpope/vim-surround"
+plug 'christoomey/vim-tmux-navigator'
+
+-- Theme
 
 cmd 'autocmd ColorScheme * highlight Normal ctermbg=NONE guibg=NONE'
 cmd 'colorscheme onedark'
 
--- Auto pairs
-
-plug 'jiangmiao/auto-pairs'
-
 -- Buffer line
-
-plug 'romgrk/barbar.nvim'
 
 g.bufferline = {
   animation = false,
@@ -101,17 +114,7 @@ g.bufferline = {
 
 map('n', '<LEADER><TAB>', ':BufferPick<CR>', {noremap = true, silent = true})
 
--- Clear search
-
-plug 'romainl/vim-cool'
-
--- Comment
-
-plug 'tpope/vim-commentary'
-
 -- File explorer
-
-plug 'kyazdani42/nvim-tree.lua'
 
 g.nvim_tree_follow = 1
 g.nvim_tree_indent_markers = 1
@@ -121,9 +124,6 @@ map('n', '<C-n>', ':NvimTreeToggle<CR>', {noremap = true})
 
 -- Fuzzy search
 
-plug 'junegunn/fzf'
-plug 'junegunn/fzf.vim'
-
 g.fzf_buffers_jump = 1
 
 map('n', '<C-f>', ':Rg!<CR>',    {noremap = true})
@@ -131,24 +131,11 @@ map('n', '<C-p>', ':Files!<CR>', {noremap = true})
 
 -- Git blame
 
-plug 'APZelos/blamer.nvim'
-
 g.blamer_enabled = 1
 g.blamer_show_in_visual_modes = 0
 g.blamer_relative_time = 1
 
--- Git gutter
-
-plug 'airblade/vim-gitgutter'
-
--- Language packs
-
-plug 'sheerun/vim-polyglot'
-
--- Language server protocol
-
-plug 'neovim/nvim-lspconfig'
-plug 'nvim-lua/completion-nvim'
+-- Language servers
 
 local servers = {
   "pyright",
@@ -164,20 +151,12 @@ end
 map('i', '<TAB>',   '<Plug>(completion_smart_tab)',   {})
 map('i', '<S-TAB>', '<Plug>(completion_smart_s_tab)', {})
 
--- Last cursor position
-
-plug 'farmergreg/vim-lastplace'
-
 -- Sneak
-
-plug 'justinmk/vim-sneak'
 
 g['sneak#label'] = 1
 cmd 'highlight link Sneak Search'
 
 -- Status line
-
-plug 'hoob3rt/lualine.nvim'
 
 require('lualine').setup({
   options = {
@@ -185,13 +164,7 @@ require('lualine').setup({
   }
 })
 
--- Surround
-
-plug "tpope/vim-surround"
-
 -- Tmux navigator
-
-plug 'christoomey/vim-tmux-navigator'
 
 g.tmux_navigator_no_mappings = 1
 

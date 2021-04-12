@@ -99,6 +99,8 @@ plug 'hoob3rt/lualine.nvim'
 plug "tpope/vim-surround"
 plug 'christoomey/vim-tmux-navigator'
 
+require('paq-nvim').install()
+
 -- Theme
 
 cmd 'autocmd ColorScheme * highlight Normal ctermbg=NONE guibg=NONE'

@@ -80,24 +80,24 @@ plug {'savq/paq-nvim', opt=true}
 
 -- Plugin list
 
-plug 'joshdick/onedark.vim'
-plug 'jiangmiao/auto-pairs'
-plug 'romgrk/barbar.nvim'
-plug 'romainl/vim-cool'
-plug 'tpope/vim-commentary'
-plug 'kyazdani42/nvim-tree.lua'
-plug 'junegunn/fzf'
-plug 'junegunn/fzf.vim'
-plug 'APZelos/blamer.nvim'
-plug 'airblade/vim-gitgutter'
-plug 'sheerun/vim-polyglot'
-plug 'neovim/nvim-lspconfig'
-plug 'nvim-lua/completion-nvim'
-plug 'farmergreg/vim-lastplace'
-plug 'justinmk/vim-sneak'
-plug 'hoob3rt/lualine.nvim'
-plug "tpope/vim-surround"
-plug 'christoomey/vim-tmux-navigator'
+plug {'APZelos/blamer.nvim'}
+plug {'airblade/vim-gitgutter'}
+plug {'christoomey/vim-tmux-navigator'}
+plug {'farmergreg/vim-lastplace'}
+plug {'hoob3rt/lualine.nvim'}
+plug {'jiangmiao/auto-pairs'}
+plug {'joshdick/onedark.vim'}
+plug {'junegunn/fzf'}
+plug {'junegunn/fzf.vim'}
+plug {'justinmk/vim-sneak'}
+plug {'kyazdani42/nvim-tree.lua'}
+plug {'neovim/nvim-lspconfig'}
+plug {'nvim-lua/completion-nvim'}
+plug {'romainl/vim-cool'}
+plug {'romgrk/barbar.nvim'}
+plug {'sheerun/vim-polyglot'}
+plug {'tpope/vim-commentary'}
+plug {'tpope/vim-surround'}
 
 require('paq-nvim').install()
 

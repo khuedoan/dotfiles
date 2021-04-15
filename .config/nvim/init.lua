@@ -91,6 +91,7 @@ plug {'junegunn/fzf'}
 plug {'junegunn/fzf.vim'}
 plug {'justinmk/vim-sneak'}
 plug {'kyazdani42/nvim-tree.lua'}
+plug {'lukas-reineke/indent-blankline.nvim', branch='lua'}
 plug {'neovim/nvim-lspconfig'}
 plug {'nvim-lua/completion-nvim'}
 plug {'romainl/vim-cool'}

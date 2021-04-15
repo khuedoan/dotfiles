@@ -96,6 +96,7 @@ plug {'justinmk/vim-sneak'}
 plug {'kyazdani42/nvim-tree.lua'}
 plug {'lukas-reineke/indent-blankline.nvim', branch='lua'} -- TODO use master branch when 0.5 is out
 plug {'neovim/nvim-lspconfig'}
+plug {'norcalli/nvim-colorizer.lua'}
 plug {'nvim-lua/completion-nvim'}
 plug {'romainl/vim-cool'}
 plug {'romgrk/barbar.nvim'}
@@ -121,6 +122,10 @@ g.bufferline = {
 }
 
 map('n', '<LEADER><TAB>', ':BufferPick<CR>', {noremap = true, silent = true})
+
+-- Color highlighter
+
+require'colorizer'.setup()
 
 -- File explorer
 

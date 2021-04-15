@@ -66,7 +66,7 @@ map('n', '<LEADER>r', ':%s///g<LEFT><LEFT>',  {noremap = true})
 -- | PLUGINS |
 -- +---------+
 
--- Plugin manager
+-- Auto install plugin manager
 
 local install_path = fn.stdpath('data')..'/site/pack/paqs/opt/paq-nvim'
 
@@ -76,6 +76,9 @@ end
 
 cmd 'packadd paq-nvim'
 local plug = require('paq-nvim').paq
+
+-- Let the plugin manager manage itself
+
 plug {'savq/paq-nvim', opt=true}
 
 -- Plugin list
@@ -91,7 +94,7 @@ plug {'junegunn/fzf'}
 plug {'junegunn/fzf.vim'}
 plug {'justinmk/vim-sneak'}
 plug {'kyazdani42/nvim-tree.lua'}
-plug {'lukas-reineke/indent-blankline.nvim', branch='lua'}
+plug {'lukas-reineke/indent-blankline.nvim', branch='lua'} -- TODO use master branch when 0.5 is out
 plug {'neovim/nvim-lspconfig'}
 plug {'nvim-lua/completion-nvim'}
 plug {'romainl/vim-cool'}
@@ -99,6 +102,8 @@ plug {'romgrk/barbar.nvim'}
 plug {'sheerun/vim-polyglot'}
 plug {'tpope/vim-commentary'}
 plug {'tpope/vim-surround'}
+
+-- Auto install all plugins
 
 require('paq-nvim').install()
 
@@ -139,6 +144,8 @@ g.blamer_show_in_visual_modes = 0
 g.blamer_relative_time = 1
 
 -- Language servers
+
+-- TODO auto install all language servers
 
 local servers = {
   "pyright",

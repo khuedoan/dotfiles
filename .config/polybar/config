@@ -21,8 +21,7 @@ font-0 = FiraCode Nerd Font:style=Bold:size=10;2
 padding-right = 1
 module-margin = 1
 modules-left   = bspwm
-modules-center = date
-modules-right  = ethernet wlan cpu temperature memory battery backlight alsa
+modules-right  = ethernet wlan cpu temperature memory battery backlight alsa date
 cursor-click = pointer
 tray-position = right
 
@@ -43,15 +42,6 @@ label-focused-background       = ${colors.background-focused}
 label-focused-empty-foreground = ${colors.foreground-focused}
 label-focused-empty-background = ${colors.background-focused}
 label-urgent-foreground        = ${colors.red}
-
-[module/date]
-type = internal/date
-interval = 1
-label = %time% - %date%
-time     = %R
-date     = %a, %b %d
-time-alt = %T
-date-alt = %A, %B %d, %Y
 
 [module/ethernet]
 type = internal/network
@@ -111,6 +101,14 @@ animation-charging-2 = 
 animation-charging-3 = 
 animation-charging-4 = 
 
+[module/backlight]
+type = internal/backlight
+card = intel_backlight
+format = <ramp> <label>
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
+
 [module/alsa]
 type = internal/alsa
 format-volume = <ramp-volume> <bar-volume>
@@ -125,10 +123,11 @@ bar-volume-fill      = -
 bar-volume-empty     = -
 bar-volume-empty-foreground = ${colors.foreground-alt}
 
-[module/backlight]
-type = internal/backlight
-card = intel_backlight
-format = <ramp> <label>
-ramp-0 = 
-ramp-1 = 
-ramp-2 = 
+[module/date]
+type = internal/date
+interval = 1
+label = %time% - %date%
+time     = %R
+date     = %a, %b %d
+time-alt = %T
+date-alt = %A, %B %d, %Y

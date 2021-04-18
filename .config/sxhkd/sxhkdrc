@@ -36,8 +36,11 @@ super + p ; super + Escape
 # Properties #
 ##############
 
-# Toggle floating state
+# Toggle fullscreen
 super + f
+    bspc desktop -l next
+# Toggle floating state
+super + shift + f
     if [ -z "$(bspc query -N -n focused.floating)" ]; then \
         bspc node focused -t floating; \
     else \
@@ -46,9 +49,6 @@ super + f
 # Toggle sticky flag
 super + s
     bspc node -g sticky
-# Toggle monocle layout
-super + m
-    bspc desktop -l next
 # Toggle game mode
 super + g
     killall picom ibus-daemon \

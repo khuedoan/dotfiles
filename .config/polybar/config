@@ -17,7 +17,7 @@ wm-restack = bspwm
 height = 22
 foreground = ${colors.foreground}
 background = ${colors.background}
-font-0 = SauceCodePro Nerd Font:style=Bold:size=10;2
+font-0 = FiraCode Nerd Font:style=Bold:size=10;2
 padding-right = 1
 module-margin = 1
 modules-left   = bspwm

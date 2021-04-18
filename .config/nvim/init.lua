@@ -139,8 +139,9 @@ map('n', '<C-n>', ':NvimTreeToggle<CR>', {noremap = true})
 
 g.fzf_buffers_jump = 1
 
-map('n', '<C-f>', ':Rg!<CR>',    {noremap = true})
-map('n', '<C-p>', ':Files!<CR>', {noremap = true})
+map('n', '<C-b>', ':Buffers!<CR>', {noremap = true})
+map('n', '<C-f>', ':Rg!<CR>',      {noremap = true})
+map('n', '<C-p>', ':Files!<CR>',   {noremap = true})
 
 -- Git blame
 

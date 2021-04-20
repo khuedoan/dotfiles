@@ -11,6 +11,7 @@ zinit wait lucid light-mode depth=1 for \
     atinit='zicompinit' zdharma/fast-syntax-highlighting \
     atload='_zsh_autosuggest_start' zsh-users/zsh-autosuggestions \
     atload='MODE_CURSOR_VIINS="bar"; vim-mode-cursor-init-hook' softmoth/zsh-vim-mode \
+    atload='ZSH_EXPAND_ALL_DISABLE="word"' simnalamburt/zsh-expand-all \
     hlissner/zsh-autopair
 zinit wait lucid is-snippet for \
     https://github.com/junegunn/fzf/blob/master/shell/key-bindings.zsh \

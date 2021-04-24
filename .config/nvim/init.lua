@@ -1,6 +1,6 @@
--- +---------+
--- | Aliases |
--- +---------+
+-------------
+-- Aliases --
+-------------
 
 local bo = vim.bo
 local cmd = vim.cmd
@@ -10,9 +10,9 @@ local map = vim.api.nvim_set_keymap
 local o = vim.o
 local wo = vim.wo
 
--- +---------+
--- | Options |
--- +---------+
+-------------
+-- Options --
+-------------
 
 -- Global
 
@@ -40,9 +40,9 @@ wo.number = true
 wo.relativenumber = true
 wo.signcolumn = 'yes'
 
--- +----------+
--- | Mappings |
--- +----------+
+--------------
+-- Mappings --
+--------------
 
 -- Leader
 
@@ -62,9 +62,9 @@ map('n', '<C-q>', ':quit<CR>',  {noremap = true})
 
 map('n', '<LEADER>r', ':%s///g<LEFT><LEFT>',  {noremap = true})
 
--- +---------+
--- | PLUGINS |
--- +---------+
+-------------
+-- Plugins --
+-------------
 
 -- Auto install plugin manager
 
@@ -108,6 +108,10 @@ plug {'tpope/vim-surround'}
 
 require('paq-nvim').install()
 
+-------------------
+-- Plugin config --
+-------------------
+
 -- Theme
 
 cmd 'autocmd ColorScheme * highlight Normal ctermbg=NONE guibg=NONE'
@@ -135,24 +139,14 @@ g.nvim_tree_quit_on_open = 1
 
 map('n', '<C-n>', ':NvimTreeToggle<CR>', {noremap = true})
 
-----------------------
--- junegunn/fzf.vim --
-----------------------
-
--- OPTIONS
+-- Fuzzy finder
 
 g.fzf_buffers_jump = 1
 
--- KEY MAPPING
-
--- Buffers
 map('n', '<LEADER>fb', ':Buffers!<CR>', {noremap = true})
--- Files
-map('n', '<LEADER>ff', ':Files!<CR>', {noremap = true})
--- Git files
-map('n', '<LEADER>fg', ':GFiles!<CR>', {noremap = true})
--- Search
-map('n', '<LEADER>fs', ':Rg!<CR>', {noremap = true})
+map('n', '<LEADER>ff', ':Files!<CR>',   {noremap = true})
+map('n', '<LEADER>fg', ':GFiles!<CR>',  {noremap = true})
+map('n', '<LEADER>fs', ':Rg!<CR>',      {noremap = true})
 
 -- Git blame
 

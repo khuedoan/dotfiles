@@ -135,13 +135,24 @@ g.nvim_tree_quit_on_open = 1
 
 map('n', '<C-n>', ':NvimTreeToggle<CR>', {noremap = true})
 
--- Fuzzy search
+----------------------
+-- junegunn/fzf.vim --
+----------------------
+
+-- OPTIONS
 
 g.fzf_buffers_jump = 1
 
-map('n', '<C-b>', ':Buffers!<CR>', {noremap = true})
-map('n', '<C-f>', ':Rg!<CR>',      {noremap = true})
-map('n', '<C-p>', ':Files!<CR>',   {noremap = true})
+-- KEY MAPPING
+
+-- Buffers
+map('n', '<LEADER>fb', ':Buffers!<CR>', {noremap = true})
+-- Files
+map('n', '<LEADER>ff', ':Files!<CR>', {noremap = true})
+-- Git files
+map('n', '<LEADER>fg', ':GFiles!<CR>', {noremap = true})
+-- Search
+map('n', '<LEADER>fs', ':Rg!<CR>', {noremap = true})
 
 -- Git blame
 

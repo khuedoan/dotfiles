@@ -93,8 +93,8 @@ plug {'joshdick/onedark.vim'}
 plug {'junegunn/fzf'}
 plug {'junegunn/fzf.vim'}
 plug {'justinmk/vim-sneak'}
-plug {'kyazdani42/nvim-tree.lua'}
 plug {'lukas-reineke/indent-blankline.nvim', branch='lua'} -- TODO use master branch when 0.5 is out
+plug {'mcchrish/nnn.vim'}
 plug {'neovim/nvim-lspconfig'}
 plug {'norcalli/nvim-colorizer.lua'}
 plug {'nvim-lua/completion-nvim'}
@@ -133,11 +133,7 @@ require'colorizer'.setup()
 
 -- File explorer
 
-g.nvim_tree_follow = 1
-g.nvim_tree_indent_markers = 1
-g.nvim_tree_quit_on_open = 1
-
-map('n', '<C-n>', ':NvimTreeToggle<CR>', {noremap = true})
+map('n', '<LEADER>n', ':NnnPicker %<CR>', {noremap = true})
 
 -- Fuzzy finder
 

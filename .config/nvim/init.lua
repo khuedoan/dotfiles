@@ -85,6 +85,7 @@ plug {'savq/paq-nvim', opt=true}
 
 plug {'APZelos/blamer.nvim'}
 plug {'airblade/vim-gitgutter'}
+plug {'bronson/vim-visual-star-search'}
 plug {'christoomey/vim-tmux-navigator'}
 plug {'farmergreg/vim-lastplace'}
 plug {'hoob3rt/lualine.nvim'}

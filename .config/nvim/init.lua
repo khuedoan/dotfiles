@@ -134,7 +134,15 @@ require'colorizer'.setup()
 
 -- File explorer
 
+g['nnn#set_default_mappings'] = 0
+g['nnn#action'] = {
+  ['<C-t>'] = 'tab split',
+  ['<C-v>'] = 'vsplit',
+  ['<C-x>'] = 'split'
+}
+
 map('n', '<LEADER>n', ':NnnPicker %<CR>', {noremap = true})
+map('n', '<LEADER>N', ':NnnPicker<CR>',   {noremap = true})
 
 -- Fuzzy finder
 

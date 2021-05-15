@@ -89,6 +89,7 @@ plug {'bronson/vim-visual-star-search'}
 plug {'christoomey/vim-tmux-navigator'}
 plug {'farmergreg/vim-lastplace'}
 plug {'hoob3rt/lualine.nvim'}
+plug {'iamcco/markdown-preview.nvim', run=vim.fn['mkdp#util#install']}
 plug {'jiangmiao/auto-pairs'}
 plug {'joshdick/onedark.vim'}
 plug {'junegunn/fzf'}

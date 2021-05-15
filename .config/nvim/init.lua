@@ -105,9 +105,10 @@ plug {'sheerun/vim-polyglot'}
 plug {'tpope/vim-commentary'}
 plug {'tpope/vim-surround'}
 
--- Auto install all plugins
+-- Auto install and clean plugins
 
 require('paq-nvim').install()
+require('paq-nvim').clean()
 
 -------------------
 -- Plugin config --

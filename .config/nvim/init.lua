@@ -150,10 +150,9 @@ map('n', '<LEADER>N', ':NnnPicker<CR>',   {noremap = true})
 
 g.fzf_buffers_jump = 1
 
-map('n', '<LEADER>fb', ':Buffers!<CR>', {noremap = true})
-map('n', '<LEADER>ff', ':Files!<CR>',   {noremap = true})
-map('n', '<LEADER>fg', ':GFiles!<CR>',  {noremap = true})
-map('n', '<LEADER>fs', ':Rg!<CR>',      {noremap = true})
+map('n', '<LEADER>b', ':Buffers!<CR>', {noremap = true})
+map('n', '<LEADER>f', ':Files!<CR>',   {noremap = true})
+map('n', '<LEADER>/', ':Rg!<CR>',      {noremap = true})
 
 -- Git blame
 

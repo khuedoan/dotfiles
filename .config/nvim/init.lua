@@ -104,6 +104,7 @@ plug {'romainl/vim-cool'}
 plug {'romgrk/barbar.nvim'}
 plug {'sheerun/vim-polyglot'}
 plug {'tpope/vim-commentary'}
+plug {'tpope/vim-fugitive'}
 plug {'tpope/vim-surround'}
 
 -- Auto install and clean plugins
@@ -159,6 +160,17 @@ map('n', '<LEADER>/', ':Rg!<CR>',      {noremap = true})
 g.blamer_enabled = 1
 g.blamer_show_in_visual_modes = 0
 g.blamer_relative_time = 1
+
+-- Git fugitive
+
+map('n', '<LEADER>gg', ':Git<SPACE>',      {noremap = true})
+map('n', '<LEADER>gs', ':Git<CR>',         {noremap = true})
+map('n', '<LEADER>gb', ':Git blame<CR>',   {noremap = true})
+map('n', '<LEADER>gc', ':Git commit<CR>',  {noremap = true})
+map('n', '<LEADER>gd', ':Gvdiffsplit<CR>', {noremap = true})
+map('n', '<LEADER>gl', ':Gclog<CR>',       {noremap = true})
+map('n', '<LEADER>gp', ':Git push<CR>',    {noremap = true})
+map('n', '<LEADER>gt', ':GFiles!<CR>',      {noremap = true})
 
 -- Language servers
 

@@ -155,13 +155,11 @@ map('n', '<LEADER>b', ':Buffers!<CR>', {noremap = true})
 map('n', '<LEADER>f', ':Files!<CR>',   {noremap = true})
 map('n', '<LEADER>/', ':Rg!<CR>',      {noremap = true})
 
--- Git blame
+-- Git
 
 g.blamer_enabled = 1
 g.blamer_show_in_visual_modes = 0
 g.blamer_relative_time = 1
-
--- Git fugitive
 
 map('n', '<LEADER>gg', ':Git<SPACE>',      {noremap = true})
 map('n', '<LEADER>gs', ':Git<CR>',         {noremap = true})

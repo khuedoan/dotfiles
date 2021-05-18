@@ -95,6 +95,7 @@ plug {'joshdick/onedark.vim'}
 plug {'junegunn/fzf'}
 plug {'junegunn/fzf.vim'}
 plug {'justinmk/vim-sneak'}
+plug {'kyazdani42/nvim-web-devicons'}
 plug {'lukas-reineke/indent-blankline.nvim', branch='lua'} -- TODO use master branch when 0.5 is out
 plug {'mcchrish/nnn.vim'}
 plug {'neovim/nvim-lspconfig'}

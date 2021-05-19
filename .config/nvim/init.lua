@@ -191,14 +191,15 @@ local servers = {
 require('lspinstall').setup()
 
 for _, server in pairs(servers) do
+  -- Install language server if not installed yet
   if not vim.tbl_contains(require('lspinstall').installed_servers(), server) then
     require('lspinstall').install_server(server)
   end
-
+  -- Load language server
   require('lspconfig')[server].setup{}
 end
 
-require('compe').setup {
+require('compe').setup({
   enabled = true;
   autocomplete = true;
   debug = false;
@@ -217,7 +218,7 @@ require('compe').setup {
     nvim_lsp = true;
     path = true;
   };
-}
+})
 
 map('i', '<TAB>',   '<Plug>(completion_smart_tab)',   {})
 map('i', '<S-TAB>', '<Plug>(completion_smart_s_tab)', {})

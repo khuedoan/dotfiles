@@ -136,7 +136,7 @@ map('n', '<LEADER><TAB>', ':BufferPick<CR>', {noremap = true, silent = true})
 
 -- Color highlighter
 
-require'colorizer'.setup()
+require('colorizer').setup()
 
 -- File explorer
 
@@ -178,27 +178,27 @@ map('n', '<LEADER>gt', ':GFiles!<CR>',      {noremap = true})
 -- TODO optimize LSP
 
 local servers = {
-  "pyright",
-  "yamlls"
+  "bash",
+  "dockerfile",
+  "go",
+  "lua",
+  "python",
+  "rust",
+  "terraform",
+  "yaml"
 }
 
-local function setup_servers()
-  require'lspinstall'.setup()
-  local servers = require'lspinstall'.installed_servers()
-  for _, server in pairs(servers) do
-    require'lspconfig'[server].setup{}
+require('lspinstall').setup()
+
+for _, server in pairs(servers) do
+  if not vim.tbl_contains(require('lspinstall').installed_servers(), server) then
+    require('lspinstall').install_server(server)
   end
+
+  require('lspconfig')[server].setup{}
 end
 
-setup_servers()
-
-for _, lsp in ipairs(servers) do
-  require('lspconfig')[lsp].setup{
-    on_attach = require('completion').on_attach
-  }
-end
-
-require'compe'.setup {
+require('compe').setup {
   enabled = true;
   autocomplete = true;
   debug = false;

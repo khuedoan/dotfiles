@@ -90,6 +90,8 @@ plug {'christoomey/vim-tmux-navigator'}
 plug {'farmergreg/vim-lastplace'}
 plug {'hoob3rt/lualine.nvim'}
 plug {'hrsh7th/nvim-compe'}
+plug {'hrsh7th/vim-vsnip'}
+plug {'hrsh7th/vim-vsnip-integ'}
 plug {'iamcco/markdown-preview.nvim', run=vim.fn['mkdp#util#install']}
 plug {'jiangmiao/auto-pairs'}
 plug {'joshdick/onedark.vim'}
@@ -103,6 +105,7 @@ plug {'mcchrish/nnn.vim'}
 plug {'neovim/nvim-lspconfig'}
 plug {'norcalli/nvim-colorizer.lua'}
 plug {'nvim-lua/completion-nvim'}
+plug {'rafamadriz/friendly-snippets'}
 plug {'romainl/vim-cool'}
 plug {'romgrk/barbar.nvim'}
 plug {'sheerun/vim-polyglot'}
@@ -175,53 +178,25 @@ map('n', '<LEADER>gt', ':GFiles!<CR>',      {noremap = true})
 
 -- Language servers
 
--- TODO optimize LSP
-
-local servers = {
-  "bash",
-  "dockerfile",
-  "go",
-  "lua",
-  "python",
-  "rust",
-  "terraform",
-  "yaml"
-}
-
 require('lspinstall').setup()
-
+local servers = require('lspinstall').installed_servers()
 for _, server in pairs(servers) do
-  -- Install language server if not installed yet
-  if not vim.tbl_contains(require('lspinstall').installed_servers(), server) then
-    require('lspinstall').install_server(server)
-  end
-  -- Load language server
-  require('lspconfig')[server].setup{}
+  require('lspconfig')[server].setup({})
 end
 
 require('compe').setup({
   enabled = true;
   autocomplete = true;
-  debug = false;
-  min_length = 1;
-  preselect = 'enable';
-  throttle_time = 80;
-  source_timeout = 200;
-  incomplete_delay = 400;
-  max_abbr_width = 100;
-  max_kind_width = 100;
-  max_menu_width = 100;
-  documentation = true;
 
   source = {
     buffer = true;
     nvim_lsp = true;
     path = true;
+    vsnip = true;
   };
 })
 
-map('i', '<TAB>',   '<Plug>(completion_smart_tab)',   {})
-map('i', '<S-TAB>', '<Plug>(completion_smart_s_tab)', {})
+map('i', '<CR>', 'compe#confirm("<CR>")', {expr = true, noremap = true, silent = true})
 
 -- Sneak
 

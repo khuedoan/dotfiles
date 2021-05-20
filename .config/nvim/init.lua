@@ -104,10 +104,10 @@ plug {'lukas-reineke/indent-blankline.nvim', branch='lua'} -- TODO use master br
 plug {'mcchrish/nnn.vim'}
 plug {'neovim/nvim-lspconfig'}
 plug {'norcalli/nvim-colorizer.lua'}
+plug {'nvim-treesitter/nvim-treesitter'}
 plug {'rafamadriz/friendly-snippets'}
 plug {'romainl/vim-cool'}
 plug {'romgrk/barbar.nvim'}
-plug {'sheerun/vim-polyglot'}
 plug {'tpope/vim-commentary'}
 plug {'tpope/vim-fugitive'}
 plug {'tpope/vim-surround'}
@@ -175,7 +175,14 @@ map('n', '<LEADER>gl', ':Gclog<CR>',       {noremap = true})
 map('n', '<LEADER>gp', ':Git push<CR>',    {noremap = true})
 map('n', '<LEADER>gt', ':GFiles!<CR>',      {noremap = true})
 
--- Language servers
+-- Language support
+
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  highlight = {
+    enable = true
+  }
+}
 
 require('lspinstall').setup()
 local servers = require('lspinstall').installed_servers()

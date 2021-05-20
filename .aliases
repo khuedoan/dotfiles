@@ -24,7 +24,18 @@ alias gP='git push --set-upstream origin HEAD'
 alias gl='git log --all --decorate --oneline --graph'
 alias gL='git log -p'
 alias gt='git ls-tree -r "$(git rev-parse --abbrev-ref HEAD)" --name-only'
-alias gw='git worktree'
+
+gw () {
+    if [ "$1" = "add" ]; then
+        new_worktree="$HOME/Documents/worktree/$(basename $(git rev-parse --show-toplevel))/$2"
+        git worktree add $new_worktree
+        cd $new_worktree
+    elif [ "$1" = "list" ]; then
+        git worktree list
+    elif [ "$1" = "remove" ]; then
+        git worktree remove "$2"
+    fi
+}
 
 # aria2
 alias dl='aria2c -x 16 -s 16'

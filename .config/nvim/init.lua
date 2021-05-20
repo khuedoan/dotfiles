@@ -104,7 +104,6 @@ plug {'lukas-reineke/indent-blankline.nvim', branch='lua'} -- TODO use master br
 plug {'mcchrish/nnn.vim'}
 plug {'neovim/nvim-lspconfig'}
 plug {'norcalli/nvim-colorizer.lua'}
-plug {'nvim-lua/completion-nvim'}
 plug {'rafamadriz/friendly-snippets'}
 plug {'romainl/vim-cool'}
 plug {'romgrk/barbar.nvim'}

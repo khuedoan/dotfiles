@@ -142,6 +142,7 @@ require('colorizer').setup()
 
 -- File explorer
 
+g['nnn#replace_netrw'] = 1
 g['nnn#set_default_mappings'] = 0
 g['nnn#action'] = {
   ['<C-t>'] = 'tab split',

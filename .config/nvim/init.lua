@@ -20,6 +20,7 @@ o.completeopt = 'menuone,noinsert,noselect'
 o.inccommand = 'nosplit'
 o.mouse = 'a'
 o.scrolloff = 1
+o.shortmess = o.shortmess .. 'c'
 o.showmode = false
 o.splitbelow = true
 o.splitright = true

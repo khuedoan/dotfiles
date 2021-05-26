@@ -158,7 +158,7 @@ map('n', '<LEADER>N', ':NnnPicker<CR>',   {noremap = true})
 g.fzf_buffers_jump = 1
 
 map('n', '<LEADER>b', ':Buffers!<CR>', {noremap = true})
-map('n', '<LEADER>f', ':Files!<CR>',   {noremap = true})
+map('n', '<LEADER>f', ':Files!<CR>\'', {noremap = true})
 map('n', '<LEADER>/', ':Rg!<CR>',      {noremap = true})
 
 -- Git
@@ -174,7 +174,7 @@ map('n', '<LEADER>gc', ':Git commit<CR>',  {noremap = true})
 map('n', '<LEADER>gd', ':Gvdiffsplit<CR>', {noremap = true})
 map('n', '<LEADER>gl', ':Gclog<CR>',       {noremap = true})
 map('n', '<LEADER>gp', ':Git push<CR>',    {noremap = true})
-map('n', '<LEADER>gt', ':GFiles!<CR>',      {noremap = true})
+map('n', '<LEADER>gt', ':GFiles!<CR>',     {noremap = true})
 
 -- Language support
 

@@ -98,7 +98,6 @@ plug {'jiangmiao/auto-pairs'}
 plug {'joshdick/onedark.vim'}
 plug {'junegunn/fzf'}
 plug {'junegunn/fzf.vim'}
-plug {'justinmk/vim-sneak'}
 plug {'kabouzeid/nvim-lspinstall'}
 plug {'kyazdani42/nvim-web-devicons'}
 plug {'lukas-reineke/indent-blankline.nvim', branch='lua'} -- TODO use master branch when 0.5 is out
@@ -106,6 +105,7 @@ plug {'mcchrish/nnn.vim'}
 plug {'neovim/nvim-lspconfig'}
 plug {'norcalli/nvim-colorizer.lua'}
 plug {'nvim-treesitter/nvim-treesitter'}
+plug {'phaazon/hop.nvim'}
 plug {'rafamadriz/friendly-snippets'}
 plug {'romainl/vim-cool'}
 plug {'romgrk/barbar.nvim'}
@@ -177,6 +177,10 @@ map('n', '<LEADER>gl', ':Gclog<CR>',       {noremap = true})
 map('n', '<LEADER>gp', ':Git push<CR>',    {noremap = true})
 map('n', '<LEADER>gt', ':GFiles!<CR>',     {noremap = true})
 
+-- Hop
+
+map('n', 's', ':HopWord<CR>', {noremap = true})
+
 -- Language support
 
 require'nvim-treesitter.configs'.setup {
@@ -245,11 +249,6 @@ map("i", "<Tab>", "v:lua.tab_complete()",     {expr = true})
 map("s", "<Tab>", "v:lua.tab_complete()",     {expr = true})
 map("i", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
 map("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
-
--- Sneak
-
-g['sneak#label'] = 1
-cmd 'highlight link Sneak Search'
 
 -- Status line
 

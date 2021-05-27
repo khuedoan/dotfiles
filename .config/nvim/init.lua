@@ -72,7 +72,7 @@ map('n', '<LEADER>r', ':%s///g<LEFT><LEFT>',  {noremap = true})
 local install_path = fn.stdpath('data')..'/site/pack/paqs/opt/paq-nvim'
 
 if fn.empty(fn.glob(install_path)) > 0 then
-  cmd('!git clone --depth 1 https://github.com/savq/paq-nvim.git '..install_path)
+    cmd('!git clone --depth 1 https://github.com/savq/paq-nvim.git '..install_path)
 end
 
 cmd 'packadd paq-nvim'
@@ -130,9 +130,9 @@ cmd 'colorscheme onedark'
 -- Buffer line
 
 g.bufferline = {
-  animation = false,
-  icons = false,
-  maximum_padding = 0
+    animation = false,
+    icons = false,
+    maximum_padding = 0
 }
 
 map('n', '<LEADER><TAB>', ':BufferPick<CR>', {noremap = true, silent = true})
@@ -146,9 +146,9 @@ require('colorizer').setup()
 g['nnn#replace_netrw'] = 1
 g['nnn#set_default_mappings'] = 0
 g['nnn#action'] = {
-  ['<C-t>'] = 'tab split',
-  ['<C-v>'] = 'vsplit',
-  ['<C-x>'] = 'split'
+    ['<C-t>'] = 'tab split',
+    ['<C-v>'] = 'vsplit',
+    ['<C-x>'] = 'split'
 }
 
 map('n', '<LEADER>n', ':NnnPicker %<CR>', {noremap = true})
@@ -184,28 +184,28 @@ map('n', 's', ':HopWord<CR>', {noremap = true})
 -- Language support
 
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
-  highlight = {
-    enable = true
-  }
+    ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+    highlight = {
+        enable = true
+    }
 }
 
 require('lspinstall').setup()
 local servers = require('lspinstall').installed_servers()
 for _, server in pairs(servers) do
-  require('lspconfig')[server].setup({})
+    require('lspconfig')[server].setup({})
 end
 
 require('compe').setup({
-  enabled = true;
-  autocomplete = true;
+    enabled = true;
+    autocomplete = true;
 
-  source = {
-    buffer = true;
-    nvim_lsp = true;
-    path = true;
-    vsnip = true;
-  };
+    source = {
+        buffer = true;
+        nvim_lsp = true;
+        path = true;
+        vsnip = true;
+    };
 })
 
 -- TODO clean up tab complete
@@ -235,8 +235,8 @@ _G.tab_complete = function()
     end
 end
 _G.s_tab_complete = function()
-		if vim.fn.call("vsnip#jumpable", {-1}) == 1 then
-				return t "<Plug>(vsnip-jump-prev)"
+    if vim.fn.call("vsnip#jumpable", {-1}) == 1 then
+        return t "<Plug>(vsnip-jump-prev)"
     elseif vim.fn.pumvisible() == 1 then
         return t "<C-p>"
     else
@@ -253,9 +253,9 @@ map("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
 -- Status line
 
 require('lualine').setup({
-  options = {
-    theme = 'onedark'
-  }
+    options = {
+        theme = 'onedark'
+    }
 })
 
 -- Tmux navigator

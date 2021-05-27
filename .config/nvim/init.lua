@@ -179,7 +179,8 @@ map('n', '<LEADER>gt', ':GFiles!<CR>',     {noremap = true})
 
 -- Hop
 
-map('n', 's', ':HopWord<CR>', {noremap = true})
+map('n', 's', ":lua require'hop'.hint_words()<CR>", {})
+map('v', 's', ":lua require'hop'.hint_words()<CR>", {})
 
 -- Language support
 

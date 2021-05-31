@@ -3,7 +3,7 @@ source $HOME/.zsh/zinit/zinit.zsh \
     || (git clone --depth 1 https://github.com/zdharma/zinit.git $HOME/.zsh/zinit && exec zsh)
 
 # Theme
-zinit ice depth=1 atclone='./gitstatus/install' atload="source $HOME/.p10k.zsh"
+zinit ice depth=1 atload="source $HOME/.p10k.zsh"
 zinit light romkatv/powerlevel10k
 
 # Plugin list

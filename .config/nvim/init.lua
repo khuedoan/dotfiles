@@ -2,44 +2,34 @@
 -- Aliases --
 -------------
 
-local bo = vim.bo
 local cmd = vim.cmd
 local fn = vim.fn
 local g = vim.g
 local map = vim.api.nvim_set_keymap
-local o = vim.o
-local wo = vim.wo
+local o = vim.opt
 
 -------------
 -- Options --
 -------------
 
--- Global
-
 o.completeopt = 'menuone,noinsert,noselect'
+o.cursorline = true
+o.expandtab = true
 o.inccommand = 'nosplit'
 o.mouse = 'a'
+o.number = true
+o.relativenumber = true
 o.scrolloff = 1
-o.shortmess = o.shortmess .. 'c'
+o.shiftwidth = 4
+o.shortmess = o.shortmess + 'c'
 o.showmode = false
+o.signcolumn = 'yes'
 o.splitbelow = true
 o.splitright = true
+o.tabstop = 4
 o.termguicolors = true
+o.undofile = true
 o.updatetime = 100
-
--- Buffer
-
-bo.expandtab = true
-bo.shiftwidth = 4
-bo.tabstop = 4
-bo.undofile = true
-
--- Window
-
-wo.cursorline = true
-wo.number = true
-wo.relativenumber = true
-wo.signcolumn = 'yes'
 
 --------------
 -- Mappings --

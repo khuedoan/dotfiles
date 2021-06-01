@@ -67,3 +67,6 @@ alias officetopdf='libreoffice --headless --convert-to pdf'
 cheat () {
     curl "cheat.sh/$1"
 }
+
+# calculator
+alias calc='python -i -c "from math import *"'

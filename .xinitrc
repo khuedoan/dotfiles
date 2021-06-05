@@ -10,5 +10,4 @@ fi
 systemctl is-active --quiet optimus-manager.service && prime-offload
 autorandr --change
 
-slock &
 exec bspwm

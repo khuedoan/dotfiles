@@ -136,7 +136,7 @@ require('colorizer').setup()
 
 require('nnn').setup{
     set_default_mappings = false,
-    session = 'global',
+    session = 'local',
     action = {
         ['<C-t>'] = 'tab split',
         ['<C-v>'] = 'vsplit',

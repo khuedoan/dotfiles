@@ -1,3 +1,0 @@
-#!/bin/sh
-
-wmctrl -l | dmenu -i -l 25 | cut -c -10 | xargs wmctrl -i -a

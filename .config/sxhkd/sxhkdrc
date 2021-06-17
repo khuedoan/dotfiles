@@ -96,18 +96,9 @@ super + {_,shift + }w
 # File explorer
 super + e
     pcmanfm
-# Translator
-super + {_,shift + }t
-    dmenu-trans {en:vi,_}
-# Calculator
-super + c
-    dmenu-calc
 # Documents
 super + d
     dmenu-doc
-# Network menu
-super + n
-    dmenu-wifi
 # Key bindings list
 super + slash
     dmenu-help

@@ -175,6 +175,8 @@ map('n', '<LEADER>gt', ':GFiles!<CR>',     {noremap = true})
 
 -- Hop
 
+require('hop').setup({})
+
 map('n', 's', ":lua require'hop'.hint_words()<CR>", {})
 map('v', 's', ":lua require'hop'.hint_words()<CR>", {})
 

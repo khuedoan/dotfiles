@@ -75,7 +75,6 @@ plug {'savq/paq-nvim', opt=true}
 -- Plugin list
 
 plug {'APZelos/blamer.nvim'}
-plug {'airblade/vim-gitgutter'}
 plug {'bronson/vim-visual-star-search'}
 plug {'christoomey/vim-tmux-navigator'}
 plug {'farmergreg/vim-lastplace'}
@@ -90,10 +89,12 @@ plug {'junegunn/fzf'}
 plug {'junegunn/fzf.vim'}
 plug {'kabouzeid/nvim-lspinstall'}
 plug {'kyazdani42/nvim-web-devicons'}
+plug {'lewis6991/gitsigns.nvim'}
 plug {'lukas-reineke/indent-blankline.nvim', branch='lua'} -- TODO use master branch when 0.5 is out
 plug {'mcchrish/nnn.vim'}
 plug {'neovim/nvim-lspconfig'}
 plug {'norcalli/nvim-colorizer.lua'}
+plug {'nvim-lua/plenary.nvim'}
 -- plug {'nvim-treesitter/nvim-treesitter'}
 plug {'phaazon/hop.nvim'}
 plug {'rafamadriz/friendly-snippets'}
@@ -156,6 +157,8 @@ map('n', '<LEADER>f', ':Files!<CR>\'', {noremap = true})
 map('n', '<LEADER>/', ':Rg!<CR>',      {noremap = true})
 
 -- Git
+
+require('gitsigns').setup()
 
 g.blamer_enabled = 1
 g.blamer_show_in_visual_modes = 0

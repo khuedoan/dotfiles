@@ -44,11 +44,6 @@ g.mapleader = ' '
 map('v', '<C-c>', '"+y',    {noremap = true})
 map('i', '<C-v>', '<C-r>+', {noremap = true})
 
--- Save and quit
-
-map('n', '<C-s>', ':write<CR>', {noremap = true})
-map('n', '<C-q>', ':quit<CR>',  {noremap = true})
-
 -- Replace
 
 map('n', '<LEADER>r', ':%s///g<LEFT><LEFT>',  {noremap = true})

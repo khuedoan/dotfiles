@@ -1,6 +1,6 @@
 # My ~
 
-![Screenshot](https://i.imgur.com/HhjEfA3.png)
+![Screenshot](https://user-images.githubusercontent.com/27996771/124107685-b19d8100-da8f-11eb-8e23-c5944d957c15.png)
 
 ## Table of contents
 
@@ -88,9 +88,7 @@ I used to manage my dotfiles using git bare with a `dotfiles` command but now I 
 
 ### Wallpapers
 
-| Original | Blured|
-| :-- | :-- |
-| ![Original](https://i.imgur.com/ZlvUiIZ.jpg) | ![Blured](https://i.imgur.com/C3tCYsp.jpg) |
+Lost In Mind converted to Nord theme palette using [ImageGoNord](https://github.com/Schrodinger-Hat/ImageGoNord)
 
 ## Acknowledgements
 

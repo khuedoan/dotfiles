@@ -86,9 +86,9 @@ git pull
 
 I used to manage my dotfiles using git bare with a `dotfiles` command but now I switched to normal `git` command.
 
-### Wallpapers
+### Wallpaper
 
-Lost In Mind converted to Nord theme palette using [ImageGoNord](https://github.com/Schrodinger-Hat/ImageGoNord)
+[Lost In Mind by Paul Brennus](https://www.artstation.com/artwork/Z50d9R), converted to Nord theme palette using [ImageGoNord](https://github.com/Schrodinger-Hat/ImageGoNord)
 
 ## Acknowledgements
 

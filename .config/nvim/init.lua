@@ -242,5 +242,45 @@ return require('packer').startup({function()
       }
     end
   }
+
+  -- Language server protocol
+  use {
+    'kabouzeid/nvim-lspinstall',
+    requires = {
+      'neovim/nvim-lspconfig',
+    },
+    config = function()
+      require('lspinstall').setup()
+      local servers = require('lspinstall').installed_servers()
+      for _, server in pairs(servers) do
+          require('lspconfig')[server].setup({})
+      end
+    end
+  }
+
+  -- Autocomplete
+  use {
+    "hrsh7th/nvim-compe",
+    requires = {
+      'hrsh7th/vim-vsnip',
+      'hrsh7th/vim-vsnip-integ',
+      'rafamadriz/friendly-snippets',
+    },
+    config = function()
+      require('compe').setup({
+        enabled = true;
+        autocomplete = true;
+
+        source = {
+          buffer = true;
+          nvim_lsp = true;
+          path = true;
+          vsnip = true;
+        };
+      })
+
+      vim.api.nvim_set_keymap("i", "<CR>", "compe#confirm('<CR>')",     {expr = true})
+    end,
+  }
 end
 })

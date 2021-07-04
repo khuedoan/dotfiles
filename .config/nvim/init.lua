@@ -213,9 +213,6 @@ return require('packer').startup({function()
   -- Show indent line
   use {
     "lukas-reineke/indent-blankline.nvim",
-    config = function()
-      vim.g.indent_blankline_show_current_context = true
-    end
   }
 
   -- Set indent options automatically

@@ -119,9 +119,11 @@ return require('packer').startup({function()
 
   -- Theme
   use {
-    'joshdick/onedark.vim',
+    'ful1e5/onedark.nvim',
     config = function()
-      vim.cmd 'colorscheme onedark'
+      require('onedark').setup({
+        transparent = true
+      })
     end
   }
 

@@ -219,6 +219,7 @@ return require('packer').startup({function()
   -- Syntax highlighting and objects
   use {
     'nvim-treesitter/nvim-treesitter',
+    run = ':TSUpdate',
     config = function()
       require'nvim-treesitter.configs'.setup {
         ensure_installed = "maintained",

@@ -219,23 +219,23 @@ return require('packer').startup({function()
   }
 
   -- Set indent options automatically
-  use {
-    "tpope/vim-sleuth"
-  }
+  use "tpope/vim-sleuth"
 
   -- Syntax highlighting and objects
-  use {
-    'nvim-treesitter/nvim-treesitter',
-    run = ':TSUpdate',
-    config = function()
-      require'nvim-treesitter.configs'.setup {
-        ensure_installed = "maintained",
-        highlight = {
-          enable = true
-        }
-      }
-    end
-  }
+  -- TODO use tree-sitter on neovim 0.6
+  -- use {
+  --   'nvim-treesitter/nvim-treesitter',
+  --   run = ':TSUpdate',
+  --   config = function()
+  --     require'nvim-treesitter.configs'.setup {
+  --       ensure_installed = "maintained",
+  --       highlight = {
+  --         enable = true
+  --       }
+  --     }
+  --   end
+  -- }
+  use 'sheerun/vim-polyglot'
 
   -- Buffer line
   use {

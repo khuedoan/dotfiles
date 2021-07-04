@@ -218,6 +218,11 @@ return require('packer').startup({function()
     end
   }
 
+  -- Set indent options automatically
+  use {
+    "tpope/vim-sleuth"
+  }
+
   -- Syntax highlighting and objects
   use {
     'nvim-treesitter/nvim-treesitter',

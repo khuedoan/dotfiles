@@ -198,15 +198,14 @@ return require('packer').startup({function()
       require('nnn').setup({
         set_default_mappings = false,
         session = 'local',
-        -- TODO bug
-        -- action = {
-        --   ['<C-t>'] = 'tab split',
-        --   ['<C-v>'] = 'vsplit',
-        --   ['<C-x>'] = 'split'
-        -- }
+        action = {
+          ['<C-t>'] = 'tab split',
+          ['<C-v>'] = 'vsplit',
+          ['<C-x>'] = 'split'
+        }
       })
-      -- vim.api.nvim_set_keypmap('n', '<LEADER>n', ':NnnPicker<CR>',   {noremap = true})
-      -- vim.api.nvim_set_keypmap('n', '<LEADER>N', ':NnnPicker %<CR>', {noremap = true})
+      vim.api.nvim_set_keymap('n', '<LEADER>n', ':NnnPicker<CR>',       {noremap = true})
+      vim.api.nvim_set_keymap('n', '<LEADER>N', ':NnnPicker %:p:h<CR>', {noremap = true})
     end
   }
 
@@ -284,7 +283,7 @@ return require('packer').startup({function()
         };
       })
 
-      vim.api.nvim_set_keymap("i", "<CR>", "compe#confirm('<CR>')",     {expr = true})
+      vim.api.nvim_set_keymap("i", "<CR>", "compe#confirm('<CR>')", {expr = true})
     end,
   }
 end

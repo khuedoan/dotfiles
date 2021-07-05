@@ -111,7 +111,9 @@ return require('packer').startup({function()
   use {
     'phaazon/hop.nvim',
     config = function()
-      require('hop').setup({})
+      require('hop').setup({
+        teasing = false
+      })
       vim.api.nvim_set_keymap('n', 's', ":lua require'hop'.hint_char2()<CR>", {})
       vim.api.nvim_set_keymap('v', 's', ":lua require'hop'.hint_char2()<CR>", {})
     end

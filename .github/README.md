@@ -92,5 +92,7 @@ I used to manage my dotfiles using git bare with a `dotfiles` command but now I 
 
 ## Acknowledgements
 
-- **StreakyCobra** for [manage dotfiles using git bare](https://news.ycombinator.com/item?id=11070797)
-- **thugcee** for [show sxhkd key bindings with fuzzy search script](https://www.reddit.com/r/bspwm/comments/aejyze/tip_show_sxhkd_keybindings_with_fuzzy_search/)
+- [manage dotfiles using git bare](https://news.ycombinator.com/item?id=11070797)
+- [show sxhkd key bindings with fuzzy search script](https://www.reddit.com/r/bspwm/comments/aejyze/tip_show_sxhkd_keybindings_with_fuzzy_search/)
+- [LunarVim Neovim config](https://github.com/ChristianChiarulli/LunarVim)
+- [NvChad Neovim config](https://github.com/siduck76/NvChad)

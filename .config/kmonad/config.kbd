@@ -1,13 +1,13 @@
 (defcfg
-  input  (device-file "/dev/input/event21")
-  output (uinput-sink "E-DRA KMonad output")
+  input  (device-file "/dev/input/by-path/platform-i8042-serio-0-event-kbd")
+  output (uinput-sink "Internal keyboard")
   fallthrough true
   allow-cmd false
 )
 
 (defalias
   xcp (tap-hold-next 200 esc ctl)
-  fun (layer-toggle function)
+  fn  (layer-toggle function)
 )
 
 (defsrc
@@ -15,7 +15,7 @@
   tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
   caps a    s    d    f    g    h    j    k    l    ;    '    ret
   lsft z    x    c    v    b    n    m    ,    .    /    rsft
-  lctl lmet lalt           spc            ralt rmet cmp  rctl
+  lctl lmet lalt           spc            ralt rctl
 )
 
 (deflayer qwerty
@@ -23,13 +23,13 @@
   tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
   @xcp a    s    d    f    g    h    j    k    l    ;    '    ret
   lsft z    x    c    v    b    n    m    ,    .    /    rsft
-  lctl lalt lmet           spc            @fun rmet cmp  rctl
+  lctl lalt lmet           spc            @fn  rctl
 )
 
 (deflayer function
-  _    kp1  kp2  kp3  _    _    _    _    _    _    _    _    _    _
-  _    kp4  kp5  kp6  _    _    _    _    _    _    _    _    _    _
-  _    kp7  kp8  kp9  _    _    left down up   rght _    _    _
-  _    _    kp0  _    _    _    _    _    _    _    _    _
-  _    _    _              _              _    _    _    _
+  _    1    2    3    _    _    _    _    _    _    _    _    _    _
+  _    4    5    6    _    _    _    _    _    _    _    _    _    _
+  _    7    8    9    _    _    left down up   rght _    _    _
+  _    _    0    _    _    _    _    _    _    _    _    _
+  _    _    _              _              _    _
 )

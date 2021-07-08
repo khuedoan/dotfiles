@@ -284,5 +284,13 @@ return require('packer').startup({function()
       vim.api.nvim_set_keymap("i", "<CR>", "compe#confirm('<CR>')", {expr = true})
     end,
   }
+
+  -- Formatter
+  use {
+    'sbdchd/neoformat',
+    config = function()
+      vim.g.neoformat_basic_format_trim = 1
+    end
+  }
 end
 })

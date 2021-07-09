@@ -52,7 +52,7 @@ end
 
 -- Plugins configurations
 
-return require('packer').startup({function()
+return require('packer').startup({function(use)
   -- Let packer manage itself
   use {
     'wbthomason/packer.nvim',
@@ -286,9 +286,23 @@ return require('packer').startup({function()
 
       local servers = require('lspinstall').installed_servers()
       for _, server in pairs(servers) do
-        require('lspconfig')[server].setup {
+        local config = {
           on_attach = on_attach
         }
+
+        if server == "lua" then
+          config.settings = {
+            Lua = {
+              diagnostics = {
+                globals = {
+                  'vim'
+                }
+              }
+            }
+          }
+        end
+
+        require('lspconfig')[server].setup(config)
       end
     end
   }

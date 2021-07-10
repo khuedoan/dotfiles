@@ -281,7 +281,6 @@ return require('packer').startup({function(use)
         buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
         buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
         buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
-        buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
       end
 
       local servers = require('lspinstall').installed_servers()
@@ -367,7 +366,7 @@ return require('packer').startup({function(use)
       vim.api.nvim_set_keymap("s", "<Tab>", "v:lua.tab_complete()", {expr = true})
       vim.api.nvim_set_keymap("i", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
       vim.api.nvim_set_keymap("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
-    end,
+    end
   }
 
   -- Formatter

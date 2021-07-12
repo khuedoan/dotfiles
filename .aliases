@@ -73,3 +73,6 @@ alias calc='python -i -c "from math import *"'
 
 # bat
 alias cat='bat'
+
+# password
+alias pw='pass show --clip ${$(cd $HOME/.password-store && find * -name "*.gpg" | fzf)%".gpg"}'

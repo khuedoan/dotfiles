@@ -229,20 +229,18 @@ return require('packer').startup({function(use)
   use "tpope/vim-sleuth"
 
   -- Syntax highlighting and objects
-  -- TODO use tree-sitter on neovim 0.6
-  -- use {
-  --   'nvim-treesitter/nvim-treesitter',
-  --   run = ':TSUpdate',
-  --   config = function()
-  --     require'nvim-treesitter.configs'.setup {
-  --       ensure_installed = "maintained",
-  --       highlight = {
-  --         enable = true
-  --       }
-  --     }
-  --   end
-  -- }
-  use 'sheerun/vim-polyglot'
+  use {
+    'nvim-treesitter/nvim-treesitter',
+    run = ':TSUpdate',
+    config = function()
+      require'nvim-treesitter.configs'.setup {
+        ensure_installed = "maintained",
+        highlight = {
+          enable = true
+        }
+      }
+    end
+  }
 
   -- Buffer line
   use {

@@ -54,7 +54,6 @@ alias diff='git diff --no-index'
 alias feh='feh --scale-down --auto-zoom'
 
 # nvim
-alias vim='nvim'
 alias v='nvim'
 
 # reboot to windows

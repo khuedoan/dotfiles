@@ -1,0 +1,4 @@
+[pull]
+	rebase = false
+[include]
+    path = .config/git/config

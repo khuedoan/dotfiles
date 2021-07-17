@@ -57,7 +57,7 @@ return require('packer').startup({function(use)
   use {
     'wbthomason/packer.nvim',
     config = function()
-      vim.cmd "autocmd BufWritePost init.lua PackerCompile"
+      vim.cmd "autocmd BufWritePost init.lua source <afile> | PackerCompile"
     end
   }
 
@@ -108,7 +108,20 @@ return require('packer').startup({function(use)
   }
 
   -- Sneak motion
-  use 'ggandor/lightspeed.nvim'
+  use {
+    'ggandor/lightspeed.nvim',
+    config = function ()
+      function repeat_ft(reverse)
+        local ls = require'lightspeed'
+        ls.ft['instant-repeat?'] = true
+        ls.ft:to(reverse, ls.ft['prev-t-like?'])
+      end
+      vim.api.nvim_set_keymap('n', ';', '<cmd>lua repeat_ft(false)<cr>', {noremap = true, silent = true})
+      vim.api.nvim_set_keymap('x', ';', '<cmd>lua repeat_ft(false)<cr>', {noremap = true, silent = true})
+      vim.api.nvim_set_keymap('n', ',', '<cmd>lua repeat_ft(true)<cr>', {noremap = true, silent = true})
+      vim.api.nvim_set_keymap('x', ',', '<cmd>lua repeat_ft(true)<cr>', {noremap = true, silent = true})
+    end
+  }
 
   -- Theme
   use {
@@ -216,20 +229,18 @@ return require('packer').startup({function(use)
   use "tpope/vim-sleuth"
 
   -- Syntax highlighting and objects
-  -- TODO use tree-sitter on neovim 0.6
-  -- use {
-  --   'nvim-treesitter/nvim-treesitter',
-  --   run = ':TSUpdate',
-  --   config = function()
-  --     require'nvim-treesitter.configs'.setup {
-  --       ensure_installed = "maintained",
-  --       highlight = {
-  --         enable = true
-  --       }
-  --     }
-  --   end
-  -- }
-  use 'sheerun/vim-polyglot'
+  use {
+    'nvim-treesitter/nvim-treesitter',
+    run = ':TSUpdate',
+    config = function()
+      require'nvim-treesitter.configs'.setup {
+        ensure_installed = "maintained",
+        highlight = {
+          enable = true
+        }
+      }
+    end
+  }
 
   -- Buffer line
   use {
@@ -281,7 +292,6 @@ return require('packer').startup({function(use)
         buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
         buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
         buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
-        buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
       end
 
       local servers = require('lspinstall').installed_servers()
@@ -367,7 +377,7 @@ return require('packer').startup({function(use)
       vim.api.nvim_set_keymap("s", "<Tab>", "v:lua.tab_complete()", {expr = true})
       vim.api.nvim_set_keymap("i", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
       vim.api.nvim_set_keymap("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
-    end,
+    end
   }
 
   -- Formatter

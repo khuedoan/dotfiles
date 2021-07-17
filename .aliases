@@ -54,7 +54,6 @@ alias diff='git diff --no-index'
 alias feh='feh --scale-down --auto-zoom'
 
 # nvim
-alias vim='nvim'
 alias v='nvim'
 
 # reboot to windows
@@ -73,3 +72,6 @@ alias calc='python -i -c "from math import *"'
 
 # bat
 alias cat='bat'
+
+# password
+alias pw='pass show --clip ${$(cd $HOME/.password-store && find * -name "*.gpg" | fzf)%".gpg"}'

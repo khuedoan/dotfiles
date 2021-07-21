@@ -84,15 +84,12 @@ git push
 git pull
 ```
 
-I used to manage my dotfiles using git bare with a `dotfiles` command but now I switched to normal `git` command.
-
 ### Wallpaper
 
 [Lost In Mind by Paul Brennus](https://www.artstation.com/artwork/Z50d9R), converted to Nord theme palette using [ImageGoNord](https://github.com/Schrodinger-Hat/ImageGoNord)
 
 ## Acknowledgements
 
-- [manage dotfiles using git bare](https://news.ycombinator.com/item?id=11070797)
 - [show sxhkd key bindings with fuzzy search script](https://www.reddit.com/r/bspwm/comments/aejyze/tip_show_sxhkd_keybindings_with_fuzzy_search/)
 - [LunarVim Neovim config](https://github.com/ChristianChiarulli/LunarVim)
 - [NvChad Neovim config](https://github.com/siduck76/NvChad)

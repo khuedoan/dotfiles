@@ -263,6 +263,19 @@ return require('packer').startup({function(use)
       'neovim/nvim-lspconfig',
     },
     config = function()
+      -- TODO Cleaner way to install language servers automatically
+      -- https://github.com/kabouzeid/nvim-lspinstall/issues/26
+      local required_servers = {
+        "dockerfile",
+        "go",
+        "lua",
+        "python",
+        "rust",
+        "terraform",
+        "typescript",
+        "yaml",
+      }
+
       require('lspinstall').setup()
 
       local on_attach = function(client, bufnr)
@@ -294,8 +307,15 @@ return require('packer').startup({function(use)
         buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
       end
 
-      local servers = require('lspinstall').installed_servers()
-      for _, server in pairs(servers) do
+      local installed_servers = require('lspinstall').installed_servers()
+
+      for _, server in pairs(required_servers) do
+        if not vim.tbl_contains(installed_servers, server) then
+          require'lspinstall'.install_server(server)
+        end
+      end
+
+      for _, server in pairs(required_servers) do
         local config = {
           on_attach = on_attach
         }

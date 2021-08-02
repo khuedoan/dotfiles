@@ -3,4 +3,4 @@
 [pull]
 	rebase = false
 [include]
-    path = .config/git/config
+	path = .config/git/config

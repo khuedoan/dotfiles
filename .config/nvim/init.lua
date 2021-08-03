@@ -190,7 +190,7 @@ return require('packer').startup({function(use)
     },
     config = function()
       vim.g.fzf_buffers_jump = 1
-      vim.api.nvim_set_keymap('n', '<LEADER>b',  ':Buffers!<CR>', {noremap = true})
+      vim.api.nvim_set_keymap('n', '<LEADER>bb', ':Buffers!<CR>', {noremap = true})
       vim.api.nvim_set_keymap('n', '<LEADER>f',  ':Files!<CR>\'', {noremap = true})
       vim.api.nvim_set_keymap('n', '<LEADER>/',  ':Rg!<CR>',      {noremap = true})
       vim.api.nvim_set_keymap('n', '<LEADER>gt', ':GFiles!<CR>',  {noremap = true})
@@ -244,15 +244,14 @@ return require('packer').startup({function(use)
 
   -- Buffer line
   use {
-    'romgrk/barbar.nvim',
+    'akinsho/nvim-bufferline.lua',
     requires = {
       'kyazdani42/nvim-web-devicons'
     },
     config = function()
-      vim.g.bufferline = {
-        animation = false,
-        maximum_padding = 0
-      }
+      require("bufferline").setup({})
+      vim.api.nvim_set_keymap('n', '<LEADER>bn', ':BufferLineCycleNext<CR>', {noremap = true})
+      vim.api.nvim_set_keymap('n', '<LEADER>bp', ':BufferLineCycleNext<CR>', {noremap = true})
     end
   }
 

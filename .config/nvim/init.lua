@@ -417,6 +417,10 @@ return require('packer').startup({function(use)
       vim.g.nvim_tree_disable_netrw = 1
       vim.g.nvim_tree_hijack_netrw = 1
       vim.g.nvim_tree_add_trailing = 1
+      vim.g.nvim_tree_update_cwd = 1
+      vim.g.nvim_tree_icons = {
+        default = ''
+      }
       vim.api.nvim_set_keymap('n', '<C-n>', ':NvimTreeToggle<CR>', {noremap = true})
     end
   }

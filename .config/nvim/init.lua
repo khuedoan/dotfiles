@@ -251,7 +251,7 @@ return require('packer').startup({function(use)
     config = function()
       require("bufferline").setup({})
       vim.api.nvim_set_keymap('n', '<LEADER>bn', ':BufferLineCycleNext<CR>', {noremap = true})
-      vim.api.nvim_set_keymap('n', '<LEADER>bp', ':BufferLineCycleNext<CR>', {noremap = true})
+      vim.api.nvim_set_keymap('n', '<LEADER>bp', ':BufferLineCyclePrev<CR>', {noremap = true})
     end
   }
 

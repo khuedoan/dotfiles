@@ -86,7 +86,7 @@ git pull
 
 ### Wallpaper
 
-[Lost In Mind by Paul Brennus](https://www.artstation.com/artwork/Z50d9R), converted to Nord theme palette using [ImageGoNord](https://github.com/Schrodinger-Hat/ImageGoNord)
+[Lost In Mind by Paul Brennus](https://www.artstation.com/artwork/Z50d9R), [converted to Nord theme](https://user-images.githubusercontent.com/27996771/129466074-64c92948-96b0-4673-be33-75ee26b82a6c.jpg) palette using [ImageGoNord](https://github.com/Schrodinger-Hat/ImageGoNord)
 
 ## Acknowledgements
 

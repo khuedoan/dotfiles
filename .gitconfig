@@ -1,5 +1,3 @@
-[commit]
-	gpgsign = true
 [pull]
 	rebase = false
 [include]

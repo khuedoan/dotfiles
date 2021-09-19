@@ -243,7 +243,12 @@ return require('packer').startup({function(use)
   -- Set indent options automatically
   -- use "tpope/vim-sleuth"
 
-  use 'sheerun/vim-polyglot'
+  use {
+    'sheerun/vim-polyglot',
+    requires = {
+      'godlygeek/tabular'
+    }
+  }
 
   -- Buffer line
   use {

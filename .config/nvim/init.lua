@@ -400,6 +400,11 @@ return require('packer').startup({function(use)
     end
   }
 
+  -- Common UNIX commands
+  use {
+    'tpope/vim-eunuch'
+  }
+
   -- Formatter
   use {
     'sbdchd/neoformat',

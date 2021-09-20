@@ -202,6 +202,7 @@ return require('packer').startup({function(use)
       require('nnn').setup({
         set_default_mappings = false,
         session = 'local',
+        layout = 'new',
         command = 'nnn -Q',
         action = {
           ['<C-t>'] = 'tab split',

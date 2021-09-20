@@ -15,6 +15,7 @@ zinit wait lucid light-mode depth=1 nocd for \
 zinit wait lucid is-snippet for \
     https://github.com/junegunn/fzf/blob/master/shell/key-bindings.zsh \
     https://github.com/ahmetb/kubectl-aliases/blob/master/.kubectl_aliases \
+    https://github.com/ajeetdsouza/zoxide/blob/main/zoxide.plugin.zsh \
     as='completion' https://github.com/docker/cli/blob/master/contrib/completion/zsh/_docker
 
 # Options

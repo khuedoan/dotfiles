@@ -202,14 +202,14 @@ return require('packer').startup({function(use)
       require('nnn').setup({
         set_default_mappings = false,
         session = 'local',
+        command = 'nnn -Q',
         action = {
           ['<C-t>'] = 'tab split',
           ['<C-v>'] = 'vsplit',
           ['<C-x>'] = 'split'
         }
       })
-      vim.api.nvim_set_keymap('n', '<LEADER>n', ':NnnPicker<CR>',       {noremap = true})
-      vim.api.nvim_set_keymap('n', '<LEADER>N', ':NnnPicker %:p:h<CR>', {noremap = true})
+      vim.api.nvim_set_keymap('n', '<LEADER>n', ':NnnPicker<CR>', {noremap = true})
     end
   }
 

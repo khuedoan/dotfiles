@@ -112,22 +112,28 @@ return require('packer').startup({function(use)
     end
   }
 
-  -- Sneak motion
-  use {
-    'ggandor/lightspeed.nvim',
-    config = function ()
-      require'lightspeed'.opts.instant_repeat_fwd_key = ';'
-      require'lightspeed'.opts.instant_repeat_bwd_key = ','
-    end
-  }
-
   -- Theme
   use {
     'ful1e5/onedark.nvim',
+    as = 'theme',
     config = function()
       require('onedark').setup({
         transparent = true
       })
+    end
+  }
+
+  -- Sneak motion
+  use {
+    'ggandor/lightspeed.nvim',
+    after = {
+      'theme'
+    },
+    config = function ()
+      require'lightspeed'.setup {
+        instant_repeat_fwd_key = ';',
+        instant_repeat_bwd_key = ','
+      }
     end
   }
 

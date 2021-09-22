@@ -422,6 +422,7 @@ return require('packer').startup({function(use)
     'sbdchd/neoformat',
     config = function()
       vim.g.neoformat_basic_format_trim = 1
+      vim.api.nvim_set_keymap("v", "=", ":Neoformat<CR>", { noremap = true })
     end
   }
 

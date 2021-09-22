@@ -436,5 +436,7 @@ return require('packer').startup({function(use)
       vim.api.nvim_set_keymap('n', '<C-n>', ':NvimTreeToggle<CR>', {noremap = true})
     end
   }
-end
-})
+end,
+config = {
+  auto_reload_compiled = false
+}})

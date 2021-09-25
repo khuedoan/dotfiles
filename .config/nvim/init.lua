@@ -57,7 +57,14 @@ end
 
 -- Plugins configurations
 
-return require('packer').startup({function(use)
+return require('packer').startup({
+config = {
+  auto_reload_compiled = false,
+  display = {
+    non_interactive = true
+  }
+},
+function(use)
   -- Let packer manage itself
   use {
     'wbthomason/packer.nvim',
@@ -442,10 +449,5 @@ return require('packer').startup({function(use)
       vim.api.nvim_set_keymap('n', '<C-n>', ':NvimTreeToggle<CR>', {noremap = true})
     end
   }
-end,
-config = {
-  auto_reload_compiled = false,
-  display = {
-    non_interactive = true
-  }
-}})
+end
+})

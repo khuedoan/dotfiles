@@ -273,84 +273,66 @@ function(use)
 
   -- Language server protocol
   use {
-    'kabouzeid/nvim-lspinstall',
+    'williamboman/nvim-lsp-installer',
     requires = {
       'neovim/nvim-lspconfig',
     },
-    config = function()
-      -- TODO Cleaner way to install language servers automatically
-      -- https://github.com/kabouzeid/nvim-lspinstall/issues/26
+    run = function()
       local required_servers = {
-        "dockerfile",
-        "go",
-        "lua",
-        "python",
-        "rust",
-        "terraform",
-        "typescript",
-        "yaml",
+        "dockerls",
+        "gopls",
+        "pylsp",
+        "pyright",
+        "rust_analyzer",
+        "sumneko_lua",
+        "terraformls",
+        "tsserver",
+        "yamlls",
       }
 
-      require('lspinstall').setup()
-
-      local on_attach = function(client, bufnr)
-        local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
-        local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
-
-        --Enable completion triggered by <c-x><c-o>
-        buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
-
-        -- Mappings.
-        local opts = { noremap=true, silent=true }
-
-        -- See `:help vim.lsp.*` for documentation on any of the below functions
-        buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-        buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
-        buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
-        buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-        buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-        buf_set_keymap('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
-        buf_set_keymap('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
-        buf_set_keymap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
-        buf_set_keymap('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
-        buf_set_keymap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-        buf_set_keymap('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
-        buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-        buf_set_keymap('n', '<space>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
-        buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
-        buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
-        buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
-      end
-
-      local installed_servers = require('lspinstall').installed_servers()
-
       for _, server in pairs(required_servers) do
-        if not vim.tbl_contains(installed_servers, server) then
-          require'lspinstall'.install_server(server)
-        end
+        require"nvim-lsp-installer".install(server)
       end
+    end,
+    config = function()
+      local lsp_installer = require("nvim-lsp-installer")
 
-      for _, server in pairs(required_servers) do
-        local config = {
-          on_attach = on_attach
-        }
-
-        if server == "lua" then
-          config.settings = {
-            Lua = {
-              diagnostics = {
-                globals = {
-                  'vim'
-                }
-              }
-            }
-          }
-        end
-
-        require('lspconfig')[server].setup(config)
-      end
+      lsp_installer.on_server_ready(function(server)
+          local opts = {}
+          server:setup(opts)
+          vim.cmd [[ do User LspAttachBuffers ]]
+      end)
     end
   }
+
+  --    local on_attach = function(client, bufnr)
+  --      local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
+  --      local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
+
+  --      --Enable completion triggered by <c-x><c-o>
+  --      buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
+
+  --      -- Mappings.
+  --      local opts = { noremap=true, silent=true }
+
+  --      -- See `:help vim.lsp.*` for documentation on any of the below functions
+  --      buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
+  --      buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
+  --      buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
+  --      buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+  --      buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+  --      buf_set_keymap('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
+  --      buf_set_keymap('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
+  --      buf_set_keymap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
+  --      buf_set_keymap('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
+  --      buf_set_keymap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+  --      buf_set_keymap('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+  --      buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
+  --      buf_set_keymap('n', '<space>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
+  --      buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
+  --      buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
+  --      buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
+  --    end
 
   -- Autocomplete
   use {

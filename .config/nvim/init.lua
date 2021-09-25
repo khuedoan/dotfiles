@@ -5,6 +5,7 @@
 vim.opt.completeopt = 'menuone,noinsert,noselect'
 vim.opt.cursorline = true
 vim.opt.expandtab = true
+vim.opt.hidden = true
 vim.opt.inccommand = 'nosplit'
 vim.opt.mouse = 'a'
 vim.opt.number = true

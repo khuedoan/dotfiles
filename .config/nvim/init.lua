@@ -121,12 +121,11 @@ function(use)
 
   -- Theme
   use {
-    'ful1e5/onedark.nvim',
+    'navarasu/onedark.nvim',
     as = 'theme',
     config = function()
-      require('onedark').setup({
-        transparent = true
-      })
+      vim.g.onedark_transparent_background = true
+      require('onedark').setup()
     end
   }
 

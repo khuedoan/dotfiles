@@ -52,7 +52,7 @@ vim.api.nvim_set_keymap('n', '<LEADER>r', ':%s///g<LEFT><LEFT>',  {noremap = tru
 local install_path = vim.fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
 
 if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
-  vim.fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+  packer_bootstrap = vim.fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
 end
 
 -- Plugins configurations
@@ -449,5 +449,9 @@ function(use)
       vim.api.nvim_set_keymap('n', '<C-n>', ':NvimTreeToggle<CR>', {noremap = true})
     end
   }
+
+  if packer_bootstrap then
+    require('packer').sync()
+  end
 end
 })

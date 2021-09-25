@@ -75,7 +75,7 @@ function(use)
 
   -- Status line
   use {
-    'hoob3rt/lualine.nvim',
+    'shadmansaleh/lualine.nvim', -- TODO check if this is still maintained
     config = function()
       require('lualine').setup({
         options = {

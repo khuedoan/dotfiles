@@ -444,5 +444,8 @@ return require('packer').startup({function(use)
   }
 end,
 config = {
-  auto_reload_compiled = false
+  auto_reload_compiled = false,
+  display = {
+    non_interactive = true
+  }
 }})

@@ -62,7 +62,7 @@ return require('packer').startup({function(use)
   use {
     'wbthomason/packer.nvim',
     config = function()
-      vim.cmd "autocmd BufWritePost init.lua source <afile> | PackerCompile"
+      vim.cmd "autocmd BufWritePost init.lua source <afile> | PackerSync"
     end
   }
 

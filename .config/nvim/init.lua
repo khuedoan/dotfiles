@@ -59,10 +59,7 @@ end
 
 return require('packer').startup({
 config = {
-  auto_reload_compiled = false,
-  display = {
-    non_interactive = true
-  }
+  auto_reload_compiled = false
 },
 function(use)
   -- Let packer manage itself

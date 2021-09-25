@@ -79,7 +79,7 @@ function(use)
     config = function()
       require('lualine').setup({
         options = {
-          theme = 'onedark'
+          theme = 'auto'
         }
       })
     end

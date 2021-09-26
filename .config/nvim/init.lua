@@ -416,24 +416,6 @@ return require'packer'.startup {
       end
     }
 
-    -- Tree
-    use {
-      'kyazdani42/nvim-tree.lua',
-      requires = 'kyazdani42/nvim-web-devicons',
-      config = function()
-        vim.g.nvim_tree_follow = 1
-        vim.g.nvim_tree_indent_markers = 1
-        vim.g.nvim_tree_disable_netrw = 1
-        vim.g.nvim_tree_hijack_netrw = 1
-        vim.g.nvim_tree_add_trailing = 1
-        vim.g.nvim_tree_update_cwd = 1
-        vim.g.nvim_tree_icons = {
-          default = ''
-        }
-        vim.api.nvim_set_keymap('n', '<C-n>', ':NvimTreeToggle<CR>', {noremap = true})
-      end
-    }
-
     if packer_bootstrap then
       require('packer').sync()
     end

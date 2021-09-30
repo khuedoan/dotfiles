@@ -26,3 +26,6 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 # Hide emojis
 export PIPENV_HIDE_EMOJIS=1
 export MINIKUBE_IN_STYLE=0
+
+# nnn
+export NNN_PLUG='f:fzcd;n:bulknew;z:autojump'

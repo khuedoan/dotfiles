@@ -69,6 +69,3 @@ cheat () {
 
 # calculator
 alias calc='python -i -c "from math import *"'
-
-# bat
-alias cat='bat'

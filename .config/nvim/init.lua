@@ -236,28 +236,22 @@ return require'packer'.startup {
     }
 
     -- Syntax highlighting and objects
-    -- TODO use tree-sitter on neovim 0.6
-    -- use {
-    --   'nvim-treesitter/nvim-treesitter',
-    --   run = ':TSUpdate',
-    --   config = function()
-    --     require'nvim-treesitter.configs'.setup {
-    --       ensure_installed = "maintained",
-    --       highlight = {
-    --         enable = true
-    --       }
-    --     }
-    --   end
-    -- }
-    --
-    -- Set indent options automatically
-    -- use "tpope/vim-sleuth"
-
     use {
-      'sheerun/vim-polyglot',
+      'nvim-treesitter/nvim-treesitter',
       requires = {
-        'godlygeek/tabular'
-      }
+        "godlygeek/tabular",
+        "hashivim/vim-terraform", -- TODO fix comment in HCL on nvim-treesitter up stream
+        "tpope/vim-sleuth"
+      },
+      run = ':TSUpdate',
+      config = function()
+        require'nvim-treesitter.configs'.setup {
+          ensure_installed = "maintained",
+          highlight = {
+            enable = true
+          }
+        }
+      end
     }
 
     -- Buffer line

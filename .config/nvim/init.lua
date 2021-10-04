@@ -398,6 +398,14 @@ return require'packer'.startup {
       end
     }
 
+    -- Debug Adapter Protocol
+    use {
+      'mfussenegger/nvim-dap',
+      config = function ()
+        -- TODO add debug adapter for Python, Go and Rust
+      end
+    }
+
     -- Common UNIX commands
     use {
       'tpope/vim-eunuch'

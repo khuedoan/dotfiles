@@ -290,8 +290,13 @@ return require'packer'.startup {
           "yamlls",
         }
 
-        for _, server in pairs(required_servers) do
-          require"nvim-lsp-installer".install(server)
+        require "nvim-lsp-installer.ui.status-win"().open()
+        local lsp_installer_servers = require'nvim-lsp-installer.servers'
+        for _, required_server in pairs(required_servers) do
+          local _, server = lsp_installer_servers.get_server(required_server)
+          if not server:is_installed() then
+            server:install()
+          end
         end
       end,
       config = function()

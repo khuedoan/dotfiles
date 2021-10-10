@@ -427,6 +427,11 @@ return require'packer'.startup {
       end
     }
 
+    -- Scrollbar
+    use {
+      'dstein64/nvim-scrollview'
+    }
+
     if packer_bootstrap then
       require('packer').sync()
     end

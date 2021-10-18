@@ -21,7 +21,7 @@ font-0 = FiraCode Nerd Font:style=Bold:size=10;2
 padding-right = 1
 module-margin = 1
 modules-left   = bspwm
-modules-right  = ethernet wlan cpu temperature memory battery backlight alsa date
+modules-right  = ethernet wlan cpu temperature memory battery backlight alsa date search
 cursor-click = pointer
 tray-position = right
 
@@ -131,3 +131,8 @@ time     = %R
 date     = %a, %b %d
 time-alt = %T
 date-alt = %A, %B %d, %Y
+
+[module/search]
+type = custom/text
+content = ""
+click-left = "dmenu_run"

@@ -243,8 +243,7 @@ return require'packer'.startup {
       requires = {
         "godlygeek/tabular",
         "hashivim/vim-terraform", -- TODO fix comment in HCL on nvim-treesitter up stream
-        "tpope/vim-sleuth",
-        "romgrk/nvim-treesitter-context"
+        "tpope/vim-sleuth"
       },
       run = ':TSUpdate',
       config = function()
@@ -254,7 +253,6 @@ return require'packer'.startup {
             enable = true
           }
         }
-        require'treesitter-context'.setup{}
       end
     }
 

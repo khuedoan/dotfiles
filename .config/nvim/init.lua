@@ -178,7 +178,10 @@ return require'packer'.startup {
       end,
       ft = {
         'markdown'
-      }
+      },
+      config = function()
+        vim.api.nvim_set_keymap('n', '<LEADER>mp', ':MarkdownPreviewToggle<CR>', {noremap = true, silent = true})
+      end
     }
 
     -- Auto pair

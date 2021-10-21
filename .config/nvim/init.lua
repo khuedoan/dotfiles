@@ -105,15 +105,23 @@ return require'packer'.startup {
     }
 
     use {
-      'tpope/vim-fugitive',
+      'TimUntersberger/neogit',
+      requires = {
+        'nvim-lua/plenary.nvim'
+      },
+      keys = {
+        '<LEADER>gs'
+      },
+      cmd = {
+        'Neogit'
+      },
       config = function()
-        vim.api.nvim_set_keymap('n', '<LEADER>gg', ':Git<SPACE>',      {noremap = true})
-        vim.api.nvim_set_keymap('n', '<LEADER>gs', ':Git<CR>',         {noremap = true})
-        vim.api.nvim_set_keymap('n', '<LEADER>gb', ':Git blame<CR>',   {noremap = true})
-        vim.api.nvim_set_keymap('n', '<LEADER>gc', ':Git commit<CR>',  {noremap = true})
-        vim.api.nvim_set_keymap('n', '<LEADER>gd', ':Gvdiffsplit<CR>', {noremap = true})
-        vim.api.nvim_set_keymap('n', '<LEADER>gl', ':Gclog<CR>',       {noremap = true})
-        vim.api.nvim_set_keymap('n', '<LEADER>gp', ':Git push<CR>',    {noremap = true})
+        require('neogit').setup {
+          disable_commit_confirmation = true,
+          disable_context_highlighting = true
+        }
+
+        vim.api.nvim_set_keymap('n', '<LEADER>gs', ':Neogit kind=split<CR>', {noremap = true})
       end
     }
 

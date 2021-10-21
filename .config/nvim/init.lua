@@ -141,6 +141,9 @@ return require'packer'.startup {
       after = {
         'theme'
       },
+      keys = {
+        's'
+      },
       config = function ()
         require'lightspeed'.setup {
           instant_repeat_fwd_key = ';',
@@ -152,6 +155,9 @@ return require'packer'.startup {
     -- Colorizer
     use {
       'norcalli/nvim-colorizer.lua',
+      cmd = {
+        'ColorizerToggle'
+      },
       config = function()
         require('colorizer').setup()
       end
@@ -159,12 +165,18 @@ return require'packer'.startup {
 
     -- Star search on visual selection
     use {
-      'bronson/vim-visual-star-search'
+      'bronson/vim-visual-star-search',
+      keys = {
+        {'v', '*'}
+      }
     }
 
     -- Tmux navigator
     use {
       'christoomey/vim-tmux-navigator',
+      cond = function()
+        return os.getenv('TMUX') ~= nil
+      end,
       config = function()
         vim.g.tmux_navigator_no_mappings = 1
 
@@ -193,13 +205,26 @@ return require'packer'.startup {
     }
 
     -- Auto pair
-    use 'jiangmiao/auto-pairs'
+    use {
+      'jiangmiao/auto-pairs'
+    }
 
     -- Comment
-    use 'tpope/vim-commentary'
+    use {
+      'tpope/vim-commentary',
+      keys = {
+        {'n', 'gcc'},
+        {'v', 'gc'}
+      },
+      cmd = {
+        'Commentary'
+      }
+    }
 
     -- Auto hide search highlight
-    use 'romainl/vim-cool'
+    use {
+      'romainl/vim-cool'
+    }
 
     -- Fuzzy search
     use {
@@ -220,6 +245,12 @@ return require'packer'.startup {
     -- File explorer
     use {
       'mcchrish/nnn.vim',
+      keys = {
+        '<LEADER>n'
+      },
+      cmd = {
+        'NnnPicker'
+      },
       config = function()
         require('nnn').setup({
           set_default_mappings = false,

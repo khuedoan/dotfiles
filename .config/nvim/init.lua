@@ -73,7 +73,7 @@ return require'packer'.startup {
 
     -- Status line
     use {
-      'shadmansaleh/lualine.nvim', -- TODO check if this is still maintained
+      'nvim-lualine/lualine.nvim',
       config = function()
         require('lualine').setup({
           options = {

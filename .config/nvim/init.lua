@@ -142,6 +142,7 @@ return require'packer'.startup {
         'theme'
       },
       keys = {
+        'S',
         's'
       },
       config = function ()

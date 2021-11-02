@@ -175,9 +175,6 @@ return require'packer'.startup {
     -- Tmux navigator
     use {
       'christoomey/vim-tmux-navigator',
-      cond = function()
-        return os.getenv('TMUX') ~= nil
-      end,
       config = function()
         vim.g.tmux_navigator_no_mappings = 1
 

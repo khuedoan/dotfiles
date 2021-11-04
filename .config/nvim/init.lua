@@ -296,6 +296,15 @@ return require'packer'.startup {
       end
     }
 
+    -- Legacy language support without treesitter
+    -- TODO remove these after nvim 0.6
+    use {
+      "rodjek/vim-puppet",
+      ft = {
+        'puppet'
+      },
+    }
+
     -- Buffer line
     use {
       'akinsho/nvim-bufferline.lua',

@@ -282,7 +282,6 @@ return require'packer'.startup {
       'nvim-treesitter/nvim-treesitter',
       requires = {
         "godlygeek/tabular",
-        "hashivim/vim-terraform", -- TODO fix comment in HCL on nvim-treesitter up stream
         "tpope/vim-sleuth"
       },
       run = ':TSUpdate',
@@ -302,6 +301,14 @@ return require'packer'.startup {
       "rodjek/vim-puppet",
       ft = {
         'puppet'
+      },
+    }
+
+    use {
+      "hashivim/vim-terraform", -- TODO fix comment in HCL on nvim-treesitter up stream
+      ft = {
+        'hcl',
+        'terraform'
       },
     }
 

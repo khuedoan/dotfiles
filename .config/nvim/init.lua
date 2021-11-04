@@ -333,13 +333,19 @@ return require'packer'.startup {
       },
       run = function()
         local required_servers = {
+          "ansiblels",
+          "bashls",
+          "diagnosticls",
           "dockerls",
           "gopls",
+          "jsonls",
           "pylsp",
           "pyright",
           "rust_analyzer",
+          "sqls",
           "sumneko_lua",
           "terraformls",
+          "tflint",
           "tsserver",
           "yamlls",
         }

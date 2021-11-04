@@ -49,10 +49,6 @@ super + shift + f
 # Toggle sticky flag
 super + s
     bspc node -g sticky
-# Toggle game mode
-super + g
-    killall picom ibus-daemon \
-    || (ibus-daemon -drx && picom --daemon --experimental-backends)
 
 ##############
 # Media keys #

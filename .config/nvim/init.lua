@@ -211,7 +211,7 @@ return require'packer'.startup {
     use {
       'tpope/vim-commentary',
       keys = {
-        {'n', 'gcc'},
+        {'n', 'gc'},
         {'v', 'gc'}
       },
       cmd = {

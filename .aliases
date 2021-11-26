@@ -23,7 +23,7 @@ alias gp='git push'
 alias gP='git push --set-upstream origin HEAD'
 alias gl='git log --all --decorate --oneline --graph'
 alias gL='git log -p'
-alias gt='git ls-tree -r "$(git rev-parse --abbrev-ref HEAD)" --name-only'
+alias gt='git ls-tree -r "$(git rev-parse --abbrev-ref HEAD)" --name-only | tree --fromfile'
 
 gw () {
     if [ "$1" = "add" ]; then

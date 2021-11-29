@@ -226,34 +226,17 @@ return require'packer'.startup {
 
     -- Fuzzy search
     use {
-      'nvim-telescope/telescope.nvim',
+      'junegunn/fzf.vim',
       requires = {
-        'nvim-lua/plenary.nvim',
-        {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
+        'junegunn/fzf'
       },
       config = function()
-        require('telescope').setup {
-          pickers = {
-            find_files = {
-              no_ignore = true
-            }
-          },
-          extensions = {
-            fzf = {
-              fuzzy = true,
-              override_generic_sorter = true,
-              override_file_sorter = true,
-              case_mode = "smart_case"
-            }
-          }
-        }
-        require('telescope').load_extension('fzf')
-
-        vim.api.nvim_set_keymap('n', '<LEADER>f', ':Telescope<CR>', {noremap = true})
-        vim.api.nvim_set_keymap('n', '<LEADER>f/', ':Telescope live_grep<CR>', {noremap = true})
-        vim.api.nvim_set_keymap('n', '<LEADER>fb', ':Telescope buffers<CR>', {noremap = true})
-        vim.api.nvim_set_keymap('n', '<LEADER>ff', ':Telescope find_files<CR>', {noremap = true})
-        vim.api.nvim_set_keymap('n', '<LEADER>fg', ':Telescope git_files<CR>', {noremap = true})
+        vim.g.fzf_buffers_jump = 1
+        vim.api.nvim_set_keymap('n', '<LEADER>bb', ':Buffers!<CR>', {noremap = true})
+        vim.api.nvim_set_keymap('n', '<LEADER>f', ':Files!<CR>\'', {noremap = true})
+        vim.api.nvim_set_keymap('n', '<LEADER>F', ':Files! '..vim.fn.expand('%:p:h'), {noremap = true})
+        vim.api.nvim_set_keymap('n', '<LEADER>/', ':Rg!<CR>', {noremap = true})
+        vim.api.nvim_set_keymap('n', '<LEADER>gt', ':GFiles!<CR>', {noremap = true})
       end
     }
 

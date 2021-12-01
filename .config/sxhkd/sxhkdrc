@@ -13,7 +13,7 @@ super + {_,shift + }{1-9,0}
     bspc {desktop -f, node -d} '^{1-9,10}'
 # Focus the next/previous window
 super + {_,shift + }grave
-    bspc node -f {next,prev}.local
+    bspc node -f {next,prev}.local.!hidden.window
 # Focus the last workspace
 super + Tab
     bspc desktop -f last

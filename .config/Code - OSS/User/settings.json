@@ -1,35 +1,30 @@
 {
+    "editor.cursorSmoothCaretAnimation": true,
     "editor.fontFamily": "'FiraCode Nerd Font Mono'",
-    "editor.fontSize": 13,
+    "editor.fontSize": 12.5,
+    "editor.inlineSuggest.enabled": true,
     "editor.lineNumbers": "relative",
     "editor.minimap.enabled": false,
     "editor.occurrencesHighlight": false,
     "editor.suggestSelection": "first",
-
-    "files.trimTrailingWhitespace": true,
-
-    "telemetry.enableCrashReporter": false,
-    "telemetry.enableTelemetry": false,
-
-    "workbench.colorTheme": "One Dark Pro",
-    "workbench.enableExperiments": false,
-    "workbench.startupEditor": "newUntitledFile",
-
-    "window.enableMenuBarMnemonics": false,
-    "window.menuBarVisibility": "toggle",
-
     "emmet.includeLanguages": {
         "javascript": "javascriptreact"
     },
-
+    "files.trimTrailingWhitespace": true,
     "gitlens.showWelcomeOnInstall": false,
-
     "go.useLanguageServer": true,
-
     "python.languageServer": "Pylance",
-
-    "vscode-neovim.neovimExecutablePaths.linux": "nvim",
-    "vscode-neovim.neovimExecutablePaths.darwin": "nvim",
-    "vscode-neovim.neovimInitVimPaths.darwin": "$HOME/.config/Code - OSS/User/init.vim",
-    "vscode-neovim.neovimInitVimPaths.linux": "$HOME/.config/Code - OSS/User/init.vim"
+    "redhat.telemetry.enabled": false,
+    "telemetry.enableCrashReporter": false,
+    "telemetry.enableTelemetry": false,
+    "terminal.integrated.fontSize": 12.5,
+    "vim.easymotion": true,
+    "vim.enableNeovim": true,
+    "vim.leader": "<SPACE>",
+    "window.enableMenuBarMnemonics": false,
+    "window.menuBarVisibility": "toggle",
+    "workbench.colorTheme": "One Dark Pro",
+    "workbench.editor.untitled.hint": "hidden",
+    "workbench.enableExperiments": false,
+    "workbench.startupEditor": "newUntitledFile"
 }

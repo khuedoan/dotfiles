@@ -10,6 +10,7 @@
     "emmet.includeLanguages": {
         "javascript": "javascriptreact"
     },
+    "files.insertFinalNewline": true,
     "files.trimTrailingWhitespace": true,
     "gitlens.showWelcomeOnInstall": false,
     "go.useLanguageServer": true,

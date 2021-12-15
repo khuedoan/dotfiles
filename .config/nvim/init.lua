@@ -232,11 +232,11 @@ return require'packer'.startup {
       },
       config = function()
         vim.g.fzf_buffers_jump = 1
-        vim.api.nvim_set_keymap('n', '<LEADER>bb', ':Buffers!<CR>', {noremap = true})
-        vim.api.nvim_set_keymap('n', '<LEADER>f', ':Files!<CR>\'', {noremap = true})
-        vim.api.nvim_set_keymap('n', '<LEADER>F', ':Files! '..vim.fn.expand('%:p:h'), {noremap = true})
-        vim.api.nvim_set_keymap('n', '<LEADER>/', ':Rg!<CR>', {noremap = true})
-        vim.api.nvim_set_keymap('n', '<LEADER>gt', ':GFiles!<CR>', {noremap = true})
+        vim.api.nvim_set_keymap('n', '<LEADER><TAB>', ':Buffers!<CR>', {noremap = true})
+        vim.api.nvim_set_keymap('n', '<LEADER>ff', ':Files!<CR>\'', {noremap = true})
+        vim.api.nvim_set_keymap('n', '<LEADER>f.', ':Files! '..vim.fn.expand('%:p:h'), {noremap = true})
+        vim.api.nvim_set_keymap('n', '<LEADER>f/', ':Rg!<CR>', {noremap = true})
+        vim.api.nvim_set_keymap('n', '<LEADER>fg', ':GFiles!<CR>', {noremap = true})
       end
     }
 

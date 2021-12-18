@@ -5,6 +5,7 @@
 vim.opt.completeopt = 'menuone,noinsert,noselect'
 vim.opt.cursorline = true
 vim.opt.expandtab = true
+vim.opt.guifont = 'FiraCode Nerd Font Mono:h9.5'
 vim.opt.hidden = true
 vim.opt.inccommand = 'nosplit'
 vim.opt.mouse = 'a'

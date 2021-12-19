@@ -11,7 +11,6 @@ vim.opt.inccommand = 'nosplit'
 vim.opt.mouse = 'a'
 vim.opt.number = true
 vim.opt.relativenumber = true
-vim.opt.scrolloff = 1
 vim.opt.shiftwidth = 4
 vim.opt.shortmess = vim.opt.shortmess + 'c'
 vim.opt.showmode = false

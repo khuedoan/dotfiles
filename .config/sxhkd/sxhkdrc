@@ -92,9 +92,6 @@ super + {_,shift + }w
 # File explorer
 super + e
     pcmanfm
-# Documents
-super + d
-    dmenu-doc
 # Key bindings list
 super + slash
     dmenu-help
@@ -107,6 +104,3 @@ super + shift + m
 # Lock screen
 super + BackSpace
     slock
-# Switch GPU
-super + shift + g
-    dmenu-gpu

@@ -45,7 +45,7 @@ bspc config presel_feedback_color "#5c6370"
 # Monocule
 bspc config borderless_monocle true
 bspc config gapless_monocle    true
-bspc config single_monocle     true
+bspc config single_monocle     false
 
 # Float
 bspc rule -a Lxappearance         state=floating

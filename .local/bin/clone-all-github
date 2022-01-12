@@ -1,0 +1,7 @@
+#!/bin/sh
+
+gh auth login
+
+gh repo list --json sshUrl --jq '.[].sshUrl' | while read -r repo; do
+  git clone "${repo}"
+done

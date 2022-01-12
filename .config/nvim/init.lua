@@ -59,9 +59,6 @@ end
 -- Plugins configurations
 
 return require'packer'.startup {
-  config = {
-    auto_reload_compiled = false
-  },
   function(use)
     -- Let packer manage itself
     use {
@@ -130,8 +127,10 @@ return require'packer'.startup {
       'navarasu/onedark.nvim',
       as = 'theme',
       config = function()
-        vim.g.onedark_transparent_background = true
-        require('onedark').setup()
+        require'onedark'.setup {
+          transparent = true
+        }
+        require'onedark'.load()
       end
     }
 

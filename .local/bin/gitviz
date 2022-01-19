@@ -1,0 +1,15 @@
+#!/bin/sh
+
+gource \
+    --seconds-per-day 0.05 \
+    --fullscreen \
+    --stop-at-end \
+    --output-ppm-stream - \
+| ffmpeg \
+    -threads "$(nproc)" \
+    -r 60 \
+    -f image2pipe \
+    -vcodec ppm \
+    -i - \
+    -y \
+    "/tmp/gource-$(basename ${PWD}).mp4"

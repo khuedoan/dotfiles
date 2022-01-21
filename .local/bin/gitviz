@@ -4,6 +4,7 @@ gource \
     --seconds-per-day 0.05 \
     --fullscreen \
     --stop-at-end \
+    --key \
     --output-ppm-stream - \
 | ffmpeg \
     -threads "$(nproc)" \

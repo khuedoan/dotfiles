@@ -498,6 +498,15 @@ return require'packer'.startup {
       end
     }
 
+    -- Switch between single-line and multiline forms of code
+    use {
+      'AndrewRadev/splitjoin.vim',
+      keys = {
+        'gS',
+        'gJ'
+      },
+    }
+
     if packer_bootstrap then
       require('packer').sync()
     end

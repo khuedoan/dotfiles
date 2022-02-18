@@ -29,6 +29,3 @@ export MINIKUBE_IN_STYLE=0
 
 # nnn
 export NNN_PLUG='f:fzcd;n:bulknew;z:autojump'
-
-# makepkg
-export MAKEFLAGS="-j $(nproc)"

@@ -241,11 +241,26 @@ return require'packer'.startup {
 
     -- File explorer
     use {
-      'ms-jpq/chadtree',
-      run = ':CHADdeps',
-      config = function ()
-        -- TODO use onedark theme (LS_COLORS?)
-        vim.api.nvim_set_keymap('n', '<LEADER>n', ':CHADopen<CR>', {noremap = true})
+      'mcchrish/nnn.vim',
+      keys = {
+        '<LEADER>n'
+      },
+      cmd = {
+        'NnnPicker'
+      },
+      config = function()
+        require('nnn').setup({
+          set_default_mappings = false,
+          session = 'local',
+          layout = 'new',
+          command = 'nnn -Q',
+          action = {
+            ['<C-t>'] = 'tab split',
+            ['<C-v>'] = 'vsplit',
+            ['<C-x>'] = 'split'
+          }
+        })
+        vim.api.nvim_set_keymap('n', '<LEADER>n', ':NnnPicker<CR>', {noremap = true})
       end
     }
 

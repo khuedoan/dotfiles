@@ -1,3 +1,4 @@
+-- Options
 vim.opt.completeopt = 'menuone,noinsert,noselect'
 vim.opt.cursorline = true
 vim.opt.expandtab = true
@@ -17,3 +18,6 @@ vim.opt.tabstop = 4
 vim.opt.termguicolors = true
 vim.opt.undofile = true
 vim.opt.updatetime = 100
+
+-- Auto commands
+vim.api.nvim_command('au TextYankPost * silent! lua vim.highlight.on_yank()')

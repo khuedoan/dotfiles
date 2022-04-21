@@ -27,6 +27,7 @@ return require'packer'.startup {
             theme = 'auto'
           }
         })
+        vim.opt.laststatus = 3
       end
     }
 

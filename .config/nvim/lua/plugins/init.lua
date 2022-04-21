@@ -272,6 +272,7 @@ return require'packer'.startup {
           "dockerls",
           "gopls",
           "jsonls",
+          "ltex",
           "pylsp",
           "pyright",
           "rust_analyzer",
@@ -430,6 +431,13 @@ return require'packer'.startup {
             { name = 'cmdline' }
           })
         })
+      end
+    }
+
+    use {
+      "brymer-meneses/grammar-guard.nvim",
+      config = function()
+        require("grammar-guard").init()
       end
     }
 

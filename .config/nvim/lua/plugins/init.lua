@@ -327,7 +327,7 @@ return require'packer'.startup {
           end
 
           server:setup({
-            on_attach = on_attach()
+            on_attach = on_attach
           })
 
           vim.cmd [[ do User LspAttachBuffers ]]

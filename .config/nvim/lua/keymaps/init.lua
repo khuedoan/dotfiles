@@ -4,14 +4,14 @@ vim.g.mapleader = ' '
 
 -- Copy and paste with system clipboard
 
-vim.api.nvim_set_keymap('v', '<C-c>', '"+y', { noremap = true })
-vim.api.nvim_set_keymap('i', '<C-v>', '<C-r>+', { noremap = true })
+vim.keymap.set('v', '<C-c>', '"+y')
+vim.keymap.set('i', '<C-v>', '<C-r>+')
 
 -- Save and quit
 
-vim.api.nvim_set_keymap('n', '<C-s>', ':write<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<C-q>', ':quit<CR>', { noremap = true })
+vim.keymap.set('n', '<C-s>', ':write<CR>')
+vim.keymap.set('n', '<C-q>', ':quit<CR>')
 
 -- Replace
 
-vim.api.nvim_set_keymap('n', '<LEADER>r', ':%s///g<LEFT><LEFT>', { noremap = true })
+vim.keymap.set('n', '<LEADER>r', ':%s///g<LEFT><LEFT>')

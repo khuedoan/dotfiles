@@ -24,10 +24,10 @@ return require'packer'.startup {
       config = function()
         require('lualine').setup({
           options = {
-            theme = 'auto'
+            theme = 'auto',
+            globalstatus = true
           }
         })
-        vim.opt.laststatus = 3
       end
     }
 

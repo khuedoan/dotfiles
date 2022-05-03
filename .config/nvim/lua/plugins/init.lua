@@ -261,79 +261,32 @@ return require'packer'.startup {
 
     -- Language server protocol
     use {
-      'williamboman/nvim-lsp-installer',
+      'junnplus/nvim-lsp-setup',
       requires = {
         'neovim/nvim-lspconfig',
+        'williamboman/nvim-lsp-installer',
       },
-      run = function()
-        local required_servers = {
-          "ansiblels",
-          "bashls",
-          "diagnosticls",
-          "dockerls",
-          "gopls",
-          "jsonls",
-          "ltex",
-          "pylsp",
-          "pyright",
-          "rust_analyzer",
-          "sqls",
-          "sumneko_lua",
-          "terraformls",
-          "tflint",
-          "tsserver",
-          "yamlls",
-        }
-
-        require "nvim-lsp-installer.ui.status-win"().open()
-        local lsp_installer_servers = require'nvim-lsp-installer.servers'
-        for _, required_server in pairs(required_servers) do
-          local _, server = lsp_installer_servers.get_server(required_server)
-          if not server:is_installed() then
-            server:install()
-          end
-        end
-      end,
       config = function()
-        local lsp_installer = require("nvim-lsp-installer")
-
-        lsp_installer.on_server_ready(function(server)
-          local on_attach = function(client, bufnr)
-            local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
-            local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
-
-            --Enable completion triggered by <c-x><c-o>
-            buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
-
-            -- Mappings.
-            local opts = { noremap=true, silent=true }
-
-            -- See `:help vim.lsp.*` for documentation on any of the below functions
-            buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-            buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
-            buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
-            buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-            buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-            buf_set_keymap('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
-            buf_set_keymap('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
-            buf_set_keymap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
-            buf_set_keymap('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
-            buf_set_keymap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-            buf_set_keymap('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
-            buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-            buf_set_keymap('n', '<space>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
-            buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
-            buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
-            buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
-            buf_set_keymap('n', '<space>=', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
-          end
-
-          server:setup({
-            on_attach = on_attach
-          })
-
-          vim.cmd [[ do User LspAttachBuffers ]]
-        end)
+        require('nvim-lsp-setup').setup({
+          servers = {
+            ansiblels = {},
+            bashls = {},
+            diagnosticls = {},
+            dockerls = {},
+            gopls = {},
+            jsonls = {},
+            ltex = {},
+            pylsp = {},
+            pyright = {},
+            rust_analyzer = {},
+            sqls = {},
+            sumneko_lua = {},
+            terraformls = {},
+            tflint = {},
+            tsserver = {},
+            yamlls = {},
+          }
+        })
       end
     }
 

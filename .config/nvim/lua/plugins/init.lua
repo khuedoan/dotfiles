@@ -1,14 +1,14 @@
 -- Auto install plugin manager
 
-local install_path = vim.fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+local install_path = vim.fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
 
 if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
-  packer_bootstrap = vim.fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+  packer_bootstrap = vim.fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path })
 end
 
 -- Plugins configurations
 
-return require'packer'.startup {
+return require 'packer'.startup {
   function(use)
     -- Let packer manage itself
     use {
@@ -69,7 +69,7 @@ return require'packer'.startup {
           disable_context_highlighting = true
         }
 
-        vim.api.nvim_set_keymap('n', '<LEADER>gg', ':Neogit kind=split<CR>', {noremap = true})
+        vim.api.nvim_set_keymap('n', '<LEADER>gg', ':Neogit kind=split<CR>', { noremap = true })
       end
     }
 
@@ -78,10 +78,10 @@ return require'packer'.startup {
       'navarasu/onedark.nvim',
       as = 'theme',
       config = function()
-        require'onedark'.setup {
+        require 'onedark'.setup {
           transparent = true
         }
-        require'onedark'.load()
+        require 'onedark'.load()
       end
     }
 
@@ -95,8 +95,8 @@ return require'packer'.startup {
         'S',
         's'
       },
-      config = function ()
-        require'lightspeed'.setup {
+      config = function()
+        require 'lightspeed'.setup {
           instant_repeat_fwd_key = ';',
           instant_repeat_bwd_key = ','
         }
@@ -118,7 +118,7 @@ return require'packer'.startup {
     use {
       'bronson/vim-visual-star-search',
       keys = {
-        {'v', '*'}
+        { 'v', '*' }
       }
     }
 
@@ -128,10 +128,10 @@ return require'packer'.startup {
       config = function()
         vim.g.tmux_navigator_no_mappings = 1
 
-        vim.api.nvim_set_keymap('n', '<M-h>', ':TmuxNavigateLeft<CR>',  {noremap = true, silent = true})
-        vim.api.nvim_set_keymap('n', '<M-j>', ':TmuxNavigateDown<CR>',  {noremap = true, silent = true})
-        vim.api.nvim_set_keymap('n', '<M-k>', ':TmuxNavigateUp<CR>',    {noremap = true, silent = true})
-        vim.api.nvim_set_keymap('n', '<M-l>', ':TmuxNavigateRight<CR>', {noremap = true, silent = true})
+        vim.api.nvim_set_keymap('n', '<M-h>', ':TmuxNavigateLeft<CR>', { noremap = true, silent = true })
+        vim.api.nvim_set_keymap('n', '<M-j>', ':TmuxNavigateDown<CR>', { noremap = true, silent = true })
+        vim.api.nvim_set_keymap('n', '<M-k>', ':TmuxNavigateUp<CR>', { noremap = true, silent = true })
+        vim.api.nvim_set_keymap('n', '<M-l>', ':TmuxNavigateRight<CR>', { noremap = true, silent = true })
       end
     }
 
@@ -148,7 +148,7 @@ return require'packer'.startup {
         'markdown'
       },
       config = function()
-        vim.api.nvim_set_keymap('n', '<LEADER>mp', ':MarkdownPreviewToggle<CR>', {noremap = true, silent = true})
+        vim.api.nvim_set_keymap('n', '<LEADER>mp', ':MarkdownPreviewToggle<CR>', { noremap = true, silent = true })
       end
     }
 
@@ -161,8 +161,8 @@ return require'packer'.startup {
     use {
       'tpope/vim-commentary',
       keys = {
-        {'n', 'gc'},
-        {'v', 'gc'}
+        { 'n', 'gc' },
+        { 'v', 'gc' }
       },
       cmd = {
         'Commentary'
@@ -195,7 +195,7 @@ return require'packer'.startup {
             ['<C-x>'] = 'split'
           }
         })
-        vim.api.nvim_set_keymap('n', '<LEADER>n', ':NnnPicker<CR>', {noremap = true})
+        vim.api.nvim_set_keymap('n', '<LEADER>n', ':NnnPicker<CR>', { noremap = true })
       end
     }
 
@@ -220,7 +220,7 @@ return require'packer'.startup {
       },
       run = ':TSUpdate',
       config = function()
-        require'nvim-treesitter.configs'.setup {
+        require 'nvim-treesitter.configs'.setup {
           ensure_installed = "all",
           highlight = {
             enable = true
@@ -254,8 +254,8 @@ return require'packer'.startup {
       },
       config = function()
         require("bufferline").setup({})
-        vim.api.nvim_set_keymap('n', '<C-l>', ':BufferLineCycleNext<CR>', {noremap = true})
-        vim.api.nvim_set_keymap('n', '<C-h>', ':BufferLineCyclePrev<CR>', {noremap = true})
+        vim.api.nvim_set_keymap('n', '<C-l>', ':BufferLineCycleNext<CR>', { noremap = true })
+        vim.api.nvim_set_keymap('n', '<C-h>', ':BufferLineCyclePrev<CR>', { noremap = true })
       end
     }
 
@@ -318,11 +318,11 @@ return require'packer'.startup {
           vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), mode, true)
         end
 
-        local cmp = require'cmp'
+        local cmp = require 'cmp'
 
         cmp.setup {
           formatting = {
-            format = require'lspkind'.cmp_format(),
+            format = require 'lspkind'.cmp_format(),
             with_text = true,
           },
           snippet = {
@@ -365,8 +365,8 @@ return require'packer'.startup {
               { name = 'vsnip' },
             },
             {
-              { name = 'buffer' },
-            }
+            { name = 'buffer' },
+          }
           )
         }
 
@@ -421,7 +421,7 @@ return require'packer'.startup {
     use {
       'nvim-telescope/telescope.nvim',
       requires = {
-        {'nvim-lua/plenary.nvim'},
+        { 'nvim-lua/plenary.nvim' },
       }
     }
 
@@ -434,7 +434,7 @@ return require'packer'.startup {
           },
         }
         require('telescope').load_extension('fzf')
-        require'telescope.themes'.get_ivy()
+        require 'telescope.themes'.get_ivy()
 
         vim.api.nvim_set_keymap("n", "<LEADER><LEADER>", ":Telescope find_files theme=get_ivy<CR>", { noremap = true })
         vim.api.nvim_set_keymap("n", "<LEADER>ff", ":Telescope find_files theme=get_ivy<CR>", { noremap = true })

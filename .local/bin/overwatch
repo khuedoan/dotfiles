@@ -1,3 +1,5 @@
 #!/bin/sh
 
+killall picom
+
 LUTRIS_SKIP_INIT=1 lutris lutris:rungameid/1

@@ -58,7 +58,7 @@ return require 'packer'.startup {
         'nvim-lua/plenary.nvim'
       },
       keys = {
-        '<LEADER>gs'
+        '<LEADER>gg'
       },
       cmd = {
         'Neogit'

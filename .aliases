@@ -39,7 +39,7 @@ gw () {
 }
 
 # aria2
-alias dl='aria2c -x 16 -s 16'
+alias dl='aria2c --console-log-level=warn --max-connection-per-server=16 --split=16'
 
 # tmux
 alias t='tmux'

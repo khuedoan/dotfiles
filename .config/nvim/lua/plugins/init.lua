@@ -365,8 +365,8 @@ return require 'packer'.startup {
               { name = 'vsnip' },
             },
             {
-            { name = 'buffer' },
-          }
+              { name = 'buffer' },
+            }
           )
         }
 

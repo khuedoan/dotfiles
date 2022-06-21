@@ -3,7 +3,10 @@
 local install_path = vim.fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
 
 if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
-  packer_bootstrap = vim.fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path })
+  packer_bootstrap = vim.fn.system({
+    'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim',
+    install_path
+  })
 end
 
 -- Plugins configurations
@@ -172,6 +175,26 @@ return require 'packer'.startup {
     -- Auto hide search highlight
     use {
       'romainl/vim-cool'
+    }
+
+    -- Fuzzy search
+    use {
+      'junegunn/fzf.vim',
+      requires = {
+        'junegunn/fzf'
+      },
+      config = function()
+        vim.g.fzf_buffers_jump = 1
+        vim.api.nvim_set_keymap('n', '<LEADER><LEADER>', ':Files!<CR>\'', { noremap = true })
+        vim.api.nvim_set_keymap('n', '<LEADER>ff', ':Files!<CR>\'', { noremap = true })
+        vim.api.nvim_set_keymap('n', '<LEADER>f.', ':Files! ' .. vim.fn.expand('%:p:h'), { noremap = true })
+        vim.api.nvim_set_keymap('n', '<LEADER>fg', ':GFiles!<CR>', { noremap = true })
+
+        vim.api.nvim_set_keymap('n', '<LEADER>/', ':Rg!<CR>', { noremap = true })
+
+        vim.api.nvim_set_keymap('n', '<LEADER>bb', ':Buffers!<CR>', { noremap = true })
+        vim.api.nvim_set_keymap('n', '<LEADER>,', ':Buffers!<CR>', { noremap = true })
+      end
     }
 
     -- File explorer
@@ -416,37 +439,6 @@ return require 'packer'.startup {
         'gS',
         'gJ'
       },
-    }
-
-    use {
-      'nvim-telescope/telescope.nvim',
-      requires = {
-        { 'nvim-lua/plenary.nvim' },
-      }
-    }
-
-    use {
-      'nvim-telescope/telescope-fzf-native.nvim',
-      run = 'make',
-      config = function()
-        require('telescope').setup {
-          defaults = {
-          },
-        }
-        require('telescope').load_extension('fzf')
-        require 'telescope.themes'.get_ivy()
-
-        vim.api.nvim_set_keymap("n", "<LEADER><LEADER>", ":Telescope find_files theme=get_ivy<CR>", { noremap = true })
-        vim.api.nvim_set_keymap("n", "<LEADER>ff", ":Telescope find_files theme=get_ivy<CR>", { noremap = true })
-
-        vim.api.nvim_set_keymap("n", "<LEADER>sp", ":Telescope live_grep theme=get_ivy<CR>", { noremap = true })
-        vim.api.nvim_set_keymap("n", "<LEADER>/", ":Telescope live_grep theme=get_ivy<CR>", { noremap = true })
-
-        vim.api.nvim_set_keymap("n", "<LEADER>bb", ":Telescope buffers theme=get_ivy<CR>", { noremap = true })
-        vim.api.nvim_set_keymap("n", "<LEADER>,", ":Telescope buffers theme=get_ivy<CR>", { noremap = true })
-
-        vim.api.nvim_set_keymap("n", "<LEADER>sb", ":Telescope current_buffer_fuzzy_find theme=get_ivy<CR>", { noremap = true })
-      end
     }
 
     if packer_bootstrap then

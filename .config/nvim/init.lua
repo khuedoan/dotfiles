@@ -355,7 +355,7 @@ return require("packer").startup({
                         pyright = {},
                         rust_analyzer = {},
                         sqls = {},
-                        sumneko_lua = {},
+                        -- sumneko_lua = {}, -- TODO https://github.com/LunarVim/LunarVim/issues/2736
                         terraformls = {},
                         tflint = {},
                         tsserver = {},

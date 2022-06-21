@@ -361,6 +361,10 @@ return require("packer").startup({
                         tsserver = {},
                         yamlls = {},
                     },
+                    on_attach = function()
+                        -- Disable format on save
+                        -- require('nvim-lsp-setup.utils').format_on_save(client)
+                    end,
                 })
             end,
         })

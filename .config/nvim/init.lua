@@ -129,7 +129,7 @@ return require("packer").startup({
             as = "theme",
             config = function()
                 require("onedark").setup({
-                    transparent = true,
+                    transparent = vim.env.TMUX ~= nil,
                 })
                 require("onedark").load()
             end,

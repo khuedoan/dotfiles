@@ -38,12 +38,16 @@ vim.keymap.set("i", "<C-v>", "<C-r>+")
 
 -- Save and quit
 
-vim.keymap.set("n", "<C-s>", ":write<CR>")
-vim.keymap.set("n", "<C-q>", ":quit<CR>")
+vim.keymap.set("n", "<C-s>", ":write<cr>")
+vim.keymap.set("n", "<C-q>", ":quit<cr>")
+
+-- Buffers
+
+vim.keymap.set("n", "<leader>bd", ":bdelete<cr>")
 
 -- Replace
 
-vim.keymap.set("n", "<LEADER>r", ":%s///g<LEFT><LEFT>")
+vim.keymap.set("n", "<leader>r", ":%s///g<LEFT><LEFT>")
 
 -- Auto install plugin manager
 
@@ -111,7 +115,7 @@ return require("packer").startup({
                 "nvim-lua/plenary.nvim",
             },
             keys = {
-                "<LEADER>gg",
+                "<leader>gg",
             },
             cmd = {
                 "Neogit",
@@ -122,7 +126,7 @@ return require("packer").startup({
                     disable_context_highlighting = true,
                 })
 
-                vim.api.nvim_set_keymap("n", "<LEADER>gg", ":Neogit kind=split<CR>", { noremap = true })
+                vim.keymap.set("n", "<leader>gg", ":Neogit kind=split<cr>")
             end,
         })
 
@@ -140,7 +144,7 @@ return require("packer").startup({
                     vim.env.HOME, -- Dotfiles
                 }
 
-                vim.api.nvim_set_keymap("n", "<LEADER>pp", ":FzfSwitchProject<CR>", { noremap = true, silent = true })
+                vim.keymap.set("n", "<leader>pp", ":FzfSwitchProject<cr>", { noremap = true, silent = true })
             end,
         })
 
@@ -199,10 +203,10 @@ return require("packer").startup({
             config = function()
                 vim.g.tmux_navigator_no_mappings = 1
 
-                vim.api.nvim_set_keymap("n", "<M-h>", ":TmuxNavigateLeft<CR>", { noremap = true, silent = true })
-                vim.api.nvim_set_keymap("n", "<M-j>", ":TmuxNavigateDown<CR>", { noremap = true, silent = true })
-                vim.api.nvim_set_keymap("n", "<M-k>", ":TmuxNavigateUp<CR>", { noremap = true, silent = true })
-                vim.api.nvim_set_keymap("n", "<M-l>", ":TmuxNavigateRight<CR>", { noremap = true, silent = true })
+                vim.keymap.set("n", "<M-h>", ":TmuxNavigateLeft<cr>")
+                vim.keymap.set("n", "<M-j>", ":TmuxNavigateDown<cr>")
+                vim.keymap.set("n", "<M-k>", ":TmuxNavigateUp<cr>")
+                vim.keymap.set("n", "<M-l>", ":TmuxNavigateRight<cr>")
             end,
         })
 
@@ -219,12 +223,7 @@ return require("packer").startup({
                 "markdown",
             },
             config = function()
-                vim.api.nvim_set_keymap(
-                    "n",
-                    "<LEADER>mp",
-                    ":MarkdownPreviewToggle<CR>",
-                    { noremap = true, silent = true }
-                )
+                vim.keymap.set("n", "<leader>mp", ":MarkdownPreviewToggle<cr>")
             end,
         })
 
@@ -258,14 +257,14 @@ return require("packer").startup({
             },
             config = function()
                 vim.g.fzf_buffers_jump = 1
-                vim.api.nvim_set_keymap("n", "<LEADER><LEADER>", ":GFiles!<CR>'", { noremap = true })
-                vim.api.nvim_set_keymap("n", "<LEADER>ff", ":Files!<CR>'", { noremap = true })
-                vim.api.nvim_set_keymap("n", "<LEADER>f.", ":Files! " .. vim.fn.expand("%:p:h"), { noremap = true })
+                vim.keymap.set("n", "<leader><leader>", ":GFiles!<cr>'")
+                vim.keymap.set("n", "<leader>ff", ":Files!<cr>'")
+                vim.keymap.set("n", "<leader>f.", ":Files! " .. vim.fn.expand("%:p:h"))
 
-                vim.api.nvim_set_keymap("n", "<LEADER>/", ":Rg!<CR>", { noremap = true })
+                vim.keymap.set("n", "<leader>/", ":Rg!<cr>")
 
-                vim.api.nvim_set_keymap("n", "<LEADER>bb", ":Buffers!<CR>", { noremap = true })
-                vim.api.nvim_set_keymap("n", "<LEADER>,", ":Buffers!<CR>", { noremap = true })
+                vim.keymap.set("n", "<leader>bb", ":Buffers!<cr>")
+                vim.keymap.set("n", "<leader>,", ":Buffers!<cr>")
             end,
         })
 
@@ -273,7 +272,7 @@ return require("packer").startup({
         use({
             "mcchrish/nnn.vim",
             keys = {
-                "<LEADER>n",
+                "<leader>n",
             },
             cmd = {
                 "NnnPicker",
@@ -290,7 +289,7 @@ return require("packer").startup({
                         ["<C-x>"] = "split",
                     },
                 })
-                vim.api.nvim_set_keymap("n", "<LEADER>n", ":NnnPicker<CR>", { noremap = true })
+                vim.keymap.set("n", "<leader>n", ":NnnPicker<cr>")
             end,
         })
 
@@ -349,8 +348,8 @@ return require("packer").startup({
             },
             config = function()
                 require("bufferline").setup({})
-                vim.api.nvim_set_keymap("n", "<C-l>", ":BufferLineCycleNext<CR>", { noremap = true, silent = true })
-                vim.api.nvim_set_keymap("n", "<C-h>", ":BufferLineCyclePrev<CR>", { noremap = true, silent = true })
+                vim.keymap.set("n", "<C-l>", ":BufferLineCycleNext<cr>")
+                vim.keymap.set("n", "<C-h>", ":BufferLineCyclePrev<cr>")
             end,
         })
 
@@ -439,7 +438,7 @@ return require("packer").startup({
                             i = cmp.mapping.abort(),
                             c = cmp.mapping.close(),
                         }),
-                        ["<CR>"] = cmp.mapping.confirm({ select = true }),
+                        ["<cr>"] = cmp.mapping.confirm({ select = true }),
                         ["<Tab>"] = cmp.mapping(function(fallback)
                             if cmp.visible() then
                                 cmp.select_next_item()
@@ -502,7 +501,7 @@ return require("packer").startup({
             "sbdchd/neoformat",
             config = function()
                 vim.g.neoformat_basic_format_trim = 1
-                vim.api.nvim_set_keymap("v", "=", ":Neoformat<CR>", { noremap = true })
+                vim.keymap.set("v", "=", ":Neoformat<cr>")
             end,
         })
 

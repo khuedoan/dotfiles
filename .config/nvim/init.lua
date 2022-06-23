@@ -124,21 +124,21 @@ return require("packer").startup({
         })
 
         use({
-            "tpope/vim-fugitive"
+            "tpope/vim-fugitive",
         })
 
         use({
             "benwainwright/fzf-project",
             config = function()
                 vim.g.fzfSwitchProjectWorkspaces = {
-                    '~/Documents'
+                    "~/Documents",
                 }
                 vim.g.fzfSwitchProjectProjects = {
-                    vim.env.HOME -- Dotfiles
+                    vim.env.HOME, -- Dotfiles
                 }
 
                 vim.api.nvim_set_keymap("n", "<LEADER>pp", ":FzfSwitchProject<CR>", { noremap = true, silent = true })
-            end
+            end,
         })
 
         -- Theme
@@ -510,6 +510,16 @@ return require("packer").startup({
                 "gS",
                 "gJ",
             },
+        })
+
+        use({
+            "akinsho/toggleterm.nvim",
+            config = function()
+                require("toggleterm").setup({
+                    open_mapping = "<C-`>",
+                    shade_terminals = false,
+                })
+            end,
         })
 
         if packer_bootstrap then

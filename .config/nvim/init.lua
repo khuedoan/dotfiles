@@ -22,7 +22,10 @@ vim.opt.updatetime = 100
 
 -- Auto commands
 
-vim.api.nvim_command("au TextYankPost * silent! lua vim.highlight.on_yank()")
+vim.api.nvim_create_autocmd("TextYankPost", {
+    pattern = "*",
+    callback = vim.highlight.on_yank,
+})
 
 -- Leader
 

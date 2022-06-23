@@ -123,6 +123,24 @@ return require("packer").startup({
             end,
         })
 
+        use({
+            "tpope/vim-fugitive"
+        })
+
+        use({
+            "benwainwright/fzf-project",
+            config = function()
+                vim.g.fzfSwitchProjectWorkspaces = {
+                    '~/Documents'
+                }
+                vim.g.fzfSwitchProjectProjects = {
+                    vim.env.HOME -- Dotfiles
+                }
+
+                vim.api.nvim_set_keymap("n", "<LEADER>pp", ":FzfSwitchProject<CR>", { noremap = true, silent = true })
+            end
+        })
+
         -- Theme
         use({
             "navarasu/onedark.nvim",
@@ -237,10 +255,9 @@ return require("packer").startup({
             },
             config = function()
                 vim.g.fzf_buffers_jump = 1
-                vim.api.nvim_set_keymap("n", "<LEADER><LEADER>", ":Files!<CR>'", { noremap = true })
+                vim.api.nvim_set_keymap("n", "<LEADER><LEADER>", ":GFiles!<CR>'", { noremap = true })
                 vim.api.nvim_set_keymap("n", "<LEADER>ff", ":Files!<CR>'", { noremap = true })
                 vim.api.nvim_set_keymap("n", "<LEADER>f.", ":Files! " .. vim.fn.expand("%:p:h"), { noremap = true })
-                vim.api.nvim_set_keymap("n", "<LEADER>fg", ":GFiles!<CR>", { noremap = true })
 
                 vim.api.nvim_set_keymap("n", "<LEADER>/", ":Rg!<CR>", { noremap = true })
 
@@ -329,8 +346,8 @@ return require("packer").startup({
             },
             config = function()
                 require("bufferline").setup({})
-                vim.api.nvim_set_keymap("n", "<C-l>", ":BufferLineCycleNext<CR>", { noremap = true })
-                vim.api.nvim_set_keymap("n", "<C-h>", ":BufferLineCyclePrev<CR>", { noremap = true })
+                vim.api.nvim_set_keymap("n", "<C-l>", ":BufferLineCycleNext<CR>", { noremap = true, silent = true })
+                vim.api.nvim_set_keymap("n", "<C-h>", ":BufferLineCyclePrev<CR>", { noremap = true, silent = true })
             end,
         })
 

@@ -71,9 +71,6 @@ return require("packer").startup({
         -- Let packer manage itself
         use({
             "wbthomason/packer.nvim",
-            config = function()
-                vim.cmd("autocmd BufWritePost init.lua source <afile> | PackerCompile")
-            end,
         })
 
         -- Status line

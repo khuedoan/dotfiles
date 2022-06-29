@@ -499,6 +499,9 @@ return require("packer").startup({
 
         use({
             "brymer-meneses/grammar-guard.nvim",
+            ft = {
+                "markdown",
+            },
             config = function()
                 require("grammar-guard").init()
             end,
@@ -529,6 +532,9 @@ return require("packer").startup({
 
         use({
             "akinsho/toggleterm.nvim",
+            keys = {
+                "<C-`>",
+            },
             config = function()
                 require("toggleterm").setup({
                     open_mapping = "<C-`>",

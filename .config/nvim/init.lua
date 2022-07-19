@@ -112,9 +112,10 @@ return require("packer").startup({
             "TimUntersberger/neogit",
             requires = {
                 "nvim-lua/plenary.nvim",
+                "sindrets/diffview.nvim",
             },
             keys = {
-                "<leader>gg",
+                "<leader>g",
             },
             cmd = {
                 "Neogit",
@@ -123,9 +124,12 @@ return require("packer").startup({
                 require("neogit").setup({
                     disable_commit_confirmation = true,
                     disable_context_highlighting = true,
+                    integrations = {
+                        diffview = true,
+                    },
                 })
 
-                vim.keymap.set("n", "<leader>gg", ":Neogit kind=split<cr>")
+                vim.keymap.set("n", "<leader>gs", ":Neogit kind=split<cr>")
             end,
         })
 

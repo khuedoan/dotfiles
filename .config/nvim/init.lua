@@ -33,21 +33,21 @@ vim.g.mapleader = " "
 
 -- Copy and paste with system clipboard
 
-vim.keymap.set("v", "<C-c>", '"+y')
-vim.keymap.set("i", "<C-v>", "<C-r>+")
+vim.keymap.set("v", "<C-c>", '"+y', { silent = true })
+vim.keymap.set("i", "<C-v>", "<C-r>+", { silent = true })
 
 -- Save and quit
 
-vim.keymap.set("n", "<C-s>", ":write<cr>")
-vim.keymap.set("n", "<C-q>", ":quit<cr>")
+vim.keymap.set("n", "<C-s>", ":write<cr>", { silent = true })
+vim.keymap.set("n", "<C-q>", ":quit<cr>", { silent = true })
 
 -- Buffers
 
-vim.keymap.set("n", "<leader>bd", ":bdelete<cr>")
+vim.keymap.set("n", "<leader>bd", ":bdelete<cr>", { silent = true })
 
 -- Replace
 
-vim.keymap.set("n", "<leader>r", ":%s///g<LEFT><LEFT>")
+vim.keymap.set("n", "<leader>r", ":%s///g<LEFT><LEFT>", { silent = true })
 
 -- Auto install plugin manager
 
@@ -129,7 +129,7 @@ return require("packer").startup({
                     },
                 })
 
-                vim.keymap.set("n", "<leader>gs", ":Neogit kind=split<cr>")
+                vim.keymap.set("n", "<leader>gs", ":Neogit kind=split<cr>", { silent = true })
             end,
         })
 
@@ -206,10 +206,10 @@ return require("packer").startup({
             config = function()
                 vim.g.tmux_navigator_no_mappings = 1
 
-                vim.keymap.set("n", "<M-h>", ":TmuxNavigateLeft<cr>")
-                vim.keymap.set("n", "<M-j>", ":TmuxNavigateDown<cr>")
-                vim.keymap.set("n", "<M-k>", ":TmuxNavigateUp<cr>")
-                vim.keymap.set("n", "<M-l>", ":TmuxNavigateRight<cr>")
+                vim.keymap.set("n", "<M-h>", ":TmuxNavigateLeft<cr>", { silent = true })
+                vim.keymap.set("n", "<M-j>", ":TmuxNavigateDown<cr>", { silent = true })
+                vim.keymap.set("n", "<M-k>", ":TmuxNavigateUp<cr>", { silent = true })
+                vim.keymap.set("n", "<M-l>", ":TmuxNavigateRight<cr>", { silent = true })
             end,
         })
 
@@ -226,7 +226,7 @@ return require("packer").startup({
                 "markdown",
             },
             config = function()
-                vim.keymap.set("n", "<leader>mp", ":MarkdownPreviewToggle<cr>")
+                vim.keymap.set("n", "<leader>mp", ":MarkdownPreviewToggle<cr>", { silent = true })
             end,
         })
 
@@ -260,14 +260,14 @@ return require("packer").startup({
             },
             config = function()
                 vim.g.fzf_buffers_jump = 1
-                vim.keymap.set("n", "<leader><leader>", ":GFiles!<cr>'")
-                vim.keymap.set("n", "<leader>ff", ":Files!<cr>'")
-                vim.keymap.set("n", "<leader>f.", ":Files! " .. vim.fn.expand("%:p:h"))
+                vim.keymap.set("n", "<leader><leader>", ":GFiles!<cr>'", { silent = true })
+                vim.keymap.set("n", "<leader>ff", ":Files!<cr>'", { silent = true })
+                vim.keymap.set("n", "<leader>f.", ":Files! " .. vim.fn.expand("%:p:h", { silent = true }))
 
-                vim.keymap.set("n", "<leader>/", ":Rg!<cr>")
+                vim.keymap.set("n", "<leader>/", ":Rg!<cr>", { silent = true })
 
-                vim.keymap.set("n", "<leader>bb", ":Buffers!<cr>")
-                vim.keymap.set("n", "<leader>,", ":Buffers!<cr>")
+                vim.keymap.set("n", "<leader>bb", ":Buffers!<cr>", { silent = true })
+                vim.keymap.set("n", "<leader>,", ":Buffers!<cr>", { silent = true })
             end,
         })
 
@@ -292,7 +292,7 @@ return require("packer").startup({
                         ["<C-x>"] = "split",
                     },
                 })
-                vim.keymap.set("n", "<leader>n", ":NnnPicker<cr>")
+                vim.keymap.set("n", "<leader>n", ":NnnPicker<cr>", { silent = true })
             end,
         })
 
@@ -365,8 +365,8 @@ return require("packer").startup({
             },
             config = function()
                 require("bufferline").setup({})
-                vim.keymap.set("n", "<C-l>", ":BufferLineCycleNext<cr>")
-                vim.keymap.set("n", "<C-h>", ":BufferLineCyclePrev<cr>")
+                vim.keymap.set("n", "<C-l>", ":BufferLineCycleNext<cr>", { silent = true })
+                vim.keymap.set("n", "<C-h>", ":BufferLineCyclePrev<cr>", { silent = true })
             end,
         })
 
@@ -521,7 +521,7 @@ return require("packer").startup({
             "sbdchd/neoformat",
             config = function()
                 vim.g.neoformat_basic_format_trim = 1
-                vim.keymap.set("v", "=", ":Neoformat<cr>")
+                vim.keymap.set("v", "=", ":Neoformat<cr>", { silent = true })
             end,
         })
 

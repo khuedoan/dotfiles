@@ -274,14 +274,9 @@ return require("packer").startup({
         -- File explorer
         use({
             "mcchrish/nnn.vim",
-            keys = {
-                "<leader>n",
-            },
-            cmd = {
-                "NnnPicker",
-            },
             config = function()
                 require("nnn").setup({
+                    replace_netrw = true,
                     set_default_mappings = false,
                     session = "local",
                     layout = "new",

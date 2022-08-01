@@ -370,7 +370,8 @@ return require("packer").startup({
             "junnplus/nvim-lsp-setup",
             requires = {
                 "neovim/nvim-lspconfig",
-                "williamboman/nvim-lsp-installer",
+                "williamboman/mason.nvim",
+                "williamboman/mason-lspconfig.nvim",
             },
             config = function()
                 require("nvim-lsp-setup").setup({

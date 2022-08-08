@@ -137,20 +137,6 @@ return require("packer").startup({
             "tpope/vim-fugitive",
         })
 
-        use({
-            "benwainwright/fzf-project",
-            config = function()
-                vim.g.fzfSwitchProjectWorkspaces = {
-                    "~/Documents",
-                }
-                vim.g.fzfSwitchProjectProjects = {
-                    vim.env.HOME, -- Dotfiles
-                }
-
-                vim.keymap.set("n", "<leader>pp", ":FzfSwitchProject<cr>", { noremap = true, silent = true })
-            end,
-        })
-
         -- Theme
         use({
             "navarasu/onedark.nvim",

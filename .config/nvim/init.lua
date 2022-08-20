@@ -309,6 +309,7 @@ return require("packer").startup({
                         "json5",
                         "latex",
                         "lua",
+                        "nix",
                         "python",
                         "rust",
                         "svelte",

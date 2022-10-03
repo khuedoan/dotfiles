@@ -355,14 +355,14 @@ return require("packer").startup({
 
         -- Language server protocol
         use({
-            "junnplus/nvim-lsp-setup",
+            "junnplus/lsp-setup.nvim",
             requires = {
                 "neovim/nvim-lspconfig",
                 "williamboman/mason.nvim",
                 "williamboman/mason-lspconfig.nvim",
             },
             config = function()
-                require("nvim-lsp-setup").setup({
+                require("lsp-setup").setup({
                     servers = {
                         ansiblels = {},
                         bashls = {},

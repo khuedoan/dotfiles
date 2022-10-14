@@ -91,5 +91,6 @@ git pull
 ## Acknowledgements
 
 - [show sxhkd key bindings with fuzzy search script](https://www.reddit.com/r/bspwm/comments/aejyze/tip_show_sxhkd_keybindings_with_fuzzy_search/)
-- [LunarVim Neovim config](https://github.com/ChristianChiarulli/LunarVim)
-- [NvChad Neovim config](https://github.com/siduck76/NvChad)
+- [LunarVim/LunarVim Neovim config](https://github.com/ChristianChiarulli/LunarVim)
+- [LunarVim/nvim-basic-ide Neovim config](https://github.com/LunarVim/nvim-basic-ide)
+- [siduck76/NvChad Neovim config](https://github.com/siduck76/NvChad)

@@ -42,10 +42,6 @@ keymap("v", "p", '"_dP', opts)
 -- Replace
 keymap("n", "<leader>r", ":%s///g<LEFT><LEFT>", opts)
 
--- Insert --
--- Press jk fast to enter
-keymap("i", "jk", "<ESC>", opts)
-
 -- Visual --
 -- Copy to system clipboard
 keymap("v", "<C-c>", '"+y', opts)

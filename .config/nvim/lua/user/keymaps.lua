@@ -36,19 +36,12 @@ keymap("n", "<leader>h", "<cmd>nohlsearch<CR>", opts)
 -- Close buffers
 keymap("n", "<leader>bd", "<cmd>Bdelete!<CR>", opts)
 
--- Better paste
-keymap("v", "p", '"_dP', opts)
-
 -- Replace
 keymap("n", "<leader>r", ":%s///g<LEFT><LEFT>", opts)
 
 -- Visual --
 -- Copy to system clipboard
 keymap("v", "<C-c>", '"+y', opts)
-
--- Stay in indent mode
-keymap("v", "<", "<gv", opts)
-keymap("v", ">", ">gv", opts)
 
 -- Plugins --
 

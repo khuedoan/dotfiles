@@ -36,5 +36,3 @@ vim.opt.sidescrolloff = 3 -- minimal number of screen columns to keep to the lef
 vim.opt.guifont = "FiraCode Nerd Font Mono:h9.5" -- the font used in graphical neovim applications
 vim.opt.shortmess:append("c") -- hide all the completion messages, e.g. "-- XXX completion (YYY)", "match 1 of 2", "The only match", "Pattern not found"
 vim.opt.whichwrap:append("<,>,[,],h,l") -- keys allowed to move to the previous/next line when the beginning/end of line is reached
--- vim.opt.hidden = true
--- vim.opt.inccommand = "nosplit"

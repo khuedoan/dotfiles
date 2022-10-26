@@ -1,5 +1,5 @@
 (defcfg
-  input  (device-file "/dev/input/by-path/platform-i8042-serio-0-event-kbd")
+  input  (device-file "/dev/input/by-id/usb-RONGYUAN_2.4G_Wireless_Device-if02-event-kbd")
   output (uinput-sink "Internal keyboard")
   fallthrough true
   allow-cmd false

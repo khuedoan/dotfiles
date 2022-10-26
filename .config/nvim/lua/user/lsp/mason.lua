@@ -5,7 +5,6 @@ local servers = {
     "gopls",
     "html",
     "jsonls",
-    "ltex",
     "pyright",
     "rnix",
     "rust_analyzer",

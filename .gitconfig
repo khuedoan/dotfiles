@@ -1,3 +1,6 @@
+[user]
+	name = Khue Doan
+	email = mail@khuedoan.com
 [pull]
 	rebase = false
 [include]

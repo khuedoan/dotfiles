@@ -99,7 +99,7 @@ return packer.startup(function(use)
     use({
         "https://github.com/nvim-telescope/telescope-fzf-native.nvim",
         commit = "65c0ee3d4bb9cb696e262bca1ea5e9af3938fc90",
-        run = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
+        run = "make",
     })
 
     -- Treesitter

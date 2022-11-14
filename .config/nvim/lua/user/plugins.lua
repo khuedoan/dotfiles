@@ -65,9 +65,7 @@ return packer.startup(function(use)
     use({
         "https://github.com/iamcco/markdown-preview.nvim",
         commit = "02cc3874738bc0f86e4b91f09b8a0ac88aef8e96",
-        run = function()
-            vim.fn["mkdp#util#install"](0)
-        end,
+        run = "cd app && yarn install",
     })
     use({ "https://github.com/tpope/vim-eunuch", commit = "cc564695076d89b3d1e06b2693fca788cfbc5910" })
     use({ "https://github.com/tpope/vim-sleuth", commit = "8332f123a63c739c870c96907d987cc3ff719d24" })

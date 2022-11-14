@@ -76,6 +76,7 @@ return packer.startup(function(use)
     use({ "https://github.com/tpope/vim-eunuch", commit = "cc564695076d89b3d1e06b2693fca788cfbc5910" })
     use({ "https://github.com/tpope/vim-sleuth", commit = "8332f123a63c739c870c96907d987cc3ff719d24" })
     use({ "https://github.com/ggandor/leap.nvim", commit = "5a09c30bf676d1392ff00eb9a41e0a1fc9b60a1b" })
+    use({ "https://github.com/jakewvincent/mkdnflow.nvim", commit = "750dacc026467b135a17620eb0e14ab87c0027c9" })
 
     -- Colorschemes
     use({ "https://github.com/navarasu/onedark.nvim", commit = "6c72a9c5681e0ce00e75848d9426b59ba21539a7" })

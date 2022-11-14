@@ -3,4 +3,5 @@ if not status_ok then
     return
 end
 
-impatient.enable_profile()
+-- TODO https://github.com/lewis6991/impatient.nvim/issues/67
+-- impatient.enable_profile()

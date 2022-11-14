@@ -48,13 +48,6 @@ keymap("v", "<C-c>", '"+y', opts)
 -- NvimTree
 keymap("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
 
--- Telescope
-keymap("n", "<leader><leader>", ":Telescope find_files<CR>", opts)
-keymap("n", "<leader>f", ":Telescope git_files<CR>", opts)
-keymap("n", "<leader>/", ":Telescope live_grep<CR>", opts)
-keymap("n", "<leader>pp", ":Telescope projects<CR>", opts)
-keymap("n", "<leader>,", ":Telescope buffers<CR>", opts)
-
 -- Git
 keymap("n", "<leader>gg", "<cmd>lua _LAZYGIT_TOGGLE()<CR>", opts)
 

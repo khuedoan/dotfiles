@@ -53,7 +53,25 @@ return packer.startup(function(use)
         commit = "4d3a68c41a53add8804f471fcc49bb398fe8de08",
     })
     use({ "https://github.com/kyazdani42/nvim-web-devicons", commit = "563f3635c2d8a7be7933b9e547f7c178ba0d4352" })
-    use({ "https://github.com/kyazdani42/nvim-tree.lua", commit = "7282f7de8aedf861fe0162a559fc2b214383c51c" })
+    use({
+        "https://github.com/mcchrish/nnn.vim",
+        commit = "46bb8355a3bbe7df9f466bb116534dda4f257895",
+        config = function ()
+            require("nnn").setup({
+                command = "nnn -o -C",
+                set_default_mappings = false,
+                replace_netrw = true,
+                action = {
+                    ["<c-t>"] = "tab split",
+                    ["<c-s>"] = "split",
+                    ["<c-v>"] = "vsplit",
+                },
+            })
+
+            vim.keymap.set("n", "<LEADER>n", ":NnnExplore<CR>", { silent = true })
+            vim.keymap.set("n", "<LEADER>N", ":NnnExplore %:p:h<CR>", { silent = true })
+        end
+    })
     use({ "https://github.com/akinsho/bufferline.nvim", commit = "83bf4dc7bff642e145c8b4547aa596803a8b4dc4" })
     use({ "https://github.com/moll/vim-bbye", commit = "25ef93ac5a87526111f43e5110675032dbcacf56" })
     use({ "https://github.com/nvim-lualine/lualine.nvim", commit = "a52f078026b27694d2290e34efa61a6e4a690621" })

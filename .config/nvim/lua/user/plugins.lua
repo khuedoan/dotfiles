@@ -145,8 +145,21 @@ return packer.startup(function(use)
     -- Git
     use({ "https://github.com/lewis6991/gitsigns.nvim", commit = "f98c85e7c3d65a51f45863a34feb4849c82f240f" })
     use({ "https://github.com/APZelos/blamer.nvim", commit = "f4eb22a9013642c411725fdda945ae45f8d93181" })
-    use({ "https://github.com/TimUntersberger/neogit", commit = "74c9e29b61780345d3ad9d7a4a4437607caead4a" })
-    use({ "https://github.com/sindrets/diffview.nvim", commit = "a1fbcaa7e1e154cfa793ab44da4a6eb0ae15458d" })
+    use({
+        "https://github.com/TimUntersberger/neogit",
+        commit = "74e14e3c885f0caf64004d1c1e75dcbef96e10e5",
+        config = function ()
+            require("neogit").setup({
+                disable_commit_confirmation = true,
+                disable_context_highlighting = true,
+                integrations = {
+                    diffview = true,
+                },
+            })
+            vim.keymap.set("n", "<leader>gs", ":Neogit kind=split<cr>", { silent = true })
+        end
+    })
+    use({ "https://github.com/sindrets/diffview.nvim", commit = "6a82dfcb59f0af1e814f34bf8344d68afe8618ec" })
     use({ "https://github.com/tpope/vim-fugitive", commit = "dd8107cabf5fe85df94d5eedcae52415e543f208" })
 
     -- DAP

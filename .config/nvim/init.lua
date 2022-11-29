@@ -25,3 +25,7 @@ require("user.markdownpreview")
 require("user.mkdnflow")
 require("user.lsp")
 require("user.dap")
+
+if vim.g.neovide == true then
+    require("user.neovide")
+end

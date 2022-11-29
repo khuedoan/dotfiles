@@ -8,7 +8,7 @@ $HOME/.config/polybar/launch &
 
 # Compositor
 killall picom
-picom --experimental-backends &
+picom &
 
 # Use correct pointer
 xsetroot -cursor_name left_ptr &

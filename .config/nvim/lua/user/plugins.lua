@@ -82,7 +82,6 @@ return packer.startup(function(use)
         "https://github.com/lukas-reineke/indent-blankline.nvim",
         commit = "db7cbcb40cc00fc5d6074d7569fb37197705e7f6",
     })
-    use({ "https://github.com/goolord/alpha-nvim", commit = "0bb6fc0646bcd1cdb4639737a1cee8d6e08bcc31" })
     use({ "https://github.com/farmergreg/vim-lastplace", commit = "cef9d62165cd26c3c2b881528a5290a84347059e" })
     use({ "https://github.com/windwp/nvim-spectre", commit = "6d877bc1f2262af1053da466e4acd909ad61bc18" })
     use({ "https://github.com/christoomey/vim-tmux-navigator", commit = "afb45a55b452b9238159047ce7c6e161bd4a9907" })

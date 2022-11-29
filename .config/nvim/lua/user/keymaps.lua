@@ -39,10 +39,6 @@ keymap("n", "<leader>bd", "<cmd>Bdelete!<CR>", opts)
 -- Replace
 keymap("n", "<leader>r", ":%s///g<LEFT><LEFT>", opts)
 
--- Visual --
--- Copy to system clipboard
-keymap("v", "<C-c>", '"+y', opts)
-
 -- Plugins --
 
 -- NvimTree

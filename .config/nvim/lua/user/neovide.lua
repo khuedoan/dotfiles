@@ -4,6 +4,7 @@ vim.opt.guifont = "FiraCode Nerd Font Mono:h9" -- the font used in graphical neo
 -- vim.g.neovide_refresh_rate = 180
 -- vim.g.neovide_profiler = true
 
+vim.keymap.set("i", "<C-S-v>", '<C-r>+', { silent = true })
 vim.keymap.set(
     "n", "<C-=>",
     function ()

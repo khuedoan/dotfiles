@@ -101,13 +101,6 @@ return packer.startup(function(use)
             vim.keymap.set("n", "<LEADER>u", ":UndotreeToggle<CR>", { silent = true })
         end
     })
-    use({
-        "https://github.com/ojroques/vim-oscyank",
-        commit = "e6298736a7835bcb365dd45a8e8bfe86d935c1f8",
-        config = function ()
-            vim.keymap.set("v", "<C-c>", ':OSCYank<CR>', { silent = true })
-        end
-    })
 
     -- Colorschemes
     use({ "https://github.com/navarasu/onedark.nvim", commit = "6c72a9c5681e0ce00e75848d9426b59ba21539a7" })

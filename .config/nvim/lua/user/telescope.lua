@@ -47,7 +47,9 @@ local opts = { silent = true }
 
 keymap("n", "<leader><leader>", ":Telescope git_files<CR>", opts)
 keymap("n", "<leader>ff", ":Telescope find_files<CR>", opts)
-keymap("n", "<leader>fF", function () builtin.find_files({ cwd = utils.buffer_dir() }) end, opts)
+keymap("n", "<leader>fF", function()
+    builtin.find_files({ cwd = utils.buffer_dir() })
+end, opts)
 keymap("n", "<leader>/", ":Telescope live_grep<CR>", opts)
 keymap("n", "<leader>pp", ":Telescope projects<CR>", opts)
 keymap("n", "<leader>,", ":Telescope buffers<CR>", opts)

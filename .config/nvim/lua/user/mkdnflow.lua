@@ -8,6 +8,6 @@ mkdnflow.setup({
         symbols = { " ", "-", "x" },
     },
     mappings = {
-        MkdnEnter = {{'i', 'n', 'v'}, '<CR>'},
+        MkdnEnter = { { "i", "n", "v" }, "<CR>" },
     },
 })

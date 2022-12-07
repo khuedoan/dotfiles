@@ -45,9 +45,6 @@ keymap("v", "<C-c>", '"+y', opts)
 
 -- Plugins --
 
--- NvimTree
-keymap("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
-
 -- Git
 keymap("n", "<leader>gg", "<cmd>lua _LAZYGIT_TOGGLE()<CR>", opts)
 

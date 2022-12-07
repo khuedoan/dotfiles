@@ -17,7 +17,7 @@ vim.g.mapleader = " "
 
 -- Normal --
 -- Save and quit
-keymap("n", "<C-s>", ":write<cr>", opts)
+keymap("n", "<C-s>", ":update<cr>", opts)
 keymap("n", "<C-q>", ":quit<cr>", opts)
 
 -- Resize with arrows

@@ -92,6 +92,7 @@ return packer.startup(function(use)
             vim.keymap.set("n", "<LEADER>u", ":UndotreeToggle<CR>", { silent = true })
         end,
     })
+    use({ "https://github.com/stevearc/dressing.nvim" })
 
     -- Colorschemes
     use({ "https://github.com/navarasu/onedark.nvim" })
@@ -134,11 +135,11 @@ return packer.startup(function(use)
             require("neogit").setup({
                 disable_commit_confirmation = true,
                 disable_context_highlighting = true,
+                kind = "split",
                 integrations = {
                     diffview = true,
                 },
             })
-            vim.keymap.set("n", "<leader>gs", ":Neogit kind=split<cr>", { silent = true })
         end,
     })
     use({ "https://github.com/sindrets/diffview.nvim" })
@@ -148,6 +149,68 @@ return packer.startup(function(use)
     use({ "https://github.com/mfussenegger/nvim-dap" })
     use({ "https://github.com/rcarriga/nvim-dap-ui" })
     use({ "https://github.com/ravenxrz/DAPInstall.nvim" })
+
+    -- Keymaps
+    use({
+        "https://github.com/folke/which-key.nvim",
+        config = function()
+            require("which-key").setup({})
+            require("which-key").register({
+                b = {
+                    name = "buffer",
+                    b = { "<cmd>Telescope buffers only_cwd=true<cr>", "Switch workspace buffer" },
+                    B = { "<cmd>Telescope buffers<cr>", "Switch buffer" },
+                    n = { "<cmd>bnext<cr>", "Next buffer" },
+                    p = { "<cmd>bprevious<cr>", "Previous buffer" },
+                    d = { "<cmd>bdelete<cr>", "Delete buffer" },
+                },
+                f = {
+                    name = "file",
+                    f = { "<cmd>Telescope find_files<cr>", "Find file" },
+                    F = { "<cmd>Telescope find_files cwd=%:p:h<cr>", "Find file from here" },
+                    g = { "<cmd>Telescope git_files<cr>", "Find file in git project" },
+                    r = { "<cmd>Telescope oldfiles<cr>", "Recent files" },
+                    -- y = { "<cmd><cr>", "Yank file path" },
+                    -- Y = { "<cmd><cr>", "Yank file path from project" },
+                },
+                p = {
+                    name = "project",
+                    p = { "<cmd>Telescope projects<cr>", "Switch project" },
+                },
+                s = {
+                    name = "search",
+                    p = { "<cmd>Telescope live_grep<cr>", "Search project" },
+                },
+                g = {
+                    name = "git",
+                    g = { "<cmd>Neogit<cr>", "Git status" },
+                    s = { "<cmd>Neogit<cr>", "Git status" },
+                },
+                m = {
+                    name = "markdown",
+                    p = { "<cmd>MarkdownPreview<cr>", "Markdown preview" },
+                },
+
+                -- TODO dry
+                ["<leader>"] = { "<cmd>Telescope git_files<cr>", "Find file in project" },
+                ["/"] = { "<cmd>Telescope live_grep<cr>", "Search project" },
+                [","] = { "<cmd>Telescope buffers only_cwd=true<cr>", "Switch workspace buffer" },
+                -- ["<"] = { "<cmd>Telescope buffers<cr>", "Switch buffer" },
+                -- [":"] = { "<cmd>Legendary<cr>", "Switch workspace buffer" },
+            }, { prefix = "<leader>" })
+        end,
+    })
+    -- TODO
+    -- use({
+    --     "https://github.com/mrjones2014/legendary.nvim",
+    --     config = function()
+    --         require("legendary").setup({
+    --             which_key = {
+    --                 auto_register = true
+    --             }
+    --         })
+    --     end,
+    -- })
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins

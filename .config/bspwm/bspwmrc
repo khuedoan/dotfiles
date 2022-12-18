@@ -15,8 +15,6 @@ xsetroot -cursor_name left_ptr &
 
 # Key map
 killall sxhkd
-setxkbmap -option "shift:both_capslock, \
-                  altwin:swap_lalt_lwin"
 sxhkd &
 ibus-daemon -drx &
 

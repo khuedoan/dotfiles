@@ -26,5 +26,10 @@
     "workbench.colorTheme": "One Dark Pro",
     "workbench.editor.untitled.hint": "hidden",
     "workbench.enableExperiments": false,
-    "workbench.startupEditor": "newUntitledFile"
+    "workbench.startupEditor": "newUntitledFile",
+    "vscode-neovim.neovimInitVimPaths.linux": "~/.config/nvim/vscode.lua",
+    "vscode-neovim.neovimInitVimPaths.darwin": "~/.config/nvim/vscode.lua",
+    "extensions.experimental.affinity": {
+        "asvetliakov.vscode-neovim": 1
+    }
 }

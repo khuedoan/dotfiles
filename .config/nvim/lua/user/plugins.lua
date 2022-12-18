@@ -68,7 +68,29 @@ return packer.startup(function(use)
     use({ "https://github.com/akinsho/bufferline.nvim" })
     use({ "https://github.com/moll/vim-bbye" })
     use({ "https://github.com/nvim-lualine/lualine.nvim" })
-    use({ "https://github.com/akinsho/toggleterm.nvim" })
+    use({
+        "https://github.com/akinsho/toggleterm.nvim",
+        config = function()
+            require("toggleterm").setup({
+                size = 25,
+                open_mapping = [[<C-\>]],
+                shade_terminals = false,
+                persist_size = true,
+                direction = "horizontal",
+            })
+
+            vim.api.nvim_create_autocmd({ "TermOpen" }, {
+                pattern = "term://*",
+                callback = function()
+                    vim.opt_local.signcolumn = "no"
+                    vim.keymap.set("t", "<M-h>", "<CMD>wincmd h<CR>", { buffer = true })
+                    vim.keymap.set("t", "<M-j>", "<CMD>wincmd j<CR>", { buffer = true })
+                    vim.keymap.set("t", "<M-k>", "<CMD>wincmd k<CR>", { buffer = true })
+                    vim.keymap.set("t", "<M-l>", "<CMD>wincmd l<CR>", { buffer = true })
+                end,
+            })
+        end
+    })
     use({
         "https://github.com/ahmedkhalf/project.nvim",
         config = function ()

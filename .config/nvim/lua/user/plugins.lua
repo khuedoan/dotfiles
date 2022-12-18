@@ -1,23 +1,23 @@
 -- Automatically install packer
 local ensure_packer = function()
-  local fn = vim.fn
-  local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
-  if fn.empty(fn.glob(install_path)) > 0 then
-    fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
-    vim.cmd [[packadd packer.nvim]]
-    return true
-  end
-  return false
+    local fn = vim.fn
+    local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
+    if fn.empty(fn.glob(install_path)) > 0 then
+        fn.system({ "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path })
+        vim.cmd([[packadd packer.nvim]])
+        return true
+    end
+    return false
 end
 
 local packer_bootstrap = ensure_packer()
 
 -- Autocommand that reloads neovim whenever you save the plugins.lua file
-local packer_group = vim.api.nvim_create_augroup('Packer', { clear = true })
-vim.api.nvim_create_autocmd('BufWritePost', {
-  command = 'source <afile> | PackerCompile',
-  group = packer_group,
-  pattern = vim.fn.expand 'plugins.lua',
+local packer_group = vim.api.nvim_create_augroup("Packer", { clear = true })
+vim.api.nvim_create_autocmd("BufWritePost", {
+    command = "source <afile> | PackerCompile",
+    group = packer_group,
+    pattern = vim.fn.expand("plugins.lua"),
 })
 
 -- Use a protected call so we don't error out on first use
@@ -89,11 +89,11 @@ return packer.startup(function(use)
                     vim.keymap.set("t", "<M-l>", "<CMD>wincmd l<CR>", { buffer = true })
                 end,
             })
-        end
+        end,
     })
     use({
         "https://github.com/ahmedkhalf/project.nvim",
-        config = function ()
+        config = function()
             require("project_nvim").setup({
                 detection_methods = { "pattern" },
                 patterns = {
@@ -104,7 +104,7 @@ return packer.startup(function(use)
             })
 
             require("telescope").load_extension("projects")
-        end
+        end,
     })
     use({ "https://github.com/lewis6991/impatient.nvim" })
     use({ "https://github.com/lukas-reineke/indent-blankline.nvim" })
@@ -156,7 +156,7 @@ return packer.startup(function(use)
             local actions = require("telescope.actions")
             local themes = require("telescope.themes")
             telescope.setup({
-                defaults = themes.get_ivy {
+                defaults = themes.get_ivy({
                     path_display = { "absolute" },
                     file_ignore_patterns = { ".git/", "node_modules" },
 
@@ -170,7 +170,7 @@ return packer.startup(function(use)
                             ["<C-k>"] = actions.move_selection_previous,
                         },
                     },
-                },
+                }),
                 extensions = {
                     fzf = {
                         fuzzy = true, -- false will only do exact matching
@@ -182,18 +182,23 @@ return packer.startup(function(use)
                 },
                 pickers = {
                     find_files = {
+                        hidden = true,
                         no_ignore = true,
                         no_ignore_parent = true,
                     },
+                    buffers = {
+                        sort_mru = true,
+                    },
                 },
             })
-
-            telescope.load_extension("fzf")
-        end
+        end,
     })
     use({
         "https://github.com/nvim-telescope/telescope-fzf-native.nvim",
         run = "make",
+        config = function()
+            require("telescope").load_extension("fzf")
+        end,
     })
 
     -- Treesitter
@@ -208,7 +213,7 @@ return packer.startup(function(use)
         config = function()
             require("neogit").setup({
                 disable_commit_confirmation = true,
-                disable_context_highlighting = true,
+                disable_context_highlighting = false,
                 kind = "split",
                 integrations = {
                     diffview = true,
@@ -229,7 +234,8 @@ return packer.startup(function(use)
         "https://github.com/folke/which-key.nvim",
         config = function()
             require("which-key").setup({})
-            require("which-key").register({
+
+            local leader_keymaps = {
                 b = {
                     name = "buffer",
                     b = { "<cmd>Telescope buffers only_cwd=true<cr>", "Switch workspace buffer" },
@@ -237,15 +243,17 @@ return packer.startup(function(use)
                     n = { "<cmd>bnext<cr>", "Next buffer" },
                     p = { "<cmd>bprevious<cr>", "Previous buffer" },
                     d = { "<cmd>bdelete<cr>", "Delete buffer" },
+                    l = { "<cmd>b#<cr>", "Switch to last buffer" },
                 },
                 f = {
                     name = "file",
                     f = { "<cmd>Telescope find_files<cr>", "Find file" },
+                    -- TODO change path
                     F = { "<cmd>Telescope find_files cwd=%:p:h<cr>", "Find file from here" },
                     g = { "<cmd>Telescope git_files<cr>", "Find file in git project" },
                     r = { "<cmd>Telescope oldfiles<cr>", "Recent files" },
                     -- y = { "<cmd><cr>", "Yank file path" },
-                    -- Y = { "<cmd><cr>", "Yank file path from project" },
+                    Y = { "<cmd>let @+=expand('%')<cr>", "Yank file path from project" },
                 },
                 p = {
                     name = "project",
@@ -264,14 +272,22 @@ return packer.startup(function(use)
                     name = "markdown",
                     p = { "<cmd>MarkdownPreview<cr>", "Markdown preview" },
                 },
+                o = {
+                    name = "open",
+                    t = { "<cmd>edit ~/Documents/notes/todo.md<cr>", "Todo list" },
+                },
+                [":"] = { "<cmd>Telescope commands<cr>", "Commands" },
+            }
 
-                -- TODO dry
-                ["<leader>"] = { "<cmd>Telescope git_files<cr>", "Find file in project" },
-                ["/"] = { "<cmd>Telescope live_grep<cr>", "Search project" },
-                [","] = { "<cmd>Telescope buffers only_cwd=true<cr>", "Switch workspace buffer" },
-                -- ["<"] = { "<cmd>Telescope buffers<cr>", "Switch buffer" },
-                -- [":"] = { "<cmd>Legendary<cr>", "Switch workspace buffer" },
-            }, { prefix = "<leader>" })
+            -- Aliases
+            leader_keymaps["<leader>"] = leader_keymaps.f.f
+            leader_keymaps["/"] = leader_keymaps.s.p
+            leader_keymaps[","] = leader_keymaps.b.b
+            leader_keymaps["<"] = leader_keymaps.b.B
+            leader_keymaps["`"] = leader_keymaps.b.l
+            -- [":"] = { "<cmd>Legendary<cr>"
+
+            require("which-key").register(leader_keymaps, { prefix = "<leader>" })
         end,
     })
     -- TODO

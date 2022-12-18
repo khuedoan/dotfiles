@@ -94,3 +94,4 @@ git pull
 - [LunarVim/LunarVim Neovim config](https://github.com/ChristianChiarulli/LunarVim)
 - [LunarVim/nvim-basic-ide Neovim config](https://github.com/LunarVim/nvim-basic-ide)
 - [siduck76/NvChad Neovim config](https://github.com/siduck76/NvChad)
+- [nvim-lua/kickstart.nvim config](https://github.com/nvim-lua/kickstart.nvim)

@@ -69,7 +69,21 @@ return packer.startup(function(use)
     use({ "https://github.com/moll/vim-bbye" })
     use({ "https://github.com/nvim-lualine/lualine.nvim" })
     use({ "https://github.com/akinsho/toggleterm.nvim" })
-    use({ "https://github.com/ahmedkhalf/project.nvim" })
+    use({
+        "https://github.com/ahmedkhalf/project.nvim",
+        config = function ()
+            require("project_nvim").setup({
+                detection_methods = { "pattern" },
+                patterns = {
+                    ".git",
+                    "shell.nix",
+                },
+                silent_chdir = false,
+            })
+
+            require("telescope").load_extension("projects")
+        end
+    })
     use({ "https://github.com/lewis6991/impatient.nvim" })
     use({ "https://github.com/lukas-reineke/indent-blankline.nvim" })
     use({ "https://github.com/farmergreg/vim-lastplace" })

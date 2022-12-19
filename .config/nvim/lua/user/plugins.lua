@@ -30,11 +30,8 @@ end
 packer.init({
     display = {
         open_fn = function()
-            return require("packer.util").float({ border = "rounded" })
+            return require("packer.util").float({ border = "single" })
         end,
-    },
-    git = {
-        clone_timeout = 300, -- Timeout, in seconds, for git clones
     },
 })
 
@@ -44,8 +41,12 @@ return packer.startup(function(use)
     use({ "https://github.com/wbthomason/packer.nvim" }) -- Have packer manage itself
     use({ "https://github.com/nvim-lua/plenary.nvim" }) -- Useful lua functions used by lots of plugins
     use({ "https://github.com/windwp/nvim-autopairs" }) -- Autopairs, integrates with both cmp and treesitter
-    use({ "https://github.com/numToStr/Comment.nvim" })
-    use({ "https://github.com/JoosepAlviste/nvim-ts-context-commentstring" })
+    use({
+        "https://github.com/numToStr/Comment.nvim",
+        config = function()
+            require("Comment").setup({})
+        end,
+    })
     use({ "https://github.com/kyazdani42/nvim-web-devicons" })
     use({
         "https://github.com/kyazdani42/nvim-tree.lua",
@@ -78,7 +79,17 @@ return packer.startup(function(use)
     })
     use({ "https://github.com/akinsho/bufferline.nvim" })
     use({ "https://github.com/moll/vim-bbye" })
-    use({ "https://github.com/nvim-lualine/lualine.nvim" })
+    use({
+        "https://github.com/nvim-lualine/lualine.nvim",
+        config = function()
+            require("lualine").setup({
+                options = {
+                    globalstatus = true,
+                    theme = "auto",
+                },
+            })
+        end,
+    })
     use({
         "https://github.com/akinsho/toggleterm.nvim",
         config = function()
@@ -139,7 +150,15 @@ return packer.startup(function(use)
     use({ "https://github.com/stevearc/dressing.nvim" })
 
     -- Colorschemes
-    use({ "https://github.com/navarasu/onedark.nvim" })
+    use({
+        "https://github.com/navarasu/onedark.nvim",
+        config = function()
+            require("onedark").setup({
+                transparent = vim.env.TMUX ~= nil,
+            })
+            require("onedark").load()
+        end,
+    })
 
     -- cmp plugins
     use({ "https://github.com/hrsh7th/nvim-cmp" }) -- The completion plugin
@@ -158,6 +177,16 @@ return packer.startup(function(use)
     use({ "https://github.com/williamboman/mason.nvim" })
     use({ "https://github.com/williamboman/mason-lspconfig.nvim" })
     use({ "https://github.com/jose-elias-alvarez/null-ls.nvim" }) -- for formatters and linters
+    use({
+        "https://github.com/j-hui/fidget.nvim",
+        config = function()
+            require("fidget").setup({
+                text = {
+                    spinner = "dots",
+                },
+            })
+        end,
+    })
 
     -- Telescope
     use({

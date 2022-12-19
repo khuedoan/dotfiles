@@ -48,21 +48,32 @@ return packer.startup(function(use)
     use({ "https://github.com/JoosepAlviste/nvim-ts-context-commentstring" })
     use({ "https://github.com/kyazdani42/nvim-web-devicons" })
     use({
+        "https://github.com/kyazdani42/nvim-tree.lua",
+        config = function()
+            require("nvim-tree").setup({
+                update_focused_file = {
+                    enable = true,
+                    update_cwd = true,
+                },
+            })
+        end,
+    })
+    use({
         "https://github.com/mcchrish/nnn.vim",
         config = function()
             require("nnn").setup({
                 command = "nnn -o -C",
                 set_default_mappings = false,
                 replace_netrw = true,
+                layout = {
+                    down = "25",
+                },
                 action = {
                     ["<c-t>"] = "tab split",
                     ["<c-s>"] = "split",
                     ["<c-v>"] = "vsplit",
                 },
             })
-
-            vim.keymap.set("n", "<LEADER>n", ":NnnExplore<CR>", { silent = true })
-            vim.keymap.set("n", "<LEADER>N", ":NnnExplore %:p:h<CR>", { silent = true })
         end,
     })
     use({ "https://github.com/akinsho/bufferline.nvim" })
@@ -247,21 +258,56 @@ return packer.startup(function(use)
                 },
                 f = {
                     name = "file",
-                    f = { "<cmd>Telescope find_files<cr>", "Find file" },
-                    -- TODO change path
-                    F = { "<cmd>Telescope find_files cwd=%:p:h<cr>", "Find file from here" },
+                    f = {
+                        function()
+                            require("telescope.builtin").find_files()
+                        end,
+                        "Find file",
+                    },
+                    F = {
+                        function()
+                            require("telescope.builtin").find_files({
+                                default_text = vim.fn.expand("%:h") .. "/",
+                            })
+                        end,
+                        "Find file from here",
+                    },
                     g = { "<cmd>Telescope git_files<cr>", "Find file in git project" },
                     r = { "<cmd>Telescope oldfiles<cr>", "Recent files" },
-                    -- y = { "<cmd><cr>", "Yank file path" },
-                    Y = { "<cmd>let @+=expand('%')<cr>", "Yank file path from project" },
+                    y = {
+                        function()
+                            local path = vim.fn.expand("%:p:~")
+                            vim.fn.setreg("+", path)
+                            print("Copied path: " .. path)
+                        end,
+                        "Yank file path",
+                    },
+                    Y = {
+                        function()
+                            local path = vim.fn.expand("%")
+                            vim.fn.setreg("+", path)
+                            print("Copied path: " .. path)
+                        end,
+                        "Yank file path from project",
+                    },
                 },
                 p = {
                     name = "project",
                     p = { "<cmd>Telescope projects<cr>", "Switch project" },
+                    b = { "<cmd>NnnPicker<cr>", "Browse project" },
+                    B = { "<cmd>NnnPicker %:p:h<cr>", "Browse project from here" },
                 },
                 s = {
                     name = "search",
-                    p = { "<cmd>Telescope live_grep<cr>", "Search project" },
+                    p = {
+                        function()
+                            require("telescope.builtin").grep_string({
+                                only_sort_text = true,
+                                search = "",
+                            })
+                        end,
+                        "Search project",
+                    },
                 },
                 g = {
                     name = "git",
@@ -275,6 +321,7 @@ return packer.startup(function(use)
                 o = {
                     name = "open",
                     t = { "<cmd>edit ~/Documents/notes/todo.md<cr>", "Todo list" },
+                    p = { "<cmd>NvimTreeFindFileToggle<cr>", "Project sidebar" },
                 },
                 [":"] = { "<cmd>Telescope commands<cr>", "Commands" },
             }

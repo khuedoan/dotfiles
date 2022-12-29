@@ -148,6 +148,7 @@ return packer.startup(function(use)
         end,
     })
     use({ "https://github.com/stevearc/dressing.nvim" })
+    use({ "https://github.com/romainl/vim-cool" })
 
     -- Colorschemes
     use({
@@ -186,6 +187,14 @@ return packer.startup(function(use)
                 },
             })
         end,
+    })
+
+    use({
+        "https://github.com/github/copilot.vim",
+        config = function()
+            vim.g.copilot_no_tab_map = true
+            vim.keymap.set("i", "<C-l>", "copilot#Accept('<CR>')", { silent = true, script = true, expr = true })
+        end
     })
 
     -- Telescope

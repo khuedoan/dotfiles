@@ -22,6 +22,7 @@ configs.setup({
         "lua",
         "nix",
         "python",
+        "rego",
         "rust",
         "typescript",
         "yaml",

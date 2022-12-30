@@ -37,8 +37,13 @@ packer.init({
 
 -- Install your plugins here
 return packer.startup(function(use)
-    -- My plugins here
     use({ "https://github.com/wbthomason/packer.nvim" }) -- Have packer manage itself
+    use({
+        "https://github.com/lewis6991/impatient.nvim",
+        config = function()
+            require("impatient")
+        end
+    })
     use({ "https://github.com/nvim-lua/plenary.nvim" }) -- Useful lua functions used by lots of plugins
     use({ "https://github.com/windwp/nvim-autopairs" }) -- Autopairs, integrates with both cmp and treesitter
     use({
@@ -128,10 +133,25 @@ return packer.startup(function(use)
             require("telescope").load_extension("projects")
         end,
     })
-    use({ "https://github.com/lewis6991/impatient.nvim" })
     use({ "https://github.com/lukas-reineke/indent-blankline.nvim" })
     use({ "https://github.com/farmergreg/vim-lastplace" })
-    use({ "https://github.com/windwp/nvim-spectre" })
+    use({
+        "https://github.com/windwp/nvim-spectre",
+        config = function()
+            require("spectre").setup({
+                live_update = true,
+                highlight = {
+                    ui = "String",
+                    search = "DiffDelete",
+                    replace = "DiffAdd",
+                },
+            })
+
+            vim.keymap.set("n", "<leader>R", function()
+                require("spectre").open()
+            end, { silent = true })
+        end
+    })
     use({ "https://github.com/christoomey/vim-tmux-navigator" })
     use({
         "https://github.com/iamcco/markdown-preview.nvim",
@@ -139,8 +159,25 @@ return packer.startup(function(use)
     })
     use({ "https://github.com/tpope/vim-eunuch" })
     use({ "https://github.com/tpope/vim-sleuth" })
-    use({ "https://github.com/ggandor/leap.nvim" })
-    use({ "https://github.com/jakewvincent/mkdnflow.nvim" })
+    use({
+        "https://github.com/ggandor/leap.nvim",
+        config = function()
+            require("leap").set_default_keymaps()
+        end
+    })
+    use({
+        "https://github.com/jakewvincent/mkdnflow.nvim",
+        config = function()
+            require("mkdnflow").setup({
+                to_do = {
+                    symbols = { " ", "-", "x" },
+                },
+                mappings = {
+                    MkdnEnter = { { "i", "n", "v" }, "<CR>" },
+                },
+            })
+        end
+    })
     use({
         "https://github.com/mbbill/undotree",
         config = function()
@@ -255,7 +292,36 @@ return packer.startup(function(use)
     use({ "https://github.com/RRethy/nvim-treesitter-endwise" })
 
     -- Git
-    use({ "https://github.com/lewis6991/gitsigns.nvim" })
+    use({
+        "https://github.com/lewis6991/gitsigns.nvim",
+        config = function()
+            require("gitsigns").setup({
+                signcolumn = true, -- Toggle with `:Gitsigns toggle_signs`
+                watch_gitdir = {
+                    interval = 1000,
+                    follow_files = true,
+                },
+                attach_to_untracked = true,
+                current_line_blame = true,
+                current_line_blame_opts = {
+                    virt_text = true,
+                    virt_text_pos = "eol", -- 'eol' | 'overlay' | 'right_align'
+                    delay = 1000,
+                },
+                sign_priority = 6,
+                update_debounce = 100,
+                status_formatter = nil, -- Use default
+                preview_config = {
+                    -- Options passed to nvim_open_win
+                    border = "single",
+                    style = "minimal",
+                    relative = "cursor",
+                    row = 0,
+                    col = 1,
+                },
+            })
+        end
+    })
     use({ "https://github.com/APZelos/blamer.nvim" })
     use({
         "https://github.com/TimUntersberger/neogit",

@@ -84,23 +84,16 @@ return packer.startup(function(use)
     use({
         "https://github.com/akinsho/bufferline.nvim",
         config = function()
-            require("bufferline").setup({
-                options = {
-                    close_command = "Bdelete! %d", -- can be a string | function, see "Mouse actions"
-                    right_mouse_command = "Bdelete! %d", -- can be a string | function, see "Mouse actions"
-                    separator_style = "thin", -- | "thick" | "thin" | { 'any', 'any' },
-                },
-            })
+            require("bufferline").setup()
         end
     })
-    use({ "https://github.com/moll/vim-bbye" })
+    -- use({ "https://github.com/moll/vim-bbye" })
     use({
         "https://github.com/nvim-lualine/lualine.nvim",
         config = function()
             require("lualine").setup({
                 options = {
-                    globalstatus = true,
-                    theme = "auto",
+                    globalstatus = true
                 },
             })
         end,
@@ -126,21 +119,6 @@ return packer.startup(function(use)
                     vim.keymap.set("t", "<M-l>", "<CMD>wincmd l<CR>", { buffer = true })
                 end,
             })
-        end,
-    })
-    use({
-        "https://github.com/ahmedkhalf/project.nvim",
-        config = function()
-            require("project_nvim").setup({
-                detection_methods = { "pattern" },
-                patterns = {
-                    ".git",
-                    "shell.nix",
-                },
-                silent_chdir = false,
-            })
-
-            require("telescope").load_extension("projects")
         end,
     })
     use({
@@ -251,6 +229,14 @@ return packer.startup(function(use)
             local cmp = require("cmp")
             local luasnip = require("luasnip")
             local autopairs = require("nvim-autopairs")
+
+            require("luasnip/loaders/from_vscode").lazy_load()
+
+            local check_backspace = function()
+                local col = vim.fn.col(".") - 1
+                return col == 0 or vim.fn.getline("."):sub(col, col):match("%s")
+            end
+
             cmp.setup({
                 snippet = {
                     expand = function(args)
@@ -425,6 +411,21 @@ return packer.startup(function(use)
             require("telescope").load_extension("fzf")
         end,
     })
+    use({
+        "https://github.com/ahmedkhalf/project.nvim",
+        config = function()
+            require("project_nvim").setup({
+                detection_methods = { "pattern" },
+                patterns = {
+                    ".git",
+                    "shell.nix",
+                },
+                silent_chdir = false,
+            })
+
+            require("telescope").load_extension("projects")
+        end,
+    })
 
     -- Treesitter
     use({
@@ -522,11 +523,10 @@ return packer.startup(function(use)
     use({ "https://github.com/tpope/vim-fugitive" })
 
     -- DAP
-    use({ "https://github.com/mfussenegger/nvim-dap" })
     use({
-        "https://github.com/rcarriga/nvim-dap-ui",
+        "https://github.com/mfussenegger/nvim-dap",
         requires = {
-            "https://github.com/mfussenegger/nvim-dap",
+            "https://github.com/rcarriga/nvim-dap-ui",
         },
         config = function()
             local dap = require("dap")
@@ -550,6 +550,8 @@ return packer.startup(function(use)
         config = function()
             local dap_install = require("dap-install")
             dap_install.setup({})
+            dap_install.config("ccppr_vsc", {})
+            dap_install.config("go", {})
             dap_install.config("python", {})
         end
     })

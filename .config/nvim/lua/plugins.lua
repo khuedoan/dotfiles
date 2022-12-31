@@ -45,7 +45,6 @@ return packer.startup(function(use)
         end
     })
     use({ "https://github.com/nvim-lua/plenary.nvim" }) -- Useful lua functions used by lots of plugins
-    use({ "https://github.com/windwp/nvim-autopairs" }) -- Autopairs, integrates with both cmp and treesitter
     use({
         "https://github.com/numToStr/Comment.nvim",
         config = function()
@@ -82,7 +81,18 @@ return packer.startup(function(use)
             })
         end,
     })
-    use({ "https://github.com/akinsho/bufferline.nvim" })
+    use({
+        "https://github.com/akinsho/bufferline.nvim",
+        config = function()
+            require("bufferline").setup({
+                options = {
+                    close_command = "Bdelete! %d", -- can be a string | function, see "Mouse actions"
+                    right_mouse_command = "Bdelete! %d", -- can be a string | function, see "Mouse actions"
+                    separator_style = "thin", -- | "thick" | "thin" | { 'any', 'any' },
+                },
+            })
+        end
+    })
     use({ "https://github.com/moll/vim-bbye" })
     use({
         "https://github.com/nvim-lualine/lualine.nvim",
@@ -133,7 +143,23 @@ return packer.startup(function(use)
             require("telescope").load_extension("projects")
         end,
     })
-    use({ "https://github.com/lukas-reineke/indent-blankline.nvim" })
+    use({
+        "https://github.com/lukas-reineke/indent-blankline.nvim",
+        config = function()
+            require("indent_blankline").setup({
+                char = "▏",
+                show_trailing_blankline_indent = false,
+                show_first_indent_level = false,
+                use_treesitter = true,
+                show_current_context = true,
+                buftype_exclude = { "terminal", "nofile" },
+                filetype_exclude = {
+                    "help",
+                    "packer",
+                },
+            })
+        end
+    })
     use({ "https://github.com/farmergreg/vim-lastplace" })
     use({
         "https://github.com/windwp/nvim-spectre",
@@ -152,7 +178,16 @@ return packer.startup(function(use)
             end, { silent = true })
         end
     })
-    use({ "https://github.com/christoomey/vim-tmux-navigator" })
+    use({
+        "https://github.com/christoomey/vim-tmux-navigator",
+        config = function()
+            vim.g.tmux_navigator_no_mappings = 1
+            vim.keymap.set("n", "<M-h>", ":TmuxNavigateLeft<cr>", { silent = true })
+            vim.keymap.set("n", "<M-j>", ":TmuxNavigateDown<cr>", { silent = true })
+            vim.keymap.set("n", "<M-k>", ":TmuxNavigateUp<cr>", { silent = true })
+            vim.keymap.set("n", "<M-l>", ":TmuxNavigateRight<cr>", { silent = true })
+        end
+    })
     use({
         "https://github.com/iamcco/markdown-preview.nvim",
         run = "cd app && yarn install",
@@ -198,23 +233,129 @@ return packer.startup(function(use)
         end,
     })
 
-    -- cmp plugins
-    use({ "https://github.com/hrsh7th/nvim-cmp" }) -- The completion plugin
-    use({ "https://github.com/hrsh7th/cmp-buffer" }) -- buffer completions
-    use({ "https://github.com/hrsh7th/cmp-path" }) -- path completions
-    use({ "https://github.com/saadparwaiz1/cmp_luasnip" }) -- snippet completions
-    use({ "https://github.com/hrsh7th/cmp-nvim-lsp" })
-    use({ "https://github.com/hrsh7th/cmp-nvim-lua" })
+    -- Completion
+    use({
+        "https://github.com/hrsh7th/nvim-cmp",
+        requires = {
+            "https://github.com/hrsh7th/cmp-buffer",
+            "https://github.com/hrsh7th/cmp-nvim-lsp",
+            "https://github.com/hrsh7th/cmp-nvim-lua",
+            "https://github.com/hrsh7th/cmp-path",
+            "https://github.com/hrsh7th/cmp-copilot",
+            "https://github.com/saadparwaiz1/cmp_luasnip",
+            "https://github.com/L3MON4D3/LuaSnip",
+            "https://github.com/rafamadriz/friendly-snippets",
+            "https://github.com/windwp/nvim-autopairs",
+        },
+        config = function()
+            local cmp = require("cmp")
+            local luasnip = require("luasnip")
+            local autopairs = require("nvim-autopairs")
+            cmp.setup({
+                snippet = {
+                    expand = function(args)
+                        luasnip.lsp_expand(args.body) -- For `luasnip` users.
+                    end,
+                },
 
-    -- snippets
-    use({ "https://github.com/L3MON4D3/LuaSnip" }) --snippet engine
-    use({ "https://github.com/rafamadriz/friendly-snippets" }) -- a bunch of snippets to use
+                mapping = cmp.mapping.preset.insert({
+                    ["<C-k>"] = cmp.mapping.select_prev_item(),
+                    ["<C-j>"] = cmp.mapping.select_next_item(),
+                    ["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "c" }),
+                    ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "c" }),
+                    ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
+                    ["<C-e>"] = cmp.mapping({
+                        i = cmp.mapping.abort(),
+                        c = cmp.mapping.close(),
+                    }),
+                    -- Accept currently selected item. If none selected, `select` first item.
+                    -- Set `select` to `false` to only confirm explicitly selected items.
+                    ["<CR>"] = cmp.mapping.confirm({ select = false }),
+                    ["<Tab>"] = cmp.mapping(function(fallback)
+                        if cmp.visible() then
+                            cmp.select_next_item()
+                        elseif luasnip.expandable() then
+                            luasnip.expand()
+                        elseif luasnip.expand_or_jumpable() then
+                            luasnip.expand_or_jump()
+                        elseif check_backspace() then
+                            fallback()
+                        else
+                            fallback()
+                        end
+                    end, {
+                        "i",
+                        "s",
+                    }),
+                    ["<S-Tab>"] = cmp.mapping(function(fallback)
+                        if cmp.visible() then
+                            cmp.select_prev_item()
+                        elseif luasnip.jumpable(-1) then
+                            luasnip.jump(-1)
+                        else
+                            fallback()
+                        end
+                    end, {
+                        "i",
+                        "s",
+                    }),
+                }),
+                sources = {
+                    { name = "buffer" },
+                    { name = "copilot" },
+                    { name = "luasnip" },
+                    { name = "nvim_lsp" },
+                    { name = "nvim_lua" },
+                    { name = "path" },
+                },
+                confirm_opts = {
+                    behavior = cmp.ConfirmBehavior.Replace,
+                    select = false,
+                },
+                window = {
+                    completion = cmp.config.window.bordered(),
+                    documentation = cmp.config.window.bordered(),
+                },
+                experimental = {
+                    ghost_text = false,
+                },
+            })
+
+            autopairs.setup({
+                check_ts = true, -- treesitter integration
+                disable_filetype = { "TelescopePrompt" },
+                ts_config = {
+                    lua = { "string", "source" },
+                    javascript = { "string", "template_string" },
+                    java = false,
+                },
+
+                fast_wrap = {
+                    map = "<M-e>",
+                    chars = { "{", "[", "(", '"', "'" },
+                    pattern = string.gsub([[ [%'%"%)%>%]%)%}%,] ]], "%s+", ""),
+                    offset = 0, -- Offset from pattern match
+                    end_key = "$",
+                    keys = "qwertyuiopzxcvbnmasdfghjkl",
+                    check_comma = true,
+                    highlight = "PmenuSel",
+                    highlight_grey = "LineNr",
+                },
+            })
+
+            cmp.event:on("confirm_done", require("nvim-autopairs.completion.cmp").on_confirm_done({}))
+        end
+    })
 
     -- LSP
-    use({ "https://github.com/neovim/nvim-lspconfig" }) -- enable LSP
-    use({ "https://github.com/williamboman/mason.nvim" })
-    use({ "https://github.com/williamboman/mason-lspconfig.nvim" })
-    use({ "https://github.com/jose-elias-alvarez/null-ls.nvim" }) -- for formatters and linters
+    use({
+        "https://github.com/neovim/nvim-lspconfig",
+        requires = {
+            "https://github.com/williamboman/mason.nvim",
+            "https://github.com/williamboman/mason-lspconfig.nvim",
+            "https://github.com/jose-elias-alvarez/null-ls.nvim",
+        },
+    })
     use({
         "https://github.com/j-hui/fidget.nvim",
         config = function()
@@ -225,12 +366,10 @@ return packer.startup(function(use)
             })
         end,
     })
-
     use({
         "https://github.com/github/copilot.vim",
         config = function()
             vim.g.copilot_no_tab_map = true
-            vim.keymap.set("i", "<C-l>", "copilot#Accept('<CR>')", { silent = true, script = true, expr = true })
         end
     })
 
@@ -288,7 +427,50 @@ return packer.startup(function(use)
     })
 
     -- Treesitter
-    use({ "https://github.com/nvim-treesitter/nvim-treesitter" })
+    use({
+        "https://github.com/nvim-treesitter/nvim-treesitter",
+        config = function()
+            require("nvim-treesitter.configs").setup({
+                ensure_installed = {
+                    "bash",
+                    "dockerfile",
+                    "go",
+                    "hcl",
+                    "javascript",
+                    "json",
+                    "json5",
+                    "jsonnet",
+                    "latex",
+                    "lua",
+                    "nix",
+                    "python",
+                    "rego",
+                    "rust",
+                    "typescript",
+                    "yaml",
+                },
+
+                highlight = {
+                    enable = true,
+                },
+                autopairs = {
+                    enable = true,
+                },
+                indent = {
+                    enable = true,
+                },
+
+                context_commentstring = {
+                    enable = true,
+                    enable_autocmd = false,
+                },
+
+                endwise = {
+                    enable = true,
+                },
+            })
+        end
+    })
     use({ "https://github.com/RRethy/nvim-treesitter-endwise" })
 
     -- Git
@@ -341,8 +523,36 @@ return packer.startup(function(use)
 
     -- DAP
     use({ "https://github.com/mfussenegger/nvim-dap" })
-    use({ "https://github.com/rcarriga/nvim-dap-ui" })
-    use({ "https://github.com/ravenxrz/DAPInstall.nvim" })
+    use({
+        "https://github.com/rcarriga/nvim-dap-ui",
+        requires = {
+            "https://github.com/mfussenegger/nvim-dap",
+        },
+        config = function()
+            local dap = require("dap")
+            local dapui = require("dapui")
+            dapui.setup({})
+            vim.fn.sign_define("DapBreakpoint", { text = "", texthl = "DiagnosticSignError", linehl = "", numhl = "" })
+
+            dap.listeners.after.event_initialized["dapui_config"] = function()
+                dapui.open()
+            end
+            dap.listeners.before.event_terminated["dapui_config"] = function()
+                dapui.close()
+            end
+            dap.listeners.before.event_exited["dapui_config"] = function()
+                dapui.close()
+            end
+        end
+    })
+    use({
+        "https://github.com/ravenxrz/DAPInstall.nvim",
+        config = function()
+            local dap_install = require("dap-install")
+            dap_install.setup({})
+            dap_install.config("python", {})
+        end
+    })
 
     -- Keymaps
     use({

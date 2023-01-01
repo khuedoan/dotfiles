@@ -37,13 +37,13 @@ packer.init({
 
 -- Install your plugins here
 return packer.startup(function(use)
-    use({ "https://github.com/wbthomason/packer.nvim" }) -- Have packer manage itself
     use({
         "https://github.com/lewis6991/impatient.nvim",
         config = function()
             require("impatient")
         end
     })
+    use({ "https://github.com/wbthomason/packer.nvim" }) -- Have packer manage itself
     use({ "https://github.com/nvim-lua/plenary.nvim" }) -- Useful lua functions used by lots of plugins
     use({
         "https://github.com/numToStr/Comment.nvim",
@@ -54,6 +54,7 @@ return packer.startup(function(use)
     use({ "https://github.com/kyazdani42/nvim-web-devicons" })
     use({
         "https://github.com/kyazdani42/nvim-tree.lua",
+        cmd = "NvimTreeFindFileToggle",
         config = function()
             require("nvim-tree").setup({
                 update_focused_file = {
@@ -65,6 +66,7 @@ return packer.startup(function(use)
     })
     use({
         "https://github.com/mcchrish/nnn.vim",
+        cmd = "NnnPicker",
         config = function()
             require("nnn").setup({
                 command = "nnn -o -C",
@@ -180,6 +182,9 @@ return packer.startup(function(use)
     })
     use({
         "https://github.com/jakewvincent/mkdnflow.nvim",
+        ft = {
+            "markdown"
+        },
         config = function()
             require("mkdnflow").setup({
                 to_do = {
@@ -212,23 +217,19 @@ return packer.startup(function(use)
     })
 
     -- Completion
+    use({"https://github.com/hrsh7th/cmp-buffer"})
+    use({"https://github.com/hrsh7th/cmp-nvim-lsp"})
+    use({"https://github.com/hrsh7th/cmp-nvim-lua"})
+    use({"https://github.com/hrsh7th/cmp-path"})
+    use({"https://github.com/hrsh7th/cmp-copilot"})
+    use({"https://github.com/saadparwaiz1/cmp_luasnip"})
+    use({"https://github.com/L3MON4D3/LuaSnip"})
+    use({"https://github.com/rafamadriz/friendly-snippets"})
     use({
         "https://github.com/hrsh7th/nvim-cmp",
-        requires = {
-            "https://github.com/hrsh7th/cmp-buffer",
-            "https://github.com/hrsh7th/cmp-nvim-lsp",
-            "https://github.com/hrsh7th/cmp-nvim-lua",
-            "https://github.com/hrsh7th/cmp-path",
-            "https://github.com/hrsh7th/cmp-copilot",
-            "https://github.com/saadparwaiz1/cmp_luasnip",
-            "https://github.com/L3MON4D3/LuaSnip",
-            "https://github.com/rafamadriz/friendly-snippets",
-            "https://github.com/windwp/nvim-autopairs",
-        },
         config = function()
             local cmp = require("cmp")
             local luasnip = require("luasnip")
-            local autopairs = require("nvim-autopairs")
 
             require("luasnip/loaders/from_vscode").lazy_load()
 
@@ -306,7 +307,15 @@ return packer.startup(function(use)
                     ghost_text = false,
                 },
             })
+        end
+    })
 
+    use({
+        "https://github.com/windwp/nvim-autopairs",
+        after = "nvim-cmp",
+        config = function()
+            local autopairs = require("nvim-autopairs")
+            local cmp = require("cmp")
             autopairs.setup({
                 check_ts = true, -- treesitter integration
                 disable_filetype = { "TelescopePrompt" },
@@ -328,7 +337,6 @@ return packer.startup(function(use)
                     highlight_grey = "LineNr",
                 },
             })
-
             cmp.event:on("confirm_done", require("nvim-autopairs.completion.cmp").on_confirm_done({}))
         end
     })
@@ -508,6 +516,7 @@ return packer.startup(function(use)
     use({ "https://github.com/APZelos/blamer.nvim" })
     use({
         "https://github.com/TimUntersberger/neogit",
+        cmd = "Neogit",
         config = function()
             require("neogit").setup({
                 disable_commit_confirmation = true,

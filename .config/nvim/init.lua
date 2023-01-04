@@ -1,8 +1,3 @@
-require("plugins")
 require("options")
+require("plugins")
 require("keymaps")
-require("lsp")
-
-if vim.g.neovide == true then
-    require("neovide")
-end

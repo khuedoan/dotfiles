@@ -209,9 +209,11 @@ return require("packer").startup(function(use)
             require("mason-lspconfig").setup({
                 ensure_installed = {
                     "bashls",
+                    "bufls",
                     "cssls",
                     "dockerls",
                     "gopls",
+                    "grammarly",
                     "html",
                     "jsonls",
                     "pyright",
@@ -348,6 +350,7 @@ return require("packer").startup(function(use)
                     "latex",
                     "lua",
                     "nix",
+                    "proto",
                     "python",
                     "rego",
                     "rust",

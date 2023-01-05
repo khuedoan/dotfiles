@@ -430,6 +430,13 @@ return require("packer").startup(function(use)
             require("leap").set_default_keymaps()
         end,
     })
+
+    use({
+        "https://github.com/ggandor/flit.nvim",
+        config = function()
+            require('flit').setup()
+        end
+    })
     -- }}}
 
     -- {{{ Keymaps

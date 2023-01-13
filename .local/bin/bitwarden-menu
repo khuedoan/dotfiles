@@ -1,0 +1,58 @@
+#!/usr/bin/env python
+
+import subprocess
+import json
+
+def create_session_key():
+    master_password = subprocess.check_output([
+        "rofi", "-dmenu", "-password", "-p", "Master password", "-l", "0"
+    ], text=True).strip()
+
+    return subprocess.check_output([
+        "bw", "unlock", "--raw", master_password
+    ], text=True)
+
+def get_session_key():
+    try:
+        keyctl_key = subprocess.check_output([
+            "keyctl", "request", "user", "bw_session"
+        ], text=True).strip()
+    except subprocess.CalledProcessError:
+        keyctl_key = subprocess.check_output([
+            "keyctl", "add", "user", "bw_session", create_session_key(), "@u"
+        ], text=True).strip()
+
+    return subprocess.check_output([
+        "keyctl", "pipe", keyctl_key
+    ], text=True).strip()
+
+def get_names(items):
+    return "\n".join([item["name"] for item in items])
+
+def get_selected_item(items, selected_name):
+    return next((item for item in items if item['name'] == selected_name), {})
+
+if __name__ == '__main__':
+    get_items_json = subprocess.Popen(
+        ["bw", "--session", get_session_key(), "list", "items"],
+        stdout=subprocess.PIPE
+    )
+
+    select_name = subprocess.Popen(
+        ["rofi", "-dmenu", "-p", "Select account", "-i"],
+        stdin=subprocess.PIPE,
+        stdout=subprocess.PIPE
+    )
+
+    items_json, _ = get_items_json.communicate()
+    items = json.loads(items_json)
+    select_name.stdin.write(get_names(items).encode("utf-8"))
+
+    stout_B, _ = select_name.communicate()
+    selected_name = stout_B.decode().strip()
+    selected_item = get_selected_item(items, selected_name)
+
+    subprocess.run(
+        ["xclip", "-selection", "clipboard"],
+        input=selected_item["login"]["password"].encode("utf-8")
+    )

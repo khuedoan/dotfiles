@@ -411,6 +411,13 @@ return require("packer").startup(function(use)
         end,
     })
 
+    use {
+        "https://github.com/pwntester/octo.nvim",
+        config = function()
+            require("octo").setup()
+        end
+    }
+
     use({ "https://github.com/sindrets/diffview.nvim" })
 
     use({
@@ -518,6 +525,8 @@ return require("packer").startup(function(use)
                     name = "git",
                     g = { "<cmd>Neogit<cr>", "Git status" },
                     s = { "<cmd>Neogit<cr>", "Git status" },
+                    i = { "<cmd>Octo issue list<cr>", "GitHub issues" },
+                    p = { "<cmd>Octo pr list<cr>", "GitHub pull requests" },
                 },
                 m = {
                     name = "markdown",

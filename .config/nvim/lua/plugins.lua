@@ -191,6 +191,18 @@ return require("packer").startup(function(use)
             })
         end,
     })
+
+    use({
+        "https://github.com/nvim-tree/nvim-tree.lua",
+        config = function()
+            require("nvim-tree").setup({
+                update_focused_file = {
+                    enable = true,
+                    update_root = true,
+                },
+            })
+        end
+    })
     -- }}}
 
     -- {{{ IntelliSense

@@ -343,6 +343,14 @@ return require("packer").startup(function(use)
             })
         end,
     })
+
+    use({
+        "https://github.com/github/copilot.vim",
+        config = function()
+            vim.g.copilot_no_tab_map = true
+            vim.keymap.set("i", "<C-j>", "copilot#Accept()", { silent = true, script = true, expr = true })
+        end,
+    })
     -- }}}
 
     -- {{{ Syntax highlighting

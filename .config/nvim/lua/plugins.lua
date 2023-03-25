@@ -201,7 +201,7 @@ return require("packer").startup(function(use)
                     update_root = true,
                 },
             })
-        end
+        end,
     })
     -- }}}
 
@@ -275,7 +275,8 @@ return require("packer").startup(function(use)
             local has_words_before = function()
                 unpack = unpack or table.unpack
                 local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-                return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+                return col ~= 0
+                    and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
             end
 
             local cmp = require("cmp")
@@ -389,6 +390,29 @@ return require("packer").startup(function(use)
     })
     -- }}}
 
+    -- {{{ Formatting
+    use({
+        "https://github.com/sbdchd/neoformat",
+        config = function()
+            vim.api.nvim_create_autocmd("BufWritePre", {
+                pattern = {
+                    "*.go",
+                    "*.lua",
+                    "*.py",
+                    "*.rs",
+                    "*.ts",
+                    "*.tsx",
+                    "*.yaml",
+                    "*.yml",
+                },
+                command = "silent! Neoformat",
+            })
+
+            vim.g.neoformat_try_node_exe = true
+        end,
+    })
+    -- }}}
+
     -- {{{ Debugging
     -- TODO
     use({ "https://github.com/mfussenegger/nvim-dap" })
@@ -431,12 +455,12 @@ return require("packer").startup(function(use)
         end,
     })
 
-    use {
+    use({
         "https://github.com/pwntester/octo.nvim",
         config = function()
             require("octo").setup()
-        end
-    }
+        end,
+    })
 
     use({ "https://github.com/sindrets/diffview.nvim" })
 
@@ -461,8 +485,8 @@ return require("packer").startup(function(use)
     use({
         "https://github.com/ggandor/flit.nvim",
         config = function()
-            require('flit').setup()
-        end
+            require("flit").setup()
+        end,
     })
     -- }}}
 

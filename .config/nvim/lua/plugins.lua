@@ -408,8 +408,6 @@ return require("packer").startup(function(use)
                     "*.rs",
                     "*.ts",
                     "*.tsx",
-                    "*.yaml",
-                    "*.yml",
                 },
                 command = "silent! Neoformat",
             })

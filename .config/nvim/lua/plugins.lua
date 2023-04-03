@@ -307,6 +307,9 @@ return require("packer").startup(function(use)
                             fallback()
                         end
                     end, { "i", "s" }),
+                    ["<C-l>"] = cmp.mapping(function()
+                        vim.api.nvim_feedkeys(vim.fn["copilot#Accept"](vim.api.nvim_replace_termcodes("<Tab>", true, true, true)), "n", true)
+                    end)
                 }),
                 snippet = {
                     expand = function(args)
@@ -319,6 +322,9 @@ return require("packer").startup(function(use)
                     { name = "nvim_lsp" },
                     { name = "path" },
                 }),
+                experimental = {
+                    ghost_text = false, -- Conflict with Copilot
+                },
             })
         end,
     })
@@ -349,7 +355,7 @@ return require("packer").startup(function(use)
         "https://github.com/github/copilot.vim",
         config = function()
             vim.g.copilot_no_tab_map = true
-            vim.keymap.set("i", "<C-j>", "copilot#Accept()", { silent = true, script = true, expr = true })
+            vim.keymap.set("i", "<Plug>(vimrc:copilot-dummy-map)", "copilot#Accept()", { silent = true, expr = true })
         end,
     })
     -- }}}

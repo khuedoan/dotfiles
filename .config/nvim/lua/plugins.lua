@@ -400,18 +400,6 @@ return require("packer").startup(function(use)
     use({
         "https://github.com/sbdchd/neoformat",
         config = function()
-            vim.api.nvim_create_autocmd("BufWritePre", {
-                pattern = {
-                    "*.go",
-                    "*.lua",
-                    "*.py",
-                    "*.rs",
-                    "*.ts",
-                    "*.tsx",
-                },
-                command = "silent! Neoformat",
-            })
-
             vim.g.neoformat_try_node_exe = true
         end,
     })

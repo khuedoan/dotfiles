@@ -104,3 +104,7 @@ super + shift + m
 # Lock screen
 super + BackSpace
     slock
+
+# Audio
+super + a
+    pactl list short sinks | cut -f 2 | rofi -dmenu | xargs pactl set-default-sink

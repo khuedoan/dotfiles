@@ -31,5 +31,10 @@
     "vscode-neovim.neovimInitVimPaths.darwin": "~/.config/nvim/vscode.lua",
     "extensions.experimental.affinity": {
         "asvetliakov.vscode-neovim": 1
-    }
+    },
+    "workbench.iconTheme": "vscode-icons",
+    "vscode-neovim.neovimClean": true,
+    "terminal.integrated.macOptionIsMeta": true,
+    "terminal.integrated.sendKeybindingsToShell": true,
+    "editor.renderWhitespace": "all"
 }

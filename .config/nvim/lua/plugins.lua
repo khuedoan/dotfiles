@@ -209,15 +209,12 @@ return require("packer").startup(function(use)
     use({ "https://github.com/neovim/nvim-lspconfig" })
 
     use({
-        "https://github.com/williamboman/mason.nvim",
+        "https://github.com/williamboman/mason-lspconfig.nvim",
+        requires = {
+            "https://github.com/williamboman/mason.nvim",
+        },
         config = function()
             require("mason").setup()
-        end,
-    })
-
-    use({
-        "https://github.com/williamboman/mason-lspconfig.nvim",
-        config = function()
             require("mason-lspconfig").setup({
                 ensure_installed = {
                     "bashls",

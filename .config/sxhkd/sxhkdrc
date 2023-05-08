@@ -115,4 +115,4 @@ super + a
 
 # OTP menu
 super + shift + p
-    otp-menu
+    MENU="rofi -dmenu -p OTP -i" otp

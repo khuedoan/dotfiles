@@ -1,3 +1,4 @@
+--- vim: foldmethod=marker
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
     vim.fn.system({
@@ -458,6 +459,9 @@ return require("lazy").setup({
 
     {
         "https://github.com/ggandor/flit.nvim",
+        dependencies = {
+            "https://github.com/tpope/vim-repeat",
+        },
         config = function()
             require("flit").setup()
         end,

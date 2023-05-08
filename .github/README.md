@@ -96,3 +96,4 @@ git pull
 - [siduck76/NvChad Neovim config](https://github.com/siduck76/NvChad)
 - [nvim-lua/kickstart.nvim config](https://github.com/nvim-lua/kickstart.nvim)
 - [mattydebie/bitwarden-rofi script](https://github.com/mattydebie/bitwarden-rofi)
+- [LazyVim/LazyVim config and lazy loading](https://github.com/LazyVim/LazyVim)

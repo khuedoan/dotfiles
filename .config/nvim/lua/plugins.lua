@@ -13,23 +13,22 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 return require("lazy").setup({
-    -- {{{ Speed up loading Lua modules
-    {
-        "https://github.com/lewis6991/impatient.nvim",
-        config = function()
-            require("impatient")
-        end,
-    },
-    -- }}}
-
     -- {{{ Libraries
-    { "https://github.com/nvim-lua/plenary.nvim" },
-    { "https://github.com/kyazdani42/nvim-web-devicons" },
+    {
+        "https://github.com/nvim-lua/plenary.nvim",
+        lazy = true,
+    },
+
+    {
+        "https://github.com/kyazdani42/nvim-web-devicons",
+        lazy = true,
+    },
     -- }}}
 
     -- {{{ UI
     {
         "https://github.com/navarasu/onedark.nvim",
+        priority = 1000,
         config = function()
             require("onedark").setup({
                 transparent = vim.env.TMUX ~= nil,
@@ -40,6 +39,7 @@ return require("lazy").setup({
 
     {
         "https://github.com/nvim-lualine/lualine.nvim",
+        event = "VeryLazy",
         config = function()
             require("lualine").setup({
                 options = {
@@ -51,13 +51,19 @@ return require("lazy").setup({
 
     {
         "https://github.com/akinsho/bufferline.nvim",
+        event = "VeryLazy",
         config = function()
-            require("bufferline").setup()
+            require("bufferline").setup({
+                options = {
+                    always_show_bufferline = false,
+                },
+            })
         end,
     },
 
     {
         "https://github.com/lukas-reineke/indent-blankline.nvim",
+        event = { "BufReadPost", "BufNewFile" },
         config = function()
             require("indent_blankline").setup({
                 show_current_context = true,
@@ -70,6 +76,7 @@ return require("lazy").setup({
 
     {
         "https://github.com/j-hui/fidget.nvim",
+        event = "VeryLazy",
         config = function()
             require("fidget").setup({
                 text = {
@@ -83,6 +90,11 @@ return require("lazy").setup({
     -- {{{ Search
     {
         "https://github.com/nvim-telescope/telescope.nvim",
+        cmd = "Telescope",
+        dependencies = {
+            "https://github.com/nvim-telescope/telescope-fzf-native.nvim",
+            "https://github.com/nvim-telescope/telescope-ui-select.nvim",
+        },
         config = function()
             local telescope = require("telescope")
             local actions = require("telescope.actions")
@@ -128,6 +140,7 @@ return require("lazy").setup({
 
     {
         "https://github.com/nvim-telescope/telescope-fzf-native.nvim",
+        lazy = true,
         build = "make",
         config = function()
             require("telescope").load_extension("fzf")
@@ -135,7 +148,16 @@ return require("lazy").setup({
     },
 
     {
+        "https://github.com/nvim-telescope/telescope-ui-select.nvim",
+        lazy = true,
+        config = function()
+            require("telescope").load_extension("ui-select")
+        end,
+    },
+
+    {
         "https://github.com/windwp/nvim-spectre",
+        lazy = true,
         config = function()
             require("spectre").setup({
                 is_insert_mode = true,
@@ -146,13 +168,6 @@ return require("lazy").setup({
                     replace = "DiffAdd",
                 },
             })
-        end,
-    },
-
-    {
-        "https://github.com/nvim-telescope/telescope-ui-select.nvim",
-        config = function()
-            require("telescope").load_extension("ui-select")
         end,
     },
     -- }}}
@@ -180,6 +195,7 @@ return require("lazy").setup({
 
     {
         "https://github.com/nvim-tree/nvim-tree.lua",
+        cmd = "NvimTreeFindFileToggle",
         config = function()
             require("nvim-tree").setup({
                 update_focused_file = {
@@ -192,12 +208,12 @@ return require("lazy").setup({
     -- }}}
 
     -- {{{ IntelliSense
-    { "https://github.com/neovim/nvim-lspconfig" },
-
     {
         "https://github.com/williamboman/mason-lspconfig.nvim",
+        event = { "BufReadPre", "BufNewFile" },
         dependencies = {
             "https://github.com/williamboman/mason.nvim",
+            "https://github.com/neovim/nvim-lspconfig",
         },
         config = function()
             require("mason").setup()
@@ -254,6 +270,13 @@ return require("lazy").setup({
     -- {{{ Completion
     {
         "https://github.com/hrsh7th/nvim-cmp",
+        event = "VeryLazy",
+        dependencies = {
+            "https://github.com/hrsh7th/cmp-buffer",
+            "https://github.com/hrsh7th/cmp-nvim-lsp",
+            "https://github.com/hrsh7th/cmp-path",
+            "https://github.com/saadparwaiz1/cmp_luasnip",
+        },
         config = function()
             local has_words_before = function()
                 unpack = unpack or table.unpack
@@ -312,21 +335,20 @@ return require("lazy").setup({
         end,
     },
 
-    { "https://github.com/hrsh7th/cmp-buffer" },
-    { "https://github.com/hrsh7th/cmp-nvim-lsp" },
-    { "https://github.com/hrsh7th/cmp-path" },
-
     {
         "https://github.com/L3MON4D3/LuaSnip",
+        event = "VeryLazy",
+        dependencies = {
+            "https://github.com/rafamadriz/friendly-snippets",
+        },
         config = function()
             require("luasnip.loaders.from_vscode").lazy_load()
         end,
     },
-    { "https://github.com/saadparwaiz1/cmp_luasnip" },
-    { "https://github.com/rafamadriz/friendly-snippets" },
 
     {
         "https://github.com/windwp/nvim-autopairs",
+        event = { "BufReadPost", "BufNewFile" },
         config = function()
             require("nvim-autopairs").setup({
                 check_ts = true,
@@ -336,6 +358,7 @@ return require("lazy").setup({
 
     {
         "https://github.com/github/copilot.vim",
+        event = { "BufReadPost", "BufNewFile" },
         config = function()
             vim.g.copilot_no_tab_map = true
             vim.keymap.set("i", "<Plug>(vimrc:copilot-dummy-map)", "copilot#Accept()", { silent = true, expr = true })
@@ -346,6 +369,7 @@ return require("lazy").setup({
     -- {{{ Syntax highlighting
     {
         "https://github.com/nvim-treesitter/nvim-treesitter",
+        event = { "BufReadPost", "BufNewFile" },
         config = function()
             require("nvim-treesitter.configs").setup({
                 ensure_installed = {
@@ -382,6 +406,7 @@ return require("lazy").setup({
     -- {{{ Formatting
     {
         "https://github.com/sbdchd/neoformat",
+        cmd = "Neoformat",
         config = function()
             vim.g.neoformat_try_node_exe = true
         end,
@@ -419,6 +444,9 @@ return require("lazy").setup({
     {
         "https://github.com/TimUntersberger/neogit",
         cmd = "Neogit",
+        dependencies = {
+            "https://github.com/sindrets/diffview.nvim",
+        },
         config = function()
             require("neogit").setup({
                 disable_commit_confirmation = true,
@@ -432,15 +460,15 @@ return require("lazy").setup({
 
     {
         "https://github.com/pwntester/octo.nvim",
+        cmd = "Octo",
         config = function()
             require("octo").setup()
         end,
     },
 
-    { "https://github.com/sindrets/diffview.nvim" },
-
     {
         "https://github.com/lewis6991/gitsigns.nvim",
+        event = "VeryLazy",
         config = function()
             require("gitsigns").setup({
                 current_line_blame = true,
@@ -452,6 +480,7 @@ return require("lazy").setup({
     -- {{{ Motions
     {
         "https://github.com/ggandor/leap.nvim",
+        event = "VeryLazy",
         config = function()
             require("leap").set_default_keymaps()
         end,
@@ -459,6 +488,7 @@ return require("lazy").setup({
 
     {
         "https://github.com/ggandor/flit.nvim",
+        event = "VeryLazy",
         dependencies = {
             "https://github.com/tpope/vim-repeat",
         },
@@ -471,6 +501,7 @@ return require("lazy").setup({
     -- {{{ Keymaps
     {
         "https://github.com/folke/which-key.nvim",
+        event = "VeryLazy",
         config = function()
             require("which-key").setup({})
 
@@ -576,6 +607,7 @@ return require("lazy").setup({
 
     {
         "https://github.com/mrjones2014/legendary.nvim",
+        cmd = "Legendary",
         config = function()
             require("legendary").setup({
                 which_key = {
@@ -588,13 +620,29 @@ return require("lazy").setup({
 
     -- {{{ Miscellaneous
     { "https://github.com/farmergreg/vim-lastplace" },
-    { "https://github.com/tpope/vim-eunuch" },
     { "https://github.com/tpope/vim-sleuth" },
-    { "https://github.com/romainl/vim-cool" },
-    { "https://github.com/mbbill/undotree" },
+
+    {
+        "https://github.com/romainl/vim-cool",
+        event = "VeryLazy",
+    },
+
+    {
+        "https://github.com/tpope/vim-eunuch",
+        event = "VeryLazy",
+    },
+
+    {
+        "https://github.com/mbbill/undotree",
+        cmd = {
+            "UndotreeShow",
+            "UndotreeToggle",
+        },
+    },
 
     {
         "https://github.com/numToStr/Comment.nvim",
+        event = "VeryLazy",
         config = function()
             require("Comment").setup({})
         end,
@@ -602,6 +650,7 @@ return require("lazy").setup({
 
     {
         "https://github.com/christoomey/vim-tmux-navigator",
+        event = "VeryLazy",
         config = function()
             vim.g.tmux_navigator_no_mappings = 1
             vim.keymap.set("n", "<M-h>", ":TmuxNavigateLeft<cr>", { silent = true })

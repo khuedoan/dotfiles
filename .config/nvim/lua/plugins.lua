@@ -1,48 +1,33 @@
--- vim: foldmethod=marker
-local ensure_packer = function()
-    local fn = vim.fn
-    local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
-    if fn.empty(fn.glob(install_path)) > 0 then
-        fn.system({ "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path })
-        vim.cmd([[packadd packer.nvim]])
-        return true
-    end
-    return false
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+    vim.fn.system({
+        "git",
+        "clone",
+        "--filter=blob:none",
+        "https://github.com/folke/lazy.nvim.git",
+        "--branch=stable", -- latest stable release
+        lazypath,
+    })
 end
+vim.opt.rtp:prepend(lazypath)
 
-local packer_bootstrap = ensure_packer()
-
-return require("packer").startup(function(use)
+return require("lazy").setup({
     -- {{{ Speed up loading Lua modules
-    use({
+    {
         "https://github.com/lewis6991/impatient.nvim",
         config = function()
             require("impatient")
         end,
-    })
+    },
     -- }}}
 
-    -- {{{ Let Packer manage itself
-    use({
-        "wbthomason/packer.nvim",
-        config = function()
-            local packer_group = vim.api.nvim_create_augroup("Packer", { clear = true })
-            vim.api.nvim_create_autocmd("BufWritePost", {
-                command = "source <afile> | PackerCompile",
-                group = packer_group,
-                pattern = vim.fn.expand("plugins.lua"),
-            })
-        end,
-    })
-    --- }}}
-
     -- {{{ Libraries
-    use({ "https://github.com/nvim-lua/plenary.nvim" })
-    use({ "https://github.com/kyazdani42/nvim-web-devicons" })
+    { "https://github.com/nvim-lua/plenary.nvim" },
+    { "https://github.com/kyazdani42/nvim-web-devicons" },
     -- }}}
 
     -- {{{ UI
-    use({
+    {
         "https://github.com/navarasu/onedark.nvim",
         config = function()
             require("onedark").setup({
@@ -50,9 +35,9 @@ return require("packer").startup(function(use)
             })
             require("onedark").load()
         end,
-    })
+    },
 
-    use({
+    {
         "https://github.com/nvim-lualine/lualine.nvim",
         config = function()
             require("lualine").setup({
@@ -61,16 +46,16 @@ return require("packer").startup(function(use)
                 },
             })
         end,
-    })
+    },
 
-    use({
+    {
         "https://github.com/akinsho/bufferline.nvim",
         config = function()
             require("bufferline").setup()
         end,
-    })
+    },
 
-    use({
+    {
         "https://github.com/lukas-reineke/indent-blankline.nvim",
         config = function()
             require("indent_blankline").setup({
@@ -80,9 +65,9 @@ return require("packer").startup(function(use)
                 use_treesitter = true,
             })
         end,
-    })
+    },
 
-    use({
+    {
         "https://github.com/j-hui/fidget.nvim",
         config = function()
             require("fidget").setup({
@@ -91,11 +76,11 @@ return require("packer").startup(function(use)
                 },
             })
         end,
-    })
+    },
     -- }}}
 
     -- {{{ Search
-    use({
+    {
         "https://github.com/nvim-telescope/telescope.nvim",
         config = function()
             local telescope = require("telescope")
@@ -138,17 +123,17 @@ return require("packer").startup(function(use)
                 },
             })
         end,
-    })
+    },
 
-    use({
+    {
         "https://github.com/nvim-telescope/telescope-fzf-native.nvim",
-        run = "make",
+        build = "make",
         config = function()
             require("telescope").load_extension("fzf")
         end,
-    })
+    },
 
-    use({
+    {
         "https://github.com/windwp/nvim-spectre",
         config = function()
             require("spectre").setup({
@@ -161,18 +146,18 @@ return require("packer").startup(function(use)
                 },
             })
         end,
-    })
+    },
 
-    use({
+    {
         "https://github.com/nvim-telescope/telescope-ui-select.nvim",
         config = function()
             require("telescope").load_extension("ui-select")
         end,
-    })
+    },
     -- }}}
 
     -- {{{ File manager
-    use({
+    {
         "https://github.com/mcchrish/nnn.vim",
         cmd = "NnnPicker",
         config = function()
@@ -190,9 +175,9 @@ return require("packer").startup(function(use)
                 },
             })
         end,
-    })
+    },
 
-    use({
+    {
         "https://github.com/nvim-tree/nvim-tree.lua",
         config = function()
             require("nvim-tree").setup({
@@ -202,15 +187,15 @@ return require("packer").startup(function(use)
                 },
             })
         end,
-    })
+    },
     -- }}}
 
     -- {{{ IntelliSense
-    use({ "https://github.com/neovim/nvim-lspconfig" })
+    { "https://github.com/neovim/nvim-lspconfig" },
 
-    use({
+    {
         "https://github.com/williamboman/mason-lspconfig.nvim",
-        requires = {
+        dependencies = {
             "https://github.com/williamboman/mason.nvim",
         },
         config = function()
@@ -262,11 +247,11 @@ return require("packer").startup(function(use)
                 end,
             })
         end,
-    })
+    },
     -- }}}
 
     -- {{{ Completion
-    use({
+    {
         "https://github.com/hrsh7th/nvim-cmp",
         config = function()
             local has_words_before = function()
@@ -324,41 +309,41 @@ return require("packer").startup(function(use)
                 },
             })
         end,
-    })
+    },
 
-    use({ "https://github.com/hrsh7th/cmp-buffer" })
-    use({ "https://github.com/hrsh7th/cmp-nvim-lsp" })
-    use({ "https://github.com/hrsh7th/cmp-path" })
+    { "https://github.com/hrsh7th/cmp-buffer" },
+    { "https://github.com/hrsh7th/cmp-nvim-lsp" },
+    { "https://github.com/hrsh7th/cmp-path" },
 
-    use({
+    {
         "https://github.com/L3MON4D3/LuaSnip",
         config = function()
             require("luasnip.loaders.from_vscode").lazy_load()
         end,
-    })
-    use({ "https://github.com/saadparwaiz1/cmp_luasnip" })
-    use({ "https://github.com/rafamadriz/friendly-snippets" })
+    },
+    { "https://github.com/saadparwaiz1/cmp_luasnip" },
+    { "https://github.com/rafamadriz/friendly-snippets" },
 
-    use({
+    {
         "https://github.com/windwp/nvim-autopairs",
         config = function()
             require("nvim-autopairs").setup({
                 check_ts = true,
             })
         end,
-    })
+    },
 
-    use({
+    {
         "https://github.com/github/copilot.vim",
         config = function()
             vim.g.copilot_no_tab_map = true
             vim.keymap.set("i", "<Plug>(vimrc:copilot-dummy-map)", "copilot#Accept()", { silent = true, expr = true })
         end,
-    })
+    },
     -- }}}
 
     -- {{{ Syntax highlighting
-    use({
+    {
         "https://github.com/nvim-treesitter/nvim-treesitter",
         config = function()
             require("nvim-treesitter.configs").setup({
@@ -390,33 +375,33 @@ return require("packer").startup(function(use)
                 },
             })
         end,
-    })
+    },
     -- }}}
 
     -- {{{ Formatting
-    use({
+    {
         "https://github.com/sbdchd/neoformat",
         config = function()
             vim.g.neoformat_try_node_exe = true
         end,
-    })
+    },
     -- }}}
 
     -- {{{ Debugging
     -- TODO
-    use({ "https://github.com/mfussenegger/nvim-dap" })
-    use({ "https://github.com/rcarriga/nvim-dap-ui" })
-    use({ "https://github.com/ravenxrz/DAPInstall.nvim" })
+    { "https://github.com/mfussenegger/nvim-dap" },
+    { "https://github.com/rcarriga/nvim-dap-ui" },
+    { "https://github.com/ravenxrz/DAPInstall.nvim" },
     -- }}}
 
     -- {{{ Markdown
-    use({
+    {
         "https://github.com/iamcco/markdown-preview.nvim",
         ft = "markdown",
-        run = "cd app && yarn install",
-    })
+        build = "cd app && yarn install",
+    },
 
-    use({
+    {
         "https://github.com/jakewvincent/mkdnflow.nvim",
         ft = "markdown",
         config = function()
@@ -426,11 +411,11 @@ return require("packer").startup(function(use)
                 },
             })
         end,
-    })
+    },
     -- }}}
 
     -- {{{ Git
-    use({
+    {
         "https://github.com/TimUntersberger/neogit",
         cmd = "Neogit",
         config = function()
@@ -442,45 +427,45 @@ return require("packer").startup(function(use)
                 },
             })
         end,
-    })
+    },
 
-    use({
+    {
         "https://github.com/pwntester/octo.nvim",
         config = function()
             require("octo").setup()
         end,
-    })
+    },
 
-    use({ "https://github.com/sindrets/diffview.nvim" })
+    { "https://github.com/sindrets/diffview.nvim" },
 
-    use({
+    {
         "https://github.com/lewis6991/gitsigns.nvim",
         config = function()
             require("gitsigns").setup({
                 current_line_blame = true,
             })
         end,
-    })
+    },
     -- }}}
 
     -- {{{ Motions
-    use({
+    {
         "https://github.com/ggandor/leap.nvim",
         config = function()
             require("leap").set_default_keymaps()
         end,
-    })
+    },
 
-    use({
+    {
         "https://github.com/ggandor/flit.nvim",
         config = function()
             require("flit").setup()
         end,
-    })
+    },
     -- }}}
 
     -- {{{ Keymaps
-    use({
+    {
         "https://github.com/folke/which-key.nvim",
         config = function()
             require("which-key").setup({})
@@ -583,9 +568,9 @@ return require("packer").startup(function(use)
 
             require("which-key").register(leader_keymaps, { prefix = "<leader>" })
         end,
-    })
+    },
 
-    use({
+    {
         "https://github.com/mrjones2014/legendary.nvim",
         config = function()
             require("legendary").setup({
@@ -594,24 +579,24 @@ return require("packer").startup(function(use)
                 },
             })
         end,
-    })
+    },
     -- }}}
 
     -- {{{ Miscellaneous
-    use({ "https://github.com/farmergreg/vim-lastplace" })
-    use({ "https://github.com/tpope/vim-eunuch" })
-    use({ "https://github.com/tpope/vim-sleuth" })
-    use({ "https://github.com/romainl/vim-cool" })
-    use({ "https://github.com/mbbill/undotree" })
+    { "https://github.com/farmergreg/vim-lastplace" },
+    { "https://github.com/tpope/vim-eunuch" },
+    { "https://github.com/tpope/vim-sleuth" },
+    { "https://github.com/romainl/vim-cool" },
+    { "https://github.com/mbbill/undotree" },
 
-    use({
+    {
         "https://github.com/numToStr/Comment.nvim",
         config = function()
             require("Comment").setup({})
         end,
-    })
+    },
 
-    use({
+    {
         "https://github.com/christoomey/vim-tmux-navigator",
         config = function()
             vim.g.tmux_navigator_no_mappings = 1
@@ -620,12 +605,6 @@ return require("packer").startup(function(use)
             vim.keymap.set("n", "<M-k>", ":TmuxNavigateUp<cr>", { silent = true })
             vim.keymap.set("n", "<M-l>", ":TmuxNavigateRight<cr>", { silent = true })
         end,
-    })
+    },
     -- }}}
-
-    -- Automatically set up your configuration after cloning packer.nvim
-    -- Put this at the end after all plugins
-    if packer_bootstrap then
-        require("packer").sync()
-    end
-end)
+})

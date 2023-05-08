@@ -676,6 +676,7 @@ return require("lazy").setup({
 
     {
         "echasnovski/mini.bufremove",
+        lazy = true,
         config = function()
             require("mini.bufremove").setup()
         end,

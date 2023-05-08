@@ -1,0 +1,5 @@
+#!/bin/sh
+
+cd ~/.password-store
+account="$(find * -type f -name '*.gpg' | rofi -dmenu -p 'OTP' -i)"
+pass otp "${account%.*}" | xclip -selection clipboard

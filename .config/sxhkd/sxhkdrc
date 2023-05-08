@@ -18,7 +18,7 @@ super + {_,shift + }grave
 super + Tab
     bspc desktop -f last
 # Move floating windows
-super + ctrl + {h,j,k,l}
+super + ctrl + shift + {h,j,k,l}
     bspc node -v {-50 0,0 50,0 -50,50 0}
 
 #############
@@ -26,10 +26,10 @@ super + ctrl + {h,j,k,l}
 #############
 
 # Preselect the direction
-super + p ; super + {h,j,k,l}
+super + ctrl + {h,j,k,l}
     bspc node -p {west,south,north,east}
 # Cancel the preselection for the focused desktop
-super + p ; super + Escape
+super + ctrl + Escape
     bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
 
 ##############
@@ -105,6 +105,14 @@ super + shift + m
 super + BackSpace
     slock
 
+# Bitwarden menu
+super + p
+    bitwarden-menu
+
 # Audio
 super + a
     pactl list short sinks | cut -f 2 | rofi -dmenu | xargs pactl set-default-sink
+
+# OTP menu
+super + shift + p
+    otp-menu

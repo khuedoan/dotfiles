@@ -23,6 +23,11 @@ return require("lazy").setup({
         "https://github.com/kyazdani42/nvim-web-devicons",
         lazy = true,
     },
+
+    {
+        "https://github.com/MunifTanjim/nui.nvim",
+        lazy = true,
+    },
     -- }}}
 
     -- {{{ UI
@@ -194,14 +199,18 @@ return require("lazy").setup({
     },
 
     {
-        "https://github.com/nvim-tree/nvim-tree.lua",
-        cmd = "NvimTreeFindFileToggle",
+        "https://github.com/nvim-neo-tree/neo-tree.nvim",
+        cmd = "NeoTreeRevealToggle",
         config = function()
-            require("nvim-tree").setup({
-                update_focused_file = {
-                    enable = true,
-                    update_root = true,
-                },
+            require("neo-tree").setup({
+                close_if_last_window = true,
+                filesystem = {
+                    filtered_items = {
+                        hide_dotfiles = false,
+                    },
+                    follow_current_file = true,
+                    use_libuv_file_watcher = true,
+                }
             })
         end,
     },
@@ -588,7 +597,7 @@ return require("lazy").setup({
                 o = {
                     name = "open",
                     t = { "<cmd>edit ~/Documents/notes/todo.md<cr>", "Todo list" },
-                    p = { "<cmd>NvimTreeFindFileToggle<cr>", "Project sidebar" },
+                    p = { "<cmd>NeoTreeRevealToggle<cr>", "Project sidebar" },
                 },
                 [":"] = { "<cmd>Legendary<cr>", "Commands" },
             }

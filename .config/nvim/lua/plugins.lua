@@ -210,7 +210,7 @@ return require("lazy").setup({
                     },
                     follow_current_file = true,
                     use_libuv_file_watcher = true,
-                }
+                },
             })
         end,
     },
@@ -324,7 +324,7 @@ return require("lazy").setup({
                     end, { "i", "s" }),
                     ["<C-l>"] = cmp.mapping(function()
                         vim.api.nvim_feedkeys(vim.fn["copilot#Accept"](vim.api.nvim_replace_termcodes("<Tab>", true, true, true)), "n", true)
-                    end)
+                    end),
                 }),
                 snippet = {
                     expand = function(args)
@@ -521,7 +521,12 @@ return require("lazy").setup({
                     B = { "<cmd>Telescope buffers<cr>", "Switch buffer" },
                     n = { "<cmd>bnext<cr>", "Next buffer" },
                     p = { "<cmd>bprevious<cr>", "Previous buffer" },
-                    d = { "<cmd>bdelete<cr>", "Delete buffer" },
+                    d = {
+                        function()
+                            require("mini.bufremove").delete(0, false)
+                        end,
+                        "Delete buffer",
+                    },
                     l = { "<cmd>b#<cr>", "Switch to last buffer" },
                 },
                 f = {
@@ -666,6 +671,13 @@ return require("lazy").setup({
             vim.keymap.set("n", "<M-j>", ":TmuxNavigateDown<cr>", { silent = true })
             vim.keymap.set("n", "<M-k>", ":TmuxNavigateUp<cr>", { silent = true })
             vim.keymap.set("n", "<M-l>", ":TmuxNavigateRight<cr>", { silent = true })
+        end,
+    },
+
+    {
+        "echasnovski/mini.bufremove",
+        config = function()
+            require("mini.bufremove").setup()
         end,
     },
     -- }}}

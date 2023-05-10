@@ -219,7 +219,7 @@ return require("lazy").setup({
     -- {{{ IntelliSense
     {
         "https://github.com/williamboman/mason-lspconfig.nvim",
-        event = { "BufReadPre", "BufNewFile" },
+        event = { "BufReadPost", "BufNewFile" },
         dependencies = {
             "https://github.com/williamboman/mason.nvim",
             "https://github.com/neovim/nvim-lspconfig",
@@ -323,7 +323,11 @@ return require("lazy").setup({
                         end
                     end, { "i", "s" }),
                     ["<C-l>"] = cmp.mapping(function()
-                        vim.api.nvim_feedkeys(vim.fn["copilot#Accept"](vim.api.nvim_replace_termcodes("<Tab>", true, true, true)), "n", true)
+                        vim.api.nvim_feedkeys(
+                            vim.fn["copilot#Accept"](vim.api.nvim_replace_termcodes("<Tab>", true, true, true)),
+                            "n",
+                            true
+                        )
                     end),
                 }),
                 snippet = {
@@ -424,9 +428,20 @@ return require("lazy").setup({
 
     -- {{{ Debugging
     -- TODO
-    { "https://github.com/mfussenegger/nvim-dap" },
-    { "https://github.com/rcarriga/nvim-dap-ui" },
-    { "https://github.com/ravenxrz/DAPInstall.nvim" },
+    {
+        "https://github.com/mfussenegger/nvim-dap",
+        lazy = true,
+    },
+
+    {
+        "https://github.com/rcarriga/nvim-dap-ui",
+        lazy = true,
+    },
+
+    {
+        "https://github.com/ravenxrz/DAPInstall.nvim",
+        lazy = true,
+    },
     -- }}}
 
     -- {{{ Markdown
@@ -633,8 +648,15 @@ return require("lazy").setup({
     -- }}}
 
     -- {{{ Miscellaneous
-    { "https://github.com/farmergreg/vim-lastplace" },
-    { "https://github.com/tpope/vim-sleuth" },
+    {
+        "https://github.com/farmergreg/vim-lastplace",
+        event = "BufReadPost",
+    },
+
+    {
+        "https://github.com/tpope/vim-sleuth",
+        event = { "BufReadPost", "BufNewFile" },
+    },
 
     {
         "https://github.com/romainl/vim-cool",

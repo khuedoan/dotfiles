@@ -509,17 +509,6 @@ return require("lazy").setup({
             require("leap").set_default_keymaps()
         end,
     },
-
-    {
-        "https://github.com/ggandor/flit.nvim",
-        event = "VeryLazy",
-        dependencies = {
-            "https://github.com/tpope/vim-repeat",
-        },
-        config = function()
-            require("flit").setup()
-        end,
-    },
     -- }}}
 
     -- {{{ Keymaps

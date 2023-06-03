@@ -141,7 +141,6 @@ return require("lazy").setup({
                     "cssls",
                     "dockerls",
                     "gopls",
-                    "grammarly",
                     "html",
                     "jsonls",
                     "lua_ls",

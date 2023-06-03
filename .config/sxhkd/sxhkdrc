@@ -94,7 +94,7 @@ super + e
     pcmanfm
 # Key bindings list
 super + slash
-    dmenu-help
+    MENU="rofi -dmenu -p Help -i" sxhkd-help
 # Power menu
 super + Escape
     MENU="rofi -dmenu -p Power -i" power-menu

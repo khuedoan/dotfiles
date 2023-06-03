@@ -53,7 +53,7 @@ make init dotfiles
 
 ```
 git clone https://github.com/khuedoan/macos-setup
-cd linux-setup
+cd macos-setup
 make init dotfiles
 ```
 

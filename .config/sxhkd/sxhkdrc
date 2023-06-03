@@ -97,7 +97,7 @@ super + slash
     dmenu-help
 # Power menu
 super + Escape
-    dmenu-power
+    MENU="rofi -dmenu -p Power -i" power-menu
 # Monitor menu
 super + shift + m
     dmenu-monitor

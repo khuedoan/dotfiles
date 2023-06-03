@@ -1,8 +1,8 @@
 #!/bin/sh
 
-OPTIONS=" lock\n襤 poweroff\nﰇ reboot\n勒 reload\n logout\n suspend"
+OPTIONS="lock\npoweroff\nreboot\nreload\nlogout\nsuspend"
 
-case "$(echo -e $OPTIONS | dmenu -p "Power" -i | cut -c 5-)" in
+case "$(echo -e $OPTIONS | ${MENU:-fzf})" in
     lock)     slock;;
     poweroff) systemctl poweroff;;
     reboot)   systemctl reboot;;

@@ -115,6 +115,7 @@ return require("lazy").setup({
         cmd = "Oil",
         config = function()
             require("oil").setup({
+                columns = {},
                 view_options = {
                     show_hidden = true,
                 },

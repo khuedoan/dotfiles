@@ -21,6 +21,7 @@ local leader_keymaps = {
         f = { ":Files!<cr>", "Find file" },
         F = { ":Files! " .. vim.fn.expand("%:p:h") .. "<cr>", "Find file from here" },
         g = { ":GitFiles! --cached --others --exclude-standard<cr>", "Find file in git project" },
+        s = { ":update<cr>", "Save" },
         y = {
             function()
                 local path = vim.fn.expand("%:p:~")
@@ -43,6 +44,10 @@ local leader_keymaps = {
         p = { ":Telescope projects<cr>", "Switch project" },
         b = { ":Oil .<cr>", "Browse project" },
         B = { ":Oil<cr>", "Browse project from here" },
+    },
+    q = {
+        name = "quit/session",
+        q = { ":quit<cr>", "Quit" },
     },
     s = {
         name = "search",
@@ -82,8 +87,8 @@ leader_keymaps["`"] = leader_keymaps.b.l
 require("which-key").register(leader_keymaps, { prefix = "<leader>" })
 
 require("which-key").register({
-    ["<C-s>"] = { ":update<cr>", "Save" },
-    ["<C-q>"] = { ":quit<cr>", "Quit" },
+    ["<C-s>"] = leader_keymaps.f.s,
+    ["<C-q>"] = leader_keymaps.q.q,
     ["-"] = leader_keymaps.p.B,
     ["_"] = leader_keymaps.p.b,
 }, {

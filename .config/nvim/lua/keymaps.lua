@@ -20,7 +20,7 @@ local leader_keymaps = {
         name = "file",
         f = { ":Files!<cr>", "Find file" },
         F = { ":Files! " .. vim.fn.expand("%:p:h") .. "<cr>", "Find file from here" },
-        g = { ":GitFiles!<cr>", "Find file in git project" },
+        g = { ":GitFiles! --cached --others --exclude-standard<cr>", "Find file in git project" },
         y = {
             function()
                 local path = vim.fn.expand("%:p:~")
@@ -74,7 +74,7 @@ local leader_keymaps = {
 }
 
 -- Aliases
-leader_keymaps["<leader>"] = leader_keymaps.f.f
+leader_keymaps["<leader>"] = leader_keymaps.f.g
 leader_keymaps["/"] = leader_keymaps.s.p
 leader_keymaps[","] = leader_keymaps.b.b
 leader_keymaps["<"] = leader_keymaps.b.B

@@ -41,8 +41,8 @@ local leader_keymaps = {
     p = {
         name = "project",
         p = { ":Telescope projects<cr>", "Switch project" },
-        b = { ":NnnPicker<cr>", "Browse project" },
-        B = { ":NnnPicker %:p:h<cr>", "Browse project from here" },
+        b = { ":Oil .<cr>", "Browse project" },
+        B = { ":Oil<cr>", "Browse project from here" },
     },
     s = {
         name = "search",
@@ -68,7 +68,6 @@ local leader_keymaps = {
     o = {
         name = "open",
         t = { ":edit ~/Documents/notes/todo.md<cr>", "Todo list" },
-        p = { ":NeoTreeRevealToggle<cr>", "Project sidebar" },
     },
     [":"] = { ":Legendary<cr>", "Commands" },
 }
@@ -85,6 +84,8 @@ require("which-key").register(leader_keymaps, { prefix = "<leader>" })
 require("which-key").register({
     ["<C-s>"] = { ":update<cr>", "Save" },
     ["<C-q>"] = { ":quit<cr>", "Quit" },
+    ["-"] = leader_keymaps.p.B,
+    ["_"] = leader_keymaps.p.b,
 }, {
     mode = "n",
 })

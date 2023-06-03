@@ -111,37 +111,12 @@ return require("lazy").setup({
 
     -- {{{ File manager
     {
-        "https://github.com/mcchrish/nnn.vim",
-        cmd = "NnnPicker",
+        "stevearc/oil.nvim",
+        cmd = "Oil",
         config = function()
-            require("nnn").setup({
-                command = "nnn -o -C",
-                set_default_mappings = false,
-                replace_netrw = true,
-                layout = {
-                    down = "25",
-                },
-                action = {
-                    ["<c-t>"] = "tab split",
-                    ["<c-s>"] = "split",
-                    ["<c-v>"] = "vsplit",
-                },
-            })
-        end,
-    },
-
-    {
-        "https://github.com/nvim-neo-tree/neo-tree.nvim",
-        cmd = "NeoTreeRevealToggle",
-        config = function()
-            require("neo-tree").setup({
-                close_if_last_window = true,
-                filesystem = {
-                    filtered_items = {
-                        hide_dotfiles = false,
-                    },
-                    follow_current_file = true,
-                    use_libuv_file_watcher = true,
+            require("oil").setup({
+                view_options = {
+                    show_hidden = true,
                 },
             })
         end,

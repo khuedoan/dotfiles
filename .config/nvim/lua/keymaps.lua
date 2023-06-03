@@ -20,7 +20,7 @@ local leader_keymaps = {
         name = "file",
         f = { ":Files!<cr>", "Find file" },
         F = { ":Files! " .. vim.fn.expand("%:p:h") .. "<cr>", "Find file from here" },
-        g = { ":GitFiles! --cached --others --exclude-standard<cr>", "Find file in git project" },
+        g = { ":GitFiles!<cr>", "Find file in git project" },
         s = { ":update<cr>", "Save" },
         y = {
             function()

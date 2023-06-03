@@ -29,3 +29,6 @@ export MINIKUBE_IN_STYLE=0
 
 # nnn
 export NNN_PLUG='f:fzcd;n:bulknew;z:autojump'
+
+# fzf
+export FZF_DEFAULT_COMMAND='fd --type file --strip-cwd-prefix'

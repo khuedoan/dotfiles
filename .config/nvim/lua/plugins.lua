@@ -1,4 +1,3 @@
---- vim: foldmethod=marker
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
     vim.fn.system({
@@ -94,86 +93,19 @@ return require("lazy").setup({
 
     -- {{{ Search
     {
-        "https://github.com/nvim-telescope/telescope.nvim",
-        cmd = "Telescope",
+        "https://github.com/junegunn/fzf.vim",
+        event = "VeryLazy",
         dependencies = {
-            "https://github.com/nvim-telescope/telescope-fzf-native.nvim",
-            "https://github.com/nvim-telescope/telescope-ui-select.nvim",
+            "https://github.com/junegunn/fzf",
         },
         config = function()
-            local telescope = require("telescope")
-            local actions = require("telescope.actions")
-            local themes = require("telescope.themes")
-            telescope.setup({
-                defaults = themes.get_ivy({
-                    path_display = { "absolute" },
-                    file_ignore_patterns = { ".git/", "node_modules" },
-
-                    mappings = {
-                        i = {
-                            ["<Down>"] = actions.cycle_history_next,
-                            ["<Up>"] = actions.cycle_history_prev,
-                            ["<C-n>"] = actions.cycle_history_next,
-                            ["<C-p>"] = actions.cycle_history_prev,
-                            ["<C-j>"] = actions.move_selection_next,
-                            ["<C-k>"] = actions.move_selection_previous,
-                        },
-                    },
-                }),
-                extensions = {
-                    fzf = {
-                        fuzzy = true, -- false will only do exact matching
-                        override_generic_sorter = true, -- override the generic sorter
-                        override_file_sorter = true, -- override the file sorter
-                        case_mode = "smart_case", -- or "ignore_case" or "respect_case"
-                        -- the default case_mode is "smart_case"
-                    },
-                },
-                pickers = {
-                    find_files = {
-                        hidden = true,
-                        no_ignore = true,
-                        no_ignore_parent = true,
-                    },
-                    buffers = {
-                        sort_mru = true,
-                    },
-                },
-            })
+            vim.g.fzf_buffers_jump = 1
         end,
     },
 
     {
-        "https://github.com/nvim-telescope/telescope-fzf-native.nvim",
-        lazy = true,
-        build = "make",
-        config = function()
-            require("telescope").load_extension("fzf")
-        end,
-    },
-
-    {
-        "https://github.com/nvim-telescope/telescope-ui-select.nvim",
-        lazy = true,
-        config = function()
-            require("telescope").load_extension("ui-select")
-        end,
-    },
-
-    {
-        "https://github.com/windwp/nvim-spectre",
-        lazy = true,
-        config = function()
-            require("spectre").setup({
-                is_insert_mode = true,
-                live_update = true,
-                highlight = {
-                    ui = "String",
-                    search = "DiffDelete",
-                    replace = "DiffAdd",
-                },
-            })
-        end,
+        "https://github.com/stevearc/dressing.nvim",
+        event = "VeryLazy",
     },
     -- }}}
 
@@ -521,36 +453,22 @@ return require("lazy").setup({
             local leader_keymaps = {
                 b = {
                     name = "buffer",
-                    b = { "<cmd>Telescope buffers only_cwd=true<cr>", "Switch workspace buffer" },
-                    B = { "<cmd>Telescope buffers<cr>", "Switch buffer" },
-                    n = { "<cmd>bnext<cr>", "Next buffer" },
-                    p = { "<cmd>bprevious<cr>", "Previous buffer" },
+                    b = { ":Buffers!<cr>", "Switch buffer" },
+                    n = { ":bnext<cr>", "Next buffer" },
+                    p = { ":bprevious<cr>", "Previous buffer" },
                     d = {
                         function()
                             require("mini.bufremove").delete(0, false)
                         end,
                         "Delete buffer",
                     },
-                    l = { "<cmd>b#<cr>", "Switch to last buffer" },
+                    l = { ":b#<cr>", "Switch to last buffer" },
                 },
                 f = {
                     name = "file",
-                    f = {
-                        function()
-                            require("telescope.builtin").find_files()
-                        end,
-                        "Find file",
-                    },
-                    F = {
-                        function()
-                            require("telescope.builtin").find_files({
-                                default_text = vim.fn.expand("%:h") .. "/",
-                            })
-                        end,
-                        "Find file from here",
-                    },
-                    g = { "<cmd>Telescope git_files<cr>", "Find file in git project" },
-                    r = { "<cmd>Telescope oldfiles<cr>", "Recent files" },
+                    f = { ":Files!<cr>", "Find file" },
+                    F = { ":Files! " .. vim.fn.expand("%:p:h") .. "<cr>", "Find file from here" },
+                    g = { ":GitFiles!<cr>", "Find file in git project" },
                     y = {
                         function()
                             local path = vim.fn.expand("%:p:~")
@@ -570,21 +488,13 @@ return require("lazy").setup({
                 },
                 p = {
                     name = "project",
-                    p = { "<cmd>Telescope projects<cr>", "Switch project" },
-                    b = { "<cmd>NnnPicker<cr>", "Browse project" },
-                    B = { "<cmd>NnnPicker %:p:h<cr>", "Browse project from here" },
+                    p = { ":Telescope projects<cr>", "Switch project" },
+                    b = { ":NnnPicker<cr>", "Browse project" },
+                    B = { ":NnnPicker %:p:h<cr>", "Browse project from here" },
                 },
                 s = {
                     name = "search",
-                    p = {
-                        function()
-                            require("telescope.builtin").grep_string({
-                                only_sort_text = true,
-                                search = "",
-                            })
-                        end,
-                        "Search project",
-                    },
+                    p = { ":Rg!<cr>", "Search project" },
                     r = {
                         function()
                             require("spectre").open_file_search()
@@ -594,21 +504,21 @@ return require("lazy").setup({
                 },
                 g = {
                     name = "git",
-                    g = { "<cmd>Neogit<cr>", "Git status" },
-                    s = { "<cmd>Neogit<cr>", "Git status" },
-                    i = { "<cmd>Octo issue list<cr>", "GitHub issues" },
-                    p = { "<cmd>Octo pr list<cr>", "GitHub pull requests" },
+                    g = { ":Neogit<cr>", "Git status" },
+                    s = { ":Neogit<cr>", "Git status" },
+                    i = { ":Octo issue list<cr>", "GitHub issues" },
+                    p = { ":Octo pr list<cr>", "GitHub pull requests" },
                 },
                 m = {
                     name = "markdown",
-                    p = { "<cmd>MarkdownPreview<cr>", "Markdown preview" },
+                    p = { ":MarkdownPreview<cr>", "Markdown preview" },
                 },
                 o = {
                     name = "open",
-                    t = { "<cmd>edit ~/Documents/notes/todo.md<cr>", "Todo list" },
-                    p = { "<cmd>NeoTreeRevealToggle<cr>", "Project sidebar" },
+                    t = { ":edit ~/Documents/notes/todo.md<cr>", "Todo list" },
+                    p = { ":NeoTreeRevealToggle<cr>", "Project sidebar" },
                 },
-                [":"] = { "<cmd>Legendary<cr>", "Commands" },
+                [":"] = { ":Legendary<cr>", "Commands" },
             }
 
             -- Aliases
@@ -617,7 +527,6 @@ return require("lazy").setup({
             leader_keymaps[","] = leader_keymaps.b.b
             leader_keymaps["<"] = leader_keymaps.b.B
             leader_keymaps["`"] = leader_keymaps.b.l
-            -- [":"] = { "<cmd>Legendary<cr>"
 
             require("which-key").register(leader_keymaps, { prefix = "<leader>" })
         end,

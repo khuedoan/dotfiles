@@ -414,6 +414,24 @@ return require("lazy").setup({
         event = "VeryLazy",
         config = function()
             require("leap").set_default_keymaps()
+            vim.api.nvim_set_hl(0, "LeapBackdrop", {
+                link = "Comment",
+            })
+            vim.api.nvim_set_hl(0, "LeapMatch", {
+                fg = "white",
+                bold = true,
+                nocombine = true,
+            })
+            vim.api.nvim_set_hl(0, "LeapLabelPrimary", {
+                fg = "yellow",
+                bold = true,
+                nocombine = true,
+            })
+            vim.api.nvim_set_hl(0, "LeapLabelSecondary", {
+                fg = "magenta",
+                bold = true,
+                nocombine = true,
+            })
         end,
     },
     -- }}}

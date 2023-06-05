@@ -2,101 +2,94 @@
 vim.keymap.set("", "<Space>", "<Nop>", { silent = true })
 vim.g.mapleader = " "
 
-local leader_keymaps = {
-    b = {
-        name = "buffer",
-        b = { ":Buffers!<cr>", "Switch buffer" },
-        n = { ":bnext<cr>", "Next buffer" },
-        p = { ":bprevious<cr>", "Previous buffer" },
-        d = {
-            function()
-                require("mini.bufremove").delete(0, false)
-            end,
-            "Delete buffer",
+local keymaps = {
+    ["<Leader>"] = {
+        b = {
+            name = "buffer",
+            b = { ":Buffers!<cr>", "Switch buffer" },
+            n = { ":bnext<cr>", "Next buffer" },
+            p = { ":bprevious<cr>", "Previous buffer" },
+            d = {
+                function()
+                    require("mini.bufremove").delete(0, false)
+                end,
+                "Delete buffer",
+            },
+            l = { ":b#<cr>", "Switch to last buffer" },
         },
-        l = { ":b#<cr>", "Switch to last buffer" },
-    },
-    f = {
-        name = "file",
-        f = { ":Files!<cr>", "Find file" },
-        F = { ":Files! " .. vim.fn.expand("%:p:h") .. "<cr>", "Find file from here" },
-        g = { ":GitFiles!<cr>", "Find file in git project" },
-        s = { ":update<cr>", "Save" },
-        y = {
-            function()
-                local path = vim.fn.expand("%:p:~")
-                vim.fn.setreg("+", path)
-                print("Copied path: " .. path)
-            end,
-            "Yank file path",
+        f = {
+            name = "file",
+            f = { ":Files!<cr>", "Find file" },
+            F = { ":Files! " .. vim.fn.expand("%:p:h") .. "<cr>", "Find file from here" },
+            g = { ":GitFiles!<cr>", "Find file in git project" },
+            s = { ":update<cr>", "Save" },
+            y = {
+                function()
+                    local path = vim.fn.expand("%:p:~")
+                    vim.fn.setreg("+", path)
+                    print("Copied path: " .. path)
+                end,
+                "Yank file path",
+            },
+            Y = {
+                function()
+                    local path = vim.fn.expand("%")
+                    vim.fn.setreg("+", path)
+                    print("Copied path: " .. path)
+                end,
+                "Yank file path from project",
+            },
         },
-        Y = {
-            function()
-                local path = vim.fn.expand("%")
-                vim.fn.setreg("+", path)
-                print("Copied path: " .. path)
-            end,
-            "Yank file path from project",
+        p = {
+            name = "project",
+            p = { ":Telescope projects<cr>", "Switch project" },
+            b = { ":Oil .<cr>", "Browse project" },
+            B = { ":Oil<cr>", "Browse project from here" },
         },
-    },
-    p = {
-        name = "project",
-        p = { ":Telescope projects<cr>", "Switch project" },
-        b = { ":Oil .<cr>", "Browse project" },
-        B = { ":Oil<cr>", "Browse project from here" },
-    },
-    q = {
-        name = "quit/session",
-        q = { ":quit<cr>", "Quit" },
-    },
-    s = {
-        name = "search",
-        p = { ":Rg!<cr>", "Search project" },
-        r = {
-            function()
-                require("spectre").open_file_search()
-            end,
-            "Search and replace",
+        q = {
+            name = "quit/session",
+            q = { ":quit<cr>", "Quit" },
         },
+        s = {
+            name = "search",
+            p = { ":Rg!<cr>", "Search project" },
+            r = {
+                function()
+                    require("spectre").open_file_search()
+                end,
+                "Search and replace",
+            },
+        },
+        g = {
+            name = "git",
+            g = { ":Neogit<cr>", "Git status" },
+            s = { ":Neogit<cr>", "Git status" },
+            i = { ":Octo issue list<cr>", "GitHub issues" },
+            p = { ":Octo pr list<cr>", "GitHub pull requests" },
+        },
+        m = {
+            name = "markdown",
+            p = { ":MarkdownPreview<cr>", "Markdown preview" },
+        },
+        o = {
+            name = "open",
+            t = { ":edit ~/Documents/notes/todo.md<cr>", "Todo list" },
+        },
+        [":"] = { ":Legendary<cr>", "Commands" },
     },
-    g = {
-        name = "git",
-        g = { ":Neogit<cr>", "Git status" },
-        s = { ":Neogit<cr>", "Git status" },
-        i = { ":Octo issue list<cr>", "GitHub issues" },
-        p = { ":Octo pr list<cr>", "GitHub pull requests" },
-    },
-    m = {
-        name = "markdown",
-        p = { ":MarkdownPreview<cr>", "Markdown preview" },
-    },
-    o = {
-        name = "open",
-        t = { ":edit ~/Documents/notes/todo.md<cr>", "Todo list" },
-    },
-    [":"] = { ":Legendary<cr>", "Commands" },
+    ["<C-c>"] = { '"+y', "Copy to system clipboard", mode = "v" }
 }
 
 -- Aliases
-leader_keymaps["<leader>"] = leader_keymaps.f.g
-leader_keymaps["/"] = leader_keymaps.s.p
-leader_keymaps[","] = leader_keymaps.b.b
-leader_keymaps["<"] = leader_keymaps.b.B
-leader_keymaps["`"] = leader_keymaps.b.l
+keymaps["<Leader>"]["<Leader>"] = keymaps["<Leader>"].f.g
+keymaps["<Leader>"]["/"] = keymaps["<Leader>"].s.p
+keymaps["<Leader>"][","] = keymaps["<Leader>"].b.b
+keymaps["<Leader>"]["<"] = keymaps["<Leader>"].b.B
+keymaps["<Leader>"]["`"] = keymaps["<Leader>"].b.l
+keymaps["<C-s>"] = keymaps["<Leader>"].f.s
+keymaps["<C-q>"] = keymaps["<Leader>"].q.q
+keymaps["<C-Tab>"] = keymaps["<Leader>"].b.l
+keymaps["-"] = keymaps["<Leader>"].p.B
+keymaps["_"] = keymaps["<Leader>"].p.b
 
-require("which-key").register(leader_keymaps, { prefix = "<leader>" })
-
-require("which-key").register({
-    ["<C-s>"] = leader_keymaps.f.s,
-    ["<C-q>"] = leader_keymaps.q.q,
-    ["-"] = leader_keymaps.p.B,
-    ["_"] = leader_keymaps.p.b,
-}, {
-    mode = "n",
-})
-
-require("which-key").register({
-    ["<C-c>"] = { '"+y', "Copy to system clipboard" },
-}, {
-    mode = "v",
-})
+require("which-key").register(keymaps)

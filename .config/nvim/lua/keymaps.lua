@@ -20,7 +20,7 @@ local keymaps = {
         f = {
             name = "file",
             f = { ":Files!<cr>", "Find file" },
-            F = { ":Files! " .. vim.fn.expand("%:p:h") .. "<cr>", "Find file from here" },
+            F = { ":Files! " .. vim.fn.expand("%:p:h"), "Find file from here", silent = false },
             g = { ":GitFiles!<cr>", "Find file in git project" },
             s = { ":update<cr>", "Save" },
             y = {
@@ -64,6 +64,7 @@ local keymaps = {
             name = "git",
             g = { ":Neogit<cr>", "Git status" },
             s = { ":Neogit<cr>", "Git status" },
+            l = { ":DiffviewFileHistory<cr>", "Git log", mode = { "n", "v" } },
             i = { ":Octo issue list<cr>", "GitHub issues" },
             p = { ":Octo pr list<cr>", "GitHub pull requests" },
         },
@@ -77,7 +78,7 @@ local keymaps = {
         },
         [":"] = { ":Legendary<cr>", "Commands" },
     },
-    ["<C-c>"] = { '"+y', "Copy to system clipboard", mode = "v" }
+    ["<C-c>"] = { '"+y', "Copy to system clipboard", mode = "v" },
 }
 
 -- Aliases

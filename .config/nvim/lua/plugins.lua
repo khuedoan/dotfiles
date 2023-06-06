@@ -376,9 +376,6 @@ return require("lazy").setup({
     {
         "https://github.com/TimUntersberger/neogit",
         cmd = "Neogit",
-        dependencies = {
-            "https://github.com/sindrets/diffview.nvim",
-        },
         config = function()
             require("neogit").setup({
                 disable_commit_confirmation = true,
@@ -406,6 +403,13 @@ return require("lazy").setup({
                 current_line_blame = true,
             })
         end,
+    },
+
+    {
+        "https://github.com/sindrets/diffview.nvim",
+        cmd = {
+            "DiffviewFileHistory",
+        },
     },
     -- }}}
 

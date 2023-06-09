@@ -296,6 +296,7 @@ return require("lazy").setup({
                 ensure_installed = {
                     "bash",
                     "dockerfile",
+                    "gitcommit",
                     "go",
                     "hcl",
                     "javascript",

@@ -359,18 +359,6 @@ return require("lazy").setup({
         ft = "markdown",
         build = "cd app && yarn install",
     },
-
-    {
-        "https://github.com/jakewvincent/mkdnflow.nvim",
-        ft = "markdown",
-        config = function()
-            require("mkdnflow").setup({
-                to_do = {
-                    symbols = { " ", "-", "x" },
-                },
-            })
-        end,
-    },
     -- }}}
 
     -- {{{ Git

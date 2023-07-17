@@ -375,7 +375,7 @@ return require("lazy").setup({
 
     -- {{{ Git
     {
-        "https://github.com/TimUntersberger/neogit",
+        "https://github.com/NeogitOrg/neogit",
         cmd = "Neogit",
         config = function()
             require("neogit").setup({

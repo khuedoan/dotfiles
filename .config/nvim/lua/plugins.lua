@@ -80,6 +80,7 @@ return require("lazy").setup({
 
     {
         "https://github.com/j-hui/fidget.nvim",
+        tag = "legacy", -- TODO https://github.com/j-hui/fidget.nvim/issues/131
         event = "VeryLazy",
         config = function()
             require("fidget").setup({
@@ -133,7 +134,11 @@ return require("lazy").setup({
             "https://github.com/neovim/nvim-lspconfig",
         },
         config = function()
-            require("mason").setup()
+            require("mason").setup({
+                -- Prefer system installed language servers
+                PATH = "append",
+            })
+
             require("mason-lspconfig").setup({
                 ensure_installed = {
                     "bashls",

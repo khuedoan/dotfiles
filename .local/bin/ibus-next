@@ -5,16 +5,14 @@
 # Credit to https://github.com/harish2704/dotFiles/blob/2e6e0a997da13bf87fc8b8da714bcda2f67fc1d4/home/.local/Apps/daily-utils/bin/ibus-next-engine.py
 
 import subprocess
-import json
 
-engineList = subprocess.getoutput('ibus read-config | grep preload-engines | sed "s/preload-engines://g; s/\'/\\"/g"')
-engineList = json.loads(engineList)
+engines = [
+    "xkb:us::eng",
+    "Bamboo",
+]
 
 currentEngine = subprocess.getoutput('ibus engine')
-currentEngineIdx = engineList.index(currentEngine);
+currentEngineIdx = engines.index(currentEngine);
+nextEngineIdx = (currentEngineIdx + 1) % len(engines);
 
-nextEngineIdx = currentEngineIdx + 1;
-if nextEngineIdx == len(engineList):
-    nextEngineIdx=0
-
-subprocess.getoutput('ibus engine %s' % engineList[nextEngineIdx])
+subprocess.getoutput(f"ibus engine {engines[nextEngineIdx]}")

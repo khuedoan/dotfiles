@@ -120,6 +120,9 @@ return require("lazy").setup({
                 view_options = {
                     show_hidden = true,
                 },
+                win_options = {
+                    concealcursor = "nvic",
+                },
             })
         end,
     },

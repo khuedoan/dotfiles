@@ -1,0 +1,6 @@
+#!/bin/sh
+
+TODO_FILE=~/Documents/notes/todo.md
+
+echo "- \`$(date '+%Y-%m-%d') TODO\` $@" >> "$TODO_FILE"
+$VISUAL "$TODO_FILE"

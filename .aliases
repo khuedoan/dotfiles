@@ -74,8 +74,5 @@ alias calc='python -i -c "from math import *"'
 # get GPLv3
 alias gplv3='curl "https://www.gnu.org/licenses/gpl-3.0.md" > LICENSE.md'
 
-# todo list
-alias todo='cd ~/Documents/notes && $VISUAL todo.md'
-
 # kubectl
 alias kc='kubectx'

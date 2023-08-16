@@ -112,7 +112,7 @@ return require("lazy").setup({
 
     -- {{{ File manager
     {
-        "stevearc/oil.nvim",
+        "https://github.com/stevearc/oil.nvim",
         cmd = "Oil",
         config = function()
             require("oil").setup({

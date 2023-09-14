@@ -1,5 +1,6 @@
 typeset -g POWERLEVEL9K_MODE=nerdfont-complete
 typeset -g POWERLEVEL9K_ICON_PADDING=none
+typeset -g POWERLEVEL9K_TRANSIENT_PROMPT=always
 
 typeset -g POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(
   os_icon                # os identifier

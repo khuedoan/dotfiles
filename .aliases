@@ -2,15 +2,6 @@
 alias l='ls -Flh'
 alias ll='ls -Flha'
 
-# interactive
-alias cp='cp -i'
-alias mv='mv -i'
-alias rm='rm -i'
-
-# verbose
-alias mkdir='mkdir -v'
-alias rmdir='rmdir -v'
-
 # git
 alias g='git'
 alias gs='git status --short'
@@ -25,18 +16,6 @@ alias gP='git push --set-upstream origin HEAD'
 alias gl='git log --all --decorate --oneline --graph'
 alias gL='git log -p'
 alias gt='git ls-tree -r "$(git rev-parse --abbrev-ref HEAD)" --name-only | tree --fromfile'
-
-gw () {
-    if [ "$1" = "add" ]; then
-        new_worktree="$HOME/Documents/worktree/$(basename $(git rev-parse --show-toplevel))/$2"
-        git worktree add $new_worktree
-        cd $new_worktree
-    elif [ "$1" = "list" ]; then
-        git worktree list
-    elif [ "$1" = "remove" ]; then
-        git worktree remove "$2"
-    fi
-}
 
 # aria2
 alias dl='aria2c --console-log-level=warn --max-connection-per-server=16 --split=16'
@@ -57,16 +36,8 @@ alias feh='feh --scale-down --auto-zoom'
 # nvim
 alias v='nvim'
 
-# reboot to windows
-alias win='sudo efibootmgr --bootnext 0001 && reboot'
-
 # convert to PDF
 alias officetopdf='libreoffice --headless --convert-to pdf'
-
-# cheat
-cheat () {
-    curl "cheat.sh/$1"
-}
 
 # calculator
 alias calc='python -i -c "from math import *"'

@@ -471,6 +471,14 @@ return require("lazy").setup({
             })
         end,
     },
+
+    {
+        "https://github.com/folke/flash.nvim",
+        event = "VeryLazy",
+        config = function ()
+            require("flash").setup()
+        end,
+    },
     -- }}}
 
     -- {{{ Keymaps

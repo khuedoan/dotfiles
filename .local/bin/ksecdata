@@ -1,4 +1,0 @@
-#!/bin/sh
-
-kubectl -n "${1}" get secret "${2}" -o jsonpath="{.data.${3}}" \
-    | base64 -d

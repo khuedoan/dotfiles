@@ -69,11 +69,11 @@ return require("lazy").setup({
         "https://github.com/lukas-reineke/indent-blankline.nvim",
         event = { "BufReadPost", "BufNewFile" },
         config = function()
-            require("indent_blankline").setup({
-                show_current_context = true,
-                show_first_indent_level = false,
-                show_trailing_blankline_indent = false,
-                use_treesitter = true,
+            require("ibl").setup({
+                indent = {
+                    char = "▏",
+                    tab_char = "→",
+                },
             })
         end,
     },
@@ -81,7 +81,7 @@ return require("lazy").setup({
     {
         "https://github.com/j-hui/fidget.nvim",
         tag = "legacy", -- TODO https://github.com/j-hui/fidget.nvim/issues/131
-        event = "VeryLazy",
+        event = "LspAttach",
         config = function()
             require("fidget").setup({
                 text = {

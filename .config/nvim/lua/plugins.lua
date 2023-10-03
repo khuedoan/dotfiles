@@ -77,19 +77,6 @@ return require("lazy").setup({
             })
         end,
     },
-
-    {
-        "https://github.com/j-hui/fidget.nvim",
-        tag = "legacy", -- TODO https://github.com/j-hui/fidget.nvim/issues/131
-        event = "LspAttach",
-        config = function()
-            require("fidget").setup({
-                text = {
-                    spinner = "dots",
-                },
-            })
-        end,
-    },
     -- }}}
 
     -- {{{ Search
@@ -190,6 +177,19 @@ return require("lazy").setup({
             })
         end,
     },
+
+    {
+        "https://github.com/j-hui/fidget.nvim",
+        tag = "legacy", -- TODO https://github.com/j-hui/fidget.nvim/issues/131
+        event = "LspAttach",
+        config = function()
+            require("fidget").setup({
+                text = {
+                    spinner = "dots",
+                },
+            })
+        end,
+    },
     -- }}}
 
     -- {{{ Completion
@@ -277,7 +277,7 @@ return require("lazy").setup({
 
     {
         "https://github.com/windwp/nvim-autopairs",
-        event = { "BufReadPost", "BufNewFile" },
+        event = "InsertEnter",
         config = function()
             require("nvim-autopairs").setup({
                 check_ts = true,
@@ -493,7 +493,7 @@ return require("lazy").setup({
     },
 
     {
-        "echasnovski/mini.bufremove",
+        "https://github.com/echasnovski/mini.bufremove",
         lazy = true,
         config = function()
             require("mini.bufremove").setup()

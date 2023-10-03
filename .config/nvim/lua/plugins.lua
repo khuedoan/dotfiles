@@ -295,13 +295,10 @@ return require("lazy").setup({
     },
     -- }}}
 
-    -- {{{ Syntax highlighting and text objects
+    -- {{{ Syntax highlighting
     {
         "https://github.com/nvim-treesitter/nvim-treesitter",
         event = { "BufReadPost", "BufNewFile" },
-        dependencies = {
-            "https://github.com/nvim-treesitter/nvim-treesitter-textobjects"
-        },
         config = function()
             require("nvim-treesitter.configs").setup({
                 ensure_installed = {
@@ -331,37 +328,6 @@ return require("lazy").setup({
                 },
                 indent = {
                     enable = true,
-                },
-                textobjects = {
-                    select = {
-                        enable = true,
-                        lookahead = true,
-                        keymaps = {
-                            ["il"] = { query = "@loop.inner", desc = "Select in loop" },
-                            ["al"] = { query = "@loop.outer", desc = "Select around loop" },
-                            ["if"] = { query = "@function.inner", desc = "Select in function" },
-                            ["af"] = { query = "@function.outer", desc = "Select around function" },
-                            ["ic"] = { query = "@class.inner", desc = "Select in class" },
-                            ["ac"] = { query = "@class.outer", desc = "Select around class" },
-                            ["as"] = { query = "@scope", query_group = "locals", desc = "Select around scope" },
-                        },
-                    },
-                    move = {
-                        enable = true,
-                        set_jumps = true,
-                        goto_next_start = {
-                            ["]]"] = "@function.outer",
-                        },
-                        goto_next_end = {
-                            ["]["] = "@function.outer",
-                        },
-                        goto_previous_start = {
-                            ["[["] = "@function.outer",
-                        },
-                        goto_previous_end = {
-                            ["[]"] = "@function.outer",
-                        },
-                    },
                 },
             })
         end,

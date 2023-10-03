@@ -417,9 +417,6 @@ return require("lazy").setup({
         event = "VeryLazy",
         config = function()
             require("leap").set_default_keymaps()
-            vim.api.nvim_set_hl(0, "LeapBackdrop", {
-                link = "Comment",
-            })
             vim.api.nvim_set_hl(0, "LeapMatch", {
                 fg = "white",
                 bold = true,
@@ -435,14 +432,6 @@ return require("lazy").setup({
                 bold = true,
                 nocombine = true,
             })
-        end,
-    },
-
-    {
-        "https://github.com/folke/flash.nvim",
-        event = "VeryLazy",
-        config = function ()
-            require("flash").setup()
         end,
     },
     -- }}}

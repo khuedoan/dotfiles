@@ -50,6 +50,7 @@ return require("lazy").setup({
                     globalstatus = true,
                 },
             })
+            vim.opt.showmode = false
         end,
     },
 

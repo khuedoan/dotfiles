@@ -387,14 +387,6 @@ return require("lazy").setup({
     },
 
     {
-        "https://github.com/pwntester/octo.nvim",
-        cmd = "Octo",
-        config = function()
-            require("octo").setup()
-        end,
-    },
-
-    {
         "https://github.com/lewis6991/gitsigns.nvim",
         event = "VeryLazy",
         config = function()

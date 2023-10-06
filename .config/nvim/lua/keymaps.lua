@@ -6,23 +6,22 @@ local keymaps = {
     ["<Leader>"] = {
         b = {
             name = "buffer",
-            b = { ":Buffers!<cr>", "Switch buffer" },
-            n = { ":bnext<cr>", "Next buffer" },
-            p = { ":bprevious<cr>", "Previous buffer" },
+            b = { "<Cmd>Buffers!<cr>", "Switch buffer" },
+            n = { "<Cmd>bnext<cr>", "Next buffer" },
+            p = { "<Cmd>bprevious<cr>", "Previous buffer" },
             d = {
                 function()
                     require("mini.bufremove").delete(0, false)
                 end,
                 "Delete buffer",
             },
-            l = { ":b#<cr>", "Switch to last buffer" },
+            l = { "<Cmd>b#<cr>", "Switch to last buffer" },
         },
         f = {
             name = "file",
-            f = { ":Files!<cr>", "Find file" },
-            F = { ":Files! " .. vim.fn.expand("%:p:h"), "Find file from here", silent = false },
-            g = { ":GitFiles!<cr>", "Find file in git project" },
-            s = { ":update<cr>", "Save" },
+            f = { "<Cmd>Files!<cr>", "Find file" },
+            g = { "<Cmd>GitFiles!<cr>", "Find file in git project" },
+            s = { "<Cmd>update<cr>", "Save" },
             y = {
                 function()
                     local path = vim.fn.expand("%:p:~")
@@ -42,41 +41,34 @@ local keymaps = {
         },
         p = {
             name = "project",
-            p = { ":Telescope projects<cr>", "Switch project" },
-            b = { ":Oil .<cr>", "Browse project" },
-            B = { ":Oil<cr>", "Browse project from here" },
+            b = { "<Cmd>Oil<cr>", "Browse project from here" },
+            B = { "<Cmd>Oil .<cr>", "Browse project" },
         },
         q = {
             name = "quit/session",
-            q = { ":quit<cr>", "Quit" },
+            q = { "<Cmd>quit<cr>", "Quit" },
         },
         s = {
             name = "search",
-            p = { ":Rg!<cr>", "Search project" },
-            r = {
-                function()
-                    require("spectre").open_file_search()
-                end,
-                "Search and replace",
-            },
+            l = { "<Cmd>Lines!<CR>", "Search lines in current file", },
+            p = { "<Cmd>Rg!<cr>", "Search project" },
+            P = { "<Cmd>RG!<CR>", "Search project (strict)", },
         },
         g = {
             name = "git",
-            g = { ":Neogit<cr>", "Git status" },
-            s = { ":Neogit<cr>", "Git status" },
-            l = { ":DiffviewFileHistory<cr>", "Git log", mode = { "n", "v" } },
-            i = { ":Octo issue list<cr>", "GitHub issues" },
-            p = { ":Octo pr list<cr>", "GitHub pull requests" },
+            g = { "<Cmd>Neogit<cr>", "Git status" },
+            s = { "<Cmd>Neogit<cr>", "Git status" },
+            l = { "<Cmd>DiffviewFileHistory<cr>", "Git log", mode = { "n", "v" } },
         },
         m = {
             name = "markdown",
-            p = { ":MarkdownPreview<cr>", "Markdown preview" },
+            p = { "<Cmd>MarkdownPreview<cr>", "Markdown preview" },
         },
         o = {
             name = "open",
-            t = { ":edit ~/Documents/notes/todo.md<cr>", "Todo list" },
+            t = { "<Cmd>edit ~/Documents/notes/todo.md<cr>", "Todo list" },
         },
-        [":"] = { ":Legendary<cr>", "Commands" },
+        [":"] = { "<Cmd>Legendary<cr>", "Commands" },
     },
     ["<C-c>"] = { '"+y', "Copy to system clipboard", mode = "v" },
 }
@@ -91,7 +83,7 @@ keymaps["<C-s>"] = keymaps["<Leader>"].f.s
 keymaps["<C-q>"] = keymaps["<Leader>"].q.q
 keymaps["<C-Tab>"] = keymaps["<Leader>"].b.n
 keymaps["<C-S-Tab>"] = keymaps["<Leader>"].b.p
-keymaps["-"] = keymaps["<Leader>"].p.B
-keymaps["_"] = keymaps["<Leader>"].p.b
+keymaps["-"] = keymaps["<Leader>"].p.b
+keymaps["_"] = keymaps["<Leader>"].p.B
 
 require("which-key").register(keymaps)

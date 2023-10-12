@@ -1,5 +1,4 @@
 -- Remap space as leader key
-vim.keymap.set("", "<Space>", "<Nop>", { silent = true })
 vim.g.mapleader = " "
 
 local keymaps = {
@@ -86,4 +85,4 @@ keymaps["<C-S-Tab>"] = keymaps["<Leader>"].b.p
 keymaps["-"] = keymaps["<Leader>"].p.b
 keymaps["_"] = keymaps["<Leader>"].p.B
 
-require("which-key").register(keymaps)
+return keymaps

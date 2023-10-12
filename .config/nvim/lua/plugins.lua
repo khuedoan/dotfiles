@@ -63,12 +63,15 @@ return require("lazy").setup({
 
     {
         "https://github.com/lukas-reineke/indent-blankline.nvim",
-        event = { "BufReadPost", "BufNewFile" },
+        event = "VeryLazy",
         config = function()
             require("ibl").setup({
                 indent = {
                     char = "▏",
                     tab_char = "→",
+                },
+                scope = {
+                    enabled = false,
                 },
             })
         end,
@@ -179,7 +182,7 @@ return require("lazy").setup({
     -- {{{ Syntax highlighting
     {
         "https://github.com/nvim-treesitter/nvim-treesitter",
-        event = { "BufReadPost", "BufNewFile" },
+        build = ":TSUpdate",
         config = function()
             require("nvim-treesitter.configs").setup({
                 ensure_installed = {
@@ -242,9 +245,7 @@ return require("lazy").setup({
 
     {
         "https://github.com/sindrets/diffview.nvim",
-        cmd = {
-            "DiffviewFileHistory",
-        },
+        lazy = true,
     },
     -- }}}
 
@@ -281,19 +282,10 @@ return require("lazy").setup({
     -- {{{ Keymaps
     {
         "https://github.com/folke/which-key.nvim",
-        lazy = true,
-    },
-
-    {
-        "https://github.com/mrjones2014/legendary.nvim",
-        cmd = "Legendary",
+        event = "VeryLazy",
         config = function()
-            require("legendary").setup({
-                which_key = {
-                    auto_register = true,
-                },
-            })
-        end,
+            require("which-key").register(require("keymaps"))
+        end
     },
     -- }}}
 

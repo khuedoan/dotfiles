@@ -113,26 +113,26 @@ return require("lazy").setup({
 
     -- {{{ IntelliSense
     {
-        "https://github.com/williamboman/mason-lspconfig.nvim",
-        event = { "BufReadPost", "BufNewFile" },
+        "https://github.com/VonHeikemen/lsp-zero.nvim",
         dependencies = {
             "https://github.com/williamboman/mason.nvim",
+            "https://github.com/williamboman/mason-lspconfig.nvim",
             "https://github.com/neovim/nvim-lspconfig",
+            "https://github.com/hrsh7th/cmp-nvim-lsp",
+            "https://github.com/hrsh7th/nvim-cmp",
+            "https://github.com/L3MON4D3/LuaSnip",
         },
+        event = "VeryLazy",
         config = function()
-            require("mason").setup({
-                -- Prefer system installed language servers
-                PATH = "append",
-            })
-
+            require("mason").setup()
             require("mason-lspconfig").setup({
                 ensure_installed = {
+                    -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
                     "bashls",
                     "bufls",
                     "cssls",
                     "dockerls",
                     "gopls",
-                    "grammarly",
                     "html",
                     "jsonls",
                     "lua_ls",
@@ -144,130 +144,25 @@ return require("lazy").setup({
                     "tsserver",
                     "yamlls",
                 },
-            })
-
-            local on_attach = function(client, bufnr)
-                -- TODO clean up
-                local opts = { noremap = true, silent = true, buffer = bufnr }
-                vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
-                vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
-                vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
-                vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
-                vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
-                vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, opts)
-                vim.keymap.set("n", "<space>D", vim.lsp.buf.type_definition, opts)
-                vim.keymap.set("n", "<space>rn", vim.lsp.buf.rename, opts)
-                vim.keymap.set("n", "<space>ca", vim.lsp.buf.code_action, opts)
-                vim.keymap.set("n", "<space>=", function()
-                    vim.lsp.buf.format({ async = true })
-                end, opts)
-            end
-
-            require("mason-lspconfig").setup_handlers({
-                function(server_name)
-                    require("lspconfig")[server_name].setup({
-                        on_attach = on_attach,
-                        capabilities = require("cmp_nvim_lsp").default_capabilities(),
-                    })
-                end,
-            })
-        end,
-    },
-
-    {
-        "https://github.com/j-hui/fidget.nvim",
-        tag = "legacy", -- TODO https://github.com/j-hui/fidget.nvim/issues/131
-        event = "LspAttach",
-        config = function()
-            require("fidget").setup({
-                text = {
-                    spinner = "dots",
+                handlers = {
+                    require('lsp-zero').default_setup,
                 },
             })
-        end,
-    },
-    -- }}}
 
-    -- {{{ Completion
-    {
-        "https://github.com/hrsh7th/nvim-cmp",
-        event = "VeryLazy",
-        dependencies = {
-            "https://github.com/hrsh7th/cmp-buffer",
-            "https://github.com/hrsh7th/cmp-nvim-lsp",
-            "https://github.com/hrsh7th/cmp-path",
-            "https://github.com/saadparwaiz1/cmp_luasnip",
-        },
-        config = function()
-            local has_words_before = function()
-                unpack = unpack or table.unpack
-                local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-                return col ~= 0
-                    and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
-            end
-
-            local cmp = require("cmp")
-            local luasnip = require("luasnip")
+            local cmp = require('cmp')
+            local cmp_action = require('lsp-zero').cmp_action()
 
             cmp.setup({
                 mapping = cmp.mapping.preset.insert({
-                    ["<CR>"] = cmp.mapping.confirm(),
-                    ["<C-b>"] = cmp.mapping.scroll_docs(-4),
-                    ["<C-f>"] = cmp.mapping.scroll_docs(4),
-                    ["<Tab>"] = cmp.mapping(function(fallback)
-                        if cmp.visible() then
-                            cmp.select_next_item()
-                        elseif luasnip.expand_or_jumpable() then
-                            luasnip.expand_or_jump()
-                        elseif has_words_before() then
-                            cmp.complete()
-                        else
-                            fallback()
-                        end
-                    end, { "i", "s" }),
-                    ["<S-Tab>"] = cmp.mapping(function(fallback)
-                        if cmp.visible() then
-                            cmp.select_prev_item()
-                        elseif luasnip.jumpable(-1) then
-                            luasnip.jump(-1)
-                        else
-                            fallback()
-                        end
-                    end, { "i", "s" }),
-                    ["<C-l>"] = cmp.mapping(function()
-                        vim.api.nvim_feedkeys(
-                            vim.fn["copilot#Accept"](vim.api.nvim_replace_termcodes("<Tab>", true, true, true)),
-                            "n",
-                            true
-                        )
-                    end),
-                }),
-                snippet = {
-                    expand = function(args)
-                        require("luasnip").lsp_expand(args.body)
-                    end,
-                },
-                sources = cmp.config.sources({
-                    { name = "lua_snip" },
-                    { name = "nvim_lsp" },
-                    { name = "buffer" },
-                    { name = "path" },
-                }),
-                experimental = {
-                    ghost_text = false, -- Conflict with Copilot
-                },
+                    ['<CR>'] = cmp.mapping.confirm(),
+                    ['<Tab>'] = cmp_action.luasnip_supertab(),
+                    ['<S-Tab>'] = cmp_action.luasnip_shift_supertab(),
+                })
             })
-        end,
-    },
 
-    {
-        "https://github.com/L3MON4D3/LuaSnip",
-        event = "VeryLazy",
-        dependencies = {
-            "https://github.com/rafamadriz/friendly-snippets",
-        },
-        config = function()
-            require("luasnip.loaders.from_vscode").lazy_load()
+            -- Manually start LSP server after lazy load
+            -- TODO use lazy.nvim LazyFile when available
+            vim.cmd("filetype detect")
         end,
     },
 

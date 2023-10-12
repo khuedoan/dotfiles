@@ -19,11 +19,6 @@ return require("lazy").setup({
     },
 
     {
-        "https://github.com/kyazdani42/nvim-web-devicons",
-        lazy = true,
-    },
-
-    {
         "https://github.com/MunifTanjim/nui.nvim",
         lazy = true,
     },
@@ -286,16 +281,6 @@ return require("lazy").setup({
         end,
     },
 
-    {
-        "https://github.com/github/copilot.vim",
-        event = { "BufReadPost", "BufNewFile" },
-        config = function()
-            vim.g.copilot_no_tab_map = true
-            vim.keymap.set("i", "<Plug>(vimrc:copilot-dummy-map)", "copilot#Accept()", { silent = true, expr = true })
-        end,
-    },
-    -- }}}
-
     -- {{{ Syntax highlighting
     {
         "https://github.com/nvim-treesitter/nvim-treesitter",
@@ -332,42 +317,6 @@ return require("lazy").setup({
                 },
             })
         end,
-    },
-    -- }}}
-
-    -- {{{ Formatting
-    {
-        "https://github.com/sbdchd/neoformat",
-        cmd = "Neoformat",
-        config = function()
-            vim.g.neoformat_try_node_exe = true
-        end,
-    },
-    -- }}}
-
-    -- {{{ Debugging
-    -- TODO
-    {
-        "https://github.com/mfussenegger/nvim-dap",
-        lazy = true,
-    },
-
-    {
-        "https://github.com/rcarriga/nvim-dap-ui",
-        lazy = true,
-    },
-
-    {
-        "https://github.com/ravenxrz/DAPInstall.nvim",
-        lazy = true,
-    },
-    -- }}}
-
-    -- {{{ Markdown
-    {
-        "https://github.com/iamcco/markdown-preview.nvim",
-        ft = "markdown",
-        build = "cd app && yarn install",
     },
     -- }}}
 
@@ -415,7 +364,7 @@ return require("lazy").setup({
 
     {
         "https://github.com/echasnovski/mini.surround",
-        config = function ()
+        config = function()
             require("mini.surround").setup({
                 mappings = {
                     add = "gza",
@@ -461,7 +410,7 @@ return require("lazy").setup({
 
     {
         "https://github.com/tpope/vim-sleuth",
-        event = { "BufReadPost", "BufNewFile" },
+        event = "VeryLazy",
     },
 
     {
@@ -470,23 +419,10 @@ return require("lazy").setup({
     },
 
     {
-        "https://github.com/tpope/vim-eunuch",
-        event = "VeryLazy",
-    },
-
-    {
-        "https://github.com/mbbill/undotree",
-        cmd = {
-            "UndotreeShow",
-            "UndotreeToggle",
-        },
-    },
-
-    {
         "https://github.com/numToStr/Comment.nvim",
         event = "VeryLazy",
         config = function()
-            require("Comment").setup({})
+            require("Comment").setup()
         end,
     },
 

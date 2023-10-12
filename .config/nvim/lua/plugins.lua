@@ -17,11 +17,6 @@ return require("lazy").setup({
         "https://github.com/nvim-lua/plenary.nvim",
         lazy = true,
     },
-
-    {
-        "https://github.com/MunifTanjim/nui.nvim",
-        lazy = true,
-    },
     -- }}}
 
     -- {{{ UI
@@ -127,6 +122,45 @@ return require("lazy").setup({
         },
         event = "VeryLazy",
         config = function()
+            require("mason").setup({
+                PATH = "append", -- Prefer system installed language servers
+            })
+            require("mason-lspconfig").setup({
+                ensure_installed = {
+                    -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
+                    "bashls",
+                    "bufls",
+                    "cssls",
+                    "gopls",
+                    "html",
+                    "lua_ls",
+                    "pyright",
+                    "rust_analyzer",
+                    "terraformls",
+                    "tflint",
+                    "tsserver",
+                    "yamlls",
+                },
+                handlers = {
+                    require("lsp-zero").default_setup,
+                },
+            })
+
+            -- Manually start LSP server after lazy load
+            -- TODO use lazy.nvim LazyFile when available
+            vim.cmd("filetype detect")
+
+            local cmp = require("cmp")
+            local cmp_action = require("lsp-zero").cmp_action()
+
+            cmp.setup({
+                mapping = cmp.mapping.preset.insert({
+                    ["<CR>"] = cmp.mapping.confirm(),
+                    ["<Tab>"] = cmp_action.luasnip_supertab(),
+                    ["<S-Tab>"] = cmp_action.luasnip_shift_supertab(),
+                }),
+            })
+
             require("lsp-zero").on_attach(function(client, bufnr)
                 local opts = { buffer = bufnr }
                 -- TODO clean up?
@@ -144,48 +178,6 @@ return require("lazy").setup({
                 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
                 vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
             end)
-
-            require("mason").setup({
-                PATH = "append", -- Prefer system installed language servers
-            })
-            require("mason-lspconfig").setup({
-                ensure_installed = {
-                    -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
-                    "bashls",
-                    "bufls",
-                    "cssls",
-                    "dockerls",
-                    "gopls",
-                    "html",
-                    "jsonls",
-                    "lua_ls",
-                    "pyright",
-                    "rnix",
-                    "rust_analyzer",
-                    "terraformls",
-                    "tflint",
-                    "tsserver",
-                    "yamlls",
-                },
-                handlers = {
-                    require("lsp-zero").default_setup,
-                },
-            })
-
-            local cmp = require("cmp")
-            local cmp_action = require("lsp-zero").cmp_action()
-
-            cmp.setup({
-                mapping = cmp.mapping.preset.insert({
-                    ["<CR>"] = cmp.mapping.confirm(),
-                    ["<Tab>"] = cmp_action.luasnip_supertab(),
-                    ["<S-Tab>"] = cmp_action.luasnip_shift_supertab(),
-                }),
-            })
-
-            -- Manually start LSP server after lazy load
-            -- TODO use lazy.nvim LazyFile when available
-            vim.cmd("filetype detect")
         end,
     },
 
@@ -246,9 +238,6 @@ return require("lazy").setup({
             require("neogit").setup({
                 disable_commit_confirmation = true,
                 kind = "split",
-                integrations = {
-                    diffview = true,
-                },
             })
         end,
     },
@@ -261,11 +250,6 @@ return require("lazy").setup({
                 current_line_blame = true,
             })
         end,
-    },
-
-    {
-        "https://github.com/sindrets/diffview.nvim",
-        lazy = true,
     },
     -- }}}
 
@@ -314,16 +298,6 @@ return require("lazy").setup({
     },
     -- }}}
 
-    -- {{{ Keymaps
-    {
-        "https://github.com/folke/which-key.nvim",
-        event = "VeryLazy",
-        config = function()
-            require("which-key").register(require("keymaps"))
-        end,
-    },
-    -- }}}
-
     -- {{{ Miscellaneous
     {
         "https://github.com/farmergreg/vim-lastplace",
@@ -351,8 +325,15 @@ return require("lazy").setup({
     {
         "https://github.com/echasnovski/mini.bufremove",
         lazy = true,
+    },
+    -- }}}
+
+    -- {{{ Keymaps
+    {
+        "https://github.com/folke/which-key.nvim",
+        event = "VeryLazy",
         config = function()
-            require("mini.bufremove").setup()
+            require("which-key").register(require("keymaps"))
         end,
     },
     -- }}}

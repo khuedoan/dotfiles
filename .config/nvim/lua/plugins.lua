@@ -127,6 +127,24 @@ return require("lazy").setup({
         },
         event = "VeryLazy",
         config = function()
+            require("lsp-zero").on_attach(function(client, bufnr)
+                local opts = { buffer = bufnr }
+                -- TODO clean up?
+                vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+                vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+                vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
+                vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
+                vim.keymap.set("n", "go", vim.lsp.buf.type_definition, opts)
+                vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
+                vim.keymap.set("n", "gs", vim.lsp.buf.signature_help, opts)
+                vim.keymap.set("n", "gR", vim.lsp.buf.rename, opts)
+                vim.keymap.set({ "n", "x" }, "<Leader>=", vim.lsp.buf.format, opts)
+                vim.keymap.set("n", "cA", vim.lsp.buf.code_action, opts)
+                vim.keymap.set("n", "gl", vim.diagnostic.open_float, opts)
+                vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
+                vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
+            end)
+
             require("mason").setup()
             require("mason-lspconfig").setup({
                 ensure_installed = {
@@ -148,19 +166,19 @@ return require("lazy").setup({
                     "yamlls",
                 },
                 handlers = {
-                    require('lsp-zero').default_setup,
+                    require("lsp-zero").default_setup,
                 },
             })
 
-            local cmp = require('cmp')
-            local cmp_action = require('lsp-zero').cmp_action()
+            local cmp = require("cmp")
+            local cmp_action = require("lsp-zero").cmp_action()
 
             cmp.setup({
                 mapping = cmp.mapping.preset.insert({
-                    ['<CR>'] = cmp.mapping.confirm(),
-                    ['<Tab>'] = cmp_action.luasnip_supertab(),
-                    ['<S-Tab>'] = cmp_action.luasnip_shift_supertab(),
-                })
+                    ["<CR>"] = cmp.mapping.confirm(),
+                    ["<Tab>"] = cmp_action.luasnip_supertab(),
+                    ["<S-Tab>"] = cmp_action.luasnip_shift_supertab(),
+                }),
             })
 
             -- Manually start LSP server after lazy load
@@ -300,7 +318,7 @@ return require("lazy").setup({
         event = "VeryLazy",
         config = function()
             require("which-key").register(require("keymaps"))
-        end
+        end,
     },
     -- }}}
 

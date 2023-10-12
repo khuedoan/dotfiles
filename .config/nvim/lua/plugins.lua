@@ -251,10 +251,25 @@ return require("lazy").setup({
 
     -- {{{ Motions
     {
-        "https://github.com/folke/flash.nvim",
+        "https://github.com/ggandor/leap.nvim",
         event = "VeryLazy",
         config = function()
-            require("flash").setup()
+            require("leap").set_default_keymaps()
+            vim.api.nvim_set_hl(0, "LeapMatch", {
+                fg = "white",
+                bold = true,
+                nocombine = true,
+            })
+            vim.api.nvim_set_hl(0, "LeapLabelPrimary", {
+                fg = "yellow",
+                bold = true,
+                nocombine = true,
+            })
+            vim.api.nvim_set_hl(0, "LeapLabelSecondary", {
+                fg = "magenta",
+                bold = true,
+                nocombine = true,
+            })
         end,
     },
 

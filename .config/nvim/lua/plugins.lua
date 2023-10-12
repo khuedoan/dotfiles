@@ -145,7 +145,9 @@ return require("lazy").setup({
                 vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
             end)
 
-            require("mason").setup()
+            require("mason").setup({
+                PATH = "append", -- Prefer system installed language servers
+            })
             require("mason-lspconfig").setup({
                 ensure_installed = {
                     -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md

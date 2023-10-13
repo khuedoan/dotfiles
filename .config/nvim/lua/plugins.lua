@@ -241,6 +241,7 @@ return require("lazy").setup({
         event = "VeryLazy",
         config = function()
             require("leap").set_default_keymaps()
+            require("leap").opts.safe_labels = {}
             vim.api.nvim_set_hl(0, "LeapMatch", {
                 fg = "white",
                 bold = true,

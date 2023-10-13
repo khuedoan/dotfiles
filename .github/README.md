@@ -97,3 +97,4 @@ git pull
 - [nvim-lua/kickstart.nvim config](https://github.com/nvim-lua/kickstart.nvim)
 - [mattydebie/bitwarden-rofi script](https://github.com/mattydebie/bitwarden-rofi)
 - [LazyVim/LazyVim config and lazy loading](https://github.com/LazyVim/LazyVim)
+- [Vim statusline without a plugin](https://shapeshed.com/vim-statuslines)

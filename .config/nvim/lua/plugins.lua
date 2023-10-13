@@ -32,19 +32,6 @@ return require("lazy").setup({
     },
 
     {
-        "https://github.com/nvim-lualine/lualine.nvim",
-        event = "VeryLazy",
-        config = function()
-            require("lualine").setup({
-                options = {
-                    globalstatus = true,
-                },
-            })
-            vim.opt.showmode = false
-        end,
-    },
-
-    {
         "https://github.com/akinsho/bufferline.nvim",
         event = "VeryLazy",
         config = function()

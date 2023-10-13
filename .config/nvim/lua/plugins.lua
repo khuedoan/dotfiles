@@ -114,19 +114,14 @@ return require("lazy").setup({
             })
             require("mason-lspconfig").setup({
                 ensure_installed = {
-                    -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
+                    -- :help lspconfig-all
                     "bashls",
                     "bufls",
-                    "cssls",
                     "gopls",
-                    "html",
                     "lua_ls",
                     "pyright",
                     "rust_analyzer",
-                    "terraformls",
-                    "tflint",
                     "tsserver",
-                    "yamlls",
                 },
                 handlers = {
                     require("lsp-zero").default_setup,

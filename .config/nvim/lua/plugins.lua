@@ -167,49 +167,15 @@ return require("lazy").setup({
         "https://github.com/windwp/nvim-autopairs",
         event = "InsertEnter",
         config = function()
-            require("nvim-autopairs").setup({
-                check_ts = true,
-            })
+            require("nvim-autopairs").setup()
         end,
     },
 
-    -- {{{ Syntax highlighting
-    {
-        "https://github.com/nvim-treesitter/nvim-treesitter",
-        build = ":TSUpdate",
-        config = function()
-            require("nvim-treesitter.configs").setup({
-                ensure_installed = {
-                    "bash",
-                    "c",
-                    "dockerfile",
-                    "gitcommit",
-                    "go",
-                    "hcl",
-                    "javascript",
-                    "json",
-                    "json5",
-                    "jsonnet",
-                    "latex",
-                    "lua",
-                    "nix",
-                    "proto",
-                    "python",
-                    "rego",
-                    "rust",
-                    "terraform",
-                    "typescript",
-                    "yaml",
-                },
-                highlight = {
-                    enable = true,
-                },
-                indent = {
-                    enable = true,
-                },
-            })
-        end,
-    },
+    -- Additional language support
+    -- TODO when after treesitter is stable and merged to nvim core
+    -- https://github.com/nvim-treesitter/nvim-treesitter/issues/4767
+    { "https://github.com/hashivim/vim-terraform", ft = { "terraform", "terraform-vars", "hcl" } },
+    { "https://github.com/rodjek/vim-puppet", ft = { "puppet", "epuppet" } },
     -- }}}
 
     -- {{{ Git

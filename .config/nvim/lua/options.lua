@@ -16,12 +16,12 @@ vim.opt.scrolloff = 3         -- minimal number of screen lines to keep above an
 vim.opt.sidescrolloff = 3     -- minimal number of screen columns to keep to the left and right of the cursor if wrap is `false`
 
 -- Custom statusline
-vim.opt.laststatus = 3      -- global statusline
+vim.opt.laststatus = 3        -- global statusline
 vim.opt.statusline =
-    "%#PmenuSel# %Y %0*" .. -- filetype
-    " %f " ..               -- path to file
-    "%m" ..                 -- modifed
-    "%r" ..                 -- readonly
-    "%=" ..                 -- separator
-    "%l:%c / %L" ..         -- current line and column per total lines
-    " "                     -- padding
+    "%#Substitute# %Y %0*" .. -- filetype
+    " %f " ..                 -- path to file
+    "%m" ..                   -- modifed
+    "%r" ..                   -- readonly
+    "%=" ..                   -- separator
+    "%l:%c / %L" ..           -- current line and column per total lines
+    " "                       -- padding

@@ -8,18 +8,13 @@ local keymaps = {
             b = { "<Cmd>Buffers!<CR>", "Switch buffer" },
             n = { "<Cmd>bnext<CR>", "Next buffer" },
             p = { "<Cmd>bprevious<CR>", "Previous buffer" },
-            d = {
-                function()
-                    require("mini.bufremove").delete(0, false)
-                end,
-                "Delete buffer",
-            },
+            d = { function() require("mini.bufremove").delete(0) end, "Delete buffer" },
             l = { "<Cmd>b#<CR>", "Switch to last buffer" },
         },
         f = {
             name = "find",
             f = { "<Cmd>Files!<CR>", "Find file" },
-            g = { "<Cmd>GitFiles!<CR>", "Find file in git project" },
+            g = { "<Cmd>GitFiles!<CR>", "Find git file" },
             s = { "<Cmd>update<CR>", "Save" },
         },
         p = {
@@ -43,7 +38,14 @@ local keymaps = {
         g = {
             name = "git",
             s = { "<Cmd>Neogit<CR>", "Git status" },
-            l = { "<Cmd>DiffviewFileHistory<CR>", "Git log", mode = { "n", "v" } },
+            h = {
+                name = "GitHub",
+                b = { "<Cmd>silent !gh browse %<CR>", "GitHub browse current file" },
+                r = {
+                    name = "repo",
+                    v = { "<Cmd>silent !gh repo view --web<CR>", "GitHub repo view" },
+                },
+            },
         },
         o = {
             name = "open",
@@ -52,18 +54,8 @@ local keymaps = {
         y = {
             name = "yank",
             c = { '"+y', "Yank to system clipboard", mode = { "n", "v" } },
-            f = {
-                function()
-                    vim.fn.setreg("+", vim.fn.expand("%"))
-                end,
-                "Yank relative file path",
-            },
-            F = {
-                function()
-                    vim.fn.setreg("+", vim.fn.expand("%:p:~"))
-                end,
-                "Yank absolute file path",
-            },
+            f = { "<Cmd>let @+ = expand('%')<CR>", "Yank relative file path" },
+            F = { "<Cmd>let @+ = expand('%:p:~')<CR>", "Yank relative file path" },
         },
     },
 }
@@ -73,8 +65,6 @@ keymaps["<Leader>"]["<Leader>"] = keymaps["<Leader>"].f.g
 keymaps["<Leader>"]["/"] = keymaps["<Leader>"].s.p
 keymaps["<Leader>"]["?"] = keymaps["<Leader>"].s.P
 keymaps["<Leader>"][","] = keymaps["<Leader>"].b.b
-keymaps["<Leader>"]["<"] = keymaps["<Leader>"].b.B
-keymaps["<Leader>"]["`"] = keymaps["<Leader>"].b.l
 keymaps["<C-c>"] = keymaps["<Leader>"].y.c
 keymaps["<C-s>"] = keymaps["<Leader>"].f.s
 keymaps["<C-q>"] = keymaps["<Leader>"].q.q

@@ -242,7 +242,7 @@ return require("lazy").setup({
             })
         end,
         keys = {
-            { "gz", desc = "Surround" },
+            { "gz", desc = "Surround", mode = { "n", "v" } },
         },
     },
     -- }}}

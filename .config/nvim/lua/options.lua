@@ -23,5 +23,8 @@ vim.opt.statusline =
     "%m" ..                   -- modifed
     "%r" ..                   -- readonly
     "%=" ..                   -- separator
-    "%l:%c / %L" ..           -- current line and column per total lines
-    " "                       -- padding
+    " %{&fileencoding} " ..   -- file encoding
+    "|" ..                    -- padding
+    " %{&fileformat} " ..     -- file format
+    "|" ..                    -- padding
+    " %c:%l/%L "              -- column at line per total lines

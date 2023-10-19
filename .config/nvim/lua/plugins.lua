@@ -83,13 +83,19 @@ return require("lazy").setup({
         "https://github.com/stevearc/oil.nvim",
         cmd = "Oil",
         config = function()
-            require("oil").setup({
+            local oil = require("oil")
+            oil.setup({
                 columns = {},
                 view_options = {
                     show_hidden = true,
                 },
                 win_options = {
                     concealcursor = "nvic",
+                },
+                keymaps = {
+                    ["<Leader><Leader>"] = function()
+                        vim.cmd("Files! " .. oil.get_current_dir())
+                    end,
                 },
             })
         end,

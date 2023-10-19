@@ -155,7 +155,7 @@ return require("lazy").setup({
                 vim.keymap.set("n", "gs", vim.lsp.buf.signature_help, opts)
                 vim.keymap.set("n", "gR", vim.lsp.buf.rename, opts)
                 vim.keymap.set({ "n", "x" }, "<Leader>=", vim.lsp.buf.format, opts)
-                vim.keymap.set("n", "cA", vim.lsp.buf.code_action, opts)
+                vim.keymap.set("n", "<Leader>ca", vim.lsp.buf.code_action, opts)
                 vim.keymap.set("n", "gl", vim.diagnostic.open_float, opts)
                 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
                 vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
@@ -228,6 +228,7 @@ return require("lazy").setup({
 
     {
         "https://github.com/echasnovski/mini.surround",
+        event = "VeryLazy",
         config = function()
             require("mini.surround").setup({
                 mappings = {
@@ -241,9 +242,6 @@ return require("lazy").setup({
                 },
             })
         end,
-        keys = {
-            { "gz", desc = "Surround", mode = { "n", "v" } },
-        },
     },
     -- }}}
 

@@ -13,7 +13,6 @@ vim.opt.number = true         -- set numbered lines
 vim.opt.relativenumber = true -- show relative line number
 vim.opt.signcolumn = "yes"    -- always show the sign column, otherwise it would shift the text each time
 vim.opt.scrolloff = 3         -- minimal number of screen lines to keep above and below the cursor
-vim.opt.sidescrolloff = 3     -- minimal number of screen columns to keep to the left and right of the cursor if wrap is `false`
 
 -- Custom statusline
 vim.opt.laststatus = 3        -- global statusline

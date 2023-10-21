@@ -109,8 +109,9 @@ return require("lazy").setup({
             "https://github.com/williamboman/mason.nvim",
             "https://github.com/williamboman/mason-lspconfig.nvim",
             "https://github.com/neovim/nvim-lspconfig",
-            "https://github.com/hrsh7th/cmp-nvim-lsp",
             "https://github.com/hrsh7th/nvim-cmp",
+            "https://github.com/hrsh7th/cmp-nvim-lsp",
+            "https://github.com/hrsh7th/cmp-path",
             "https://github.com/L3MON4D3/LuaSnip",
         },
         event = "VeryLazy",
@@ -134,7 +135,7 @@ return require("lazy").setup({
                 },
             })
 
-            -- Manually start LSP server after lazy load
+            -- HACK Manually start LSP server after lazy load
             -- TODO use lazy.nvim LazyFile when available
             vim.cmd("filetype detect")
 
@@ -142,6 +143,10 @@ return require("lazy").setup({
             local cmp_action = require("lsp-zero").cmp_action()
 
             cmp.setup({
+                sources = {
+                    { name = "path" },
+                    { name = "nvim_lsp" },
+                },
                 mapping = cmp.mapping.preset.insert({
                     ["<CR>"] = cmp.mapping.confirm(),
                     ["<Tab>"] = cmp_action.luasnip_supertab(),

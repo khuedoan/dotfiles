@@ -3,6 +3,9 @@ vim.g.mapleader = " "
 
 local keymaps = {
     ["<Leader>"] = {
+        w = { "<Cmd>w<CR>", "Write" },
+        q = { "<Cmd>q<CR>", "Quit" },
+        x = { "<Cmd>x<CR>", "Update and quit" },
         b = {
             name = "buffer",
             b = { "<Cmd>Buffers!<CR>", "Switch buffer" },
@@ -21,13 +24,6 @@ local keymaps = {
             name = "project",
             b = { "<Cmd>Oil<CR>", "Browse project from here" },
             B = { "<Cmd>Oil .<CR>", "Browse project" },
-        },
-        q = {
-            name = "quit",
-            q = { "<Cmd>quit<CR>", "Quit" },
-            Q = { "<Cmd>quit<CR>", "Quit (force)" },
-            a = { "<Cmd>quit<CR>", "Quit all" },
-            A = { "<Cmd>quit<CR>", "Quit all (force)" },
         },
         s = {
             name = "search",
@@ -50,6 +46,7 @@ local keymaps = {
         o = {
             name = "open",
             t = { "<Cmd>edit ~/Documents/notes/todo.md<CR>", "Todo list" },
+            c = { "<Cmd>Oil ~/.config/nvim/<CR>", "Neovim config" },
         },
         y = {
             name = "yank",
@@ -66,8 +63,6 @@ keymaps["<Leader>"]["/"] = keymaps["<Leader>"].s.p
 keymaps["<Leader>"]["?"] = keymaps["<Leader>"].s.P
 keymaps["<Leader>"][","] = keymaps["<Leader>"].b.b
 keymaps["<C-c>"] = keymaps["<Leader>"].y.c
-keymaps["<C-s>"] = keymaps["<Leader>"].f.s
-keymaps["<C-q>"] = keymaps["<Leader>"].q.q
 keymaps["-"] = keymaps["<Leader>"].p.b
 keymaps["_"] = keymaps["<Leader>"].p.B
 

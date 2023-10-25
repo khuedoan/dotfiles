@@ -196,7 +196,6 @@ return require("lazy").setup({
         config = function()
             require("neogit").setup({
                 disable_commit_confirmation = true,
-                kind = "split",
             })
         end,
     },

@@ -58,6 +58,11 @@ return require("lazy").setup({
             })
         end,
     },
+
+    {
+        "https://github.com/stevearc/dressing.nvim",
+        event = "VeryLazy",
+    },
     -- }}}
 
     -- {{{ Search
@@ -70,11 +75,6 @@ return require("lazy").setup({
         config = function()
             vim.g.fzf_buffers_jump = 1
         end,
-    },
-
-    {
-        "https://github.com/stevearc/dressing.nvim",
-        event = "VeryLazy",
     },
     -- }}}
 

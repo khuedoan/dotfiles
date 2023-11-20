@@ -183,10 +183,19 @@ return require("lazy").setup({
     },
 
     -- Additional language support
-    -- TODO when after treesitter is stable and merged to nvim core
+    -- TODO remove when Tree-sitter is stable and merged to nvim core
     -- https://github.com/nvim-treesitter/nvim-treesitter/issues/4767
     { "https://github.com/hashivim/vim-terraform", ft = { "terraform", "terraform-vars", "hcl" } },
     { "https://github.com/rodjek/vim-puppet",      ft = { "puppet", "epuppet" } },
+
+    -- Integrate with LLMs (requires Ollama)
+    {
+        "https://github.com/David-Kunz/gen.nvim",
+        cmd = "Gen",
+        config = function()
+            require("gen").model = "mistral:instruct"
+        end,
+    },
     -- }}}
 
     -- {{{ Git

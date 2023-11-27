@@ -1,38 +1,16 @@
 {
-  "settingsVersion": "1.67.1",
+  "keyMappings": "unmap d\nmap <c-d> scrollPageDown\nunmap u\nmap <c-u> scrollPageUp\n\nunmap f\nmap s LinkHints.activateMode\nunmap F\nmap S LinkHints.activateModeToOpenInNewTab",
+  "smoothScroll": false,
+  "searchEngines": "",
+  "settingsVersion": "2.0.5",
   "exclusionRules": [
     {
-      "pattern": "https?://mail.google.com/*",
-      "passKeys": ""
+      "passKeys": "",
+      "pattern": "https?://mail.google.com/*"
     },
     {
-      "pattern": "https?://www.youtube.com/*",
-      "passKeys": "jkl,.<>mf"
-    },
-    {
-      "pattern": "https?://haxplore.com/*",
-      "passKeys": ""
-    },
-    {
-      "pattern": "https?://killer.sh/*",
-      "passKeys": ""
+      "passKeys": "jkl,.<>mf",
+      "pattern": "https?://www.youtube.com/watch*"
     }
-  ],
-  "filterLinkHints": false,
-  "waitForEnterForFilteredHints": true,
-  "hideHud": false,
-  "keyMappings": "unmap d\nmap <c-d> scrollPageDown\nunmap u\nmap <c-u> scrollPageUp\n\nunmap f\nmap s LinkHints.activateMode\nunmap F\nmap S LinkHints.activateModeToOpenInNewTab",
-  "linkHintCharacters": "sadfjklewcmpgh",
-  "linkHintNumbers": "0123456789",
-  "newTabUrl": "about:newtab",
-  "nextPatterns": "next,more,newer,>,›,→,»,≫,>>",
-  "previousPatterns": "prev,previous,back,older,<,‹,←,«,≪,<<",
-  "regexFindMode": false,
-  "ignoreKeyboardLayout": false,
-  "scrollStepSize": 60,
-  "smoothScroll": false,
-  "grabBackFocus": false,
-  "searchEngines": "",
-  "searchUrl": "https://www.google.com/search?q=",
-  "userDefinedLinkHintCss": "div > .vimiumHintMarker {\n  background: #FFFFFF;\n  border: 0px solid #000000;\n}"
+  ]
 }

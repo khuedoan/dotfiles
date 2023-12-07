@@ -64,7 +64,6 @@ This is more accurate than `nvim --startuptime`.
 ## Acknowledgements
 
 - [Lost In Mind by Paul Brennus](https://www.artstation.com/artwork/Z50d9R), [converted to Nord theme](https://user-images.githubusercontent.com/27996771/129466074-64c92948-96b0-4673-be33-75ee26b82a6c.jpg) palette using [ImageGoNord](https://github.com/Schrodinger-Hat/ImageGoNord)
-- [Show sxhkd key bindings with fuzzy search script](https://www.reddit.com/r/bspwm/comments/aejyze/tip_show_sxhkd_keybindings_with_fuzzy_search/)
 - [LunarVim/LunarVim Neovim config](https://github.com/ChristianChiarulli/LunarVim)
 - [LunarVim/nvim-basic-ide Neovim config](https://github.com/LunarVim/nvim-basic-ide)
 - [siduck76/NvChad Neovim config](https://github.com/siduck76/NvChad)

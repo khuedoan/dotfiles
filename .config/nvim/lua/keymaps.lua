@@ -3,9 +3,6 @@ vim.g.mapleader = " "
 
 local keymaps = {
     ["<Leader>"] = {
-        w = { "<Cmd>w<CR>", "Write" },
-        q = { "<Cmd>q<CR>", "Quit" },
-        x = { "<Cmd>x<CR>", "Update and quit" },
         b = {
             name = "buffer",
             b = { "<Cmd>Buffers!<CR>", "Switch buffer" },

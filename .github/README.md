@@ -1,96 +1,68 @@
 # My ~
 
-![Screenshot](https://user-images.githubusercontent.com/27996771/124107685-b19d8100-da8f-11eb-8e23-c5944d957c15.png)
+Minimal, performance-focused dotfiles. Extremely snappy without sacrificing convenience.
 
-## Table of contents
+## Usage
 
-<!-- vim-markdown-toc GFM -->
+My `$HOME` directory is basically just a Git repository that ignores untracked files by default,
+allowing me to manage my dotfiles like any other projects.
 
-- [Getting Started](#getting-started)
-  - [Prerequisites](#prerequisites)
-  - [Installation](#installation)
-    - [Linux](#linux)
-    - [macOS](#macos)
-  - [Quick usage instruction](#quick-usage-instruction)
-- [Features](#features)
-  - [Version control](#version-control)
-  - [Wallpapers](#wallpapers)
-- [Acknowledgements](#acknowledgements)
-
-<!-- vim-markdown-toc -->
-
-## Getting Started
-
-### Prerequisites
-
-You can skip this step if you're using Arch Linux, use the install script below to install these packages automatically.
-
-Install the following packages:
-
-- `git`
-- `xorg-server`
-- `xorg-xinit`
-- `bspwm`
-- `sxhkd`
-- [`polybar`](https://aur.archlinux.org/packages/polybar/)
-- [`dmenu`](https://github.com/khuedoan/dmenu)
-- [`st`](https://github.com/khuedoan/st)
-- [`slock`](https://github.com/khuedoan/slock)
-- [`picom-git`](https://aur.archlinux.org/packages/picom-git/)
-- [`nerd-fonts-fira-mono`](https://aur.archlinux.org/packages/nerd-fonts-fira-mono/)
-
-### Installation
-
-#### Linux
-
-```
-git clone https://github.com/khuedoan/linux-setup
-cd linux-setup
-make init dotfiles
+```ini
+; ~/.git/config
+[status]
+    showUntrackedFiles = no
 ```
 
-#### macOS
+I also have an automated setup that can configure everything from scratch using Nix,
+which is available at [khuedoan/nixos-setup](https://github.com/khuedoan/nixos-setup).
+
+My dotfiles are optimized for Linux, but since they are POSIX compliant, they should
+work on macOS or BSD as well (as long as the necessary packages are available).
+
+Please feel free to copy bits and pieces that you like ;)
+
+## Performance
+
+I always try to lazy load where possible.
+This section attempts to demonstrate how snappy it is.
+
+> - Last updated: December 7, 2023
+> - Hardware: Ryzen 5 5600X, 32GB of RAM, running NixOS 23.11
+
+Opening Zsh:
+
+`time zsh -i -c exit` (47ms)
 
 ```
-git clone https://github.com/khuedoan/macos-setup
-cd macos-setup
-make init dotfiles
+zsh -i -c exit  0.04s user 0.01s system 100% cpu 0.047 total
 ```
 
-### Quick usage instruction
+Opening the terminal (including waiting for the shell):
 
-Some key mapping are changed, you can change this in `.xinitrc`:
+`time foot zsh -i -c exit` (67ms)
 
-- Left Alt and Left Super is swapped
-
-Some basic key bindings:
-
-- `super + /`         for key bindings help
-- `super + enter`     for terminal
-- `super + space`     for app launcher
-- `super + shift + q` to quit app
-
-## Features
-
-### Version control
-
-Make change to the config files to suit your needs, then use the `git` for version control like normal. For example:
-
-```sh
-cd ~
-git add .config/foo
-git commit
-git push
-git pull
+```
+foot zsh -i -c exit  0.05s user 0.02s system 103% cpu 0.067 total
 ```
 
-### Wallpaper
+Opening Neovim with 32 plugins:
 
-[Lost In Mind by Paul Brennus](https://www.artstation.com/artwork/Z50d9R), [converted to Nord theme](https://user-images.githubusercontent.com/27996771/129466074-64c92948-96b0-4673-be33-75ee26b82a6c.jpg) palette using [ImageGoNord](https://github.com/Schrodinger-Hat/ImageGoNord)
+`:Lazy profile` (15ms)
+
+```
+Startuptime: 15.46ms
+
+Based on the actual CPU time of the Neovim process till UIEnter.
+This is more accurate than `nvim --startuptime`.
+  LazyStart 4.97ms
+  LazyDone  10.65ms (+5.68ms)
+  UIEnter   15.46ms (+4.81ms)
+```
 
 ## Acknowledgements
 
-- [show sxhkd key bindings with fuzzy search script](https://www.reddit.com/r/bspwm/comments/aejyze/tip_show_sxhkd_keybindings_with_fuzzy_search/)
+- [Lost In Mind by Paul Brennus](https://www.artstation.com/artwork/Z50d9R), [converted to Nord theme](https://user-images.githubusercontent.com/27996771/129466074-64c92948-96b0-4673-be33-75ee26b82a6c.jpg) palette using [ImageGoNord](https://github.com/Schrodinger-Hat/ImageGoNord)
+- [Show sxhkd key bindings with fuzzy search script](https://www.reddit.com/r/bspwm/comments/aejyze/tip_show_sxhkd_keybindings_with_fuzzy_search/)
 - [LunarVim/LunarVim Neovim config](https://github.com/ChristianChiarulli/LunarVim)
 - [LunarVim/nvim-basic-ide Neovim config](https://github.com/LunarVim/nvim-basic-ide)
 - [siduck76/NvChad Neovim config](https://github.com/siduck76/NvChad)

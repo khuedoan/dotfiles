@@ -1,0 +1,39 @@
+# vi: ft=swayconfig
+
+set $background #282c34
+set $foreground #abb2bf
+
+set $black   #21252b
+set $red     #be5046
+set $green   #98c379
+set $yellow  #d19a66
+set $blue    #61afef
+set $magenta #c678dd
+set $cyan    #56b6c2
+set $white   #828997
+
+# class                  border       background  text        indicator   child_border
+client.background                     $background
+client.focused           $foreground  $foreground $black      $foreground $foreground
+client.focused_inactive  $black       $black      $foreground $black      $black
+client.focused_tab_title $black       $black      $foreground
+client.unfocused         $black       $black      $white      $black      $black
+client.urgent            $red         $red        $black      $red        $red
+client.placeholder       $background  $background $foreground $background $background
+
+bar {
+    colors {
+        background         #21252bbb
+        statusline         $foreground
+        separator          $white
+
+        # class            border background  text
+        focused_workspace  $white $foreground $black
+        active_workspace   $white $foreground $black
+        inactive_workspace $black $background $white
+        urgent_workspace   $black $red        $black
+    }
+
+    position top
+    status_command i3status-rs
+}

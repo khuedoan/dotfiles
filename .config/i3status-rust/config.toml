@@ -1,0 +1,20 @@
+[theme]
+theme = "native"
+
+[icons]
+icons = "material-nf"
+
+[[block]]
+block = "cpu"
+
+[[block]]
+block = "disk_space"
+
+[[block]]
+block = "memory"
+
+[[block]]
+block = "sound"
+
+[[block]]
+block = "time"

@@ -1,0 +1,30 @@
+# vi: ft=swayconfig
+
+focus_follows_mouse no
+smart_borders on
+title_align center
+titlebar_border_thickness 0
+titlebar_padding 2
+
+input "type:pointer" {
+    accel_profile flat
+}
+
+input "type:touchpad" {
+    click_method clickfinger
+    middle_emulation enabled
+    natural_scroll enabled
+    scroll_factor 0.2
+    tap enabled
+}
+
+output "*" {
+    bg ~/Pictures/Wallpapers/LostInMindNord.jpg fill
+}
+
+exec_always autotiling
+exec systemctl --user start easyeffects
+exec ibus-daemon -drx
+
+include ~/.config/sway/config.d/*
+include /etc/sway/config.d/*

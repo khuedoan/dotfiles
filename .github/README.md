@@ -2,6 +2,8 @@
 
 Minimal, performance-focused dotfiles. Extremely snappy without sacrificing convenience.
 
+![Screenshot](https://github.com/khuedoan/dotfiles/assets/27996771/f7f3b6e4-7e67-44f7-8e01-314be33c4829)
+
 ## Usage
 
 My `$HOME` directory is basically just a Git repository that ignores untracked files by default,

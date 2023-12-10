@@ -22,7 +22,7 @@ output "*" {
     bg ~/Pictures/Wallpapers/LostInMindNord.jpg fill
 }
 
-exec_always autotiling
+exec autotiling
 exec systemctl --user start easyeffects
 exec ibus-daemon -drx
 

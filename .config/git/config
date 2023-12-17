@@ -5,7 +5,3 @@
 	rebase = false
 [push]
 	autoSetupRemote = true
-[include]
-	path = .config/git/config
-[core]
-	excludesfile = ~/.config/git/ignore

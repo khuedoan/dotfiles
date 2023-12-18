@@ -15,26 +15,19 @@ alias gco='git checkout'
 alias gcob='git checkout -b'
 alias gcom='git checkout master'
 alias gp='git push'
-alias gP='git push --set-upstream origin HEAD'
 alias gl='git log --all --decorate --oneline --graph'
 alias gL='git log -p'
 alias gt='git ls-tree -r "$(git rev-parse --abbrev-ref HEAD)" --name-only | tree --fromfile'
-
-# aria2
-alias dl='aria2c --console-log-level=warn --max-connection-per-server=16 --split=16'
 
 # tmux
 alias t='tmux'
 alias ta='tmux attach'
 
 # less
-alias less='less --raw-control-chars'
+alias less='less --RAW-CONTROL-CHARS'
 
 # diff
 alias diff='git diff --no-index'
-
-# feh
-alias feh='feh --scale-down --auto-zoom'
 
 # nvim
 alias v='nvim'

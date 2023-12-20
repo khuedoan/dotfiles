@@ -71,7 +71,7 @@ bindsym ctrl+Print exec grim -g "$(slurp)" - | wl-copy
 
 # Apps
 
-bindsym $mod+Space exec rofi -show drun -show-icons
+bindsym $mod+Space exec rofi -show drun
 bindsym $mod+Return exec cd $(swaycwd) && foot
 bindsym $mod+Shift+Return exec foot
 bindsym $mod+Shift+p exec MENU='rofi -dmenu -p OTP -i' otp

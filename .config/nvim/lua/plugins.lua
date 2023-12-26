@@ -88,6 +88,9 @@ return require("lazy").setup({
                 columns = {},
                 view_options = {
                     show_hidden = true,
+                    is_always_hidden = function(name, bufnr)
+                        return name == ".."
+                    end,
                 },
                 win_options = {
                     concealcursor = "nvic",

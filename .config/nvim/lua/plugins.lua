@@ -115,6 +115,7 @@ return require("lazy").setup({
             "https://github.com/hrsh7th/nvim-cmp",
             "https://github.com/hrsh7th/cmp-nvim-lsp",
             "https://github.com/hrsh7th/cmp-path",
+            "https://github.com/hrsh7th/cmp-buffer",
             "https://github.com/L3MON4D3/LuaSnip",
         },
         event = "VeryLazy",
@@ -147,8 +148,9 @@ return require("lazy").setup({
 
             cmp.setup({
                 sources = {
-                    { name = "path" },
                     { name = "nvim_lsp" },
+                    { name = "path" },
+                    { name = "buffer" },
                 },
                 mapping = cmp.mapping.preset.insert({
                     ["<CR>"] = cmp.mapping.confirm(),

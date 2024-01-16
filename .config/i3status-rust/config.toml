@@ -5,6 +5,9 @@ theme = "native"
 icons = "material-nf"
 
 [[block]]
+block = "net"
+
+[[block]]
 block = "cpu"
 
 [[block]]
@@ -18,3 +21,6 @@ block = "sound"
 
 [[block]]
 block = "time"
+
+[[block]]
+block = "battery"

@@ -103,6 +103,22 @@ return require("lazy").setup({
             })
         end,
     },
+
+    {
+        "https://github.com/ThePrimeagen/harpoon",
+        branch = "harpoon2",
+        event = "VeryLazy",
+        config = function()
+            local harpoon = require("harpoon")
+            harpoon:setup()
+
+            for i = 1, 5 do
+                vim.keymap.set("n", "<C-" .. i .. ">", function()
+                    harpoon:list():select(i)
+                end)
+            end
+        end,
+    },
     -- }}}
 
     -- {{{ IntelliSense

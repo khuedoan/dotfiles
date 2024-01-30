@@ -21,6 +21,18 @@ local keymaps = {
             name = "project",
             b = { "<Cmd>Oil<CR>", "Browse project from here" },
             B = { "<Cmd>Oil .<CR>", "Browse project" },
+            a = {
+                function()
+                    require("harpoon"):list():append()
+                end,
+                "Add current file to pinned list",
+            },
+            p = {
+                function()
+                    require("harpoon").ui:toggle_quick_menu(require("harpoon"):list())
+                end,
+                "Browse pinned files in project",
+            },
         },
         s = {
             name = "search",

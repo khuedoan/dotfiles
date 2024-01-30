@@ -5,3 +5,6 @@
 	rebase = false
 [push]
 	autoSetupRemote = true
+
+[include]
+    path = ./work

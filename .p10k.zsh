@@ -48,19 +48,19 @@ typeset -g POWERLEVEL9K_VCS_DISABLED_WORKDIR_PATTERN='~'
 # command_execution_time
 typeset -g POWERLEVEL9K_COMMAND_EXECUTION_TIME_PRECISION=0
 
-# kubecontext TODO
+# kubecontext
 typeset -g POWERLEVEL9K_KUBECONTEXT_FOREGROUND=0
-typeset -g POWERLEVEL9K_KUBECONTEXT_SHOW_ON_COMMAND='kubectl|helm|istioctl'
+typeset -g POWERLEVEL9K_KUBECONTEXT_SHOW_ON_COMMAND='kubectl|helm'
 
 # aws
-typeset -g POWERLEVEL9K_AWS_SHOW_ON_COMMAND='aws|terraform'
+typeset -g POWERLEVEL9K_AWS_SHOW_ON_COMMAND='aws|terraform|terragrunt'
 
 # azure
 typeset -g POWERLEVEL9K_AZURE_FOREGROUND=0
-typeset -g POWERLEVEL9K_AZURE_SHOW_ON_COMMAND='az|terraform'
+typeset -g POWERLEVEL9K_AZURE_SHOW_ON_COMMAND='az|terraform|terragrunt'
 
 # gcloud
-typeset -g POWERLEVEL9K_GCLOUD_SHOW_ON_COMMAND='gcloud|gcs|terraform'
+typeset -g POWERLEVEL9K_GCLOUD_SHOW_ON_COMMAND='gcloud|gcs|terraform|terragrunt'
 
 # context
 typeset -g POWERLEVEL9K_CONTEXT_{DEFAULT,SUDO}_{CONTENT,VISUAL_IDENTIFIER}_EXPANSION=

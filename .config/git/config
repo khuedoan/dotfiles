@@ -2,9 +2,13 @@
 	name = Khue Doan
 	email = mail@khuedoan.com
 [pull]
-	rebase = false
+	rebase = true
 [push]
 	autoSetupRemote = true
+[rerere]
+	enabled = true
+[branch]
+	sort = -committerdate
 
 [include]
-    path = ./work
+	path = ./work

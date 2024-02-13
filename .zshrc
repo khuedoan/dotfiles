@@ -9,8 +9,7 @@ zinit light-mode depth=1 atload="source $HOME/.p10k.zsh" for romkatv/powerlevel1
 zinit wait lucid light-mode depth=1 nocd for \
     atinit'ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay' zdharma-continuum/fast-syntax-highlighting \
     atload='_zsh_autosuggest_start' zsh-users/zsh-autosuggestions \
-    atload='MODE_CURSOR_VIINS="bar"; vim-mode-cursor-init-hook' softmoth/zsh-vim-mode \
-    Aloxaf/fzf-tab
+    atload='MODE_CURSOR_VIINS="bar"; vim-mode-cursor-init-hook' softmoth/zsh-vim-mode
 zinit wait lucid is-snippet for \
     https://github.com/ahmetb/kubectl-aliases/blob/master/.kubectl_aliases \
     https://github.com/ajeetdsouza/zoxide/blob/main/zoxide.plugin.zsh \

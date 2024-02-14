@@ -1,5 +1,6 @@
 #!/bin/sh
 
 find ~/.password-store -type f -name '*.gpg' -exec basename {} .gpg \; \
+| tac \
 | ${MENU:-fzf} \
 | xargs pass otp --clip

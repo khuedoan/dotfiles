@@ -62,6 +62,9 @@ return require("lazy").setup({
         },
         config = function()
             vim.g.fzf_buffers_jump = 1
+            vim.g.fzf_layout = {
+                down = '~50%',
+            }
         end,
     },
     -- }}}

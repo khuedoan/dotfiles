@@ -2,9 +2,7 @@
 
 focus_follows_mouse no
 smart_borders on
-title_align center
-titlebar_border_thickness 0
-titlebar_padding 2
+default_border pixel
 
 input "type:pointer" {
     accel_profile flat

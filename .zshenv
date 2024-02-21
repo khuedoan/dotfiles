@@ -27,9 +27,6 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 export PIPENV_HIDE_EMOJIS=1
 export MINIKUBE_IN_STYLE=0
 
-# nnn
-export NNN_PLUG='f:fzcd;n:bulknew;z:autojump'
-
 # fzf
 export FZF_DEFAULT_COMMAND='fd --type file --strip-cwd-prefix'
 export FZF_DEFAULT_OPTS='--color=16 --layout=reverse --cycle'

@@ -83,6 +83,7 @@ keymaps["<Leader>"]["<Leader>"] = keymaps["<Leader>"].f.g
 keymaps["<Leader>"]["/"] = keymaps["<Leader>"].s.p
 keymaps["<Leader>"]["?"] = keymaps["<Leader>"].s.P
 keymaps["<Leader>"][","] = keymaps["<Leader>"].b.b
+keymaps["<C-Tab>"] = keymaps["<Leader>"].b.l
 keymaps["<C-c>"] = keymaps["<Leader>"].y.c
 keymaps["-"] = keymaps["<Leader>"].p.b
 keymaps["_"] = keymaps["<Leader>"].p.B

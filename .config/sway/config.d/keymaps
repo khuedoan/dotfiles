@@ -20,6 +20,8 @@ bindsym $mod+Shift+q kill
 
 # Workspace
 
+bindsym $mod+Tab workspace back_and_forth
+
 bindsym $mod+1 workspace number 1
 bindsym $mod+2 workspace number 2
 bindsym $mod+3 workspace number 3

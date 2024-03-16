@@ -7,7 +7,6 @@
   "dressing.nvim": { "branch": "master", "commit": "18e5beb3845f085b6a33c24112b37988f3f93c06" },
   "fzf": { "branch": "master", "commit": "8977c9257a8093a82a2cffa4f7e6974e43206ef4" },
   "fzf.vim": { "branch": "master", "commit": "e69f2dcdad44e7eafe764969ed7281d7290db18f" },
-  "gen.nvim": { "branch": "main", "commit": "2cb643b1a827bcdfc665a37d5f8174249d2d5bf5" },
   "gitsigns.nvim": { "branch": "main", "commit": "4e348641b8206c3b8d23080999e3ddbe4ca90efc" },
   "harpoon": { "branch": "harpoon2", "commit": "a38be6e0dd4c6db66997deab71fc4453ace97f9c" },
   "indent-blankline.nvim": { "branch": "master", "commit": "3d08501caef2329aba5121b753e903904088f7e6" },

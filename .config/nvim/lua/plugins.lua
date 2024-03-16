@@ -199,15 +199,6 @@ return require("lazy").setup({
     -- https://github.com/nvim-treesitter/nvim-treesitter/issues/4767
     { "https://github.com/hashivim/vim-terraform", ft = { "terraform", "terraform-vars", "hcl" } },
     { "https://github.com/rodjek/vim-puppet",      ft = { "puppet", "epuppet" } },
-
-    -- Integrate with LLMs (requires Ollama)
-    {
-        "https://github.com/David-Kunz/gen.nvim",
-        cmd = "Gen",
-        config = function()
-            require("gen").model = "mistral:instruct"
-        end,
-    },
     -- }}}
 
     -- {{{ Git

@@ -23,7 +23,7 @@ local keymaps = {
             B = { "<Cmd>Oil .<CR>", "Browse project" },
             a = {
                 function()
-                    require("harpoon"):list():append()
+                    require("harpoon"):list():add()
                 end,
                 "Add current file to pinned list",
             },
@@ -38,7 +38,7 @@ local keymaps = {
             name = "search",
             l = { "<Cmd>FzfLua blines<CR>", "Search lines in current file" },
             p = { "<Cmd>FzfLua grep_project<CR>", "Search project (fuzzy)" },
-            P = { "<Cmd>FzfLua live_grep<CR>", "Search project (exact)" },
+            P = { "<Cmd>FzfLua live_grep<CR>", "Search project (regex)" },
         },
         g = {
             name = "git",
@@ -83,6 +83,8 @@ keymaps["<Leader>"]["<Leader>"] = keymaps["<Leader>"].f.f
 keymaps["<Leader>"]["/"] = keymaps["<Leader>"].s.p
 keymaps["<Leader>"]["?"] = keymaps["<Leader>"].s.P
 keymaps["<Leader>"][","] = keymaps["<Leader>"].b.b
+keymaps["<Leader>"]["."] = keymaps["<Leader>"].p.p
+keymaps["<Leader>"][">"] = keymaps["<Leader>"].p.a
 keymaps["<C-Tab>"] = keymaps["<Leader>"].b.l
 keymaps["<C-c>"] = keymaps["<Leader>"].y.c
 keymaps["-"] = keymaps["<Leader>"].p.b

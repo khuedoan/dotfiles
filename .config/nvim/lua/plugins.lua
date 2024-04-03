@@ -133,8 +133,6 @@ return require("lazy").setup({
             require("mason-lspconfig").setup({
                 ensure_installed = {
                     -- :help lspconfig-all
-                    "bashls",
-                    "bufls",
                     "gopls",
                     "lua_ls",
                     "pyright",

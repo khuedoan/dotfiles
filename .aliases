@@ -16,7 +16,7 @@ alias gcob='git checkout -b'
 alias gcom='git checkout master'
 alias gp='git push'
 alias gl='git log --decorate --oneline --graph'
-alias gL='git log -p'
+alias gL='git log -p --shortstat'
 alias gt='git ls-tree -r "$(git rev-parse --abbrev-ref HEAD)" --name-only | tree --fromfile'
 
 # tmux

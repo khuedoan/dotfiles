@@ -55,16 +55,17 @@ return require("lazy").setup({
 
     -- {{{ Search
     {
-        "https://github.com/junegunn/fzf.vim",
+        "https://github.com/ibhagwan/fzf-lua",
         event = "VeryLazy",
-        dependencies = {
-            "https://github.com/junegunn/fzf",
-        },
         config = function()
-            vim.g.fzf_buffers_jump = 1
-            vim.g.fzf_layout = {
-                down = '~50%',
-            }
+            require("fzf-lua").setup({
+                "max-perf",
+                winopts = {
+                    height = 0.5,
+                    width = 1,
+                    row = 1,
+                },
+            })
         end,
     },
     -- }}}
@@ -85,11 +86,6 @@ return require("lazy").setup({
                 },
                 win_options = {
                     concealcursor = "nvic",
-                },
-                keymaps = {
-                    ["<Leader><Leader>"] = function()
-                        vim.cmd("Files! " .. oil.get_current_dir())
-                    end,
                 },
             })
         end,

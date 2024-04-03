@@ -5,7 +5,7 @@ local keymaps = {
     ["<Leader>"] = {
         b = {
             name = "buffer",
-            b = { "<Cmd>Buffers<CR>", "Switch buffer" },
+            b = { "<Cmd>FzfLua buffers<CR>", "Switch buffer" },
             n = { "<Cmd>bnext<CR>", "Next buffer" },
             p = { "<Cmd>bprevious<CR>", "Previous buffer" },
             d = { function() require("mini.bufremove").delete(0) end, "Delete buffer" },
@@ -13,8 +13,8 @@ local keymaps = {
         },
         f = {
             name = "find",
-            f = { "<Cmd>Files<CR>", "Find file" },
-            g = { "<Cmd>GitFiles<CR>", "Find git file" },
+            f = { "<Cmd>FzfLua files<CR>", "Find file" },
+            g = { "<Cmd>FzfLua git_files<CR>", "Find git file" },
             s = { "<Cmd>update<CR>", "Save" },
         },
         p = {
@@ -36,9 +36,9 @@ local keymaps = {
         },
         s = {
             name = "search",
-            l = { "<Cmd>Lines<CR>", "Search lines in current file" },
-            p = { "<Cmd>Rg<CR>", "Search project (fuzzy)" },
-            P = { "<Cmd>RG<CR>", "Search project (exact)" },
+            l = { "<Cmd>FzfLua blines<CR>", "Search lines in current file" },
+            p = { "<Cmd>FzfLua grep_project<CR>", "Search project (fuzzy)" },
+            P = { "<Cmd>FzfLua live_grep<CR>", "Search project (exact)" },
         },
         g = {
             name = "git",
@@ -79,7 +79,7 @@ local keymaps = {
 }
 
 -- Aliases
-keymaps["<Leader>"]["<Leader>"] = keymaps["<Leader>"].f.g
+keymaps["<Leader>"]["<Leader>"] = keymaps["<Leader>"].f.f
 keymaps["<Leader>"]["/"] = keymaps["<Leader>"].s.p
 keymaps["<Leader>"]["?"] = keymaps["<Leader>"].s.P
 keymaps["<Leader>"][","] = keymaps["<Leader>"].b.b

@@ -222,6 +222,7 @@ return require("lazy").setup({
     -- }}}
 
     -- {{{ Motions
+    -- TODO decide which one I actually prefer, leap or flash
     {
         "https://github.com/ggandor/leap.nvim",
         event = "VeryLazy",
@@ -243,6 +244,14 @@ return require("lazy").setup({
                 bold = true,
                 nocombine = true,
             })
+        end,
+    },
+
+    {
+        "https://github.com/folke/flash.nvim",
+        event = "VeryLazy",
+        config = function()
+            require("flash").setup({})
         end,
     },
 

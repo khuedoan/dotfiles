@@ -5,7 +5,6 @@
   "cmp-nvim-lsp": { "branch": "main", "commit": "5af77f54de1b16c34b23cba810150689a3a90312" },
   "cmp-path": { "branch": "main", "commit": "91ff86cd9c29299a64f968ebb45846c485725f23" },
   "dressing.nvim": { "branch": "master", "commit": "18e5beb3845f085b6a33c24112b37988f3f93c06" },
-  "flash.nvim": { "branch": "main", "commit": "48817af25f51c0590653bbc290866e4890fe1cbe" },
   "fzf-lua": { "branch": "main", "commit": "b5e08be6835e7ef81d0b90ac58c185e276a771cd" },
   "gitsigns.nvim": { "branch": "main", "commit": "4db6e851527ac09f540cd910b1484de1e6551b3b" },
   "harpoon": { "branch": "harpoon2", "commit": "4ad05be8fe98092f0dec3bc3b47abebb59c3814a" },

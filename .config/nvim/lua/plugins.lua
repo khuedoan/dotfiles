@@ -133,6 +133,7 @@ return require("lazy").setup({
                     "lua_ls",
                     "pyright",
                     "rust_analyzer",
+                    "terraformls",
                     "tsserver",
                 },
                 handlers = {

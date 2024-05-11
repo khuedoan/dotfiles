@@ -39,6 +39,8 @@ local keymaps = {
             l = { "<Cmd>FzfLua blines<CR>", "Search lines in current file" },
             p = { "<Cmd>FzfLua grep_project<CR>", "Search project (fuzzy)" },
             P = { "<Cmd>FzfLua live_grep<CR>", "Search project (regex)" },
+            r = { function() require("grug-far").grug_far({}) end, "Search and replace" },
+            R = { function() require("grug-far").grug_far({ prefills = { flags = vim.fn.expand("%") } }) end, "Search and replace in current file" },
         },
         g = {
             name = "git",

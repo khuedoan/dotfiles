@@ -43,3 +43,6 @@ alias gplv3='curl "https://www.gnu.org/licenses/gpl-3.0.md" > LICENSE.md'
 
 # kubectl
 alias kc='kubectx'
+
+# nix
+alias ns='nix-shell --log-format bar --command "${SHELL}" --packages'

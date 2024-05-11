@@ -18,6 +18,9 @@ block = "memory"
 
 [[block]]
 block = "sound"
+[[block.click]]
+button = "left"
+cmd = "pavucontrol"
 
 [[block]]
 block = "time"

@@ -211,12 +211,10 @@ return require("lazy").setup({
     },
 
     {
-        "https://github.com/lewis6991/gitsigns.nvim",
+        "https://github.com/echasnovski/mini.diff",
         event = "VeryLazy",
         config = function()
-            require("gitsigns").setup({
-                current_line_blame = true,
-            })
+            require("mini.diff").setup({})
         end,
     },
     -- }}}

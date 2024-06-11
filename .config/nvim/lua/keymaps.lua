@@ -44,19 +44,14 @@ local keymaps = {
         },
         g = {
             name = "git",
-            s = { "<Cmd>Neogit<CR>", "Git status" },
-            b = {
-                function()
-                    require("gitsigns").blame_line({ full = true })
-                end,
-                "Blame current line",
-            },
             h = {
                 name = "Hunk",
                 s = { require("gitsigns").stage_hunk, "Stage hunk" },
                 u = { require("gitsigns").undo_stage_hunk, "Unstage hunk" },
                 r = { require("gitsigns").reset_hunk, "Reset hunk" },
             },
+            s = { "<Cmd>Git<CR>", "Git status" },
+            b = { "<Cmd>Git blame<CR>", "Git blame" },
             H = {
                 name = "GitHub",
                 b = { "<Cmd>silent !gh browse %<CR>", "GitHub browse current file" },

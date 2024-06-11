@@ -206,13 +206,8 @@ return require("lazy").setup({
 
     -- {{{ Git
     {
-        "https://github.com/NeogitOrg/neogit",
-        cmd = "Neogit",
-        config = function()
-            require("neogit").setup({
-                disable_commit_confirmation = true,
-            })
-        end,
+        "https://github.com/tpope/vim-fugitive",
+        cmd = "Git",
     },
 
     {

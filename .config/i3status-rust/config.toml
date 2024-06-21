@@ -20,7 +20,7 @@ block = "memory"
 block = "sound"
 [[block.click]]
 button = "left"
-cmd = "pavucontrol"
+cmd = "pavucontrol --tab=3"
 
 [[block]]
 block = "time"

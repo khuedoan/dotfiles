@@ -116,8 +116,6 @@ return require("lazy").setup({
     {
         "https://github.com/VonHeikemen/lsp-zero.nvim",
         dependencies = {
-            "https://github.com/williamboman/mason.nvim",
-            "https://github.com/williamboman/mason-lspconfig.nvim",
             "https://github.com/neovim/nvim-lspconfig",
             "https://github.com/hrsh7th/nvim-cmp",
             "https://github.com/hrsh7th/cmp-nvim-lsp",
@@ -127,30 +125,23 @@ return require("lazy").setup({
         },
         event = "VeryLazy",
         config = function()
-            require("mason").setup({
-                PATH = "append", -- Prefer system installed language servers
-            })
-            require("mason-lspconfig").setup({
-                ensure_installed = {
-                    -- :help lspconfig-all
-                    "gopls",
-                    "lua_ls",
-                    "pyright",
-                    "rust_analyzer",
-                    "terraformls",
-                    "tsserver",
-                },
-                handlers = {
-                    require("lsp-zero").default_setup,
-                },
-            })
-
-            -- HACK Manually start LSP server after lazy load
-            -- TODO use lazy.nvim LazyFile when available
-            vim.cmd("filetype detect")
-
+            local lsp_zero = require("lsp-zero")
             local cmp = require("cmp")
-            local cmp_action = require("lsp-zero").cmp_action()
+            local cmp_action = lsp_zero.cmp_action()
+
+            lsp_zero.setup_servers({
+                -- Requires language servers to be already installed
+                -- :help lspconfig-all
+                "gopls",
+                "lua_ls",
+                "pyright",
+                "rust_analyzer",
+                "terraformls",
+                "tsserver",
+            })
+
+            -- HACK manually start LSP server after lazy load
+            vim.cmd("filetype detect")
 
             cmp.setup({
                 sources = {
@@ -165,7 +156,7 @@ return require("lazy").setup({
                 }),
             })
 
-            require("lsp-zero").on_attach(function(client, bufnr)
+            lsp_zero.on_attach(function(client, bufnr)
                 local opts = { buffer = bufnr }
                 -- TODO clean up?
                 vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)

@@ -46,11 +46,6 @@ return require("lazy").setup({
             })
         end,
     },
-
-    {
-        "https://github.com/stevearc/dressing.nvim",
-        event = "VeryLazy",
-    },
     -- }}}
 
     -- {{{ Search
@@ -66,6 +61,7 @@ return require("lazy").setup({
                     row = 1,
                 },
             })
+            require("fzf-lua").register_ui_select()
         end,
     },
 

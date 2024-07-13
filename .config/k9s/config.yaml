@@ -1,0 +1,11 @@
+k9s:
+  ui:
+    headless: true
+    skin: default
+    defaultsToFullScreen: true
+  logger:
+    tail: 100
+    buffer: 5000
+    sinceSeconds: -1
+  noExitOnCtrlC: true
+  skipLatestRevCheck: true

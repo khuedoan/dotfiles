@@ -1,6 +1,6 @@
-plugin:
+plugins:
   dive:
-    shortCut: d
+    shortCut: Shift-D
     confirm: false
     description: "Dive image"
     scopes:
@@ -12,7 +12,7 @@ plugin:
   watch-events:
     shortCut: Shift-E
     confirm: false
-    description: Get Events
+    description: "Get events"
     scopes:
       - all
     command: sh
@@ -20,18 +20,3 @@ plugin:
     args:
       - -c
       - "watch -n 5 kubectl get events --context $CONTEXT --namespace $NAMESPACE --field-selector involvedObject.name=$NAME"
-  edit-secret:
-    shortCut: Shift-X
-    confirm: false
-    description: "Edit Decoded Secret"
-    scopes:
-      - secrets
-    command: kubectl
-    background: false
-    args:
-      - modify-secret
-      - --namespace
-      - $NAMESPACE
-      - --context
-      - $CONTEXT
-      - $NAME

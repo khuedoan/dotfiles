@@ -137,6 +137,7 @@ return require("lazy").setup({
                 "pyright",
                 "rust_analyzer",
                 "terraformls",
+                "tsserver",
             })
 
             -- HACK manually start LSP server after lazy load

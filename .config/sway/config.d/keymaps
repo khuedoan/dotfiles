@@ -11,10 +11,10 @@ bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
 
-bindsym $mod+Shift+h move left
-bindsym $mod+Shift+j move down
-bindsym $mod+Shift+k move up
-bindsym $mod+Shift+l move right
+bindsym $mod+Shift+h mark swap, focus left, swap container with mark swap, focus left
+bindsym $mod+Shift+j mark swap, focus down, swap container with mark swap, focus down
+bindsym $mod+Shift+k mark swap, focus up, swap container with mark swap, focus up
+bindsym $mod+Shift+l mark swap, focus right, swap container with mark swap, focus right
 
 bindsym $mod+Shift+q kill
 

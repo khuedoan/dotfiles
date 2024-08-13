@@ -17,7 +17,7 @@ input "type:touchpad" {
 }
 
 output "*" {
-    bg ~/Pictures/Wallpapers/LostInMindNord.jpg fill
+    bg ~/Pictures/Wallpapers/astronaut-jellyfish.jpg fill
 }
 
 for_window [class=".*"] inhibit_idle fullscreen

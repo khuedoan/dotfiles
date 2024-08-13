@@ -176,16 +176,7 @@ return require("lazy").setup({
         end,
     },
 
-    {
-        "https://github.com/windwp/nvim-autopairs",
-        event = "InsertEnter",
-        config = function()
-            require("nvim-autopairs").setup()
-        end,
-    },
-
-    -- Additional language support
-    -- TODO remove when Tree-sitter is stable and merged to nvim core
+    -- TODO refactor when Tree-sitter is stable and merged to nvim core
     -- https://github.com/nvim-treesitter/nvim-treesitter/issues/4767
     {
         "https://github.com/nvim-treesitter/nvim-treesitter",
@@ -195,10 +186,16 @@ return require("lazy").setup({
             require("nvim-treesitter.configs").setup({
                 ensure_installed = {
                     "cue",
+                    "go",
                     "hcl",
                     "lua",
+                    "nix",
                     "puppet",
+                    "python",
+                    "rust",
                     "terraform",
+                    "tsx",
+                    "typescript",
                 },
                 highlight = {
                     enable = true,
@@ -207,6 +204,14 @@ return require("lazy").setup({
                     enable = true,
                 },
             })
+        end,
+    },
+
+    {
+        "https://github.com/windwp/nvim-autopairs",
+        event = "InsertEnter",
+        config = function()
+            require("nvim-autopairs").setup()
         end,
     },
     -- }}}

@@ -187,8 +187,28 @@ return require("lazy").setup({
     -- Additional language support
     -- TODO remove when Tree-sitter is stable and merged to nvim core
     -- https://github.com/nvim-treesitter/nvim-treesitter/issues/4767
-    { "https://github.com/hashivim/vim-terraform", ft = { "terraform", "terraform-vars", "hcl" } },
-    { "https://github.com/rodjek/vim-puppet",      ft = { "puppet", "epuppet" } },
+    {
+        "https://github.com/nvim-treesitter/nvim-treesitter",
+        build = ":TSUpdate",
+        event = "VeryLazy",
+        config = function()
+            require("nvim-treesitter.configs").setup({
+                ensure_installed = {
+                    "cue",
+                    "hcl",
+                    "lua",
+                    "puppet",
+                    "terraform",
+                },
+                highlight = {
+                    enable = true,
+                },
+                indent = {
+                    enable = true,
+                },
+            })
+        end,
+    },
     -- }}}
 
     -- {{{ Git

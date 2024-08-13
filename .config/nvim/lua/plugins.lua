@@ -238,13 +238,8 @@ return require("lazy").setup({
                 bold = true,
                 nocombine = true,
             })
-            vim.api.nvim_set_hl(0, "LeapLabelPrimary", {
+            vim.api.nvim_set_hl(0, "LeapLabel", {
                 fg = "yellow",
-                bold = true,
-                nocombine = true,
-            })
-            vim.api.nvim_set_hl(0, "LeapLabelSecondary", {
-                fg = "magenta",
                 bold = true,
                 nocombine = true,
             })

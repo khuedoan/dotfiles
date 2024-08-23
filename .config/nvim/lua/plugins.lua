@@ -234,20 +234,23 @@ return require("lazy").setup({
 
     -- {{{ Motions
     {
-        "https://github.com/ggandor/leap.nvim",
+        "https://github.com/folke/flash.nvim",
         event = "VeryLazy",
         config = function()
-            require("leap").set_default_keymaps()
-            require("leap").opts.safe_labels = {}
-            vim.api.nvim_set_hl(0, "LeapMatch", {
-                fg = "white",
-                bold = true,
-                nocombine = true,
-            })
-            vim.api.nvim_set_hl(0, "LeapLabel", {
-                fg = "yellow",
-                bold = true,
-                nocombine = true,
+            require("flash").setup({
+                modes = {
+                    search = {
+                        enabled = true,
+                    },
+                    char = {
+                        enabled = false,
+                    },
+                },
+                highlight = {
+                    groups = {
+                        label = "TermCursor",
+                    },
+                },
             })
         end,
     },

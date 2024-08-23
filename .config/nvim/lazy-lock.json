@@ -6,7 +6,7 @@
   "cmp-path": { "branch": "main", "commit": "91ff86cd9c29299a64f968ebb45846c485725f23" },
   "flash.nvim": { "branch": "main", "commit": "34c7be146a91fec3555c33fe89c7d643f6ef5cf1" },
   "fzf-lua": { "branch": "main", "commit": "8f9c3a2e308755c25630087f3c5d35786803cfd0" },
-  "grug-far.nvim": { "branch": "main", "commit": "536b23dcf3165a622654544e5f9f395584e73b57" },
+  "grug-far.nvim": { "branch": "main", "commit": "04b483d0596c41c94607f78b8f3374e5c40f32f2" },
   "harpoon": { "branch": "harpoon2", "commit": "0378a6c428a0bed6a2781d459d7943843f374bce" },
   "indent-blankline.nvim": { "branch": "master", "commit": "dddb5d21811c319eb6e51a993d8fb44b193aae3f" },
   "lazy.nvim": { "branch": "main", "commit": "077102c5bfc578693f12377846d427f49bc50076" },

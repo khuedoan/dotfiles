@@ -196,6 +196,7 @@ return require("lazy").setup({
                     "terraform",
                     "tsx",
                     "typescript",
+                    "vimdoc",
                 },
                 highlight = {
                     enable = true,

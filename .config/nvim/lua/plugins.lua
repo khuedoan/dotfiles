@@ -283,6 +283,9 @@ return require("lazy").setup({
     {
         "https://github.com/tpope/vim-sleuth",
         event = "VeryLazy",
+        config = function()
+            vim.cmd("silent Sleuth")
+        end,
     },
 
     {

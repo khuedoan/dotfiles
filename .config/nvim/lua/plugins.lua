@@ -248,7 +248,7 @@ return require("lazy").setup({
                 },
                 highlight = {
                     groups = {
-                        label = "TermCursor",
+                        label = "Question",
                     },
                 },
             })

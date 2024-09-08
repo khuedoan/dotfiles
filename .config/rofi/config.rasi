@@ -1,1 +1,5 @@
 @theme "Arc-Dark.rasi"
+
+configuration {
+    sort: true;
+}

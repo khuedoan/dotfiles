@@ -2,6 +2,8 @@
 vim.g.mapleader = " "
 
 local keymaps = {
+    ["<C-s>"] = { ":update<CR>", "Save" },
+    ["<C-q>"] = { ":quit<CR>", "Quit" },
     ["<Leader>"] = {
         b = {
             name = "buffer",
@@ -15,7 +17,6 @@ local keymaps = {
             name = "find",
             f = { "<Cmd>FzfLua files<CR>", "Find file" },
             g = { "<Cmd>FzfLua git_files<CR>", "Find git file" },
-            s = { "<Cmd>update<CR>", "Save" },
         },
         p = {
             name = "project",

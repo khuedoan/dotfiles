@@ -117,17 +117,11 @@ return require("lazy").setup({
         "https://github.com/VonHeikemen/lsp-zero.nvim",
         dependencies = {
             "https://github.com/neovim/nvim-lspconfig",
-            "https://github.com/hrsh7th/nvim-cmp",
-            "https://github.com/hrsh7th/cmp-nvim-lsp",
-            "https://github.com/hrsh7th/cmp-path",
-            "https://github.com/hrsh7th/cmp-buffer",
-            "https://github.com/L3MON4D3/LuaSnip",
+            "https://github.com/saghen/blink.cmp",
         },
         event = "VeryLazy",
         config = function()
             local lsp_zero = require("lsp-zero")
-            local cmp = require("cmp")
-            local cmp_action = lsp_zero.cmp_action()
 
             lsp_zero.setup_servers({
                 -- Requires language servers to be already installed
@@ -143,17 +137,17 @@ return require("lazy").setup({
             -- HACK manually start LSP server after lazy load
             vim.cmd("filetype detect")
 
-            cmp.setup({
-                sources = {
-                    { name = "nvim_lsp" },
-                    { name = "path" },
-                    { name = "buffer" },
+            require("blink.cmp").setup({
+                accept = {
+                    auto_brackets = {
+                        enabled = true,
+                    },
                 },
-                mapping = cmp.mapping.preset.insert({
-                    ["<CR>"] = cmp.mapping.confirm(),
-                    ["<Tab>"] = cmp_action.luasnip_supertab(),
-                    ["<S-Tab>"] = cmp_action.luasnip_shift_supertab(),
-                }),
+                keymap = {
+                    accept = '<CR>',
+                    select_next = '<Tab>',
+                    select_prev = '<S-Tab>',
+                },
             })
 
             lsp_zero.on_attach(function(client, bufnr)

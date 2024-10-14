@@ -3,6 +3,8 @@
 focus_follows_mouse no
 smart_borders on
 default_border pixel
+gaps inner 10
+smart_gaps on
 
 input "type:pointer" {
     accel_profile flat

@@ -153,6 +153,13 @@ return require("lazy").setup({
                     ["<CR>"] = cmp.mapping.confirm(),
                     ["<Tab>"] = cmp_action.luasnip_supertab(),
                     ["<S-Tab>"] = cmp_action.luasnip_shift_supertab(),
+                    ["<C-l>"] = cmp.mapping(function()
+                        vim.api.nvim_feedkeys(
+                            vim.fn["copilot#Accept"](vim.api.nvim_replace_termcodes("<Tab>", true, true, true)),
+                            "n",
+                            true
+                        )
+                    end),
                 }),
             })
 
@@ -213,6 +220,14 @@ return require("lazy").setup({
         event = "InsertEnter",
         config = function()
             require("nvim-autopairs").setup()
+        end,
+    },
+
+    {
+        "https://github.com/github/copilot.vim",
+        config = function()
+            vim.g.copilot_no_tab_map = true
+            vim.keymap.set("i", "<Plug>(vimrc:copilot-dummy-map)", "copilot#Accept()", { silent = true, expr = true })
         end,
     },
     -- }}}

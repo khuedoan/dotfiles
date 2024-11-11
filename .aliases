@@ -27,7 +27,7 @@ alias ta='tmux attach'
 alias less='less --RAW-CONTROL-CHARS'
 
 # diff
-alias diff='git diff --no-index'
+alias diff='difft'
 
 # nvim
 alias v='nvim'

@@ -9,6 +9,8 @@
 	enabled = true
 [branch]
 	sort = -committerdate
+[diff]
+	external = difft
 
 [include]
 	path = ./work

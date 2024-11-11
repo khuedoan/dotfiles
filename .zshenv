@@ -30,3 +30,7 @@ export MINIKUBE_IN_STYLE=0
 # fzf
 export FZF_DEFAULT_COMMAND='fd --type file --strip-cwd-prefix'
 export FZF_DEFAULT_OPTS='--color=16 --layout=reverse --cycle'
+
+# Difftastic
+export DFT_DISPLAY=inline
+export DFT_SYNTAX_HIGHLIGHT=off

@@ -1,6 +1,27 @@
 local wezterm = require("wezterm")
 local action = wezterm.action
 
+wezterm.on("update-right-status", function(window, pane)
+    local active_workspace = wezterm.mux.get_active_workspace()
+    local formatted_workspaces = {}
+
+    for _, workspace in ipairs(wezterm.mux.get_workspace_names()) do
+        if workspace == active_workspace then
+            table.insert(
+                formatted_workspaces,
+                wezterm.format({
+                    { Attribute = { Intensity = "Bold" } },
+                    { Text = workspace },
+                })
+            )
+        else
+            table.insert(formatted_workspaces, workspace)
+        end
+    end
+
+    window:set_right_status(table.concat(formatted_workspaces, " | "))
+end)
+
 return {
     color_scheme = "OneDark (base16)",
     font = wezterm.font("FiraCode Nerd Font Mono", { weight = "Medium" }),

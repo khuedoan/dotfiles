@@ -86,6 +86,37 @@ return {
         { mods = "ALT", key = "w", action = action.ShowLauncherArgs({ flags = "WORKSPACES|FUZZY" }) },
         { mods = "ALT", key = "Tab", action = action.SwitchWorkspaceRelative(1) },
         { mods = "ALT|SHIFT", key = "Tab", action = action.SwitchWorkspaceRelative(-1) },
+        {
+            mods = "ALT",
+            key = "p",
+            action = wezterm.action_callback(function(window, pane)
+                local choices = {}
+                for _, project in ipairs(wezterm.read_dir(wezterm.home_dir .. "/Documents")) do
+                    table.insert(choices, { label = project })
+                end
+                window:perform_action(
+                    action.InputSelector({
+                        title = "Projects",
+                        choices = choices,
+                        fuzzy = true,
+                        action = wezterm.action_callback(function(window, pane, id, label)
+                            if label then
+                                window:perform_action(
+                                    action.SwitchToWorkspace({
+                                        name = label,
+                                        spawn = {
+                                            cwd = label,
+                                        },
+                                    }),
+                                    pane
+                                )
+                            end
+                        end),
+                    }),
+                    pane
+                )
+            end),
+        },
 
         -- Miscellaneous
         { mods = "ALT|SHIFT", key = "p", action = action.ActivateCommandPalette },

@@ -10,11 +10,6 @@ export CARGO_HOME="$HOME/.local"
 # Pixel-perfect Firefox touchpad scrolling
 export MOZ_USE_XINPUT2=1
 
-# Input method
-export GTK_IM_MODULE=ibus
-export QT_IM_MODULE=ibus
-export XMODIFIERS=@im=ibus
-
 # Vim
 export EDITOR=nvim
 export VISUAL=nvim

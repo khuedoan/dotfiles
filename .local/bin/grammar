@@ -1,0 +1,7 @@
+#!/bin/sh
+
+set -eu pipefail
+
+original="$(pbpaste)"
+
+ollama run llama3.2:3b "fix grammar, just give me the final output: ${original}" | pbcopy

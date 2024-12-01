@@ -10,7 +10,9 @@ return {
     {
         "<Leader><Leader>",
         function()
-            require("fzf-lua").files({})
+            require("fzf-lua").files({
+                cwd = require("oil").get_current_dir(),
+            })
         end,
         desc = "Find file",
     },

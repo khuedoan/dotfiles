@@ -25,5 +25,6 @@
 	plus-emph-style = black green
 	minus-style = syntax "#382c34"
 	minus-emph-style = black red
+	zero-style = syntax black
 [include]
 	path = ./work

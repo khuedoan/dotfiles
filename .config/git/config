@@ -17,5 +17,13 @@
 	conflictstyle = zdiff3
 [delta]
 	syntax-theme = base16
+	file-style = purple
+	file-decoration-style = black box ul
+	hunk-header-style = syntax
+	hunk-header-decoration-style = black box
+	plus-style = syntax "#283c34"
+	plus-emph-style = black green
+	minus-style = syntax "#382c34"
+	minus-emph-style = black red
 [include]
 	path = ./work

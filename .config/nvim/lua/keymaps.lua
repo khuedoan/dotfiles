@@ -1,96 +1,87 @@
 -- Remap space as leader key
 vim.g.mapleader = " "
 
-local keymaps = {
-    ["<C-s>"] = { ":update<CR>", "Save" },
-    ["<C-q>"] = { ":quit<CR>", "Quit" },
-    ["<Leader>"] = {
-        b = {
-            name = "buffer",
-            b = { "<Cmd>FzfLua buffers<CR>", "Switch buffer" },
-            n = { "<Cmd>bnext<CR>", "Next buffer" },
-            p = { "<Cmd>bprevious<CR>", "Previous buffer" },
-            d = { function() require("mini.bufremove").delete(0) end, "Delete buffer" },
-            l = { "<Cmd>b#<CR>", "Switch to last buffer" },
-        },
-        f = {
-            name = "find",
-            f = { "<Cmd>FzfLua files<CR>", "Find file" },
-            g = { "<Cmd>FzfLua git_files<CR>", "Find git file" },
-        },
-        p = {
-            name = "project",
-            b = { "<Cmd>Oil<CR>", "Browse project from here" },
-            B = { "<Cmd>Oil .<CR>", "Browse project" },
-            a = {
-                function()
-                    require("harpoon"):list():add()
-                end,
-                "Add current file to pinned list",
-            },
-            p = {
-                function()
-                    require("harpoon").ui:toggle_quick_menu(require("harpoon"):list())
-                end,
-                "Browse pinned files in project",
-            },
-        },
-        s = {
-            name = "search",
-            l = { "<Cmd>FzfLua blines<CR>", "Search lines in current file" },
-            p = { "<Cmd>FzfLua grep_project<CR>", "Search project (fuzzy)" },
-            P = { "<Cmd>FzfLua live_grep<CR>", "Search project (regex)" },
-            r = {
-                function()
-                    require("grug-far").grug_far({
-                        prefills = {
-                            flags = vim.fn.expand("%"),
-                        },
-                    })
-                end,
-                "Search and replace in current file",
-            },
-            R = { function() require("grug-far").grug_far({}) end, "Search and replace in project" },
-        },
-        g = {
-            name = "git",
-            s = { "<Cmd>Git<CR>", "Git status" },
-            b = { "<Cmd>Git blame<CR>", "Git blame" },
-            l = { "<Cmd>Git log<CR>", "Git log" },
-            o = { require("mini.diff").toggle_overlay, "Git overlay diff" },
-            H = {
-                name = "GitHub",
-                b = { "<Cmd>silent !gh browse %<CR>", "GitHub browse current file" },
-                r = {
-                    name = "repo",
-                    v = { "<Cmd>silent !gh repo view --web<CR>", "GitHub repo view" },
-                },
-            },
-        },
-        o = {
-            name = "open",
-            t = { "<Cmd>edit ~/Documents/notes/todo.md<CR>", "Todo list" },
-            c = { "<Cmd>Oil ~/.config/nvim/<CR>", "Neovim config" },
-        },
-        y = {
-            name = "yank",
-            c = { '"+y', "Yank to system clipboard", mode = { "n", "v" } },
-            f = { "<Cmd>let @+ = expand('%')<CR>", "Yank relative file path" },
-            F = { "<Cmd>let @+ = expand('%:p:~')<CR>", "Yank relative file path" },
-        },
+return {
+    -- Session
+    { "<C-q>", ":quit<CR>", desc = "Quit" },
+    { "<C-s>", ":update<CR>", desc = "Save" },
+
+    -- Files
+    {
+        "<Leader><Leader>",
+        function()
+            require("fzf-lua").files({})
+        end,
+        desc = "Find file",
     },
+    { "-", "<Cmd>Oil<CR>", desc = "Browse project from here" },
+    { "_", "<Cmd>Oil .<CR>", desc = "Browse project" },
+    {
+        "<Leader>.",
+        function()
+            require("harpoon").ui:toggle_quick_menu(require("harpoon"):list())
+        end,
+        desc = "Browse pinned files in project",
+    },
+    {
+        "<Leader>>",
+        function()
+            require("harpoon"):list():add()
+        end,
+        desc = "Add current file to pinned list",
+    },
+
+    -- Buffer
+    { "<Leader>,", "<Cmd>FzfLua buffers<CR>", desc = "Switch buffer" },
+    {
+        "<Leader>bd",
+        function()
+            require("mini.bufremove").delete(0)
+        end,
+        desc = "Delete buffer",
+    },
+    { "<C-Tab>", "<Cmd>bnext<CR>", desc = "Next buffer" },
+    { "<C-S-Tab>", "<Cmd>bprevious<CR>", desc = "Previous buffer" },
+
+    -- Git
+    { "<Leader>gs", "<Cmd>Git<CR>", desc = "Git status" },
+    { "<Leader>gf", "<Cmd>FzfLua git_files<CR>", desc = "Git files" },
+    { "<Leader>gb", "<Cmd>Git blame<CR>", desc = "Git blame" },
+    { "<Leader>gl", "<Cmd>Git log<CR>", desc = "Git log" },
+    { "<Leader>ghb", "<Cmd>silent !gh browse %<CR>", desc = "GitHub browse" },
+    { "<Leader>ghr", "<Cmd>silent !gh repo view --web<CR>", desc = "GitHub repo" },
+    {
+        "<Leader>gd",
+        function()
+            require("mini.diff").toggle_overlay()
+        end,
+        desc = "Git diff overlay",
+    },
+
+    -- Search and replace
+    { "<Leader>/", "<Cmd>FzfLua grep_project<CR>", desc = "Search project (fuzzy)" },
+    { "<Leader>?", "<Cmd>FzfLua live_grep<CR>", desc = "Search project (regex)" },
+    {
+        "<Leader>sr",
+        function()
+            require("grug-far").grug_far({
+                prefills = {
+                    flags = vim.fn.expand("%"),
+                },
+            })
+        end,
+        desc = "Search and replace in current file",
+    },
+    {
+        "<Leader>sR",
+        function()
+            require("grug-far").grug_far({})
+        end,
+        desc = "Search and replace in project",
+    },
+
+    -- Yank
+    { "<C-c>", '"+y', mode = { "n", "v" } , desc = "Yank to clipboard"},
+    { "<Leader>yF", "<Cmd>let @+ = expand('%:p:~')<CR>", desc = "Yank absolute file path to clipboard" },
+    { "<Leader>yf", "<Cmd>let @+ = expand('%')<CR>", desc = "Yank relative file path to clipboard" },
 }
-
--- Aliases
-keymaps["<Leader>"]["<Leader>"] = keymaps["<Leader>"].f.f
-keymaps["<Leader>"]["/"] = keymaps["<Leader>"].s.p
-keymaps["<Leader>"]["?"] = keymaps["<Leader>"].s.P
-keymaps["<Leader>"][","] = keymaps["<Leader>"].b.b
-keymaps["<Leader>"]["."] = keymaps["<Leader>"].p.p
-keymaps["<Leader>"][">"] = keymaps["<Leader>"].p.a
-keymaps["<C-Tab>"] = keymaps["<Leader>"].b.l
-keymaps["<C-c>"] = keymaps["<Leader>"].y.c
-keymaps["-"] = keymaps["<Leader>"].p.b
-keymaps["_"] = keymaps["<Leader>"].p.B
-
-return keymaps

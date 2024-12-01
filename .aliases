@@ -27,7 +27,7 @@ alias ta='tmux attach'
 alias less='less --RAW-CONTROL-CHARS'
 
 # diff
-alias diff='difft'
+alias diff='delta'
 
 # nvim
 alias v='nvim'

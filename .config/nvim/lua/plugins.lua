@@ -195,7 +195,6 @@ return require("lazy").setup({
                     "cue",
                     "go",
                     "hcl",
-                    "lua",
                     "nix",
                     "puppet",
                     "python",

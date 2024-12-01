@@ -137,7 +137,7 @@ return require("lazy").setup({
                 "pyright",
                 "rust_analyzer",
                 "terraformls",
-                "tsserver",
+                "ts_ls",
             })
 
             -- HACK manually start LSP server after lazy load
@@ -326,9 +326,7 @@ return require("lazy").setup({
     {
         "https://github.com/folke/which-key.nvim",
         event = "VeryLazy",
-        config = function()
-            require("which-key").register(require("keymaps"))
-        end,
+        keys = require("keymaps"),
     },
     -- }}}
 })

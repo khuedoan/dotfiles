@@ -26,7 +26,7 @@ for_window [class=".*"] inhibit_idle fullscreen
 
 exec autotiling
 exec systemctl --user start easyeffects
-exec ibus-daemon -drx
+exec fcitx5 -d
 exec swayidle -w
 
 include ~/.config/sway/config.d/*

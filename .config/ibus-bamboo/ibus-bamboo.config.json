@@ -1,8 +1,0 @@
-{
-  "InputMethod": "Telex W",
-  "DefaultInputMode": 3,
-  "InputModeMapping": {
-    "Navigator:firefox": 5,
-    "libreoffice:libreoffice-writer": 2
-  }
-}

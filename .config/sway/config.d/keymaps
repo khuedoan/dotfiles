@@ -79,7 +79,6 @@ bindsym $mod+Space exec rofi -show drun
 bindsym $mod+Return exec cd $(swaycwd) && foot
 bindsym $mod+Shift+Return exec foot
 bindsym $mod+Shift+p exec MENU='rofi -dmenu -p OTP -i' otp
-bindsym ctrl+Shift+Space exec ibus-next
 
 # Control
 

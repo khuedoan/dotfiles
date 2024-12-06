@@ -18,7 +18,8 @@ alias gp='git push'
 alias gl='git log --decorate --oneline --graph'
 alias gL='git log -p --shortstat'
 alias gt='git ls-tree -r "$(git rev-parse --abbrev-ref HEAD)" --name-only | tree --fromfile'
-alias mgs='nix run nixpkgs#mgitstatus -- -f'
+alias mgs='nix run nixpkgs#mgitstatus --'
+alias mgS='nix run nixpkgs#mgitstatus -- -f'
 
 # tmux
 alias t='tmux'

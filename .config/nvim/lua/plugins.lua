@@ -273,17 +273,7 @@ return require("lazy").setup({
         "https://github.com/echasnovski/mini.surround",
         event = "VeryLazy",
         config = function()
-            require("mini.surround").setup({
-                mappings = {
-                    add = "gza",
-                    delete = "gzd",
-                    find = "gzf",
-                    find_left = "gzF",
-                    highlight = "gzh",
-                    replace = "gzr",
-                    update_n_lines = "gzn",
-                },
-            })
+            require("mini.surround").setup({})
         end,
     },
     -- }}}

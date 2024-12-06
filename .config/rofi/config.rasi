@@ -1,5 +1,6 @@
 @theme "Arc-Dark.rasi"
 
 configuration {
+    show-icons: true;
     sort: true;
 }

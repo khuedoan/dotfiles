@@ -114,72 +114,37 @@ return require("lazy").setup({
 
     -- {{{ IntelliSense
     {
-        "https://github.com/VonHeikemen/lsp-zero.nvim",
-        dependencies = {
-            "https://github.com/neovim/nvim-lspconfig",
-            "https://github.com/hrsh7th/nvim-cmp",
-            "https://github.com/hrsh7th/cmp-nvim-lsp",
-            "https://github.com/hrsh7th/cmp-path",
-            "https://github.com/hrsh7th/cmp-buffer",
-            "https://github.com/L3MON4D3/LuaSnip",
+        "https://github.com/Saghen/blink.cmp",
+        version = "v0.*",
+        event = "VeryLazy",
+        opts = {
+            keymap = {
+                preset = "enter",
+            },
         },
+    },
+
+    {
+        "https://github.com/neovim/nvim-lspconfig",
         event = "VeryLazy",
         config = function()
-            local lsp_zero = require("lsp-zero")
-            local cmp = require("cmp")
-            local cmp_action = lsp_zero.cmp_action()
+            local servers = {
+                gopls = {},
+                lua_ls = {},
+                pyright = {},
+                rust_analyzer = {},
+                terraformls = {},
+                ts_ls = {},
+            }
 
-            lsp_zero.setup_servers({
-                -- Requires language servers to be already installed
-                -- :help lspconfig-all
-                "gopls",
-                "lua_ls",
-                "pyright",
-                "rust_analyzer",
-                "terraformls",
-                "ts_ls",
-            })
+            local lspconfig = require("lspconfig")
+            for server, config in pairs(servers) do
+                config.capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities)
+                lspconfig[server].setup(config)
+            end
 
             -- HACK manually start LSP server after lazy load
             vim.cmd("filetype detect")
-
-            cmp.setup({
-                sources = {
-                    { name = "nvim_lsp" },
-                    { name = "path" },
-                    { name = "buffer" },
-                },
-                mapping = cmp.mapping.preset.insert({
-                    ["<CR>"] = cmp.mapping.confirm(),
-                    ["<Tab>"] = cmp_action.luasnip_supertab(),
-                    ["<S-Tab>"] = cmp_action.luasnip_shift_supertab(),
-                    ["<C-l>"] = cmp.mapping(function()
-                        vim.api.nvim_feedkeys(
-                            vim.fn["copilot#Accept"](vim.api.nvim_replace_termcodes("<Tab>", true, true, true)),
-                            "n",
-                            true
-                        )
-                    end),
-                }),
-            })
-
-            lsp_zero.on_attach(function(client, bufnr)
-                local opts = { buffer = bufnr }
-                -- TODO clean up?
-                vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
-                vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
-                vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
-                vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
-                vim.keymap.set("n", "go", vim.lsp.buf.type_definition, opts)
-                vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
-                vim.keymap.set("n", "gs", vim.lsp.buf.signature_help, opts)
-                vim.keymap.set("n", "gR", vim.lsp.buf.rename, opts)
-                vim.keymap.set({ "n", "x" }, "<Leader>=", vim.lsp.buf.format, opts)
-                vim.keymap.set("n", "<Leader>ca", vim.lsp.buf.code_action, opts)
-                vim.keymap.set("n", "gl", vim.diagnostic.open_float, opts)
-                vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
-                vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
-            end)
         end,
     },
 

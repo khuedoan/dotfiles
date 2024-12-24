@@ -16,6 +16,7 @@ return {
         end,
         desc = "Find file",
     },
+    { "<Leader>fg", "<Cmd>FzfLua git_files<CR>", desc = "Find git files" },
     { "-", "<Cmd>Oil<CR>", desc = "Browse project from here" },
     { "_", "<Cmd>Oil .<CR>", desc = "Browse project" },
     {
@@ -47,7 +48,6 @@ return {
 
     -- Git
     { "<Leader>gs", "<Cmd>Git<CR>", desc = "Git status" },
-    { "<Leader>gf", "<Cmd>FzfLua git_files<CR>", desc = "Git files" },
     { "<Leader>gb", "<Cmd>Git blame<CR>", desc = "Git blame" },
     { "<Leader>gl", "<Cmd>Git log<CR>", desc = "Git log" },
     { "<Leader>ghb", "<Cmd>silent !gh browse %<CR>", desc = "GitHub browse" },

@@ -1,7 +1,6 @@
 {
   "Comment.nvim": { "branch": "master", "commit": "e30b7f2008e52442154b66f7c519bfd2f1e32acb" },
   "blink.cmp": { "branch": "main", "commit": "ae5a4ce8f7e519e49de7ae6fcadd74547f820a52" },
-  "copilot.vim": { "branch": "release", "commit": "87038123804796ca7af20d1b71c3428d858a9124" },
   "flash.nvim": { "branch": "main", "commit": "34c7be146a91fec3555c33fe89c7d643f6ef5cf1" },
   "fzf-lua": { "branch": "main", "commit": "7de67daddd5d4cd7757481d5fdc2a879b7ced1ad" },
   "grug-far.nvim": { "branch": "main", "commit": "11d0fbd6fff6f4e394af95319deeaab4ef88ce97" },

@@ -117,17 +117,17 @@ return require("lazy").setup({
         "https://github.com/Saghen/blink.cmp",
         version = "v0.*",
         event = "VeryLazy",
-        opts = {
-            keymap = {
-                preset = "enter",
-            },
-        },
+        config = function()
+            require("blink.cmp").setup({})
+        end,
     },
 
     {
         "https://github.com/neovim/nvim-lspconfig",
         event = "VeryLazy",
         config = function()
+            -- Requires language servers to be already installed
+            -- :help lspconfig-all
             local servers = {
                 gopls = {},
                 lua_ls = {},

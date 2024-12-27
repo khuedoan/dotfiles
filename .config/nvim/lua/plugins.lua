@@ -131,6 +131,7 @@ return require("lazy").setup({
             local servers = {
                 gopls = {},
                 lua_ls = {},
+                nil_ls = {},
                 pyright = {},
                 rust_analyzer = {},
                 terraformls = {},

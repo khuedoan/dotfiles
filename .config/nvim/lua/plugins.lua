@@ -118,7 +118,14 @@ return require("lazy").setup({
         version = "v0.*",
         event = "VeryLazy",
         config = function()
-            require("blink.cmp").setup({})
+            require("blink.cmp").setup({
+                keymap = {
+                    preset = "enter",
+                    cmdline = {
+                        preset = "super-tab",
+                    },
+                },
+            })
         end,
     },
 

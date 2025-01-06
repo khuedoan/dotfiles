@@ -1,0 +1,25 @@
+#!/bin/sh
+
+# Modified from upstream https://git.dec05eba.com/gpu-screen-recorder/tree/scripts/start-stop-recording.sh
+
+killall -SIGINT -q gpu-screen-recorder && exit 0
+
+file="${HOME}/Videos/$(date +"recording-%Y-%m-%d-%H-%M-%S.mp4")"
+notify-send \
+    -t 1000 \
+    -u low \
+    "Screen Recorder" \
+    "Staring in 1 second"
+sleep 1
+
+gpu-screen-recorder \
+    -w screen \
+    -f 60 \
+    -a default_output \
+    -o "${file}"
+
+notify-send \
+    -t 2000 \
+    -u low \
+    "Screen Recorder" \
+    "Saved to ${file}"

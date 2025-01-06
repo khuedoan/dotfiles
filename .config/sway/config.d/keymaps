@@ -73,6 +73,8 @@ bindsym XF86MonBrightnessUp exec light -A 10
 bindsym Print exec grim - | wl-copy
 bindsym ctrl+Print exec grim -g "$(slurp)" - | wl-copy
 
+bindsym $mod+shift+r exec toggle-recording
+
 # Apps
 
 bindsym $mod+Space exec rofi -show drun

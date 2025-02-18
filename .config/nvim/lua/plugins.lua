@@ -121,7 +121,9 @@ return require("lazy").setup({
             require("blink.cmp").setup({
                 keymap = {
                     preset = "enter",
-                    cmdline = {
+                },
+                cmdline = {
+                    keymap = {
                         preset = "super-tab",
                     },
                 },

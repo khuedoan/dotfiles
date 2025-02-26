@@ -9,21 +9,7 @@
 	enabled = true
 [branch]
 	sort = -committerdate
-[core]
-	pager = delta
-[interactive]
-	diffFilter = delta --color-only
 [merge]
 	conflictstyle = zdiff3
-[delta]
-	syntax-theme = base16
-	file-style = yellow
-	file-decoration-style = box ul
-	hunk-header-style = syntax
-	hunk-header-decoration-style = ul
-	plus-style = syntax "#283c34"
-	plus-emph-style = black green
-	minus-style = syntax "#382c34"
-	minus-emph-style = black red
 [include]
 	path = ./work

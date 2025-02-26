@@ -72,3 +72,4 @@ This is more accurate than `nvim --startuptime`.
 - [Vim statusline without a plugin](https://shapeshed.com/vim-statuslines)
 - [Microphone tuning guide by Paul W. Frields](https://fedoramagazine.org/tune-up-your-sound-with-pulseeffects-microphones), [EasyEffects preset by MateusRodCosta](https://gist.github.com/MateusRodCosta/a10225eb132cdcb97d7c458526f93085) and the [modified version by jtrv](https://github.com/jtrv/.cfg/blob/morpheus/.config/easyeffects/input/fifine_male_voice_noise_reduction.json)
 - [Swap two containers in Sway](https://www.reddit.com/r/swaywm/comments/z6t24k/comment/iy6mqxs)
+- [How core Git developers configure Git](https://blog.gitbutler.com/how-git-core-devs-configure-git)

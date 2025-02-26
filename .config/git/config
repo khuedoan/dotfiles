@@ -1,15 +1,37 @@
 [user]
 	name = Khue Doan
 	email = mail@khuedoan.com
+[init]
+	defaultBranch = master
+[diff]
+	algorithm = histogram
+	colorMoved = plain
+	mnemonicPrefix = true
+	renames = true
+[branch]
+	sort = -committerdate
+[tag]
+	sort = version:refname
+[fetch]
+	prune = true
+	pruneTags = true
+	all = true
 [pull]
 	rebase = true
 [push]
 	autoSetupRemote = true
-[rerere]
-	enabled = true
-[branch]
-	sort = -committerdate
+	followTags = true
 [merge]
 	conflictstyle = zdiff3
+[rebase]
+	autoSquash = true
+	autoStash = true
+	updateRefs = true
+[rerere]
+	enabled = true
+	autoupdate = true
+[help]
+	autocorrect = prompt
+
 [include]
 	path = ./work

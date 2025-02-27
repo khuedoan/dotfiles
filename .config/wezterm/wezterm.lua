@@ -24,9 +24,8 @@ end)
 
 return {
     color_scheme = "OneDark (base16)",
-    dpi = 192, -- Override DPI to Wayland high-density value to ensure consistent font sizes between Linux and macOS
     font = wezterm.font("FiraCode Nerd Font Mono", { weight = "Medium" }),
-    font_size = 9,
+    font_size = 12,
     inactive_pane_hsb = {
         brightness = 0.6,
     },

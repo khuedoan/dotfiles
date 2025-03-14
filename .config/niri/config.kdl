@@ -70,7 +70,7 @@ binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
 
     // Suggested binds for running programs: terminal, app launcher, screen locker.
-    Mod+Return { spawn "cwdrun" "foot"; }
+    Mod+Return { spawn "nirispawn" "foot"; }
     Mod+Space { spawn "fuzzel"; }
     Super+Alt+L { spawn "swaylock"; }
 

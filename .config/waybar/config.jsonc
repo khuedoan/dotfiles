@@ -1,0 +1,66 @@
+{
+    "position": "bottom",
+    "height": 22,
+    "spacing": 5,
+
+    "modules-left": [
+        "niri/workspaces"
+    ],
+    "modules-center": [],
+    "modules-right": [
+        "network",
+        "pulseaudio",
+        "cpu",
+        "memory",
+        "backlight",
+        "battery",
+        "tray",
+        "clock"
+    ],
+
+    "network": {
+        "format-wifi": "WIFI: {essid} ({signalStrength}%)",
+        "format-ethernet": "ETH: {ipaddr}/{cidr}",
+        "tooltip-format": "{ifname} via {gwaddr}",
+        "format-linked": "{ifname} (No IP)",
+        "format-disconnected": "Disconnected",
+        "format-alt": "{ifname}: {ipaddr}/{cidr}"
+    },
+    "pulseaudio": {
+        "format": "VOL: {volume}% {format_source}",
+        "format-bluetooth": "VOL: {volume}% {format_source}",
+        "format-bluetooth-muted": "MUTED",
+        "format-muted": "MUTED",
+        "format-source": "MIC: {volume}%",
+        "format-source-muted": "MUTED",
+        "on-click": "pavucontrol"
+    },
+    "cpu": {
+        "format": "CPU: {usage}%",
+        "tooltip": false
+    },
+    "memory": {
+        "format": "MEM: {}%"
+    },
+    "backlight": {
+        "format": "BRIGHT: {percent}%"
+    },
+    "battery": {
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "BAT: {capacity}%",
+        "format-full": "BAT: FULL",
+        "format-charging": "CHARGING: {capacity}%",
+        "format-plugged": "PLUGGED: {capacity}%",
+        "format-alt": "LEFT: {time}"
+    },
+    "tray": {
+        "spacing": 10
+    },
+    "clock": {
+        "tooltip-format": "{calendar}",
+        "format-alt": "{:%Y-%m-%d}"
+    }
+}

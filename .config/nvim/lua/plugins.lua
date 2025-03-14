@@ -170,6 +170,7 @@ return require("lazy").setup({
                     "cue",
                     "go",
                     "hcl",
+                    "kdl",
                     "nix",
                     "puppet",
                     "python",

@@ -5,6 +5,10 @@ input {
         click-method "clickfinger"
         natural-scroll
         scroll-factor 0.2
+        dwt
+    }
+    trackpoint {
+        accel-speed -0.5
     }
 }
 
@@ -22,8 +26,6 @@ layout {
         proportion 0.66667
     }
 
-    center-focused-column "always"
-
     focus-ring {
         off
     }
@@ -37,9 +39,10 @@ layout {
 
 prefer-no-csd
 
+spawn-at-startup "swaybg" "--mode" "center" "--image" "Pictures/Wallpapers/astronaut-jellyfish.jpg"
 spawn-at-startup "waybar"
 spawn-at-startup "fcitx5" "-d"
-spawn-at-startup "swaybg" "--image" "Pictures/Wallpapers/astronaut-jellyfish.jpg"
+spawn-at-startup "soteria"
 
 // You can change the path where screenshots are saved.
 // A ~ at the front will be expanded to the home directory.

@@ -1,0 +1,14 @@
+#!/bin/sh
+
+set -euo pipefail
+
+copy="$(command -v wl-copy || command -v pbcopy)"
+
+${MENU:-fzf} <<EOF | $copy
+¯\_(ツ)_/¯
+(╯°□°)╯︵ ┻━┻
+(ಠ_ಠ)
+☉_☉
+(⌐■_■)
+ლ(ಠ益ಠ)ლ
+EOF

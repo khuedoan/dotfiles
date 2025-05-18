@@ -67,6 +67,7 @@ return require("lazy").setup({
 
     {
         "https://github.com/MagicDuck/grug-far.nvim",
+        version = "v1.6.3", -- TODO use latest version on nvim 0.11
         lazy = true,
         config = function()
             require("grug-far").setup({})

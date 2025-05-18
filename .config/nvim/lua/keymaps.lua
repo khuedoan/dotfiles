@@ -66,9 +66,9 @@ return {
     {
         "<Leader>sr",
         function()
-            require("grug-far").grug_far({
+            require("grug-far").open({
                 prefills = {
-                    flags = vim.fn.expand("%"),
+                    paths = vim.fn.expand("%"),
                 },
             })
         end,

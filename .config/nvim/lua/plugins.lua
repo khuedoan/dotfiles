@@ -220,6 +220,9 @@ return require("lazy").setup({
         event = "VeryLazy",
         config = function()
             require("flash").setup({
+                search = {
+                    wrap = false,
+                },
                 modes = {
                     search = {
                         enabled = true,

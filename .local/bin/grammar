@@ -1,7 +1,28 @@
-#!/bin/sh
+#!/usr/bin/env python
 
-set -eu pipefail
+import json
+import sys
+import urllib.request
 
-original="$(pbpaste)"
+input = sys.stdin.read().strip()
+url = 'http://localhost:1234/v1/chat/completions'
+headers = {
+    'Content-Type': 'application/json',
+}
+payload = {
+    "model": "grmr-v3-g4b",
+    "messages": [
+        {"role": "user", "content": input}
+    ],
+    "temperature": 0.7,
+    "stream": False
+}
 
-ollama run llama3.2:3b "fix grammar, just give me the final output: ${original}" | pbcopy
+data = json.dumps(payload).encode('utf-8')
+req = urllib.request.Request(url, data=data, headers=headers)
+
+with urllib.request.urlopen(req) as response:
+    response_data = response.read().decode('utf-8')
+
+output = json.loads(response_data)['choices'][0]['message']['content']
+print(output, end='')

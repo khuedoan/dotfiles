@@ -231,11 +231,6 @@ return require("lazy").setup({
                         enabled = false,
                     },
                 },
-                highlight = {
-                    groups = {
-                        label = "Question",
-                    },
-                },
             })
         end,
     },
@@ -266,14 +261,6 @@ return require("lazy").setup({
     {
         "https://github.com/romainl/vim-cool",
         event = "VeryLazy",
-    },
-
-    {
-        "https://github.com/numToStr/Comment.nvim",
-        event = "VeryLazy",
-        config = function()
-            require("Comment").setup()
-        end,
     },
 
     {

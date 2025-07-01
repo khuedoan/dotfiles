@@ -2,10 +2,6 @@
 vim.g.mapleader = " "
 
 return {
-    -- Session
-    { "<C-q>", ":quit<CR>", desc = "Quit" },
-    { "<C-s>", ":update<CR>", desc = "Save" },
-
     -- Files
     {
         "<Leader><Leader>",
@@ -43,8 +39,6 @@ return {
         end,
         desc = "Delete buffer",
     },
-    { "<C-Tab>", "<Cmd>bnext<CR>", desc = "Next buffer" },
-    { "<C-S-Tab>", "<Cmd>bprevious<CR>", desc = "Previous buffer" },
 
     -- Git
     { "<Leader>gs", "<Cmd>Git<CR>", desc = "Git status" },
@@ -83,7 +77,7 @@ return {
     },
 
     -- Yank
-    { "<C-c>", '"+y', mode = { "n", "v" } , desc = "Yank to clipboard"},
+    { "<Leader>y", '"+y', mode = { "x" } , desc = "Yank to clipboard"},
     { "<Leader>yF", "<Cmd>let @+ = expand('%:p:~')<CR>", desc = "Yank absolute file path to clipboard" },
     { "<Leader>yf", "<Cmd>let @+ = expand('%')<CR>", desc = "Yank relative file path to clipboard" },
 }

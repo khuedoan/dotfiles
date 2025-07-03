@@ -1,83 +1,46 @@
--- Remap space as leader key
 vim.g.mapleader = " "
+local map = vim.keymap.set
 
-return {
-    -- Files
-    {
-        "<Leader><Leader>",
-        function()
-            require("fzf-lua").files({
-                cwd = require("oil").get_current_dir(),
-            })
-        end,
-        desc = "Find file",
-    },
-    { "<Leader>fg", "<Cmd>FzfLua git_files<CR>", desc = "Find git files" },
-    { "-", "<Cmd>Oil<CR>", desc = "Browse project from here" },
-    { "_", "<Cmd>Oil .<CR>", desc = "Browse project" },
-    {
-        "<Leader>.",
-        function()
-            require("harpoon").ui:toggle_quick_menu(require("harpoon"):list())
-        end,
-        desc = "Browse pinned files in project",
-    },
-    {
-        "<Leader>>",
-        function()
-            require("harpoon"):list():add()
-        end,
-        desc = "Add current file to pinned list",
-    },
+-- Yank
+map("x", "<Leader>y", '"+y')
+map("n", "<Leader>yF", "<Cmd>let @+ = expand('%:p:~')<CR>")
+map("n", "<Leader>yf", "<Cmd>let @+ = expand('%')<CR>")
 
-    -- Buffer
-    { "<Leader>,", "<Cmd>FzfLua buffers<CR>", desc = "Switch buffer" },
-    {
-        "<Leader>bd",
-        function()
-            require("mini.bufremove").delete(0)
-        end,
-        desc = "Delete buffer",
-    },
+-- Files
+map("n", "<Leader><Leader>", function()
+    require("fzf-lua").files({
+        cwd = require("oil").get_current_dir(),
+    })
+end)
+map("n", "<Leader>fg", "<Cmd>FzfLua git_files<CR>")
+map("n", "-", "<Cmd>Oil<CR>")
+map("n", "_", "<Cmd>Oil .<CR>")
 
-    -- Git
-    { "<Leader>gs", "<Cmd>Git<CR>", desc = "Git status" },
-    { "<Leader>gb", "<Cmd>Git blame<CR>", desc = "Git blame" },
-    { "<Leader>gl", "<Cmd>Git log<CR>", desc = "Git log" },
-    { "<Leader>ghb", "<Cmd>silent !gh browse %<CR>", desc = "GitHub browse" },
-    { "<Leader>ghr", "<Cmd>silent !gh repo view --web<CR>", desc = "GitHub repo" },
-    {
-        "<Leader>gd",
-        function()
-            require("mini.diff").toggle_overlay()
-        end,
-        desc = "Git diff overlay",
-    },
+-- Buffers
+map("n", "<Leader>,", "<Cmd>FzfLua buffers<CR>")
+map("n", "<Leader>bd", function()
+    require("mini.bufremove").delete()
+end)
 
-    -- Search and replace
-    { "<Leader>/", "<Cmd>FzfLua grep_project<CR>", desc = "Search project (fuzzy)" },
-    { "<Leader>?", "<Cmd>FzfLua live_grep<CR>", desc = "Search project (regex)" },
-    {
-        "<Leader>sr",
-        function()
-            require("grug-far").open({
-                prefills = {
-                    paths = vim.fn.expand("%"),
-                },
-            })
-        end,
-        desc = "Search and replace in current file",
-    },
-    {
-        "<Leader>sR",
-        function()
-            require("grug-far").grug_far({})
-        end,
-        desc = "Search and replace in project",
-    },
+-- Git
+map("n", "<Leader>gs", "<Cmd>Git<CR>")
+map("n", "<Leader>gd", "<Cmd>Git diff<CR>")
+map("n", "<Leader>gD", "<Cmd>Git diff --staged<CR>")
+map("n", "<Leader>gb", "<Cmd>Git blame<CR>")
+map("n", "<Leader>gl", "<Cmd>Git log<CR>")
+map("n", "<Leader>ghb", "<Cmd>silent !gh browse %<CR>")
+map("n", "<Leader>ghr", "<Cmd>silent !gh repo view --web<CR>")
 
-    -- Yank
-    { "<Leader>y", '"+y', mode = { "x" } , desc = "Yank to clipboard"},
-    { "<Leader>yF", "<Cmd>let @+ = expand('%:p:~')<CR>", desc = "Yank absolute file path to clipboard" },
-    { "<Leader>yf", "<Cmd>let @+ = expand('%')<CR>", desc = "Yank relative file path to clipboard" },
-}
+-- Search and replace
+map("n", "<Leader>/", "<Cmd>FzfLua grep_project<CR>")
+map("n", "<Leader>?", "<Cmd>FzfLua live_grep<CR>")
+map("n", "<Leader>sr", function()
+    require("grug-far").open({
+        prefills = {
+            paths = vim.fn.expand("%"),
+        },
+    })
+end)
+map("n", "<Leader>sR", function()
+    require("grug-far").grug_far({})
+end)

@@ -243,11 +243,6 @@ return require("lazy").setup({
     },
 
     {
-        "https://github.com/romainl/vim-cool",
-        event = "VeryLazy",
-    },
-
-    {
         "https://github.com/echasnovski/mini.bufremove",
         lazy = true,
     },

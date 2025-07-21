@@ -1,5 +1,6 @@
 {
   "blink.cmp": { "branch": "main", "commit": "485c03400608cb6534bbf84da8c1c471fc4808c0" },
+  "copilot.lua": { "branch": "master", "commit": "14bf786180b2ca4578915c56989b6d676dddc6f3" },
   "flash.nvim": { "branch": "main", "commit": "3c942666f115e2811e959eabbdd361a025db8b63" },
   "fzf-lua": { "branch": "main", "commit": "098d50b0acc17ce427e2b5f466f487daf9ad4b5e" },
   "grug-far.nvim": { "branch": "main", "commit": "45981a9af7f4e666a3cdaedb1d21d2ab926727a2" },

@@ -13,8 +13,6 @@
 [tag]
 	sort = version:refname
 [fetch]
-	prune = true
-	pruneTags = true
 	all = true
 [pull]
 	rebase = true

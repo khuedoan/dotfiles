@@ -181,21 +181,6 @@ return require("lazy").setup({
             require("nvim-autopairs").setup()
         end,
     },
-
-    {
-        "https://github.com/zbirenbaum/copilot.lua",
-        event = "InsertEnter",
-        config = function()
-            require("copilot").setup({
-                suggestion = {
-                    auto_trigger = true,
-                    keymap = {
-                        accept = "<C-CR>",
-                    },
-                },
-            })
-        end
-    },
     -- }}}
 
     -- {{{ Git

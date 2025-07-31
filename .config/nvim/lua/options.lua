@@ -13,17 +13,4 @@ vim.opt.number = true         -- set numbered lines
 vim.opt.relativenumber = true -- show relative line number
 vim.opt.signcolumn = "yes"    -- always show the sign column, otherwise it would shift the text each time
 vim.opt.scrolloff = 3         -- minimal number of screen lines to keep above and below the cursor
-
--- Custom statusline
-vim.opt.laststatus = 3        -- global statusline
-vim.opt.statusline =
-    "%#Substitute# %Y %0*" .. -- filetype
-    " %f " ..                 -- path to file
-    "%m" ..                   -- modifed
-    "%r" ..                   -- readonly
-    "%=" ..                   -- separator
-    " %{&fileencoding} " ..   -- file encoding
-    "|" ..                    -- padding
-    " %{&fileformat} " ..     -- file format
-    "|" ..                    -- padding
-    " %c:%l/%L "              -- column at line per total lines
+vim.opt.laststatus = 0        -- disable statusline

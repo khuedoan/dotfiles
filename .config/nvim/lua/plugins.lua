@@ -79,17 +79,12 @@ return require("lazy").setup({
         "https://github.com/stevearc/oil.nvim",
         cmd = "Oil",
         config = function()
-            local oil = require("oil")
-            oil.setup({
-                columns = {},
+            require("oil").setup({
                 view_options = {
                     show_hidden = true,
                     is_always_hidden = function(name, _)
                         return name == ".."
                     end,
-                },
-                win_options = {
-                    concealcursor = "nvic",
                 },
             })
         end,

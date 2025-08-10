@@ -8,8 +8,9 @@ map("n", "<Leader>yf", "<Cmd>let @+ = expand('%')<CR>")
 
 -- Files
 map("n", "<Leader><Leader>", function()
-    require("fzf-lua").files({
+    require("fzf-lua-frecency").frecency({
         cwd = require("oil").get_current_dir(),
+        cwd_only = true,
     })
 end)
 map("n", "<Leader>fg", "<Cmd>FzfLua git_files<CR>")

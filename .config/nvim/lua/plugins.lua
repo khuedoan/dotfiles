@@ -100,9 +100,22 @@ return require("lazy").setup({
     -- {{{ IntelliSense
     {
         "https://github.com/Saghen/blink.cmp",
-        version = "v0.*",
+        dependencies = {
+            "https://github.com/neovim/nvim-lspconfig",
+        },
+        version = "1.*",
         event = "VeryLazy",
         config = function()
+            vim.lsp.enable({
+                "gopls",
+                "lua_ls",
+                "nil_ls",
+                "pyright",
+                "rust_analyzer",
+                "terraformls",
+                "ts_ls",
+            })
+
             require("blink.cmp").setup({
                 keymap = {
                     preset = "enter",
@@ -113,33 +126,6 @@ return require("lazy").setup({
                     },
                 },
             })
-        end,
-    },
-
-    {
-        "https://github.com/neovim/nvim-lspconfig",
-        event = "VeryLazy",
-        config = function()
-            -- Requires language servers to be already installed
-            -- :help lspconfig-all
-            local servers = {
-                gopls = {},
-                lua_ls = {},
-                nil_ls = {},
-                pyright = {},
-                rust_analyzer = {},
-                terraformls = {},
-                ts_ls = {},
-            }
-
-            local lspconfig = require("lspconfig")
-            for server, config in pairs(servers) do
-                config.capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities)
-                lspconfig[server].setup(config)
-            end
-
-            -- HACK manually start LSP server after lazy load
-            vim.cmd("filetype detect")
         end,
     },
 

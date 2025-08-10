@@ -1,5 +1,5 @@
 {
-  "blink.cmp": { "branch": "main", "commit": "485c03400608cb6534bbf84da8c1c471fc4808c0" },
+  "blink.cmp": { "branch": "main", "commit": "bae4bae0eedd1fa55f34b685862e94a222d5c6f8" },
   "flash.nvim": { "branch": "main", "commit": "3c942666f115e2811e959eabbdd361a025db8b63" },
   "fzf-lua": { "branch": "main", "commit": "edf3524164c0878e64968cb1d4a24ba695b1ee12" },
   "fzf-lua-frecency.nvim": { "branch": "master", "commit": "0bb73d45983b65ac50bca30eb170cef3223939de" },

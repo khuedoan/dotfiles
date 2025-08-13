@@ -51,9 +51,6 @@ return require("lazy").setup({
     -- {{{ Search
     {
         "https://github.com/ibhagwan/fzf-lua",
-        dependencies = {
-            "https://github.com/elanmed/fzf-lua-frecency.nvim",
-        },
         event = "VeryLazy",
         config = function()
             require("fzf-lua").setup({
@@ -65,9 +62,6 @@ return require("lazy").setup({
                 },
             })
             require("fzf-lua").register_ui_select()
-            require("fzf-lua-frecency").setup({
-                display_score = false,
-            })
         end,
     },
 

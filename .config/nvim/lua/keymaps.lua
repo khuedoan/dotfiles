@@ -7,18 +7,11 @@ map("n", "<Leader>yF", "<Cmd>let @+ = expand('%:p:~')<CR>")
 map("n", "<Leader>yf", "<Cmd>let @+ = expand('%')<CR>")
 
 -- Files
-map("n", "<Leader><Leader>", function()
-    require("fzf-lua-frecency").frecency({
-        cwd = require("oil").get_current_dir(),
-        cwd_only = true,
-    })
-end)
-map("n", "<Leader>fg", "<Cmd>FzfLua git_files<CR>")
+map("n", "<Leader><Leader>", "<Cmd>FzfLua combine pickers=buffers;git_files;files<CR>")
 map("n", "-", "<Cmd>Oil<CR>")
 map("n", "_", "<Cmd>Oil .<CR>")
 
 -- Buffers
-map("n", "<Leader>,", "<Cmd>FzfLua buffers<CR>")
 map("n", "<Leader>bd", function()
     require("mini.bufremove").delete()
 end)

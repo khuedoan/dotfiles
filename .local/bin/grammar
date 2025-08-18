@@ -1,28 +1,3 @@
-#!/usr/bin/env python
+#!/bin/sh
 
-import json
-import sys
-import urllib.request
-
-input = sys.stdin.read().strip()
-url = 'http://localhost:1234/v1/chat/completions'
-headers = {
-    'Content-Type': 'application/json',
-}
-payload = {
-    "model": "grmr-v3-g4b",
-    "messages": [
-        {"role": "user", "content": input}
-    ],
-    "temperature": 0.7,
-    "stream": False
-}
-
-data = json.dumps(payload).encode('utf-8')
-req = urllib.request.Request(url, data=data, headers=headers)
-
-with urllib.request.urlopen(req) as response:
-    response_data = response.read().decode('utf-8')
-
-output = json.loads(response_data)['choices'][0]['message']['content']
-print(output, end='')
+ollama run hf.co/qingy2024/GRMR-V3-G4B-GGUF

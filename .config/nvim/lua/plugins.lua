@@ -11,17 +11,6 @@ vim.opt.rtp:prepend(lazypath)
 return require("lazy").setup({
     -- {{{ UI
     {
-        "https://github.com/navarasu/onedark.nvim",
-        priority = 1000,
-        config = function()
-            require("onedark").setup({
-                transparent = true,
-            })
-            require("onedark").load()
-        end,
-    },
-
-    {
         "https://github.com/lukas-reineke/indent-blankline.nvim",
         event = "VeryLazy",
         config = function()

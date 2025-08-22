@@ -1,66 +1,86 @@
 typeset -g POWERLEVEL9K_MODE=nerdfont-complete
 typeset -g POWERLEVEL9K_ICON_PADDING=none
-typeset -g POWERLEVEL9K_TRANSIENT_PROMPT=always
+typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
 
 typeset -g POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(
-  os_icon                # os identifier
-  dir                    # current directory
-  vcs                    # git status
+  os_icon
+  dir
+  vcs
+  direnv
+  nix_shell
+
+  newline
+  context
+  prompt_char
 )
 
 typeset -g POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(
-  status                 # exit code of the last command
-  command_execution_time # duration of the last command
-  background_jobs        # presence of background jobs
-  asdf                   # asdf version manager (https://github.com/asdf-vm/asdf)
-  virtualenv             # python virtual environment (https://docs.python.org/3/library/venv.html)
-  anaconda               # conda environment (https://conda.io/)
-  pyenv                  # python environment (https://github.com/pyenv/pyenv)
-  goenv                  # go environment (https://github.com/syndbg/goenv)
-  nodenv                 # node.js version from nodenv (https://github.com/nodenv/nodenv)
-  nvm                    # node.js version from nvm (https://github.com/nvm-sh/nvm)
-  nodeenv                # node.js environment (https://github.com/ekalinin/nodeenv)
-  kubecontext            # current kubernetes context (https://kubernetes.io/)
-  terraform              # terraform workspace (https://www.terraform.io)
-  aws                    # aws profile (https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-profiles.html)
-  aws_eb_env             # aws elastic beanstalk environment (https://aws.amazon.com/elasticbeanstalk/)
-  azure                  # azure account name (https://docs.microsoft.com/en-us/cli/azure)
-  gcloud                 # google cloud cli account and project (https://cloud.google.com/)
-  google_app_cred        # google application credentials (https://cloud.google.com/docs/authentication/production)
-  context                # user@hostname
-  nix_shell              # nix shell
+  command_execution_time
+  background_jobs
+  kubecontext
+  aws
+  azure
+  gcloud
+  time
+
+  newline
+  status
 )
+
+typeset -g POWERLEVEL9K_BACKGROUND=                            # transparent background
+typeset -g POWERLEVEL9K_{LEFT,RIGHT}_{LEFT,RIGHT}_WHITESPACE=  # no surrounding whitespace
+typeset -g POWERLEVEL9K_{LEFT,RIGHT}_SUBSEGMENT_SEPARATOR=' '  # separate segments with a space
+typeset -g POWERLEVEL9K_{LEFT,RIGHT}_SEGMENT_SEPARATOR=        # no end-of-line symbol
+
+typeset -g POWERLEVEL9K_ICON_BEFORE_CONTENT=true
+typeset -g POWERLEVEL9K_PROMPT_ADD_NEWLINE=false
 
 # os_icon
-typeset -g POWERLEVEL9K_OS_ICON_FOREGROUND=0
-typeset -g POWERLEVEL9K_OS_ICON_BACKGROUND=5
+typeset -g POWERLEVEL9K_OS_ICON_FOREGROUND=5
+
+# prompt_char
+typeset -g POWERLEVEL9K_PROMPT_CHAR_OK_{VIINS,VICMD,VIVIS,VIOWR}_FOREGROUND=2
+typeset -g POWERLEVEL9K_PROMPT_CHAR_ERROR_{VIINS,VICMD,VIVIS,VIOWR}_FOREGROUND=1
 
 # dir
+typeset -g POWERLEVEL9K_DIR_FOREGROUND=4
 typeset -g POWERLEVEL9K_SHORTEN_STRATEGY=truncate_to_unique
 typeset -g POWERLEVEL9K_SHORTEN_DELIMITER=
-local anchor_files=(
-  .git
-)
 
-# git
+# vcs
+typeset -g POWERLEVEL9K_VCS_CLEAN_FOREGROUND=2
+typeset -g POWERLEVEL9K_VCS_UNTRACKED_FOREGROUND=1
+typeset -g POWERLEVEL9K_VCS_MODIFIED_FOREGROUND=3
 typeset -g POWERLEVEL9K_VCS_DISABLED_WORKDIR_PATTERN='~'
 
+# status
+typeset -g POWERLEVEL9K_STATUS_FOREGROUND=1
+typeset -g POWERLEVEL9K_STATUS_OK_FOREGROUND=2
+
 # command_execution_time
-typeset -g POWERLEVEL9K_COMMAND_EXECUTION_TIME_PRECISION=0
+typeset -g POWERLEVEL9K_COMMAND_EXECUTION_TIME_FOREGROUND=3
 
-# kubecontext
-typeset -g POWERLEVEL9K_KUBECONTEXT_FOREGROUND=0
-typeset -g POWERLEVEL9K_KUBECONTEXT_SHOW_ON_COMMAND='kubectl|helm'
-
-# aws
-typeset -g POWERLEVEL9K_AWS_SHOW_ON_COMMAND='aws|terraform|terragrunt'
-
-# azure
-typeset -g POWERLEVEL9K_AZURE_FOREGROUND=0
-typeset -g POWERLEVEL9K_AZURE_SHOW_ON_COMMAND='az|terraform|terragrunt'
-
-# gcloud
-typeset -g POWERLEVEL9K_GCLOUD_SHOW_ON_COMMAND='gcloud|gcs|terraform|terragrunt'
+# nix_shell
+typeset -g POWERLEVEL9K_NIX_SHELL_FOREGROUND=4
 
 # context
 typeset -g POWERLEVEL9K_CONTEXT_{DEFAULT,SUDO}_{CONTENT,VISUAL_IDENTIFIER}_EXPANSION=
+
+# kubecontext
+typeset -g POWERLEVEL9K_KUBECONTEXT_FOREGROUND=5
+typeset -g POWERLEVEL9K_KUBECONTEXT_SHOW_ON_COMMAND='kubectl|helm'
+
+# aws
+typeset -g POWERLEVEL9K_AWS_FOREGROUND=3
+typeset -g POWERLEVEL9K_AWS_SHOW_ON_COMMAND='aws|awless|cdk|terraform|terragrunt'
+
+# azure
+typeset -g POWERLEVEL9K_AZURE_FOREGROUND=4
+typeset -g POWERLEVEL9K_AZURE_SHOW_ON_COMMAND='az|terraform|terragrunt'
+
+# gcloud
+typeset -g POWERLEVEL9K_GCLOUD_FOREGROUND=4
+typeset -g POWERLEVEL9K_GCLOUD_SHOW_ON_COMMAND='gcloud|gcs|gsutil|terraform|terragrunt'
+
+# time
+typeset -g POWERLEVEL9K_TIME_FOREGROUND=6

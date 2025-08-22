@@ -1,16 +1,16 @@
 # vi: ft=swayconfig
 
-set $background #282c34
-set $foreground #abb2bf
+set $background #14161b
+set $foreground #e0e2ea
 
-set $black   #21252b
-set $red     #be5046
-set $green   #98c379
-set $yellow  #d19a66
-set $blue    #61afef
-set $magenta #c678dd
-set $cyan    #56b6c2
-set $white   #828997
+set $black   #07080d
+set $red     #ffc0b9
+set $green   #b3f6c0
+set $yellow  #fce094
+set $blue    #a6dbff
+set $magenta #ffcaff
+set $cyan    #8cf8f7
+set $white   #c4c6cd
 
 # class                  border       background  text        indicator   child_border
 client.background                     $background
@@ -23,7 +23,7 @@ client.placeholder       $background  $background $foreground $background $backg
 
 bar {
     colors {
-        background         #21252bbb
+        background         #07080dbb
         statusline         $foreground
         separator          $white
 

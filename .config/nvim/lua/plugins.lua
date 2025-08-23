@@ -206,9 +206,6 @@ return require("lazy").setup({
                     search = {
                         enabled = true,
                     },
-                    char = {
-                        enabled = false,
-                    },
                 },
             })
         end,

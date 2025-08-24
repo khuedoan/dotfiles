@@ -1,24 +1,14 @@
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
     vim.fn.system({
-        "git",
-        "clone",
-        "--filter=blob:none",
+        "git", "clone", "--filter=blob:none", "--branch=stable",
         "https://github.com/folke/lazy.nvim.git",
-        "--branch=stable", -- latest stable release
         lazypath,
     })
 end
 vim.opt.rtp:prepend(lazypath)
 
 return require("lazy").setup({
-    -- {{{ Libraries
-    {
-        "https://github.com/nvim-lua/plenary.nvim",
-        lazy = true,
-    },
-    -- }}}
-
     -- {{{ UI
     {
         "https://github.com/navarasu/onedark.nvim",
@@ -65,13 +55,7 @@ return require("lazy").setup({
         end,
     },
 
-    {
-        "https://github.com/MagicDuck/grug-far.nvim",
-        lazy = true,
-        config = function()
-            require("grug-far").setup({})
-        end,
-    },
+    { "https://github.com/MagicDuck/grug-far.nvim", lazy = true },
     -- }}}
 
     -- {{{ File manager
@@ -179,10 +163,7 @@ return require("lazy").setup({
     -- }}}
 
     -- {{{ Git
-    {
-        "https://github.com/tpope/vim-fugitive",
-        cmd = "Git",
-    },
+    { "https://github.com/tpope/vim-fugitive", cmd = "Git" },
 
     {
         "https://github.com/echasnovski/mini.diff",
@@ -221,10 +202,8 @@ return require("lazy").setup({
     -- }}}
 
     -- {{{ Miscellaneous
-    {
-        "https://github.com/farmergreg/vim-lastplace",
-        event = "BufReadPost",
-    },
+    { "https://github.com/farmergreg/vim-lastplace", event = "BufReadPost" },
+    { "https://github.com/echasnovski/mini.bufremove", lazy = true },
 
     {
         "https://github.com/tpope/vim-sleuth",
@@ -232,11 +211,6 @@ return require("lazy").setup({
         config = function()
             vim.cmd("silent Sleuth")
         end,
-    },
-
-    {
-        "https://github.com/echasnovski/mini.bufremove",
-        lazy = true,
     },
     -- }}}
 })

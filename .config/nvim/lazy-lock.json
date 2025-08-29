@@ -1,7 +1,8 @@
 {
   "blink.cmp": { "branch": "main", "commit": "bae4bae0eedd1fa55f34b685862e94a222d5c6f8" },
   "flash.nvim": { "branch": "main", "commit": "3c942666f115e2811e959eabbdd361a025db8b63" },
-  "fzf-lua": { "branch": "main", "commit": "2f9e1af8cbff922543c2f259040d518517b8e294" },
+  "fzf-lua": { "branch": "main", "commit": "bebc84e7ffc8fd86103f6ed6c590df72d524d342" },
+  "fzf-lua-frecency.nvim": { "branch": "master", "commit": "9ee3d5f023c1a07bc595daf165e6b6be66509a8e" },
   "grug-far.nvim": { "branch": "main", "commit": "385d1949dc21d0c39e7a74b4f4a25da18817bc86" },
   "indent-blankline.nvim": { "branch": "master", "commit": "005b56001b2cb30bfa61b7986bc50657816ba4ba" },
   "lazy.nvim": { "branch": "main", "commit": "6c3bda4aca61a13a9c63f1c1d1b16b9d3be90d7a" },

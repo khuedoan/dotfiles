@@ -172,7 +172,7 @@ return require("lazy").setup({
     { "https://github.com/tpope/vim-fugitive", cmd = "Git" },
 
     {
-        "https://github.com/echasnovski/mini.diff",
+        "https://github.com/nvim-mini/mini.diff",
         event = "VeryLazy",
         config = function()
             require("mini.diff").setup({})
@@ -199,7 +199,7 @@ return require("lazy").setup({
     },
 
     {
-        "https://github.com/echasnovski/mini.surround",
+        "https://github.com/nvim-mini/mini.surround",
         event = "VeryLazy",
         config = function()
             require("mini.surround").setup({})

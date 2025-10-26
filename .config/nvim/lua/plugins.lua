@@ -181,28 +181,22 @@ return require("lazy").setup({
     -- }}}
 
     -- {{{ Motions
-    {
-        "https://github.com/folke/flash.nvim",
-        event = "VeryLazy",
-        config = function()
-            require("flash").setup({
-                search = {
-                    wrap = false,
-                },
-                modes = {
-                    search = {
-                        enabled = true,
-                    },
-                },
-            })
-        end,
-    },
+    { "https://github.com/ggandor/leap.nvim", event = "VeryLazy" },
 
     {
         "https://github.com/nvim-mini/mini.surround",
         event = "VeryLazy",
         config = function()
-            require("mini.surround").setup({})
+            require("mini.surround").setup({
+                mappings = {
+                    add = "gsa",
+                    delete = "gsd",
+                    find = "",
+                    find_left = "",
+                    highlight = "",
+                    replace = "gsr",
+                },
+            })
         end,
     },
     -- }}}

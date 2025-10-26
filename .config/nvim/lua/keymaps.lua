@@ -1,6 +1,9 @@
 vim.g.mapleader = " "
 local map = vim.keymap.set
 
+-- Motions
+vim.keymap.set({"n", "x", "o"}, "s", "<Plug>(leap)")
+
 -- Yank
 map("x", "<Leader>y", '"+y')
 map("n", "<Leader>yF", "<Cmd>let @+ = expand('%:p:~')<CR>")

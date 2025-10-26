@@ -1,11 +1,11 @@
 {
   "blink.cmp": { "branch": "main", "commit": "327fff91fe6af358e990be7be1ec8b78037d2138" },
-  "flash.nvim": { "branch": "main", "commit": "3be9bf7e85550045ec576379a0c45aac144d0438" },
   "fzf-lua": { "branch": "main", "commit": "49ba1184b357b97cf3d6690cd5acffdb9ddeceba" },
   "fzf-lua-frecency.nvim": { "branch": "master", "commit": "392bcd1f5053e5a6bb0d77e8f81d56712f362343" },
   "grug-far.nvim": { "branch": "main", "commit": "3e72397465f774b01aa38e4fe8e6eecf23d766d9" },
   "indent-blankline.nvim": { "branch": "master", "commit": "005b56001b2cb30bfa61b7986bc50657816ba4ba" },
   "lazy.nvim": { "branch": "main", "commit": "db067881fff0fd4be8c00e5bde7492e0e1c77a2f" },
+  "leap.nvim": { "branch": "main", "commit": "44e3a60a7a62069e5c9445b7a8104612d4f060cb" },
   "mini.bufremove": { "branch": "main", "commit": "1b5d7e7bc81cd02476bdd964c3d850c48eb91a07" },
   "mini.diff": { "branch": "main", "commit": "98fc732d5835eb7b6539f43534399b07b17f4e28" },
   "mini.surround": { "branch": "main", "commit": "444e155147e2b5159dd28a65f9736254c16cb817" },

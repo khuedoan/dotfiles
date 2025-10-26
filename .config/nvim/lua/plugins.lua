@@ -209,7 +209,7 @@ return require("lazy").setup({
 
     -- {{{ Miscellaneous
     { "https://github.com/farmergreg/vim-lastplace", event = "BufReadPost" },
-    { "https://github.com/echasnovski/mini.bufremove", lazy = true },
+    { "https://github.com/nvim-mini/mini.bufremove", lazy = true },
 
     {
         "https://github.com/tpope/vim-sleuth",

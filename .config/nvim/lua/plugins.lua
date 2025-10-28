@@ -181,7 +181,14 @@ return require("lazy").setup({
     -- }}}
 
     -- {{{ Motions
-    { "https://github.com/ggandor/leap.nvim", event = "VeryLazy" },
+    {
+        "https://github.com/ggandor/leap.nvim",
+        event = "VeryLazy",
+        config = function()
+            require("leap").opts.safe_labels = ""
+            vim.api.nvim_set_hl(0, "LeapLabel", { fg = "yellow", bold = true })
+        end,
+    },
 
     {
         "https://github.com/nvim-mini/mini.surround",

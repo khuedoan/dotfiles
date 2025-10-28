@@ -196,12 +196,12 @@ return require("lazy").setup({
         config = function()
             require("mini.surround").setup({
                 mappings = {
-                    add = "gsa",
-                    delete = "gsd",
+                    add = "yz",
+                    delete = "dz",
                     find = "",
                     find_left = "",
                     highlight = "",
-                    replace = "gsr",
+                    replace = "rz",
                 },
             })
         end,

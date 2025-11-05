@@ -1,8 +1,9 @@
 vim.g.mapleader = " "
 local map = vim.keymap.set
 
--- Motions
-vim.keymap.set({"n", "x", "o"}, "s", "<Plug>(leap)")
+-- Edit
+map({"n", "x", "o"}, "s", "<Plug>(leap)")
+map("n", "<Leader>u", "<Cmd>UndotreeToggle<CR>")
 
 -- Yank
 map("x", "<Leader>y", '"+y')

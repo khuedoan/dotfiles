@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -euo pipefail
+
 find ~/.password-store -type f -name '*.gpg' -exec basename {} .gpg \; \
 | tac \
 | ${MENU:-fzf} \

@@ -91,8 +91,10 @@ return require("lazy").setup({
         event = "VeryLazy",
         config = function()
             vim.lsp.enable({
+                -- :help lspconfig-all
                 "gopls",
                 "lua_ls",
+                "markdown_oxide",
                 "nil_ls",
                 "pyright",
                 "rust_analyzer",

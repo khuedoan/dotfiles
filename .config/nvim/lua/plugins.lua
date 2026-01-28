@@ -136,7 +136,7 @@ return require("lazy").setup({
         build = ":TSUpdate",
         event = "VeryLazy",
         config = function()
-            require("nvim-treesitter.configs").setup({
+            require("nvim-treesitter.config").setup({
                 ensure_installed = {
                     "cue",
                     "go",
@@ -184,7 +184,7 @@ return require("lazy").setup({
 
     -- {{{ Motions
     {
-        "https://github.com/ggandor/leap.nvim",
+        "https://codeberg.org/andyg/leap.nvim",
         event = "VeryLazy",
         config = function()
             require("leap").opts.safe_labels = ""

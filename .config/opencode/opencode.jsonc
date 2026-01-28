@@ -8,6 +8,16 @@
         "mcp-server-playwright"
       ],
       "enabled": true
+    },
+    "knowledge": {
+      "type": "local",
+      "command": [
+        "knowledge-mcp"
+      ],
+      "environment": {
+        "KNOWLEDGE_VAULT_PATH": "/Users/kdoan/Documents/notes"
+      },
+      "enabled": true
     }
   }
 }

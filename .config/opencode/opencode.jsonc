@@ -15,7 +15,7 @@
         "knowledge-mcp"
       ],
       "environment": {
-        "KNOWLEDGE_VAULT_PATH": "/Users/kdoan/Documents/notes"
+        "KNOWLEDGE_VAULT_PATH": "~/Documents/notes"
       },
       "enabled": true
     }

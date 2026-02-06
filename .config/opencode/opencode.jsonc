@@ -18,6 +18,12 @@
         "KNOWLEDGE_VAULT_PATH": "~/Documents/notes"
       },
       "enabled": true
+    },
+    "atlassian": {
+      // Command to authenticate: opencode mcp auth atlassian
+      "type": "remote",
+      "url": "https://mcp.atlassian.com/v1/mcp",
+      "enabled": true
     }
   }
 }

@@ -2,13 +2,6 @@
   "$schema": "https://opencode.ai/config.json",
   "theme": "one-dark",
   "mcp": {
-    "playwright": {
-      "type": "local",
-      "command": [
-        "mcp-server-playwright"
-      ],
-      "enabled": true
-    },
     "knowledge": {
       "type": "local",
       "command": [
@@ -19,11 +12,18 @@
       },
       "enabled": true
     },
+    "playwright": {
+      "type": "local",
+      "command": [
+        "mcp-server-playwright"
+      ],
+      "enabled": false
+    },
     "atlassian": {
       // Command to authenticate: opencode mcp auth atlassian
       "type": "remote",
       "url": "https://mcp.atlassian.com/v1/mcp",
-      "enabled": true
+      "enabled": false
     }
   }
 }

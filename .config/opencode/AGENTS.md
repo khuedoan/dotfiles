@@ -12,7 +12,7 @@ confirmation instead of making assumptions.
 
 - Be direct and concise
 - Always use conventional commits when writing commit messages
-- Never use emojis or emdash
+- Never use emojis or emdash `—` or `--`
 - Never use curly quotes "", use straight quotes "" instead
 - Never use curly apostrophes ’, use straight apostrophes ' instead
 - Don't overuse bold or bullet points
@@ -23,3 +23,21 @@ confirmation instead of making assumptions.
 - Always use `-` for bullet lists, not `*`
 - Don't write in the "This isn't X, it's Y" pattern
 - Don't write in the rule of three structure
+- When writing technical docs, follow the https://diataxis.fr framework
+
+## Coding guide
+
+- Comments should explain the why and avoid obvious explanations of a few lines
+- Warn the user if the diff becomes too large
+- Each commit should include:
+    - A single focused change
+    - Tests to demonstrate the implementation works
+    - Documentation reflecting the change
+    - Conventional Commit message
+
+## High level workflow
+
+- Write technical docs as specification
+- Formalizing the spec in a TLA+ model
+- Write tests for high level system behaviours
+- Write code to implement the features

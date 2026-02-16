@@ -168,6 +168,8 @@ return require("lazy").setup({
             require("nvim-autopairs").setup()
         end,
     },
+
+    { "https://github.com/nickjvandyke/opencode.nvim", lazy = true },
     -- }}}
 
     -- {{{ Git

@@ -1,0 +1,12 @@
+theme = Atom One Dark
+background = 282c34
+unfocused-split-fill = 000000
+split-divider-color = 4f5258
+font-family = "FiraCode Nerd Font Mono Med"
+
+keybind = super+h=goto_split:left
+keybind = super+j=goto_split:down
+keybind = super+k=goto_split:up
+keybind = super+l=goto_split:right
+keybind = super+enter=new_split:auto
+keybind = super+f=toggle_split_zoom

@@ -32,7 +32,7 @@ alias diff='git diff --no-index'
 
 # coding
 alias v='nvim'
-alias a='opencode'
+alias a='OPENCODE_ENABLE_EXA=1 opencode --port'
 
 # convert to PDF
 alias officetopdf='libreoffice --headless --convert-to pdf'

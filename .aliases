@@ -30,8 +30,9 @@ alias less='less --RAW-CONTROL-CHARS'
 # diff
 alias diff='git diff --no-index'
 
-# nvim
+# coding
 alias v='nvim'
+alias a='opencode'
 
 # convert to PDF
 alias officetopdf='libreoffice --headless --convert-to pdf'

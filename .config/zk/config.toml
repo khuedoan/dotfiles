@@ -1,2 +1,8 @@
 [notebook]
 dir = "~/Documents/notes"
+
+[alias]
+list = "zk list --quiet $@"
+search = "zk list --quiet --match $@"
+recent = "zk edit --sort created- --created-after 'last week' --interactive"
+random = "zk list --quiet --format full --sort random --limit 1"

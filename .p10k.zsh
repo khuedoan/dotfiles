@@ -15,6 +15,7 @@ typeset -g POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(
 )
 
 typeset -g POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(
+  status
   command_execution_time
   background_jobs
   kubecontext
@@ -22,9 +23,6 @@ typeset -g POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(
   azure
   gcloud
   time
-
-  newline
-  status
 )
 
 typeset -g POWERLEVEL9K_BACKGROUND=                            # transparent background

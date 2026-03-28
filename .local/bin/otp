@@ -2,7 +2,10 @@
 
 set -euo pipefail
 
-find ~/.password-store -type f -name '*.gpg' -exec basename {} .gpg \; \
+cd ~/.password-store
+
+find . -type f -name '*.gpg' \
+| sed 's|^\./||; s|\.gpg$||' \
 | tac \
 | ${MENU:-fzf} \
 | xargs pass otp --clip

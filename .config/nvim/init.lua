@@ -1,3 +1,5 @@
+vim.loader.enable() -- fast load dark magic
+
 vim.opt.ignorecase = true     -- ignore case in search patterns
 vim.opt.smartcase = true      -- smart case
 vim.opt.smartindent = true    -- make indenting smarter again

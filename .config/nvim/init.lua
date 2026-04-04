@@ -46,7 +46,6 @@ vim.schedule(function()
         "https://github.com/nvim-mini/mini.diff",
         "https://codeberg.org/andyg/leap.nvim",
         "https://github.com/nvim-mini/mini.surround",
-        "https://github.com/farmergreg/vim-lastplace",
         "https://github.com/nvim-mini/mini.bufremove",
         "https://github.com/tpope/vim-sleuth",
     })

@@ -14,7 +14,6 @@ vim.pack.add({
     "https://github.com/neovim/nvim-lspconfig",
     { src = "https://github.com/Saghen/blink.cmp", version = vim.version.range("1.x") },
     "https://github.com/windwp/nvim-autopairs",
-    "https://github.com/nickjvandyke/opencode.nvim",
 
     -- Git
     "https://github.com/tpope/vim-fugitive",

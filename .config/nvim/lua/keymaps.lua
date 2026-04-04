@@ -47,8 +47,3 @@ end)
 map("n", "<Leader>sR", function()
     require("grug-far").grug_far({})
 end)
-
--- AI
-map({"x"}, "<Leader>aa", function()
-    require("opencode").ask("@this: ", { submit = true })
-end)

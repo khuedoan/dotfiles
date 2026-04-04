@@ -1,191 +1,121 @@
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
-    vim.fn.system({
-        "git", "clone", "--filter=blob:none", "--branch=stable",
-        "https://github.com/folke/lazy.nvim.git",
-        lazypath,
-    })
-end
-vim.opt.rtp:prepend(lazypath)
+vim.pack.add({
+    -- UI
+    "https://github.com/navarasu/onedark.nvim",
+    "https://github.com/lukas-reineke/indent-blankline.nvim",
 
-return require("lazy").setup({
-    -- {{{ UI
-    {
-        "https://github.com/navarasu/onedark.nvim",
-        priority = 1000,
-        config = function()
-            require("onedark").setup({
-                transparent = true,
-            })
-            require("onedark").load()
-        end,
-    },
+    -- Search
+    "https://github.com/ibhagwan/fzf-lua",
+    "https://github.com/MagicDuck/grug-far.nvim",
 
-    {
-        "https://github.com/lukas-reineke/indent-blankline.nvim",
-        event = "VeryLazy",
-        config = function()
-            require("ibl").setup({
-                indent = {
-                    char = "▏",
-                    tab_char = "→",
-                },
-                scope = {
-                    enabled = false,
-                },
-            })
-        end,
-    },
-    -- }}}
+    -- File manager
+    "https://github.com/stevearc/oil.nvim",
 
-    -- {{{ Search
-    {
-        "https://github.com/ibhagwan/fzf-lua",
-        event = "VeryLazy",
-        config = function()
-            require("fzf-lua").setup({
-                "max-perf",
-                winopts = {
-                    height = 0.5,
-                    width = 1,
-                    row = 1,
-                },
-            })
-            require("fzf-lua").register_ui_select()
-        end,
-    },
+    -- IntelliSense
+    "https://github.com/neovim/nvim-lspconfig",
+    { src = "https://github.com/Saghen/blink.cmp", version = vim.version.range("1.x") },
+    "https://github.com/windwp/nvim-autopairs",
+    "https://github.com/nickjvandyke/opencode.nvim",
 
-    { "https://github.com/MagicDuck/grug-far.nvim", lazy = true },
-    -- }}}
+    -- Git
+    "https://github.com/tpope/vim-fugitive",
+    "https://github.com/nvim-mini/mini.diff",
 
-    -- {{{ File manager
-    {
-        "https://github.com/stevearc/oil.nvim",
-        cmd = "Oil",
-        config = function()
-            require("oil").setup({
-                view_options = {
-                    show_hidden = true,
-                    is_always_hidden = function(name, _)
-                        return name == ".."
-                    end,
-                },
-            })
-        end,
-    },
-    -- }}}
+    -- Motions
+    "https://codeberg.org/andyg/leap.nvim",
+    "https://github.com/nvim-mini/mini.surround",
 
-    -- {{{ IntelliSense
-    {
-        "https://github.com/Saghen/blink.cmp",
-        dependencies = {
-            "https://github.com/neovim/nvim-lspconfig",
-        },
-        version = "1.*",
-        event = "VeryLazy",
-        config = function()
-            vim.lsp.enable({
-                -- :help lspconfig-all
-                "gopls",
-                "lua_ls",
-                "markdown_oxide",
-                "nil_ls",
-                "pyright",
-                "rust_analyzer",
-                "terraformls",
-                "ts_ls",
-            })
-
-            vim.lsp.config("rust_analyzer", {
-                settings = {
-                    ["rust-analyzer"] = {
-                        procMacro = {
-                            ignored = {
-                                leptos_macro = {
-                                    "server",
-                                },
-                            },
-                        },
-                    },
-                },
-            })
-
-            require("blink.cmp").setup({
-                keymap = {
-                    preset = "enter",
-                },
-                cmdline = {
-                    keymap = {
-                        preset = "super-tab",
-                    },
-                },
-            })
-        end,
-    },
-
-
-    {
-        "https://github.com/windwp/nvim-autopairs",
-        event = "InsertEnter",
-        config = function()
-            require("nvim-autopairs").setup()
-        end,
-    },
-
-    { "https://github.com/nickjvandyke/opencode.nvim", lazy = true },
-    -- }}}
-
-    -- {{{ Git
-    { "https://github.com/tpope/vim-fugitive", cmd = "Git" },
-
-    {
-        "https://github.com/nvim-mini/mini.diff",
-        event = "VeryLazy",
-        config = function()
-            require("mini.diff").setup({})
-        end,
-    },
-    -- }}}
-
-    -- {{{ Motions
-    {
-        "https://codeberg.org/andyg/leap.nvim",
-        event = "VeryLazy",
-        config = function()
-            require("leap").opts.safe_labels = ""
-            vim.api.nvim_set_hl(0, "LeapLabel", { fg = "yellow", bold = true })
-        end,
-    },
-
-    {
-        "https://github.com/nvim-mini/mini.surround",
-        event = "VeryLazy",
-        config = function()
-            require("mini.surround").setup({
-                mappings = {
-                    add = "gz",
-                    delete = "dz",
-                    find = "",
-                    find_left = "",
-                    highlight = "",
-                    replace = "rz",
-                },
-            })
-        end,
-    },
-    -- }}}
-
-    -- {{{ Miscellaneous
-    { "https://github.com/farmergreg/vim-lastplace", event = "BufReadPost" },
-    { "https://github.com/nvim-mini/mini.bufremove", lazy = true },
-    { "https://github.com/mbbill/undotree", event = "VeryLazy" },
-
-    {
-        "https://github.com/tpope/vim-sleuth",
-        event = "VeryLazy",
-        config = function()
-            vim.cmd("silent Sleuth")
-        end,
-    },
-    -- }}}
+    -- Miscellaneous
+    "https://github.com/farmergreg/vim-lastplace",
+    "https://github.com/nvim-mini/mini.bufremove",
+    "https://github.com/mbbill/undotree",
+    "https://github.com/tpope/vim-sleuth",
 })
+
+require("onedark").setup({
+    transparent = true,
+})
+require("onedark").load()
+
+require("ibl").setup({
+    indent = {
+        char = "▏",
+        tab_char = "→",
+    },
+    scope = {
+        enabled = false,
+    },
+})
+
+require("fzf-lua").setup({
+    "max-perf",
+    winopts = {
+        height = 0.5,
+        width = 1,
+        row = 1,
+    },
+})
+require("fzf-lua").register_ui_select()
+
+require("oil").setup({
+    view_options = {
+        show_hidden = true,
+        is_always_hidden = function(name, _)
+            return name == ".."
+        end,
+    },
+})
+
+vim.lsp.enable({
+    -- :help lspconfig-all
+    "gopls",
+    "lua_ls",
+    "markdown_oxide",
+    "nil_ls",
+    "pyright",
+    "rust_analyzer",
+    "terraformls",
+    "ts_ls",
+})
+
+vim.lsp.config("rust_analyzer", {
+    settings = {
+        ["rust-analyzer"] = {
+            procMacro = {
+                ignored = {
+                    leptos_macro = {
+                        "server",
+                    },
+                },
+            },
+        },
+    },
+})
+
+require("blink.cmp").setup({
+    keymap = {
+        preset = "enter",
+    },
+    cmdline = {
+        keymap = {
+            preset = "super-tab",
+        },
+    },
+})
+
+require("nvim-autopairs").setup()
+
+require("mini.diff").setup({})
+
+require("mini.surround").setup({
+    mappings = {
+        add = "gz",
+        delete = "dz",
+        find = "",
+        find_left = "",
+        highlight = "",
+        replace = "rz",
+    },
+})
+
+require("leap").opts.safe_labels = ""
+vim.api.nvim_set_hl(0, "LeapLabel", { fg = "yellow", bold = true })

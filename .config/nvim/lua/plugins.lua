@@ -129,37 +129,6 @@ return require("lazy").setup({
         end,
     },
 
-    -- TODO refactor when Tree-sitter is stable and merged to nvim core
-    -- https://github.com/nvim-treesitter/nvim-treesitter/issues/4767
-    {
-        "https://github.com/nvim-treesitter/nvim-treesitter",
-        build = ":TSUpdate",
-        event = "VeryLazy",
-        config = function()
-            require("nvim-treesitter.config").setup({
-                ensure_installed = {
-                    "cue",
-                    "go",
-                    "hcl",
-                    "kdl",
-                    "nix",
-                    "puppet",
-                    "python",
-                    "rust",
-                    "terraform",
-                    "tsx",
-                    "typescript",
-                    "vimdoc",
-                },
-                highlight = {
-                    enable = true,
-                },
-                indent = {
-                    enable = true,
-                },
-            })
-        end,
-    },
 
     {
         "https://github.com/windwp/nvim-autopairs",

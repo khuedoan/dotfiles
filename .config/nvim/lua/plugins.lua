@@ -1,5 +1,4 @@
 vim.pack.add({
-    -- UI
     "https://github.com/navarasu/onedark.nvim",
 })
 
@@ -9,37 +8,23 @@ require("onedark").setup({
 require("onedark").load()
 
 vim.schedule(function()
+    vim.cmd.packadd("nvim.undotree")
     vim.pack.add({
-        -- UI
         "https://github.com/lukas-reineke/indent-blankline.nvim",
-
-        -- Search
         "https://github.com/ibhagwan/fzf-lua",
         "https://github.com/MagicDuck/grug-far.nvim",
-
-        -- File manager
         "https://github.com/stevearc/oil.nvim",
-
-        -- IntelliSense
         "https://github.com/neovim/nvim-lspconfig",
         { src = "https://github.com/Saghen/blink.cmp", version = vim.version.range("1.x") },
         "https://github.com/windwp/nvim-autopairs",
-
-        -- Git
         "https://github.com/tpope/vim-fugitive",
         "https://github.com/nvim-mini/mini.diff",
-
-        -- Motions
         "https://codeberg.org/andyg/leap.nvim",
         "https://github.com/nvim-mini/mini.surround",
-
-        -- Miscellaneous
         "https://github.com/farmergreg/vim-lastplace",
         "https://github.com/nvim-mini/mini.bufremove",
         "https://github.com/tpope/vim-sleuth",
     })
-
-    vim.cmd.packadd("nvim.undotree")
 
     require("ibl").setup({
         indent = {

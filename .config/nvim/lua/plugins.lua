@@ -27,9 +27,10 @@ vim.pack.add({
     -- Miscellaneous
     "https://github.com/farmergreg/vim-lastplace",
     "https://github.com/nvim-mini/mini.bufremove",
-    "https://github.com/mbbill/undotree",
     "https://github.com/tpope/vim-sleuth",
 })
+
+vim.cmd.packadd("nvim.undotree")
 
 require("onedark").setup({
     transparent = true,

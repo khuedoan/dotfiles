@@ -3,7 +3,7 @@ local map = vim.keymap.set
 
 -- Edit
 map({"n", "x", "o"}, "s", "<Plug>(leap)")
-map("n", "<Leader>u", "<Cmd>UndotreeToggle<CR>")
+map("n", "<Leader>u", "<Cmd>Undotree<CR>")
 
 -- Yank
 map("x", "<Leader>y", '"+y')

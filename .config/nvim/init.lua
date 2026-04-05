@@ -30,9 +30,7 @@ vim.schedule(function()
     map("x", "<Leader>y", '"+y')
     map("n", "<Leader>yF", "<Cmd>let @+ = expand('%:p:~')<CR>")
     map("n", "<Leader>yf", "<Cmd>let @+ = expand('%')<CR>")
-    map("n", "<Leader>u", "<Cmd>Undotree<CR>")
 
-    vim.cmd.packadd("nvim.undotree")
     vim.pack.add({
         "https://github.com/lukas-reineke/indent-blankline.nvim",
         "https://github.com/ibhagwan/fzf-lua",
@@ -166,4 +164,7 @@ vim.schedule(function()
     require("leap").opts.safe_labels = ""
     vim.api.nvim_set_hl(0, "LeapLabel", { fg = "yellow", bold = true })
     map({ "n", "x", "o" }, "s", "<Plug>(leap)")
+
+    vim.cmd.packadd("nvim.undotree")
+    map("n", "<Leader>u", "<Cmd>Undotree<CR>")
 end)

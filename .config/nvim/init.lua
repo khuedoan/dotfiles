@@ -16,7 +16,7 @@ vim.opt.signcolumn = "yes" -- always show the sign column, otherwise it would sh
 vim.opt.scrolloff = 3 -- minimal number of screen lines to keep above and below the cursor
 vim.opt.laststatus = 0 -- disable statusline
 
-vim.pack.add({"https://github.com/navarasu/onedark.nvim"})
+vim.pack.add({ "https://github.com/navarasu/onedark.nvim" }, { confirm = false })
 require("onedark").setup({
     transparent = true,
 })
@@ -47,7 +47,7 @@ vim.schedule(function()
         "https://github.com/nvim-mini/mini.surround",
         "https://github.com/nvim-mini/mini.bufremove",
         "https://github.com/tpope/vim-sleuth",
-    })
+    }, { confirm = false })
 
     map("n", "<Leader>bd", function()
         require("mini.bufremove").delete()

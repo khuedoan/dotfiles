@@ -47,18 +47,12 @@ Opening the terminal (including waiting for the shell):
 foot zsh -i -c exit  0.05s user 0.02s system 103% cpu 0.067 total
 ```
 
-Opening Neovim with 32 plugins:
+Opening Neovim with 14 plugins:
 
-`:Lazy profile` (15ms)
+`time nvim --headless +qa` (47ms)
 
 ```
-Startuptime: 15.46ms
-
-Based on the actual CPU time of the Neovim process till UIEnter.
-This is more accurate than `nvim --startuptime`.
-  LazyStart 4.97ms
-  LazyDone  10.65ms (+5.68ms)
-  UIEnter   15.46ms (+4.81ms)
+nvim --headless +qa  0.03s user 0.01s system 83% cpu 0.047 total
 ```
 
 ## Acknowledgements

@@ -2,7 +2,7 @@
 dir = "~/Documents/notes"
 
 [alias]
-list = "zk list --quiet $@"
-search = "zk list --quiet --match $@"
-recent = "zk edit --sort created- --created-after 'last week' --interactive"
-random = "zk list --quiet --format full --sort random --limit 1"
+search = 'zk list --quiet --format "{{path}}" --match $@'
+read = 'zk list --quiet --format "{{rawContent}}" --limit 1 $@'
+links = 'zk list --quiet --format "{{path}}" --linked-by $@'
+backlinks = 'zk list --quiet --format "{{path}}" --link-to $@'

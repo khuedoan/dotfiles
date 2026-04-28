@@ -16,4 +16,14 @@
   networking = {
     hostName = "codeserver";
   };
+
+  services.code-server = {
+    enable = true;
+    host = "0.0.0.0";
+    user = "khuedoan";
+    disableUpdateCheck = true;
+    disableTelemetry = true;
+    disableWorkspaceTrust = true;
+    # See also ~/.config/code-server/config.yaml
+  };
 }

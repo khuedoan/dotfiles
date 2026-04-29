@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, pkgs, ... }:
 
 {
   homebrew.casks = [
@@ -42,8 +42,27 @@
     };
   };
 
-  home-manager.users.${config.primaryUser.username}.home.file = {
-    ".config/karabiner/karabiner.json".source = ./files/karabiner.json;
-    ".config/kitty/kitty.d/macos.conf".source = ./files/kitty.conf;
+  home-manager.users.${config.primaryUser.username} = {
+    home = {
+      packages = with pkgs.unstable; [
+        ollama
+      ];
+      file = {
+        ".config/karabiner/karabiner.json".source = ./files/karabiner.json;
+        ".config/kitty/kitty.d/macos.conf".source = ./files/kitty.conf;
+      };
+    };
+    launchd.agents = {
+      ollama = {
+        enable = true;
+        config = {
+          KeepAlive = true;
+          ProgramArguments = [ "${pkgs.unstable.ollama}/bin/ollama" "serve" ];
+          RunAtLoad = true;
+          StandardErrorPath = "/tmp/ollama.log";
+          StandardOutPath = "/tmp/ollama.log";
+        };
+      };
+    };
   };
 }

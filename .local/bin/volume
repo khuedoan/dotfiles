@@ -1,0 +1,25 @@
+#!/bin/sh
+
+set -eu
+
+sink='@DEFAULT_AUDIO_SINK@'
+tag='string:x-canonical-private-synchronous:volume'
+
+if [ "$1" = 'toggle' ]; then
+    wpctl set-mute "$sink" toggle
+else
+    wpctl set-volume --limit 1 "$sink" "$1"
+fi
+
+state="$(wpctl get-volume "$sink")"
+value="$(printf '%s\n' "$state" | awk '{print int($2 * 100)}')"
+message="Volume: $value%"
+case "$state" in
+  *'[MUTED]'*) message="Volume: muted" ;;
+esac
+
+notify-send \
+    --expire-time 1000 \
+    --hint "$tag" \
+    --hint "int:value:$value" \
+    "$message"

@@ -111,9 +111,7 @@
   home-manager.users.${config.primaryUser.username} = {
     home = {
       packages = with pkgs.unstable; [
-        blender
         brave
-        emacs-pgtk
         gnome-sound-recorder
         gpu-screen-recorder
         kdePackages.kdeconnect-kde

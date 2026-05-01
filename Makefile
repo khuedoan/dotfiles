@@ -1,5 +1,5 @@
 .POSIX:
-.PHONY: default build switch diff update install clean
+.PHONY: default build switch diff update fmt install clean
 
 default: diff switch
 
@@ -16,6 +16,9 @@ switch:
 
 update:
 	nix flake update
+
+fmt:
+	nix run nixpkgs#nixfmt-tree
 
 install:
 	# This consumes significant memory on the live USB because dependencies are

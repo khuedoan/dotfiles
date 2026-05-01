@@ -10,6 +10,11 @@
       type = lib.types.str;
       description = "Local account username for this host.";
     };
+    authorizedKeys = lib.mkOption {
+      type = lib.types.listOf lib.types.str;
+      default = [];
+      description = "SSH public keys authorized for the primary user on this host.";
+    };
   };
 
   config = {

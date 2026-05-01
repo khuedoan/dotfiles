@@ -8,6 +8,7 @@
   ];
 
   primaryUser.username = "runner";
+  primaryUser.authorizedKeys = [];
 
   networking.hostName = "macos-test";
 

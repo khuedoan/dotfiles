@@ -35,9 +35,12 @@ in
     linux-builder = {
       enable = false; # TODO fix bootstrap
       ephemeral = true;
-      systems = ["aarch64-linux" "x86_64-linux"];
+      systems = [
+        "aarch64-linux"
+        "x86_64-linux"
+      ];
       config = {
-        boot.binfmt.emulatedSystems = ["x86_64-linux"];
+        boot.binfmt.emulatedSystems = [ "x86_64-linux" ];
         virtualisation = {
           cores = 4;
           darwin-builder = {

@@ -34,7 +34,7 @@
             "Behavior" = {
               "ShowInputMethodInformation" = "False";
             };
-            "Hotkey/TriggerKeys" = {};
+            "Hotkey/TriggerKeys" = { };
             "Hotkey/EnumerateForwardKeys" = {
               "0" = "Control+Shift+space";
             };

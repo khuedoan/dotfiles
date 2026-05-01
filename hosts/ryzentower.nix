@@ -29,10 +29,12 @@
     hostPlatform = "x86_64-linux";
     config = {
       rocmSupport = true;
-      allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-        "steam"
-        "steam-unwrapped"
-      ];
+      allowUnfreePredicate =
+        pkg:
+        builtins.elem (lib.getName pkg) [
+          "steam"
+          "steam-unwrapped"
+        ];
     };
   };
 
@@ -101,9 +103,10 @@
     };
   };
 
-  home-manager.users.${config.primaryUser.username}.home.file.".config/sway/config.d/hardware".text = ''
-    output "DP-3" {
-      mode 2560x1440@180Hz
-    }
-  '';
+  home-manager.users.${config.primaryUser.username}.home.file.".config/sway/config.d/hardware".text =
+    ''
+      output "DP-3" {
+        mode 2560x1440@180Hz
+      }
+    '';
 }

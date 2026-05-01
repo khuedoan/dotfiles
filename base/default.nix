@@ -1,4 +1,9 @@
-{ lib, pkgs, platform, ... }:
+{
+  lib,
+  pkgs,
+  platform,
+  ...
+}:
 
 {
   imports = [
@@ -12,7 +17,7 @@
     };
     authorizedKeys = lib.mkOption {
       type = lib.types.listOf lib.types.str;
-      default = [];
+      default = [ ];
       description = "SSH public keys authorized for the primary user on this host.";
     };
   };

@@ -1,4 +1,9 @@
-{ config, pkgs, platform, ... }:
+{
+  config,
+  pkgs,
+  platform,
+  ...
+}:
 
 {
   imports = [
@@ -43,10 +48,12 @@
     zk
     zoxide
 
-    (pass.withExtensions (ext: with ext; [
-      # pass-import # TODO fix build on darwin
-      pass-otp
-    ]))
+    (pass.withExtensions (
+      ext: with ext; [
+        # pass-import # TODO fix build on darwin
+        pass-otp
+      ]
+    ))
 
     # Language servers
     gopls

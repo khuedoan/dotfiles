@@ -57,7 +57,10 @@
         enable = true;
         config = {
           KeepAlive = true;
-          ProgramArguments = [ "${pkgs.unstable.ollama}/bin/ollama" "serve" ];
+          ProgramArguments = [
+            "${pkgs.unstable.ollama}/bin/ollama"
+            "serve"
+          ];
           RunAtLoad = true;
           StandardErrorPath = "/tmp/ollama.log";
           StandardOutPath = "/tmp/ollama.log";

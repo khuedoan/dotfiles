@@ -1,1 +1,5 @@
 default-timeout=30000
+background-color=#282c34
+text-color=#abb2bf
+border-color=#21252b
+progress-color=over #5c6370

@@ -5,6 +5,10 @@
       "src": "https://github.com/Saghen/blink.cmp",
       "version": "1.0.0 - 2.0.0"
     },
+    "fyler.nvim": {
+      "rev": "e87911e6c21d099225063f5aa672e00f6dbb5976",
+      "src": "https://github.com/A7Lavinraj/fyler.nvim"
+    },
     "fzf-lua": {
       "rev": "ffa44ee9470743a7697d28df3a1a216fdfe2b09d",
       "src": "https://github.com/ibhagwan/fzf-lua"
@@ -40,10 +44,6 @@
     "nvim-lspconfig": {
       "rev": "81878de76c0de4ce289513734ad80c31ec7871b8",
       "src": "https://github.com/neovim/nvim-lspconfig"
-    },
-    "oil.nvim": {
-      "rev": "0fcc83805ad11cf714a949c98c605ed717e0b83e",
-      "src": "https://github.com/stevearc/oil.nvim"
     },
     "onedark.nvim": {
       "rev": "df4792accde9db0043121f32628bcf8e645d9aea",

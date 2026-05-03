@@ -35,7 +35,7 @@ vim.schedule(function()
         "https://github.com/lukas-reineke/indent-blankline.nvim",
         "https://github.com/ibhagwan/fzf-lua",
         "https://github.com/MagicDuck/grug-far.nvim",
-        "https://github.com/stevearc/oil.nvim",
+        "https://github.com/A7Lavinraj/fyler.nvim",
         "https://github.com/neovim/nvim-lspconfig",
         { src = "https://github.com/Saghen/blink.cmp", version = vim.version.range("1.x") },
         "https://github.com/windwp/nvim-autopairs",
@@ -95,16 +95,12 @@ vim.schedule(function()
     map("n", "<Leader>/", "<Cmd>FzfLua grep_project<CR>")
     map("n", "<Leader>?", "<Cmd>FzfLua live_grep<CR>")
 
-    require("oil").setup({
-        view_options = {
-            show_hidden = true,
-            is_always_hidden = function(name, _)
-                return name == ".."
-            end,
+    require("fyler").setup({
+        integrations = {
+            icon = "none",
         },
     })
-    map("n", "-", "<Cmd>Oil<CR>")
-    map("n", "_", "<Cmd>Oil .<CR>")
+    map("n", "-", function() require("fyler").open({ kind = "float" }) end)
 
     vim.lsp.enable({
         -- :help lspconfig-all

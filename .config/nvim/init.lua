@@ -99,6 +99,15 @@ vim.schedule(function()
         integrations = {
             icon = "none",
         },
+        views = {
+            finder = {
+                mappings = {
+                    ["-"] = "CloseView",
+                    ["<C-s>"] = "SelectSplit",
+                    ["<C-v>"] = "SelectVSplit",
+                },
+            },
+        },
     })
     map("n", "-", function() require("fyler").open({ kind = "float" }) end)
 

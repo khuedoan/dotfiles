@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 
 {
   imports = [
@@ -22,13 +22,14 @@
     hostName = "codeserver";
   };
 
-  services.code-server = {
-    enable = true;
-    host = "0.0.0.0";
-    user = "khuedoan";
-    disableUpdateCheck = true;
-    disableTelemetry = true;
-    disableWorkspaceTrust = true;
-    # See also ~/.config/code-server/config.yaml
+  systemd.services.opencode = {
+    description = "OpenCode";
+    wantedBy = [ "multi-user.target" ];
+    serviceConfig = {
+      User = "khuedoan";
+      WorkingDirectory = "/home/khuedoan";
+      ExecStart = "${pkgs.unstable.opencode}/bin/opencode serve --hostname 0.0.0.0 --port 4096 --print-logs";
+      Restart = "on-failure";
+    };
   };
 }

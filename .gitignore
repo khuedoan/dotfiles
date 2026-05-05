@@ -1,3 +1,2 @@
-# Ignore all files except dotfiles
-*
-!/.**
+/result
+*.qcow2

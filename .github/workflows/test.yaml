@@ -1,0 +1,51 @@
+name: Test
+
+on:
+  pull_request:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  nixos:
+    name: NixOS
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: NixOS/nix-installer-action@main
+      - uses: DeterminateSystems/magic-nix-cache-action@main
+
+      - name: Build hosts
+        run: |
+          for host in $(nix eval --json --apply builtins.attrNames .#nixosConfigurations | jq -r '.[]'); do
+            nix build ".#nixosConfigurations.\"$host\".config.system.build.toplevel"
+          done
+
+  darwin:
+    name: Darwin
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: NixOS/nix-installer-action@main
+      - uses: DeterminateSystems/magic-nix-cache-action@main
+
+      - name: Build hosts
+        run: |
+          for host in $(nix eval --json --apply builtins.attrNames .#darwinConfigurations | jq -r '.[]'); do
+            nix build ".#darwinConfigurations.\"$host\".system"
+          done
+
+      - name: Apply test config
+        # TODO permission issue in GHA if using make build
+        run: |
+          sudo mv /etc/bashrc{,.before-nix-darwin}
+          sudo mv /etc/zshrc{,.before-nix-darwin}
+          sudo mv /etc/nix/nix.conf{,.before-nix-darwin}
+          sudo mv /etc/nix/nix.custom.conf{,.before-nix-darwin}
+
+          sudo ./scripts/rebuild.py switch --flake "path:${GITHUB_WORKSPACE}#macos-test"

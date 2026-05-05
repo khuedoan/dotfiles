@@ -20,6 +20,9 @@ update:
 fmt:
 	nix run nixpkgs#nixfmt-tree
 
+check:
+	nix flake check
+
 install:
 	# This consumes significant memory on the live USB because dependencies are
 	# downloaded to tmpfs. The configuration must be small, or the machine must

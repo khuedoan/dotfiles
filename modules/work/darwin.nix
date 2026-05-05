@@ -4,7 +4,7 @@
   homebrew = {
     casks = [
       "aws-vpn-client"
-      "cursor-cli"
+      "claude-code"
       "royal-tsx"
     ];
   };

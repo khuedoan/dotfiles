@@ -25,6 +25,10 @@
   systemd.services.opencode = {
     description = "OpenCode";
     wantedBy = [ "multi-user.target" ];
+    path = with pkgs; [
+      git
+      openssh
+    ];
     serviceConfig = {
       User = "khuedoan";
       WorkingDirectory = "/home/khuedoan";

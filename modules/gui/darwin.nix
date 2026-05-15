@@ -3,6 +3,7 @@
 {
   homebrew.casks = [
     "brave-browser"
+    "codex-app"
     "kitty"
     "linearmouse"
     "obsidian"

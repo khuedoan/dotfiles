@@ -32,24 +32,6 @@ in
         "@admin"
       ];
     };
-    linux-builder = {
-      enable = false; # TODO fix bootstrap
-      ephemeral = true;
-      systems = [
-        "aarch64-linux"
-        "x86_64-linux"
-      ];
-      config = {
-        boot.binfmt.emulatedSystems = [ "x86_64-linux" ];
-        virtualisation = {
-          cores = 4;
-          darwin-builder = {
-            diskSize = 64 * 1024;
-            memorySize = 8 * 1024;
-          };
-        };
-      };
-    };
   };
 
   security.pam.services.sudo_local.touchIdAuth = true;

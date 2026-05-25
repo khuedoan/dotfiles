@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ ... }:
 
 {
   imports = [
@@ -26,20 +26,5 @@
 
   networking = {
     hostName = "codeserver";
-  };
-
-  systemd.services.opencode = {
-    description = "OpenCode";
-    wantedBy = [ "multi-user.target" ];
-    path = with pkgs; [
-      git
-      openssh
-    ];
-    serviceConfig = {
-      User = "khuedoan";
-      WorkingDirectory = "/home/khuedoan";
-      ExecStart = "${pkgs.unstable.opencode}/bin/opencode serve --hostname 0.0.0.0 --port 4096 --print-logs";
-      Restart = "on-failure";
-    };
   };
 }

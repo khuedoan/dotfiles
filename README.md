@@ -122,6 +122,19 @@ Clean up Nix store:
 make clean
 ```
 
+Temporarily change the default config location
+(useful for quickly trying out a new config without running `make`,
+or updating the Neovim plugin lock file):
+
+```sh
+export XDG_CONFIG_HOME="${PWD}/modules/dotfiles/home/.config"
+```
+
+```
+nvim
+:lua vim.pack.update()
+```
+
 ## Testing
 
 GitHub Actions builds all NixOS and Darwin hosts, then applies the test hosts.

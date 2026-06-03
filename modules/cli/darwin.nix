@@ -20,12 +20,5 @@
       enableCompletion = false;
       promptInit = "";
     };
-    direnv = {
-      # TODO remove this workaround https://github.com/NixOS/nixpkgs/issues/507531
-      package = pkgs.direnv.overrideAttrs (_: {
-        doCheck = false;
-      });
-      silent = true;
-    };
   };
 }

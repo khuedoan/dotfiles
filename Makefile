@@ -1,5 +1,5 @@
 .POSIX:
-.PHONY: default build switch diff update fmt install clean
+.PHONY: default build switch diff update fmt check install clean
 
 default: diff switch
 

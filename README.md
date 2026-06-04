@@ -61,8 +61,8 @@ nix-shell -p git gnumake neovim disko
 Clone the repository and run the installer:
 
 ```sh
-git clone https://github.com/khuedoan/nix-setup
-cd nix-setup
+git clone https://github.com/khuedoan/dotfiles
+cd dotfiles
 make install host=HOSTNAME disk=/dev/DISK
 ```
 
@@ -79,8 +79,8 @@ Before the first run:
 Clone the repository and apply the configuration:
 
 ```sh
-git clone https://github.com/khuedoan/nix-setup
-cd nix-setup
+git clone https://github.com/khuedoan/dotfiles
+cd dotfiles
 make switch host=HOSTNAME
 ```
 

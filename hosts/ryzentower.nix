@@ -108,5 +108,8 @@
       output "DP-3" {
         mode 2560x1440@180Hz
       }
+      output "HDMI-A-1" {
+        scale 2
+      }
     '';
 }

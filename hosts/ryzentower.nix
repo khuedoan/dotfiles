@@ -1,4 +1,9 @@
-{ config, lib, ... }:
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}:
 
 {
   imports = [
@@ -103,13 +108,19 @@
     };
   };
 
-  home-manager.users.${config.primaryUser.username}.home.file.".config/sway/config.d/hardware".text =
-    ''
-      output "DP-3" {
-        mode 2560x1440@180Hz
-      }
-      output "HDMI-A-1" {
-        scale 2
-      }
-    '';
+  home-manager.users.${config.primaryUser.username} = {
+    home = {
+      file.".config/sway/config.d/hardware".text = ''
+        output "DP-3" {
+          mode 2560x1440@180Hz
+        }
+        output "HDMI-A-1" {
+          scale 2
+        }
+      '';
+      packages = with pkgs.unstable; [
+        me3 # For Elden Ring mod
+      ];
+    };
+  };
 }

@@ -67,8 +67,8 @@ bindsym XF86AudioLowerVolume exec volume 5%-
 bindsym XF86AudioMute exec volume toggle
 bindsym XF86AudioRaiseVolume exec volume 5%+
 
-bindsym XF86MonBrightnessDown exec light -U 10
-bindsym XF86MonBrightnessUp exec light -A 10
+bindsym XF86MonBrightnessDown exec brightnessctl -q -n set 10%-
+bindsym XF86MonBrightnessUp exec brightnessctl -q -n set +10%
 
 bindsym Print exec grim - | wl-copy
 bindsym ctrl+Print exec grim -g "$(slurp)" - | wl-copy

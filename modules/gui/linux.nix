@@ -59,6 +59,7 @@
       };
       extraPackages = with pkgs; [
         autotiling
+        brightnessctl
         feh
         foot
         grim
@@ -78,7 +79,6 @@
         zathura
       ];
     };
-    light.enable = true;
     dconf.enable = true;
     virt-manager = {
       enable = true;

@@ -6,7 +6,6 @@
       "discord"
       "iina"
       "signal"
-      "zen"
     ];
     masApps = {
       # Need to be signed into the Mac App Store

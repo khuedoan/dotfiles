@@ -15,7 +15,7 @@ in
         Unit.Description = "Sync notes";
         Service = {
           Type = "oneshot";
-          WorkingDirectory = "%h/Documents/notes";
+          WorkingDirectory = "%h/Projects/notes";
           Environment = [
             "HOSTNAME=%H"
             "GIT_SSH_COMMAND=/run/current-system/sw/bin/ssh"

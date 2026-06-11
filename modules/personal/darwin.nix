@@ -4,7 +4,6 @@
   homebrew = {
     casks = [
       "discord"
-      "iina"
       "signal"
     ];
     masApps = {

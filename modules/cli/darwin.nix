@@ -2,6 +2,7 @@
 
 {
   environment.systemPackages = with pkgs; [
+    colima
     coreutils
     docker
     gnupg

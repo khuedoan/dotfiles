@@ -16,13 +16,11 @@
     bat
     btop
     cargo
-    colima
     dyff
     fd
     ffmpeg
     fzf
     gh
-    ghstack
     go
     imagemagick
     inetutils
@@ -34,7 +32,6 @@
     kubernetes-helm
     kustomize
     markdown-oxide
-    mosh
     neovim
     nnn
     nodejs
@@ -42,7 +39,6 @@
     python314
     rbw
     ripgrep
-    sapling
     uv
     yt-dlp
     zk

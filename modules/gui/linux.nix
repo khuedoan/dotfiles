@@ -1,4 +1,9 @@
-{ config, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
   i18n = {
@@ -50,7 +55,7 @@
     virt-manager = {
       enable = true;
     };
-    gpu-screen-recorder.enable = true;
+    gpu-screen-recorder.enable = pkgs.stdenv.hostPlatform.isx86_64;
   };
 
   xdg.portal = {
@@ -76,21 +81,24 @@
 
   home-manager.users.${config.primaryUser.username} = {
     home = {
-      packages = [
-        pkgs.unstable.brave
-        pkgs.unstable.gnome-sound-recorder
-        pkgs.unstable.kdePackages.kdeconnect-kde
-        pkgs.libnotify
-        pkgs.mpv
-        pkgs.unstable.onlyoffice-desktopeditors
-        pkgs.pavucontrol
-        pkgs.pcmanfm
-        pkgs.unstable.piper
-        pkgs.xdg-utils
-        pkgs.zathura
-        pkgs.unstable.zed-editor
-        pkgs.unstable.kitty
-      ];
+      packages =
+        [
+          pkgs.unstable.gnome-sound-recorder
+          pkgs.unstable.kdePackages.kdeconnect-kde
+          pkgs.libnotify
+          pkgs.mpv
+          pkgs.pavucontrol
+          pkgs.pcmanfm
+          pkgs.xdg-utils
+          pkgs.zathura
+          pkgs.unstable.zed-editor
+          pkgs.unstable.kitty
+        ]
+        ++ lib.optionals pkgs.stdenv.hostPlatform.isx86_64 [
+          pkgs.unstable.brave
+          pkgs.unstable.onlyoffice-desktopeditors
+          pkgs.unstable.piper
+        ];
 
       pointerCursor = {
         enable = true;

@@ -1,4 +1,9 @@
-{ config, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
   programs.zsh.loginShellInit = ''
@@ -83,7 +88,7 @@
     virt-manager = {
       enable = true;
     };
-    gpu-screen-recorder.enable = true;
+    gpu-screen-recorder.enable = pkgs.stdenv.hostPlatform.isx86_64;
   };
 
   xdg.portal = {
@@ -110,14 +115,18 @@
 
   home-manager.users.${config.primaryUser.username} = {
     home = {
-      packages = with pkgs.unstable; [
-        brave
-        gnome-sound-recorder
-        gpu-screen-recorder
-        kdePackages.kdeconnect-kde
-        onlyoffice-desktopeditors
-        piper
-      ];
+      packages =
+        with pkgs.unstable;
+        [
+          gnome-sound-recorder
+          kdePackages.kdeconnect-kde
+        ]
+        ++ lib.optionals pkgs.stdenv.hostPlatform.isx86_64 [
+          brave
+          gpu-screen-recorder
+          onlyoffice-desktopeditors
+          piper
+        ];
 
       pointerCursor = {
         name = "Adwaita";

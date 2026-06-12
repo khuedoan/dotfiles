@@ -2,6 +2,10 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-26.05";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixos-apple-silicon = {
+      url = "github:nix-community/nixos-apple-silicon/release-2025-11-18"; # TODO use 26.05
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     darwin = {
       url = "github:lnl7/nix-darwin/nix-darwin-26.05";
@@ -21,6 +25,7 @@
     {
       nixpkgs,
       nixpkgs-unstable,
+      nixos-apple-silicon,
       darwin,
       disko,
       nixos-hardware,
@@ -92,6 +97,26 @@
         codeserver = mkHost {
           host = "codeserver";
           system = "x86_64-linux";
+        };
+        MacBookTux = mkHost {
+          host = "MacBookTux";
+          system = "aarch64-linux";
+          extraModules = [
+            nixos-apple-silicon.nixosModules.apple-silicon-support
+            (
+              { lib, ... }:
+              {
+                hardware.asahi.pkgs = lib.mkForce (
+                  import nixpkgs {
+                    system = "aarch64-linux";
+                    overlays = [
+                      nixos-apple-silicon.overlays.default
+                    ];
+                  }
+                );
+              }
+            )
+          ];
         };
       };
 

@@ -90,6 +90,40 @@ already present.
 
 Then reboot.
 
+### Apple Silicon dual boot
+
+On macOS, write the matching upstream installer ISO to a USB drive:
+
+```sh
+./scripts/nixos-apple-silicon-create-usb.sh /dev/diskN release-2025-11-18
+```
+
+Run the Asahi installer:
+
+```sh
+curl https://alx.sh | sh
+```
+
+Choose `UEFI environment only` and name it `NixOS`, which creates the
+`EFI - NIXOS` ESP expected by `hosts/MacBookTux.nix`.
+
+Boot the USB installer, create and format only the Linux root partition:
+
+```sh
+sgdisk /dev/nvme0n1 -n 0:0 -s
+sgdisk /dev/nvme0n1 -p
+mkfs.ext4 -L nixos /dev/nvme0n1pN
+```
+
+Replace `N` with the new Linux partition number, then run the install helper:
+
+```sh
+nix-shell -p git neovim zsh gnumake
+git clone https://github.com/khuedoan/dotfiles
+cd dotfiles
+./scripts/nixos-apple-silicon-install.sh
+```
+
 ## Usage
 
 Diff the new configuration against the current system profile:
@@ -200,3 +234,4 @@ nvim --headless +qa  0.03s user 0.01s system 83% cpu 0.047 total
 - [How core Git developers configure Git](https://blog.gitbutler.com/how-git-core-devs-configure-git)
 - [The Git Commands I Run Before Reading Any Code](https://piechowski.io/post/git-commands-before-reading-code)
 - [Setup nix, nix-darwin and home-manager from scratch on an M1 Macbook Pro](https://gist.github.com/jmatsushita/5c50ef14b4b96cb24ae5268dab613050)
+- [Install NixOS bare metal on Apple Silicon Macs](https://github.com/nix-community/nixos-apple-silicon/blob/main/docs/uefi-standalone.md)

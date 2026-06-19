@@ -29,7 +29,7 @@
     kubectl
     kubectl-tree
     kubectx
-    kubernetes-helm
+    # kubernetes-helm
     kustomize
     markdown-oxide
     neovim

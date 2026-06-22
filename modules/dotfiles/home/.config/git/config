@@ -31,6 +31,8 @@
 	autoupdate = true
 [help]
 	autocorrect = prompt
+[credential]
+	helper = store
 
 [include]
 	path = ./work

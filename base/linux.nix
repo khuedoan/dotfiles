@@ -99,6 +99,10 @@ in
     ratbagd.enable = true;
   };
 
+  programs = {
+    mosh.enable = true;
+  };
+
   security = {
     polkit.enable = true;
     rtkit.enable = true;

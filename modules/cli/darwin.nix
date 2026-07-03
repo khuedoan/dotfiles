@@ -6,6 +6,7 @@
     coreutils
     docker
     gnupg
+    mosh
     pinentry-tty
   ];
 

@@ -26,6 +26,7 @@
     environment.systemPackages = with pkgs; [
       curl
       git
+      jujutsu
       tmux
       tree
       unzip

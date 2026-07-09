@@ -14,6 +14,11 @@ diff: build
 switch:
 	sudo ./scripts/rebuild.py switch --flake '.#$(host)'
 
+# TODO find a better way to do this
+~/.config/emacs:
+	git clone --depth 1 https://github.com/doomemacs/core ~/.config/emacs
+	~/.config/emacs/bin/doom install
+
 update:
 	nix flake update
 

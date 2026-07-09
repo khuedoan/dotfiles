@@ -1,17 +1,27 @@
 { config, pkgs, ... }:
 
 {
-  homebrew.casks = [
-    "brave-browser"
-    "codex-app"
-    "handy"
-    "kitty"
-    "linearmouse"
-    "localsend"
-    "obsidian"
-    "secretive"
-    "utm"
-  ];
+  homebrew = {
+    taps = [
+      {
+        name = "d12frosted/emacs-plus";
+        trusted = true;
+      }
+    ];
+
+    casks = [
+      "brave-browser"
+      "codex-app"
+      "emacs-plus-app"
+      "handy"
+      "kitty"
+      "linearmouse"
+      "localsend"
+      "obsidian"
+      "secretive"
+      "utm"
+    ];
+  };
 
   system.defaults = {
     dock = {

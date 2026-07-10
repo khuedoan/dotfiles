@@ -23,7 +23,7 @@
        :ui
        doom              ; what makes DOOM look the way it does
        indent-guides     ; highlighted indent columns
-       (modeline +light) ; snazzy, Atom-inspired modeline, plus API
+       modeline ; snazzy, Atom-inspired modeline, plus API
        ophints           ; highlight the region an operation acts on
        (popup +defaults) ; tame sudden yet inevitable temporary windows
        smooth-scroll     ; So smooth you won't believe it's not butter

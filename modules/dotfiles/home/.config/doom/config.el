@@ -79,3 +79,10 @@
 
 ;; List of folders where projectile is automatically going to look for projects.
 (setq projectile-project-search-path '("~/Projects/"))
+
+;; Terminal
+(map! "C-`" #'+ghostel/toggle)
+(after! ghostel
+  (setq ghostel-initial-input-mode 'char)
+  (map! :map ghostel-char-mode-map
+        "C-`" #'+ghostel/toggle))

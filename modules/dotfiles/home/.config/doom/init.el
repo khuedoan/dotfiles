@@ -61,7 +61,6 @@
 
        :checkers
        syntax              ; tasing you for every semicolon you forget
-       grammar           ; tasing grammar mistake every you make
 
        :tools
        debugger          ; FIXME stepping through code, to help you add bugs
@@ -72,7 +71,6 @@
        (lsp +eglot)      ; M-x vscode
        magit             ; a git porcelain for Emacs
        make              ; run make tasks from Emacs
-       pass              ; password manager for nerds
        pdf               ; pdf enhancements
        tree-sitter       ; syntax and parsing, sitting in a tree...
 
@@ -80,10 +78,8 @@
        (:if (featurep :system 'macos) macos)  ; improve compatibility with macOS
 
        :lang
-       (cc +lsp)         ; C > C++ == 1
        emacs-lisp        ; drown in parentheses
        (go +lsp)         ; the hipster dialect
-       (haskell +lsp)    ; a language that's lazier than I am
        json              ; At least it ain't XML
        javascript        ; all(hope(abandon(ye(who(enter(here))))))
        lua               ; one-based indices? one-based indices
@@ -92,7 +88,6 @@
        org               ; organize your plain life in plain text
        python            ; beautiful is better than ugly
        (rust +lsp)       ; Fe2O3.unwrap().unwrap().unwrap().unwrap()
-       scala             ; java, but good
        sh                ; she sells {ba,z,fi}sh shells on the C xor
        yaml              ; JSON, but readable
 

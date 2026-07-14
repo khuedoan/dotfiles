@@ -1,5 +1,5 @@
 [notebook]
-dir = "~/Documents/notes"
+dir = "~/Projects/notes"
 
 [alias]
 search = 'zk list --quiet --format "{{path}}" --match $@'

@@ -22,6 +22,7 @@
     fzf
     gh
     go
+    hunk
     imagemagick
     inetutils
     jq

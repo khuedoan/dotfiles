@@ -4,39 +4,35 @@ import subprocess
 from kitty.boss import Boss
 from kittens.tui.handler import result_handler
 
-HOME = os.path.expanduser("~")
-PROJECTS_DIR = os.path.join(HOME, "Projects")
-
-# GUI-launched kitty on macOS has a minimal PATH. Use `env -P` to search the Nix
-# profile bin directory for the utility without polluting the shell env.
+# TODO explicit path because macOS GUI has minimal PATH
 NIX_BIN = f"/etc/profiles/per-user/{os.environ.get('USER', '')}/bin"
-
-
-def run(binary: str, *args: str) -> list[str]:
-    return ["/usr/bin/env", "-P", NIX_BIN, binary, *args]
+PROJECTS_DIR = os.path.expanduser("~/Projects")
+MAX_DEPTH = 2
 
 
 def main(args: list[str]) -> str:
-    listed = subprocess.run(
-        run("zoxide", "query", "--list", "--base-dir", PROJECTS_DIR),
-        capture_output=True,
+    zoxide = subprocess.Popen(
+        [os.path.join(NIX_BIN, "zoxide"), "query", "--list", "--base-dir", PROJECTS_DIR],
+        stdout=subprocess.PIPE,
         text=True,
     )
-    projects = [
-        path
-        for path in listed.stdout.splitlines()
-        if os.path.exists(os.path.join(path, ".git"))
-    ]
-    if not projects:
-        return ""
+    fzf = subprocess.Popen(
+        [os.path.join(NIX_BIN, "fzf"), "--prompt", "project> ", "--layout=reverse"],
+        stdin=subprocess.PIPE,
+        stdout=subprocess.PIPE,
+        text=True,
+    )
+    try:
+        for line in zoxide.stdout:
+            if line.count(os.sep) - PROJECTS_DIR.count(os.sep) > MAX_DEPTH:
+                continue
+            if os.path.exists(os.path.join(line.rstrip("\n"), ".git")):
+                fzf.stdin.write(line)
+        fzf.stdin.close()
+    except BrokenPipeError:
+        pass  # fzf exited before consuming the whole stream (e.g. Esc)
 
-    selected = subprocess.run(
-        run("fzf", "--prompt", "project> ", "--layout=reverse"),
-        input="\n".join(projects),
-        capture_output=True,
-        text=True,
-    )
-    return selected.stdout.strip()
+    return fzf.communicate()[0].strip()
 
 
 @result_handler()

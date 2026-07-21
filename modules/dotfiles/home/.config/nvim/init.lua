@@ -16,10 +16,16 @@ vim.opt.signcolumn = "yes" -- always show the sign column, otherwise it would sh
 vim.opt.scrolloff = 3 -- minimal number of screen lines to keep above and below the cursor
 vim.opt.laststatus = 0 -- disable statusline
 
-require('vim._core.ui2').enable({}) -- new experimental UI
+require("vim._core.ui2").enable({}) -- new experimental UI
 vim.pack.add({ "https://github.com/navarasu/onedark.nvim" }, { confirm = false })
-require("onedark").setup({
-    transparent = true,
+vim.api.nvim_create_autocmd("ColorSchemePre", {
+    pattern = "onedark",
+    callback = function()
+        require("onedark").setup({
+            style = vim.o.background, -- TODO default without autocmd?
+            transparent = true,
+        })
+    end,
 })
 require("onedark").load()
 

@@ -159,6 +159,10 @@ vim.schedule(function()
         },
     })
 
+    map({ "n", "x" }, "<Leader>cf", function()
+        vim.lsp.buf.format({ async = true })
+    end)
+
     require("nvim-autopairs").setup()
 
     require("mini.diff").setup({})

@@ -18,14 +18,8 @@ vim.opt.laststatus = 0 -- disable statusline
 
 require("vim._core.ui2").enable({}) -- new experimental UI
 vim.pack.add({ "https://github.com/navarasu/onedark.nvim" }, { confirm = false })
-vim.api.nvim_create_autocmd("ColorSchemePre", {
-    pattern = "onedark",
-    callback = function()
-        require("onedark").setup({
-            style = vim.o.background, -- TODO default without autocmd?
-            transparent = true,
-        })
-    end,
+require("onedark").setup({
+    transparent = true,
 })
 require("onedark").load()
 

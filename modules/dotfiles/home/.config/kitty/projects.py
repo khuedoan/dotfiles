@@ -23,6 +23,7 @@ def main(args: list[str]) -> str:
         text=True,
     )
     try:
+        fzf.stdin.write(os.path.expanduser("~") + "\n")
         for line in zoxide.stdout:
             if line.count(os.sep) - PROJECTS_DIR.count(os.sep) > MAX_DEPTH:
                 continue

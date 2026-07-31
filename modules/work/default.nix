@@ -11,8 +11,6 @@
   ];
 
   home-manager.users.${config.primaryUser.username}.home.packages = with pkgs.unstable; [
-    # acr-cli
-    argocd
     awscli2
     azure-cli
     cmctl

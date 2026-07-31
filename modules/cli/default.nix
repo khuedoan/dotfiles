@@ -65,7 +65,6 @@
     agent-browser
     codex
     mcp-grafana
-    opencode
     pi-coding-agent
     playwright-mcp
   ];

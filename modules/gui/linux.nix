@@ -112,7 +112,6 @@
     home = {
       packages = with pkgs.unstable; [
         brave
-        emacs-pgtk
         gnome-sound-recorder
         gpu-screen-recorder
         kdePackages.kdeconnect-kde

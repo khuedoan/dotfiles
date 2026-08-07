@@ -2,17 +2,9 @@
 
 {
   homebrew = {
-    taps = [
-      {
-        name = "d12frosted/emacs-plus";
-        trusted = true;
-      }
-    ];
-
     casks = [
       "brave-browser"
       "codex-app"
-      "emacs-plus-app"
       "handy"
       "kitty"
       "linearmouse"

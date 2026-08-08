@@ -16,8 +16,7 @@ Please feel free to copy bits and pieces that you like ;)
 Repository layout:
 
 - `flake.nix`: entrypoint
-- `hosts/`: one per machine, each host sets hostname, username, and imports the
-  modules it needs.
+- `hosts/`: one per machine, each host imports the modules it needs.
 - `base/`: shared baseline
 - `modules/` composable modules that hosts can mix and match:
   - `cli`: shared command-line tools and development packages
@@ -73,7 +72,7 @@ the target disk device.
 
 Before the first run:
 
-- Update the hostname and `primaryUser.username` values in `hosts/`
+- Update `primaryUser.username` values in `hosts/`
 - Go to `Settings > Privacy & Security > Full Disk Access` and allow Terminal
 
 Clone the repository and apply the configuration:

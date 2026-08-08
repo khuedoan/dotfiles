@@ -113,7 +113,6 @@
       packages = with pkgs.unstable; [
         brave
         gnome-sound-recorder
-        gpu-screen-recorder
         kdePackages.kdeconnect-kde
         onlyoffice-desktopeditors
         piper

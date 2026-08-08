@@ -25,7 +25,6 @@ output "*" {
 for_window [class=".*"] inhibit_idle fullscreen
 
 exec autotiling
-exec systemctl --user start easyeffects
 exec fcitx5 -d
 exec swayidle -w
 exec soteria

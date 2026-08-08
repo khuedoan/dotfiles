@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 
 {
   environment.systemPackages = with pkgs; [
@@ -15,4 +15,10 @@
       enableSSHSupport = true;
     };
   };
+
+  home-manager.users.${config.primaryUser.username}.home.packages = with pkgs.unstable; [
+    # AI sandboxing
+    bubblewrap
+    socat
+  ];
 }

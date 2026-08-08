@@ -72,6 +72,9 @@
             ++ systemModules
             ++ extraModules
             ++ [
+              {
+                networking.hostName = host;
+              }
               ./hosts/${host}.nix
             ];
         };

@@ -37,10 +37,6 @@
     };
   };
 
-  networking = {
-    hostName = "thinkpadz13";
-  };
-
   services = {
     tlp = {
       enable = true;

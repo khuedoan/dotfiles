@@ -13,8 +13,6 @@
     "ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBEtp6vl/snmGvkfoy42OwxSSWhd4PvlCxX4bx4NgXgvpXuITfq1NpRc7YTqn5LAWobyVEQ3/zKARI3aXH/YW0/s="
   ];
 
-  networking.hostName = "MacBookPro";
-
   nix = {
     distributedBuilds = true;
     settings.builders-use-substitutes = true;

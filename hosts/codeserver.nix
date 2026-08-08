@@ -28,7 +28,4 @@
     "khuedoan"
   ];
 
-  networking = {
-    hostName = "codeserver";
-  };
 }

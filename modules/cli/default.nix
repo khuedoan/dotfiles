@@ -67,6 +67,5 @@
     codex
     mcp-grafana
     pi-coding-agent
-    playwright-mcp
   ];
 }

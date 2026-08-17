@@ -32,7 +32,6 @@ alias diff='git diff --no-index'
 
 # coding
 alias v='nvim'
-alias pi='pi --tools read,bash,edit,write,grep,ls'
 
 # convert to PDF
 alias officetopdf='libreoffice --headless --convert-to pdf'

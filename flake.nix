@@ -15,10 +15,11 @@
       url = "github:nix-community/home-manager/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    llm-agents.url = "github:numtide/llm-agents.nix";
   };
 
   outputs =
-    {
+    inputs@{
       nixpkgs,
       nixpkgs-unstable,
       darwin,
@@ -28,17 +29,26 @@
       ...
     }:
     let
+      packageOverlay =
+        final: prev:
+        let
+          system = final.stdenv.hostPlatform.system;
+        in
+        {
+          unstable = import nixpkgs-unstable {
+            inherit system;
+            config = prev.config;
+          };
+
+          unofficial =
+            inputs.llm-agents.packages.${system}
+            // import ./pkgs { pkgs = final; };
+        };
+
       baseModules = [
         ./base
         {
-          nixpkgs.overlays = [
-            (final: prev: {
-              unstable = import nixpkgs-unstable {
-                inherit (prev.stdenv.hostPlatform) system;
-                config = prev.config;
-              };
-            })
-          ];
+          nixpkgs.overlays = [ packageOverlay ];
         }
       ];
 

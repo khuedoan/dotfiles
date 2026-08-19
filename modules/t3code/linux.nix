@@ -15,7 +15,7 @@ in
     wantedBy = [ "multi-user.target" ];
     environment.HOME = home;
     serviceConfig = {
-      ExecStart = "${lib.getExe pkgs.unofficial.t3code} serve --host 0.0.0.0";
+      ExecStart = "${lib.getExe pkgs.unstable.t3code} serve --host 0.0.0.0";
       Restart = "always";
       RestartSec = 5;
       User = username;

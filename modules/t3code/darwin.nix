@@ -5,6 +5,9 @@
   ...
 }:
 
+let
+  systemPath = config.environment.systemPath;
+in
 {
   home-manager.users.${config.primaryUser.username} =
     { config, ... }:
@@ -21,11 +24,11 @@
                   config.home.homeDirectory
                   config.home.username
                 ]
-                config.environment.systemPath;
+                systemPath;
           };
           KeepAlive = true;
           ProgramArguments = [
-            (lib.getExe pkgs.unofficial.t3code)
+            (lib.getExe pkgs.unstable.t3code)
             "serve"
             "--host"
             "0.0.0.0"

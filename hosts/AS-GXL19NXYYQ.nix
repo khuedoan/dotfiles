@@ -3,6 +3,7 @@
     ../modules/cli
     ../modules/dotfiles
     ../modules/gui
+    ../modules/t3code
     ../modules/work
   ];
 

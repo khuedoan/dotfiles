@@ -5,6 +5,7 @@
     ../modules/cli
     ../modules/dotfiles
     ../modules/personal
+    ../modules/t3code
   ];
 
   # Explicit disk for nixos-anywhere

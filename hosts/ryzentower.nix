@@ -11,7 +11,6 @@
     ../modules/dotfiles
     ../modules/gui
     ../modules/personal
-    ../modules/t3code
   ];
 
   primaryUser.username = "khuedoan";

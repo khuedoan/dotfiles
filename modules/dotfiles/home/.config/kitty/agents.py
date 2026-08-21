@@ -1,32 +1,47 @@
-"""Select a pi agent window. List agents that need attention first."""
+"""Select an agent window. List agents that need user action first."""
 
 import json
 import os
+import re
 import subprocess
 import traceback
+from functools import cache
 
 from kitty.boss import Boss
 from kitty.constants import kitten_exe
 from kittens.tui.handler import kitten_ui, result_handler
 
-# TODO explicit path because macOS GUI has minimal PATH
-FZF = f"/etc/profiles/per-user/{os.environ['USER']}/bin/fzf"
+# macOS GUI applications start with a minimal PATH.
+os.environ["PATH"] = os.pathsep.join(
+    (
+        f"/etc/profiles/per-user/{os.environ['USER']}/bin",
+        "/run/current-system/sw/bin",
+        "/usr/bin",
+    )
+)
 
-STATE_COLORS = {"done": "32", "working": "33", "idle": "90"}
-STATE_RANK = {state: rank for rank, state in enumerate(STATE_COLORS)}
-CYAN = "36"
+AGENTS = {"pi", "codex"}
+BLOCKED = re.compile(
+    r"\[(?:y(?:es)?|n(?:o)?)/(?:y(?:es)?|n(?:o)?)\]"
+    r"|\b(?:press|hit)\s+(?:enter|return)\b"
+    r"|\b(?:enter|return)\s+to\s+(?:submit|confirm|accept|continue)\b"
+    r"|\b(?:allow|approve|confirm)\b.*(?:\?|:)\s*$",
+    re.IGNORECASE,
+)
+WORKING = re.compile(
+    r"\b(?:esc|escape)\s+to\s+interrupt\b"
+    r"|(?:\.\.\.|…)(?:\s+\([^)]*\))?\s*$",
+    re.IGNORECASE,
+)
+STATE_STYLES = {
+    "blocked": ("31", "◉"),
+    "done": ("32", "●"),
+    "working": ("33", "●"),
+}
 
 
 def ansi(color: str, text: str) -> str:
     return f"\x1b[{color}m{text}\x1b[0m"
-
-
-def is_alive(pid: str) -> bool:
-    try:
-        os.kill(int(pid), 0)
-    except (ProcessLookupError, ValueError):
-        return False
-    return True
 
 
 def kitty(args: list[str]) -> str:
@@ -37,56 +52,89 @@ def kitty(args: list[str]) -> str:
     return result.stdout.decode()
 
 
-def collect_agents(tabs: list[dict]) -> list[tuple[dict, dict]]:
+def detect_agent(window: dict) -> str | None:
+    for process in window.get("foreground_processes", []):
+        command = process.get("cmdline", [])
+        if not command:
+            continue
+        agent = os.path.basename(command[0]).removeprefix(".").removesuffix("-wrapped")
+        if agent in AGENTS:
+            return agent
+    return None
+
+
+@cache
+def git_branch(cwd: str) -> str:
+    return subprocess.run(
+        ["git", "-C", cwd, "branch", "--show-current"],
+        capture_output=True,
+        text=True,
+    ).stdout.strip()
+
+
+def detect_state(window_id: int) -> str:
+    text = kitty(["get-text", "--match", f"id:{window_id}", "--extent", "screen"])
+    lines = [
+        line.strip()
+        for line in text.splitlines()
+        if any(character.isalnum() for character in line)
+    ]
+    if any(BLOCKED.search(line) for line in lines[-5:]) or any(
+        line.endswith("?") for line in lines[-2:]
+    ):
+        return "blocked"
+    if any(WORKING.search(line) for line in lines[-2:]):
+        return "working"
+    return "done"
+
+
+def collect_agents(tabs: list[dict]) -> list[tuple[dict, str, str]]:
     agents = [
-        (tab, window)
+        (window, detect_state(window["id"]), agent)
         for tab in tabs
         for window in tab["windows"]
-        if window["user_vars"].get("pi_state") in STATE_COLORS
-        and is_alive(window["user_vars"].get("pi_pid", ""))
+        if (agent := detect_agent(window)) is not None
     ]
-    return sorted(
-        agents,
-        key=lambda agent: STATE_RANK[agent[1]["user_vars"]["pi_state"]],
-    )
+    return sorted(agents, key=lambda item: item[1])
 
 
-def format_row(tab: dict, window: dict) -> str:
-    status = window["user_vars"]
-    state = status["pi_state"]
-    return (
-        f"{window['id']}\t{ansi(STATE_COLORS[state], state)}  "
-        f"{tab['title']}  {ansi(CYAN, status['pi_title'])}"
-    )
+def format_row(window: dict, state: str, agent: str) -> str:
+    color, symbol = STATE_STYLES[state]
+    status = ansi(color, f"{symbol} {state}")
+    cwd = window.get("cwd", "").rstrip(os.sep)
+    project = ansi("1", os.path.basename(cwd) or window.get("title", ""))
+    branch = git_branch(cwd)
+    if branch:
+        project += f" {ansi('2', '@ ' + branch)}"
+    return f"{window['id']}\t{status}  {project}  {ansi('2', agent)}"
 
 
 def pick_agent() -> str:
-    [os_window] = json.loads(kitty(["ls", "--match", "state:focused_os_window"]))
-    tabs = os_window["tabs"]
-    agents = collect_agents(tabs)
+    [os_window] = json.loads(kitty(["ls"]))
 
-    # Screen previews require access to all kitty windows.
+    # Screen detection and previews need access to all Kitty windows.
     main.allow_indiscriminate_remote_control()
-    previous_layout = next(tab["layout"] for tab in tabs if tab["is_active"])
-    kitty(["goto-layout", "stack"])
-    try:
-        fzf = subprocess.run(
-            [
-                FZF,
-                "--ansi",
-                "--delimiter=\t",
-                "--with-nth=2..",
-                "--layout=reverse",
-                "--prompt=agent> ",
-                f"--preview={kitten_exe()} @ get-text --match=id:{{1}} --ansi",
-            ],
-            input="\n".join(format_row(tab, window) for tab, window in agents),
-            stdout=subprocess.PIPE,
-            pass_fds=(main.rc_fd,),
-            text=True,
-        )
-    finally:
-        kitty(["goto-layout", previous_layout])
+    agents = collect_agents(os_window["tabs"])
+    fzf = subprocess.run(
+        [
+            "fzf",
+            "--ansi",
+            "--delimiter=\t",
+            "--with-nth=2..",
+            "--layout=reverse",
+            "--info=hidden",
+            "--no-hscroll",
+            "--no-separator",
+            "--no-scrollbar",
+            "--prompt=agent> ",
+            f"--preview={kitten_exe()} @ get-text --match=id:{{1}} --ansi",
+            "--preview-window=up,follow",
+        ],
+        stdout=subprocess.PIPE,
+        pass_fds=(main.rc_fd,),
+        input="\n".join(format_row(*agent) for agent in agents),
+        text=True,
+    )
 
     return fzf.stdout.partition("\t")[0].strip()
 

@@ -199,3 +199,4 @@ nvim --headless +qa  0.03s user 0.01s system 83% cpu 0.047 total
 - [How core Git developers configure Git](https://blog.gitbutler.com/how-git-core-devs-configure-git)
 - [The Git Commands I Run Before Reading Any Code](https://piechowski.io/post/git-commands-before-reading-code)
 - [Setup nix, nix-darwin and home-manager from scratch on an M1 Macbook Pro](https://gist.github.com/jmatsushita/5c50ef14b4b96cb24ae5268dab613050)
+- [herdr's agent detection](https://github.com/herdrdev/herdr/tree/master/src/detect)

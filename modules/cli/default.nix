@@ -65,7 +65,7 @@
     # AI
     agent-browser
     codex
-    mcp-grafana
     pi-coding-agent
+    pkgs.mcporter # TODO unstable version is broken until nixpkgs#553055 is merged
   ];
 }

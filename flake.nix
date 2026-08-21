@@ -15,6 +15,10 @@
       url = "github:nix-community/home-manager/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    microvm = {
+      url = "github:microvm-nix/microvm.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     llm-agents.url = "github:numtide/llm-agents.nix";
   };
 
@@ -31,6 +35,7 @@
       disko,
       nixos-hardware,
       home-manager,
+      microvm,
       ...
     }:
     let
@@ -108,6 +113,33 @@
         codeserver = mkHost {
           host = "codeserver";
           system = "x86_64-linux";
+        };
+        codeserver-microvm = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = {
+            inherit nixpkgs;
+            platform = nixpkgs.lib.systems.elaborate "aarch64-linux";
+          };
+          modules = [
+            home-manager.nixosModules.home-manager
+            microvm.nixosModules.microvm
+            {
+              options.primaryUser = {
+                username = nixpkgs.lib.mkOption {
+                  type = nixpkgs.lib.types.str;
+                  description = "Local account username for this host.";
+                };
+                authorizedKeys = nixpkgs.lib.mkOption {
+                  type = nixpkgs.lib.types.listOf nixpkgs.lib.types.str;
+                  default = [ ];
+                  description = "SSH public keys authorized for the primary user on this host.";
+                };
+              };
+
+              config.nixpkgs.overlays = [ packageOverlay ];
+            }
+            ./hosts/codeserver-vm.nix
+          ];
         };
       };
 

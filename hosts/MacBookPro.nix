@@ -15,6 +15,7 @@
 
   nix = {
     distributedBuilds = true;
+    linux-builder.enable = true;
     settings.builders-use-substitutes = true;
 
     buildMachines = [

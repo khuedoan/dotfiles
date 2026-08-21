@@ -17,7 +17,17 @@ def main(args: list[str]) -> str:
         text=True,
     )
     fzf = subprocess.Popen(
-        [os.path.join(NIX_BIN, "fzf"), "--prompt", "project> ", "--layout=reverse"],
+        [
+            os.path.join(NIX_BIN, "fzf"),
+            "--layout=reverse",
+            "--info=hidden",
+            "--no-hscroll",
+            "--no-separator",
+            "--no-scrollbar",
+            "--prompt=project> ",
+            f"--preview={os.path.join(NIX_BIN, 'bat')} --color=always --style=plain -- {{}}/README.md",
+            "--preview-window=up",
+        ],
         stdin=subprocess.PIPE,
         stdout=subprocess.PIPE,
         text=True,

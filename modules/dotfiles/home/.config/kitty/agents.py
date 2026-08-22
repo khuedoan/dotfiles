@@ -2,9 +2,9 @@
 
 import json
 import os
-import re
 import subprocess
 import traceback
+from difflib import SequenceMatcher
 from functools import cache
 
 from kitty.boss import Boss
@@ -20,23 +20,28 @@ os.environ["PATH"] = os.pathsep.join(
     )
 )
 
-AGENTS = {"pi", "codex"}
-BLOCKED = re.compile(
-    r"\[(?:y(?:es)?|n(?:o)?)/(?:y(?:es)?|n(?:o)?)\]"
-    r"|\b(?:press|hit)\s+(?:enter|return)\b"
-    r"|\b(?:enter|return)\s+to\s+(?:submit|confirm|accept|continue)\b"
-    r"|\b(?:allow|approve|confirm)\b.*(?:\?|:)\s*$",
-    re.IGNORECASE,
+BLOCKED_PHRASES = (
+    "yes no",
+    "enter select",
+    "enter to",
+    "do you want",
+    "would you like",
+    "which option",
+    "which approach",
+    "should i proceed",
+    "need your",
+    "allow",
+    "approve",
+    "confirm",
 )
-WORKING = re.compile(
-    r"\b(?:esc|escape)\s+to\s+interrupt\b"
-    r"|(?:\.\.\.|…)(?:\s+\([^)]*\))?\s*$",
-    re.IGNORECASE,
+WORKING_PHRASES = (
+    "Working...",
+    "esc to interrupt",
 )
 STATE_STYLES = {
-    "blocked": ("31", "◉"),
-    "done": ("32", "●"),
-    "working": ("33", "●"),
+    "blocked": ("31", "●"),
+    "done": ("32", "✓"),
+    "working": ("33", "◉"),
 }
 
 
@@ -58,7 +63,7 @@ def detect_agent(window: dict) -> str | None:
         if not command:
             continue
         agent = os.path.basename(command[0]).removeprefix(".").removesuffix("-wrapped")
-        if agent in AGENTS:
+        if agent in {"pi", "codex"}:
             return agent
     return None
 
@@ -72,19 +77,39 @@ def git_branch(cwd: str) -> str:
     ).stdout.strip()
 
 
+def fuzzy_match(text: str, phrases: tuple[str, ...], threshold: float = 0.88) -> bool:
+    words = "".join(
+        character if character.isalnum() else " " for character in text.casefold()
+    ).split()
+    for phrase in phrases:
+        word_count = len(phrase.split())
+        windows = (
+            " ".join(words[start : start + word_count])
+            for start in range(max(1, len(words) - word_count + 1))
+        )
+        if any(
+            SequenceMatcher(None, phrase, window).ratio() >= threshold
+            for window in windows
+        ):
+            return True
+    return False
+
+
 def detect_state(window_id: int) -> str:
-    text = kitty(["get-text", "--match", f"id:{window_id}", "--extent", "screen"])
-    lines = [
+    screen = kitty(["get-text", "--match", f"id:{window_id}", "--extent", "screen"])
+    recent_lines = [
         line.strip()
-        for line in text.splitlines()
+        for line in screen.splitlines()
         if any(character.isalnum() for character in line)
-    ]
-    if any(BLOCKED.search(line) for line in lines[-5:]) or any(
-        line.endswith("?") for line in lines[-2:]
+    ][-5:]
+
+    for state, phrases in (
+        ("blocked", BLOCKED_PHRASES),
+        ("working", WORKING_PHRASES),
     ):
-        return "blocked"
-    if any(WORKING.search(line) for line in lines[-2:]):
-        return "working"
+        if any(fuzzy_match(line, phrases) for line in recent_lines):
+            return state
+
     return "done"
 
 
@@ -100,13 +125,13 @@ def collect_agents(tabs: list[dict]) -> list[tuple[dict, str, str]]:
 
 def format_row(window: dict, state: str, agent: str) -> str:
     color, symbol = STATE_STYLES[state]
-    status = ansi(color, f"{symbol} {state}")
+    status = ansi(color, symbol)
     cwd = window.get("cwd", "").rstrip(os.sep)
-    project = ansi("1", os.path.basename(cwd) or window.get("title", ""))
+    project = ansi(color, os.path.basename(cwd) or window.get("title", ""))
     branch = git_branch(cwd)
     if branch:
         project += f" {ansi('2', '@ ' + branch)}"
-    return f"{window['id']}\t{status}  {project}  {ansi('2', agent)}"
+    return f"{window['id']}\t{status} {project} {ansi('2', agent)}"
 
 
 def pick_agent() -> str:

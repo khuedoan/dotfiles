@@ -44,15 +44,20 @@ BLOCKED_PHRASES = (
     "approve",
     "confirm",
 )
-WORKING_PHRASES = (
-    "Working...",
-    "esc to interrupt",
-)
-STATE_STYLES = {
-    "blocked": ("31", "●"),
-    "done": ("32", "✓"),
-    "working": ("33", "◉"),
+WORKING_PHRASES = ("working", "esc to interrupt")
+STYLES = {
+    "blocked": ("31", ""),
+    "done": ("32", ""),
+    "working": ("33", ""),
+    "open-project": ("32", ""),
+    "project": ("2", ""),
+    "worktree": ("35", ""),
 }
+
+
+def navigation_row(value: str, label: str, style: str) -> str:
+    color, symbol = STYLES[style]
+    return f"{value}\t{ansi(color, symbol + '  ')}{label}"
 
 
 def command_env() -> dict[str, str]:
@@ -70,6 +75,28 @@ def fzf(
         stdout=subprocess.PIPE,
         text=True,
     )
+
+
+def select_item(
+    rows: Iterable[str],
+    *options: str,
+    keys: tuple[str, ...] = (),
+    pass_fds: tuple[int, ...] = (),
+) -> tuple[str, str]:
+    key_options = (f"--expect={','.join(keys)}",) if keys else ()
+    result = fzf(
+        rows,
+        "--ansi",
+        "--delimiter=\t",
+        "--with-nth=2..",
+        *key_options,
+        *options,
+        pass_fds=pass_fds,
+    )
+    key, _, row = result.stdout.partition("\n")
+    if not keys:
+        key, row = "", key
+    return key, row.partition("\t")[0].rstrip("\n")
 
 
 def git(
@@ -105,8 +132,13 @@ def worktree_path(main_path: str, branch: str) -> str:
 
 
 def open_project(boss: Boss, path: str) -> None:
+    path = os.path.realpath(path)
     for tab in boss.all_tabs:
-        if any((window.user_vars or {}).get("project") == path for window in tab.windows):
+        if any(
+            os.path.realpath(project) == path
+            for window in tab.windows
+            if (project := (window.user_vars or {}).get("project"))
+        ):
             boss.set_active_tab(tab)
             return
 
@@ -127,7 +159,17 @@ def is_project(path: str) -> bool:
     )
 
 
-def pick_project() -> str:
+def open_projects() -> set[str]:
+    return {
+        os.path.realpath(project)
+        for os_window in json.loads(kitty(["ls"]))
+        for tab in os_window["tabs"]
+        for window in tab["windows"]
+        if (project := (window.get("user_vars") or {}).get("project"))
+    }
+
+
+def pick_project() -> tuple[str, str] | None:
     zoxide = subprocess.run(
         ["zoxide", "query", "--list", "--base-dir", PROJECTS_DIR],
         capture_output=True,
@@ -135,17 +177,32 @@ def pick_project() -> str:
         env=command_env(),
         text=True,
     )
-    paths = (path for path in zoxide.stdout.splitlines() if is_project(path))
-    result = fzf(
-        (os.path.expanduser("~"), *paths),
+    paths = [
+        os.path.expanduser("~"),
+        *(path for path in zoxide.stdout.splitlines() if is_project(path)),
+    ]
+    opened = open_projects()
+    _, path = select_item(
+        (
+            navigation_row(
+                path,
+                "~"
+                if path == os.path.expanduser("~")
+                else os.path.relpath(path, PROJECTS_DIR),
+                "open-project" if os.path.realpath(path) in opened else "project",
+            )
+            for path in paths
+        ),
         "--prompt=project> ",
-        "--preview=bat --color=always --style=plain -- {}/README.md",
+        "--preview=bat --color=always --style=plain -- {1}/README.md",
     )
-    return result.stdout.strip()
+    return ("project", path) if path else None
 
 
-def worktrees(cwd: str | None = None) -> list[dict[str, str]]:
+def worktrees(cwd: str) -> list[dict[str, str]]:
     output = git("worktree", "list", "--porcelain", cwd=cwd).stdout.strip()
+    if not output:
+        return []
     return [
         dict(line.partition(" ")[::2] for line in block.splitlines())
         for block in output.split("\n\n")
@@ -160,22 +217,7 @@ def format_worktree(entry: dict[str, str]) -> str:
         state += " [locked]"
     if "prunable" in entry:
         state += " [prunable]"
-    return f"{path}\t{os.path.basename(path)}  \x1b[2m{state}\x1b[0m"
-
-
-def select_worktree(entries: list[dict[str, str]]) -> tuple[str, str]:
-    result = fzf(
-        (format_worktree(entry) for entry in entries),
-        "--ansi",
-        "--delimiter=\t",
-        "--with-nth=2..",
-        "--expect=ctrl-n,ctrl-x",
-        "--prompt=worktree> ",
-        "--header=enter: open  ctrl-n: add  ctrl-x: remove",
-        "--preview=git -C {1} -c color.status=always status --short --branch",
-    )
-    key, _, selection = result.stdout.partition("\n")
-    return key, selection.partition("\t")[0]
+    return f"{project_name(path)} {ansi('2', '@ ' + state)}"
 
 
 def select_branch(main_path: str, entries: list[dict[str, str]]) -> tuple[str, bool]:
@@ -228,41 +270,61 @@ def confirm_remove(path: str, reason: str) -> bool:
     return bool(result.stdout.strip())
 
 
-def remove_worktree(main_path: str, entry: dict[str, str]) -> None:
+def remove_worktree(main_path: str, entry: dict[str, str]) -> bool:
     path = entry["worktree"]
     if path == main_path:
         pause("The main worktree cannot be removed.")
-        return
+        return False
     if "prunable" in entry:
         git("worktree", "remove", "--force", "--force", path, cwd=main_path)
-        return
+        return True
 
     try:
         git("worktree", "remove", path, cwd=main_path)
     except subprocess.CalledProcessError as error:
-        if confirm_remove(path, error.stderr.strip()):
-            git("worktree", "remove", "--force", "--force", path, cwd=main_path)
+        if not confirm_remove(path, error.stderr.strip()):
+            return False
+        git("worktree", "remove", "--force", "--force", path, cwd=main_path)
+    return True
 
 
-def pick_worktree() -> str:
-    entries = worktrees()
+def pick_worktree() -> tuple[str, str] | None:
+    repository = git("rev-parse", "--show-toplevel", check=False)
+    if repository.returncode != 0:
+        return None
+    entries = worktrees(repository.stdout.strip())
+    if not entries:
+        return None
     main_path = entries[0]["worktree"]
 
     while True:
         entries = worktrees(main_path)
-        key, path = select_worktree(entries)
+        key, path = select_item(
+            (
+                navigation_row(entry["worktree"], format_worktree(entry), "worktree")
+                for entry in entries
+            ),
+            "--prompt=worktree> ",
+            "--header=ctrl-a: add  ctrl-x: remove",
+            "--preview=git -C {1} -c color.status=always status --short --branch",
+            keys=("ctrl-a", "ctrl-x"),
+        )
+
         try:
-            if key == "ctrl-n":
-                if path := add_worktree(main_path, entries):
-                    return path
-            elif key == "ctrl-x":
-                if path:
-                    entry = next(entry for entry in entries if entry["worktree"] == path)
-                    remove_worktree(main_path, entry)
-            else:
-                return path
+            match key, path:
+                case "ctrl-a", _:
+                    if path := add_worktree(main_path, entries):
+                        return "worktree", path
+                case "ctrl-x", path if path:
+                    entry = next(
+                        entry for entry in entries if entry["worktree"] == path
+                    )
+                    if remove_worktree(main_path, entry):
+                        return "removed", path
+                case "", path:
+                    return ("worktree", path) if path else None
         except subprocess.CalledProcessError as error:
-            pause(error.stderr.strip())
+            pause(error.stderr.strip() or str(error))
 
 
 def ansi(color: str, text: str) -> str:
@@ -352,44 +414,43 @@ def collect_agents(tabs: list[dict]) -> list[tuple[dict, str, str]]:
 
 
 def format_agent(window: dict, state: str, agent: str) -> str:
-    color, symbol = STATE_STYLES[state]
-    status = ansi(color, symbol)
+    color, _ = STYLES[state]
     cwd = window.get("cwd", "").rstrip(os.sep)
     project, branch = git_context(cwd)
     project = ansi(color, project or os.path.basename(cwd) or window.get("title", ""))
     if branch:
         project += f" {ansi('2', '@ ' + branch)}"
-    return f"{window['id']}\t{status} {project} {ansi('2', agent)}"
+    return f"{project} {ansi('2', agent)}"
 
 
-def pick_agent() -> str:
+def pick_agent() -> tuple[str, str] | None:
     [os_window] = json.loads(kitty(["ls"]))
     main.allow_indiscriminate_remote_control()
-    agents = collect_agents(os_window["tabs"])
-    result = fzf(
-        (format_agent(*agent) for agent in agents),
-        "--ansi",
-        "--delimiter=\t",
-        "--with-nth=2..",
+    _, window_id = select_item(
+        (
+            navigation_row(
+                str(window["id"]),
+                format_agent(window, state, agent),
+                state,
+            )
+            for window, state, agent in collect_agents(os_window["tabs"])
+        ),
         "--prompt=agent> ",
         f"--preview={kitten_exe()} @ get-text --match=id:{{1}} --ansi",
         "--preview-window=up,follow",
         pass_fds=(main.rc_fd,),
     )
-    return result.stdout.partition("\t")[0].strip()
+    return ("agent", window_id) if window_id else None
 
 
-PICKERS = {
-    "agents": pick_agent,
-    "projects": pick_project,
-    "worktrees": pick_worktree,
-}
+PICKERS = dict(agents=pick_agent, projects=pick_project, worktrees=pick_worktree)
 
 
 @kitten_ui(allow_remote_control=True)
 def main(args: list[str]) -> str:
     try:
-        return PICKERS[args[1]]()
+        result = PICKERS[args[1]]()
+        return json.dumps(result) if result else ""
     except Exception:
         pause(traceback.format_exc())
         return ""
@@ -399,7 +460,18 @@ def main(args: list[str]) -> str:
 def handle_result(args: list[str], answer: str, target_window_id: int, boss: Boss) -> None:
     if not answer:
         return
-    if args[1] == "agents":
-        boss.set_active_window(boss.window_id_map[int(answer)])
-    else:
-        open_project(boss, answer)
+    selector, selection = json.loads(answer)
+    match selector:
+        case "agent":
+            boss.set_active_window(boss.window_id_map[int(selection)])
+        case "removed":
+            for tab in tuple(boss.all_tabs):
+                if any(
+                    (window.user_vars or {}).get("project") == selection
+                    for window in tab.windows
+                ):
+                    boss.close_tab(tab)
+        case "project" | "worktree":
+            open_project(boss, selection)
+        case _:
+            raise ValueError(f"Unknown navigator result: {selector}")

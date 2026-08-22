@@ -84,9 +84,11 @@ vim.schedule(function()
     require("fzf-lua").setup({
         "max-perf",
         winopts = {
-            height = 0.5,
-            width = 1,
-            row = 1,
+            fullscreen = true,
+            preview = {
+                layout = "vertical",
+                vertical = "up:50%",
+            },
         },
     })
     require("fzf-lua").register_ui_select()

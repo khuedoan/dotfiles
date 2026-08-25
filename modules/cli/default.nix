@@ -66,6 +66,5 @@
     agent-browser
     codex
     pi-coding-agent
-    pkgs.mcporter # TODO unstable version is broken until nixpkgs#553055 is merged
   ];
 }

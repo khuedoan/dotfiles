@@ -1,6 +1,12 @@
 { config, pkgs, ... }:
 
 {
+  homebrew = {
+    # TODO use mcporter when nixpkgs#553055 is merged
+    taps = [ "steipete/tap" ];
+    brews = [ "steipete/tap/mcporter" ];
+  };
+
   environment.systemPackages = with pkgs; [
     colima
     coreutils

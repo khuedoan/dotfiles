@@ -134,6 +134,12 @@ in
     ];
     openssh.authorizedKeys.keys = authorizedKeys;
     shell = pkgs.zsh;
+
+    # The risk is negligible here, since this is a strong random passphrase,
+    # we don't permit SSH password login, and we'll change the password after
+    # first login anyway. Regenerate the hash with:
+    # nix run nixpkgs#mkpasswd -- -m yescrypt
+    initialHashedPassword = "$y$j9T$LX5f3hwLPHXEmG0xZKTGh0$mlYLz3NiNAvaFhKkyHJ.YEDc8OL6LUo48UvQCD2vZb0";
   };
 
   home-manager.users.${username}.home.stateVersion = "23.05";

@@ -14,6 +14,32 @@ in
 {
   home-manager.users.${username}.home.packages = [ bb ];
 
+  services.nginx = {
+    enable = true;
+
+    virtualHosts.bb = {
+      listen = [
+        {
+          addr = "127.0.0.1";
+          port = 38888;
+        }
+      ];
+
+      locations."/" = {
+        basicAuthFile = "/var/lib/nginx/bb.htpasswd";
+        proxyPass = "http://127.0.0.1:38886";
+        proxyWebsockets = true;
+        extraConfig = ''
+          proxy_set_header Host $host;
+          proxy_set_header X-Forwarded-Proto $http_x_forwarded_proto;
+          proxy_set_header Authorization "";
+        '';
+      };
+    };
+  };
+
+  systemd.tmpfiles.rules = [ "d /var/lib/nginx 0750 root nginx -" ];
+
   systemd.services = {
     bb = {
       description = "bb agentic IDE";
@@ -48,16 +74,18 @@ in
       wantedBy = [ "multi-user.target" ];
       wants = [
         "bb.service"
+        "nginx.service"
         "tailscaled.service"
       ];
       after = [
         "bb.service"
+        "nginx.service"
         "tailscaled.service"
       ];
 
       serviceConfig = {
         Type = "oneshot";
-        ExecStart = "${lib.getExe pkgs.tailscale} serve --bg --yes http://127.0.0.1:38886";
+        ExecStart = "${lib.getExe pkgs.tailscale} serve --bg --yes http://127.0.0.1:38888";
         RemainAfterExit = true;
         Restart = "on-failure";
         RestartSec = "10s";

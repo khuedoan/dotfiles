@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ../modules/bb
     ../modules/cli
     ../modules/dotfiles
     ../modules/personal

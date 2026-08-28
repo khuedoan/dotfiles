@@ -25,8 +25,13 @@ in
         }
       ];
 
+      extraConfig = ''
+        if ($http_tailscale_user_login != "khuedoan@github") {
+          return 403;
+        }
+      '';
+
       locations."/" = {
-        basicAuthFile = "/var/lib/nginx/bb.htpasswd";
         proxyPass = "http://127.0.0.1:38886";
         proxyWebsockets = true;
         extraConfig = ''

@@ -44,7 +44,10 @@
     }
   ];
 
+  systemd.sleep.settings.Sleep.HibernateDelaySec = "8h";
+
   services = {
+    logind.settings.Login.HandleLidSwitch = "suspend-then-hibernate";
     upower = {
       enable = true;
       percentageAction = 4;

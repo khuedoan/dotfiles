@@ -37,7 +37,19 @@
     };
   };
 
+  swapDevices = [
+    {
+      device = "/swapfile";
+      size = 16 * 1024;
+    }
+  ];
+
   services = {
+    upower = {
+      enable = true;
+      percentageAction = 4;
+      criticalPowerAction = "Hibernate";
+    };
     tlp = {
       enable = true;
       settings = {

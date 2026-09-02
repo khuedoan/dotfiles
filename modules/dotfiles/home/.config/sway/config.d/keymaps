@@ -1,6 +1,7 @@
 # vi: ft=swayconfig
 
 set $mod Mod4
+set $shell noctalia msg
 
 # Basic
 
@@ -63,12 +64,12 @@ mode "resize" {
 
 # Buttons
 
-bindsym XF86AudioLowerVolume exec volume 5%-
-bindsym XF86AudioMute exec volume toggle
-bindsym XF86AudioRaiseVolume exec volume 5%+
+bindsym --locked XF86AudioLowerVolume exec $shell volume-down
+bindsym --locked XF86AudioMute exec $shell volume-mute
+bindsym --locked XF86AudioRaiseVolume exec $shell volume-up
 
-bindsym XF86MonBrightnessDown exec brightness 10%-
-bindsym XF86MonBrightnessUp exec brightness +10%
+bindsym --locked XF86MonBrightnessDown exec $shell brightness-down
+bindsym --locked XF86MonBrightnessUp exec $shell brightness-up
 
 bindsym Print exec grim - | wl-copy
 bindsym ctrl+Print exec grim -g "$(slurp)" - | wl-copy
@@ -77,13 +78,13 @@ bindsym $mod+shift+r exec toggle-recording
 
 # Apps
 
-bindsym $mod+Space exec rofi -show drun
+bindsym $mod+Space exec $shell panel-toggle launcher
 bindsym $mod+Return exec cd $(swaycwd) && foot
 bindsym $mod+Shift+Return exec foot
-bindsym $mod+Shift+p exec MENU='rofi -dmenu -p OTP -i' otp
+bindsym $mod+Shift+p exec foot -e otp
 
 # Control
 
 bindsym $mod+ctrl+r reload
-bindsym $mod+ctrl+e exec [ "$(echo -n 'yes\nno' | rofi -dmenu)" = "yes" ] && swaymsg exit
-bindsym $mod+ctrl+l exec swaylock
+bindsym $mod+ctrl+q exec $shell session lock
+bindsym $mod+ctrl+shift+q exec $shell panel-toggle session

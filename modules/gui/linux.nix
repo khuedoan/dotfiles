@@ -59,21 +59,15 @@
       };
       extraPackages = with pkgs; [
         autotiling
-        brightnessctl
-        feh
         foot
         grim
-        i3status-rust
         libnotify
-        mako
         mpv
+        pkgs.unstable.noctalia
         pavucontrol
         pcmanfm
-        rofi
         slurp
         soteria
-        swayidle
-        swaylock
         wl-clipboard
         xdg-utils
         zathura

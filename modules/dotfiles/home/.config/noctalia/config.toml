@@ -1,0 +1,27 @@
+[wallpaper.default]
+path = "~/Pictures/Wallpapers/astronaut-jellyfish.jpg"
+
+[theme]
+mode = "dark"
+source = "community"
+community_palette = "One"
+
+[bar.main]
+thickness = 26
+radius = 0
+margin_ends = 0
+margin_edge = 0
+padding = 8
+widget_spacing = 3
+scale = 0.9
+shadow = false
+
+[idle.behavior.lock]
+action = "lock"
+enabled = true
+timeout = 300
+
+[idle.behavior.screen-off]
+action = "screen_off"
+enabled = true
+timeout = 600

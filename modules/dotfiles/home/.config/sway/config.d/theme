@@ -20,20 +20,3 @@ client.focused_tab_title $black       $black      $foreground
 client.unfocused         $black       $black      $white      $black      $black
 client.urgent            $red         $red        $black      $red        $red
 client.placeholder       $background  $background $foreground $background $background
-
-bar {
-    colors {
-        background         #21252bbb
-        statusline         $foreground
-        separator          $white
-
-        # class            border background  text
-        focused_workspace  $white $foreground $black
-        active_workspace   $white $foreground $black
-        inactive_workspace $black $background $white
-        urgent_workspace   $black $red        $black
-    }
-
-    position top
-    status_command i3status-rs
-}

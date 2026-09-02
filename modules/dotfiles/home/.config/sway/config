@@ -18,15 +18,12 @@ input "type:touchpad" {
     tap enabled
 }
 
-output "*" {
-    bg ~/Pictures/Wallpapers/astronaut-jellyfish.jpg fill
-}
-
 for_window [class=".*"] inhibit_idle fullscreen
 
 exec autotiling
 exec fcitx5 -d
-exec swayidle -w
+# TODO: Use programs.noctalia after upgrading to NixOS 26.11.
+exec noctalia
 exec soteria
 
 include ~/.config/sway/config.d/*

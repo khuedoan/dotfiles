@@ -65,6 +65,7 @@
     # AI
     agent-browser
     codex
+    opencode
     pi-coding-agent
   ];
 }

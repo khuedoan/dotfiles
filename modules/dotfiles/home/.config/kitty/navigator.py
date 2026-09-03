@@ -29,12 +29,13 @@ FZF_STYLE = (
     "--info=hidden",
     "--preview-window=up",
 )
-AGENTS = {"pi", "codex"}
+AGENTS = {"pi", "codex", "cursor-agent"}
 BLOCKED_PHRASES = (
     "yes no",
     "enter select",
     "enter to",
     "do you want",
+    "do you trust",
     "would you like",
     "which option",
     "which approach",
@@ -42,9 +43,11 @@ BLOCKED_PHRASES = (
     "need your",
     "allow",
     "approve",
+    "to switch approval",
     "confirm",
+    "delete this file",
 )
-WORKING_PHRASES = ("working", "esc to interrupt")
+WORKING_PHRASES = ("working", "running", "thinking", "esc to interrupt")
 STYLES = {
     "blocked": ("31", ""),
     "done": ("32", ""),

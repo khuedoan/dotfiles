@@ -5,6 +5,7 @@
     casks = [
       "brave-browser"
       "codex-app"
+      "gram"
       "handy"
       "helium-browser"
       "kitty"

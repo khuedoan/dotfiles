@@ -5,7 +5,6 @@
     casks = [
       "brave-browser"
       "codex-app"
-      "gram"
       "handy"
       "helium-browser"
       "kitty"
@@ -14,6 +13,7 @@
       "obsidian"
       "secretive"
       "utm"
+      "zed"
     ];
   };
 

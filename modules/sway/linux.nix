@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 
 {
   programs.zsh.loginShellInit = ''
@@ -23,5 +23,10 @@
   xdg.portal = {
     enable = true;
     wlr.enable = true;
+  };
+
+  home-manager.users.${config.primaryUser.username}.gtk = {
+    enable = true;
+    colorScheme = "dark";
   };
 }

@@ -10,8 +10,6 @@
     inputs.jovian.nixosModules.default
   ];
 
-  hardware.graphics.enable32Bit = true;
-
   nixpkgs.config.allowUnfreePredicate =
     pkg:
     builtins.elem (lib.getName pkg) [

@@ -99,10 +99,5 @@
     };
 
     services.easyeffects.enable = true;
-
-    gtk = {
-      enable = true;
-      colorScheme = "dark";
-    };
   };
 }

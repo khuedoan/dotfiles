@@ -15,6 +15,14 @@
       url = "github:nix-community/home-manager/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    home-manager-unstable = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
+    jovian = {
+      url = "github:Jovian-Experiments/Jovian-NixOS";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
     llm-agents.url = "github:numtide/llm-agents.nix";
   };
 
@@ -31,6 +39,7 @@
       disko,
       nixos-hardware,
       home-manager,
+      home-manager-unstable,
       ...
     }:
     let
@@ -59,26 +68,28 @@
         {
           host,
           system,
+          nixpkgsSource ? nixpkgs,
+          homeManagerSource ? home-manager,
           extraModules ? [ ],
         }:
         let
-          platform = nixpkgs.lib.systems.elaborate system;
-          builder = if platform.isDarwin then darwin.lib.darwinSystem else nixpkgs.lib.nixosSystem;
+          platform = nixpkgsSource.lib.systems.elaborate system;
+          builder = if platform.isDarwin then darwin.lib.darwinSystem else nixpkgsSource.lib.nixosSystem;
           systemModules =
             if platform.isDarwin then
               [
-                home-manager.darwinModules.home-manager
+                homeManagerSource.darwinModules.home-manager
               ]
             else
               [
                 disko.nixosModules.disko
-                home-manager.nixosModules.home-manager
+                homeManagerSource.nixosModules.home-manager
               ];
         in
         builder {
           inherit system;
           specialArgs = {
-            inherit platform;
+            inherit inputs platform;
           };
           modules =
             baseModules
@@ -97,6 +108,8 @@
         ryzentower = mkHost {
           host = "ryzentower";
           system = "x86_64-linux";
+          nixpkgsSource = nixpkgs-unstable;
+          homeManagerSource = home-manager-unstable;
         };
         thinkpadz13 = mkHost {
           host = "thinkpadz13";

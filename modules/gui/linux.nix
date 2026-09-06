@@ -1,12 +1,6 @@
 { config, pkgs, ... }:
 
 {
-  programs.zsh.loginShellInit = ''
-    if [ -z "$WAYLAND_DISPLAY" ] && [ "$XDG_VTNR" -eq 1 ]; then
-      exec sway
-    fi
-  '';
-
   i18n = {
     inputMethod = {
       enable = true;
@@ -52,27 +46,6 @@
   };
 
   programs = {
-    sway = {
-      enable = true;
-      wrapperFeatures = {
-        gtk = true;
-      };
-      extraPackages = with pkgs; [
-        autotiling
-        foot
-        grim
-        libnotify
-        mpv
-        pkgs.unstable.noctalia
-        pavucontrol
-        pcmanfm
-        slurp
-        soteria
-        wl-clipboard
-        xdg-utils
-        zathura
-      ];
-    };
     dconf.enable = true;
     virt-manager = {
       enable = true;
@@ -82,7 +55,6 @@
 
   xdg.portal = {
     enable = true;
-    wlr.enable = true;
     extraPortals = [
       pkgs.xdg-desktop-portal-gtk
     ];
@@ -104,15 +76,23 @@
 
   home-manager.users.${config.primaryUser.username} = {
     home = {
-      packages = with pkgs.unstable; [
-        brave
-        gnome-sound-recorder
-        kdePackages.kdeconnect-kde
-        onlyoffice-desktopeditors
-        piper
+      packages = [
+        pkgs.unstable.brave
+        pkgs.foot
+        pkgs.unstable.gnome-sound-recorder
+        pkgs.unstable.kdePackages.kdeconnect-kde
+        pkgs.libnotify
+        pkgs.mpv
+        pkgs.unstable.onlyoffice-desktopeditors
+        pkgs.pavucontrol
+        pkgs.pcmanfm
+        pkgs.unstable.piper
+        pkgs.xdg-utils
+        pkgs.zathura
       ];
 
       pointerCursor = {
+        enable = true;
         name = "Adwaita";
         package = pkgs.adwaita-icon-theme;
       };

@@ -6,6 +6,7 @@
     ../modules/dotfiles
     ../modules/gui
     ../modules/personal
+    ../modules/sway
   ];
 
   primaryUser.username = "khuedoan";

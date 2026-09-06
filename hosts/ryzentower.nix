@@ -1,7 +1,6 @@
 {
   pkgs,
   config,
-  lib,
   ...
 }:
 
@@ -11,6 +10,7 @@
     ../modules/dotfiles
     ../modules/gui
     ../modules/personal
+    ../modules/steam-machine
   ];
 
   primaryUser.username = "khuedoan";
@@ -20,44 +20,12 @@
     "ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBEtp6vl/snmGvkfoy42OwxSSWhd4PvlCxX4bx4NgXgvpXuITfq1NpRc7YTqn5LAWobyVEQ3/zKARI3aXH/YW0/s="
   ];
 
-  hardware = {
-    graphics = {
-      enable32Bit = true;
-    };
-  };
-
   nixpkgs = {
     hostPlatform = "x86_64-linux";
-    config = {
-      rocmSupport = true;
-      allowUnfreePredicate =
-        pkg:
-        builtins.elem (lib.getName pkg) [
-          "steam"
-          "steam-unwrapped"
-        ];
-    };
+    config.rocmSupport = true;
   };
 
-  programs = {
-    steam = {
-      enable = true;
-    };
-  };
-
-  home-manager.users.${config.primaryUser.username} = {
-    home = {
-      file.".config/sway/config.d/hardware".text = ''
-        output "DP-3" {
-          mode 2560x1440@180Hz
-        }
-        output "HDMI-A-1" {
-          scale 2
-        }
-      '';
-      packages = with pkgs.unstable; [
-        me3 # For Elden Ring mod
-      ];
-    };
-  };
+  home-manager.users.${config.primaryUser.username}.home.packages = with pkgs.unstable; [
+    me3 # For Elden Ring mod
+  ];
 }

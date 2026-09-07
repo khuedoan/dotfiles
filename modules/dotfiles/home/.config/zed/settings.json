@@ -1,0 +1,70 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+{
+  "which_key": {
+    "enabled": true
+  },
+  "buffer_line_height": "standard",
+  "proxy": "",
+  "icon_theme": "Zed (Default)",
+  "project_panel": {
+    "dock": "left"
+  },
+  "agent": {
+    "enable_feedback": false,
+    "single_file_review": true,
+    "favorite_models": [],
+    "model_parameters": []
+  },
+  "telemetry": {
+    "diagnostics": false,
+    "metrics": false,
+    "anthropic_retention": false
+  },
+  "session": {
+    "trust_all_worktrees": true
+  },
+  "vim_mode": true,
+  "relative_line_numbers": "enabled",
+  "vertical_scroll_margin": 3,
+  "scrollbar": {
+    "show": "auto"
+  },
+  "vim": {
+    "toggle_relative_line_numbers": true
+  },
+  "agent_servers": {
+    "pi-acp": {
+      "default_config_options": {
+        "model": "anthropic/claude-opus-5",
+        "thought_level": "high"
+      },
+      "type": "registry"
+    },
+    "opencode": {
+      "type": "registry"
+    },
+    "codex-acp": {
+      "type": "registry"
+    },
+    "claude-acp": {
+      "default_config_options": {
+        "mode": "auto",
+        "model": "sonnet"
+      },
+      "type": "registry"
+    },
+    "cursor": {
+      "type": "registry"
+    }
+  },
+  "ui_font_size": 16.0,
+  "buffer_font_size": 13.0,
+  "theme": "One Dark",
+}

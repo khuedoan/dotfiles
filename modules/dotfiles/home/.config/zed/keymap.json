@@ -1,0 +1,99 @@
+[
+  // Override space in normal mode to act as leader prefix
+  // (default space moves cursor right via vim::WrappingRight)
+  {
+    "context": "vim_mode == normal",
+    "bindings": {
+      "space": null
+    }
+  },
+
+  // Clipboard operations
+  {
+    "context": "vim_mode == visual",
+    "bindings": {
+      "space y": "editor::Copy"
+    }
+  },
+  {
+    "context": "vim_mode == normal",
+    "bindings": {
+      "space y F": "workspace::CopyPath",
+      "space y f": "workspace::CopyRelativePath"
+    }
+  },
+
+  // Buffer management
+  {
+    "context": "vim_mode == normal",
+    "bindings": {
+      "space b d": "pane::CloseActiveItem"
+    }
+  },
+
+  // Git
+  {
+    "context": "vim_mode == normal",
+    "bindings": {
+      "space g s": "git_panel::ToggleFocus",
+      "space g b": "git::Blame",
+      "space g o": "editor::ToggleSelectedDiffHunks"
+    }
+  },
+
+  // Search and replace
+  {
+    "context": "vim_mode == normal",
+    "bindings": {
+      "space s r": "buffer_search::Deploy",
+      "space s R": "pane::DeploySearch"
+    }
+  },
+
+  // File finder and navigation
+  {
+    "context": "vim_mode == normal",
+    "bindings": {
+      "space space": "file_finder::Toggle",
+      "space f g": "file_finder::Toggle",
+      "space ,": "pane::ActivateLastItem",
+      "space /": "pane::DeploySearch",
+      "space ?": "project_search::ToggleFocus"
+    }
+  },
+
+  // Format and undo
+  {
+    "context": "vim_mode == normal",
+    "bindings": {
+      "space c f": "editor::Format",
+      "space u": "editor::Undo"
+    }
+  },
+
+  // Project management (ported from Doom Emacs <leader> p)
+  {
+    "context": "vim_mode == normal",
+    "bindings": {
+      "space p p": "projects::OpenRecent",
+      "space p >": "projects::OpenRecent",
+      "space p f": "file_finder::Toggle",
+      "space p b": "tab_switcher::Toggle",
+      "space p s": "workspace::SaveAll",
+      "space p .": "project_panel::ToggleFocus",
+      "space p k": "pane::CloseAllItems",
+      "space p c": "task::Spawn",
+      "space p R": "task::Rerun",
+      "space p T": "task::Spawn"
+    }
+  },
+
+  // Sneak motion (replaces leap.nvim)
+  {
+    "context": "vim_mode == normal || vim_mode == visual",
+    "bindings": {
+      "s": "vim::PushSneak",
+      "shift-s": "vim::PushSneakBackward"
+    }
+  }
+]

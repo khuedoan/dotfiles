@@ -10,7 +10,6 @@
       "kitty"
       "linearmouse"
       "localsend"
-      "obsidian"
       "secretive"
       "utm"
       "zed"

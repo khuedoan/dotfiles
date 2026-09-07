@@ -24,6 +24,7 @@
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
     llm-agents.url = "github:numtide/llm-agents.nix";
+    nixie.url = "github:khuedoan/nixie";
   };
 
   nixConfig = {
@@ -40,6 +41,7 @@
       nixos-hardware,
       home-manager,
       home-manager-unstable,
+      nixie,
       ...
     }:
     let
@@ -105,6 +107,13 @@
     in
     {
       nixosConfigurations = {
+        installer = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [
+            nixie.nixosModules.nixie-agent
+            ./hosts/installer.nix
+          ];
+        };
         ryzentower = mkHost {
           host = "ryzentower";
           system = "x86_64-linux";
@@ -138,5 +147,15 @@
           system = "aarch64-darwin";
         };
       };
+
+      devShells.x86_64-linux.default =
+        with nixpkgs.legacyPackages.x86_64-linux;
+        mkShell {
+          packages = [
+            gnumake
+            nixie.packages.x86_64-linux.default
+            nixos-anywhere
+          ];
+        };
     };
 }

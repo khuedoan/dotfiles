@@ -48,7 +48,7 @@ one) to match your machine and it to `flake.nix`
 Review the base, hosts, and modules directories and adjust the configuration to
 match your machines before installing.
 
-### NixOS
+### NixOS (manual)
 
 Boot into the NixOS live ISO, then install the tools needed for the initial
 bootstrap:
@@ -67,6 +67,14 @@ make install host=HOSTNAME disk=/dev/DISK
 
 Replace `HOSTNAME` with the host module you want to install and `/dev/DISK` with
 the target disk device.
+
+### NixOS (PXE)
+
+Install NixOS over the network using [nixie](https://github.com/khuedoan/nixie)
+
+```sh
+make install-pxe
+```
 
 ### macOS
 

@@ -1,5 +1,5 @@
 .POSIX:
-.PHONY: default build switch diff update fmt check install clean
+.PHONY: default build switch diff update fmt check install install-pxe clean
 
 default: diff switch
 
@@ -31,6 +31,16 @@ install:
 		--write-efi-boot-entries \
 		--flake '.#$(host)' \
 		--disk main '$(disk)'
+
+install-pxe:
+	# TODO fix auto address detection in nixie
+	sudo env "PATH=$$PATH" nixie \
+		--installer path:.#nixosConfigurations.installer \
+		--flake path:. \
+		--hosts hosts/hosts.json \
+		--install-ssh-key "${HOME}/.ssh/id_ed25519" \
+		--deployment-ssh-key "${HOME}/.ssh/id_ed25519" \
+		--address 192.168.1.28
 
 clean:
 	nix-collect-garbage --delete-old --log-format bar

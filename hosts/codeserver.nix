@@ -1,4 +1,4 @@
-{ ... }:
+{ config, ... }:
 
 {
   imports = [
@@ -18,6 +18,8 @@
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIN6HOaBZDGKmTHMHekPwzbb6inFGFlBFNsm3y+/AaQ9S nix-builder-MacBookPro"
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIB5qSejUhkUMiaFlShJdS9fuG5iRKVnmZStiQw6n3lez mbp-work"
   ];
+
+  users.users.root.openssh.authorizedKeys.keys = config.primaryUser.authorizedKeys;
 
   nixpkgs = {
     hostPlatform = "x86_64-linux";

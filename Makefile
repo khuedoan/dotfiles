@@ -1,5 +1,5 @@
 .POSIX:
-.PHONY: default build switch diff update fmt check install install-pxe clean
+.PHONY: default build switch diff update fmt check install install-pxe ssh-keygen clean
 
 default: diff switch
 
@@ -41,6 +41,9 @@ install-pxe:
 		--install-ssh-key "${HOME}/.ssh/id_ed25519" \
 		--deployment-ssh-key "${HOME}/.ssh/id_ed25519" \
 		--address 192.168.1.28
+
+ssh-keygen:
+	ssh-tpm-keygen
 
 clean:
 	nix-collect-garbage --delete-old --log-format bar

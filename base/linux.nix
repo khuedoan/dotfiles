@@ -116,6 +116,7 @@ in
   security = {
     polkit.enable = true;
     rtkit.enable = true;
+    tpm2.enable = true;
   };
 
   virtualisation = {
@@ -146,7 +147,7 @@ in
       "docker"
       "libvirtd"
       "networkmanager"
-      "tss"
+      config.security.tpm2.tssGroup
       "video"
       "wheel"
     ];
@@ -160,7 +161,10 @@ in
     initialHashedPassword = "$y$j9T$LX5f3hwLPHXEmG0xZKTGh0$mlYLz3NiNAvaFhKkyHJ.YEDc8OL6LUo48UvQCD2vZb0";
   };
 
-  home-manager.users.${username}.home.stateVersion = "23.05";
+  home-manager.users.${username} = {
+    home.stateVersion = "23.05";
+    services.ssh-tpm-agent.enable = true;
+  };
 
   virtualisation.vmVariant = {
     virtualisation.qemu.options = [

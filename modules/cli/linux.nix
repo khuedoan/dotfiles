@@ -10,10 +10,7 @@
   ];
 
   programs = {
-    gnupg.agent = {
-      enable = true;
-      enableSSHSupport = true;
-    };
+    gnupg.agent.enable = true;
   };
 
   home-manager.users.${config.primaryUser.username}.home.packages = with pkgs.unstable; [

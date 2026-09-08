@@ -22,15 +22,6 @@
     };
   };
 
-  security = {
-    tpm2 = {
-      # Extra setup steps https://nixos.wiki/wiki/TPM#Using_a_TPM2_with_OpenSSH
-      enable = true;
-      pkcs11.enable = true;
-      tctiEnvironment.enable = true;
-    };
-  };
-
   nixpkgs = {
     hostPlatform = "x86_64-linux";
     config = {

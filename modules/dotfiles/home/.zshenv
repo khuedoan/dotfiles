@@ -1,6 +1,10 @@
 # Include custom scripts in $PATH
 export PATH="$PATH:$HOME/.local/bin"
 
+# SSH with TPM
+[[ -z "$SSH_AUTH_SOCK" && -S "$XDG_RUNTIME_DIR/ssh-tpm-agent.sock" ]] &&
+    export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-tpm-agent.sock"
+
 # Go
 export GOPATH="$HOME/.local"
 

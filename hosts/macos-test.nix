@@ -8,6 +8,5 @@
   ];
 
   primaryUser.username = "runner";
-  primaryUser.authorizedKeys = [ ];
 
 }

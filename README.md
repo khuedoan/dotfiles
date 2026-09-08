@@ -123,6 +123,12 @@ Build a specific host without switching:
 make build host=HOSTNAME
 ```
 
+Generate an SSH key backed by TPM hardware:
+
+```sh
+make ssh-keygen
+```
+
 Clean up Nix store:
 
 ```sh

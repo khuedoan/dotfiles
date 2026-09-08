@@ -2,7 +2,6 @@
 
 let
   username = config.primaryUser.username;
-  authorizedKeys = config.primaryUser.authorizedKeys;
 in
 
 {
@@ -151,7 +150,6 @@ in
       "video"
       "wheel"
     ];
-    openssh.authorizedKeys.keys = authorizedKeys;
     shell = pkgs.zsh;
 
     # The risk is negligible here, since this is a strong random passphrase,

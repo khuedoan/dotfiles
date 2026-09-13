@@ -150,6 +150,7 @@ in
       "video"
       "wheel"
     ];
+    openssh.authorizedKeys.keys = import ./authorized-keys.nix;
     shell = pkgs.zsh;
 
     # The risk is negligible here, since this is a strong random passphrase,

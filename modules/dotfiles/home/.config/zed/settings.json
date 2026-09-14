@@ -12,7 +12,6 @@
   },
   "buffer_line_height": "standard",
   "proxy": "",
-  "icon_theme": "Zed (Default)",
   "project_panel": {
     "dock": "left"
   },
@@ -66,5 +65,9 @@
   },
   "ui_font_size": 16.0,
   "buffer_font_size": 13.0,
-  "theme": "One Dark",
+  "theme": {
+    "mode": "system",
+    "light": "Gruvbox Light Hard",
+    "dark": "One Dark"
+  },
 }

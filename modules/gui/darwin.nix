@@ -6,7 +6,6 @@
       "brave-browser"
       "codex-app"
       "handy"
-      "helium-browser"
       "kitty"
       "linearmouse"
       "localsend"

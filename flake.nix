@@ -40,7 +40,6 @@
     inputs@{
       nixpkgs,
       nixpkgs-unstable,
-      nixos-apple-silicon,
       darwin,
       disko,
       nixos-hardware,
@@ -109,6 +108,11 @@
               ./hosts/${host}.nix
             ];
         };
+
+      macBookTux = mkHost {
+        host = "MacBookTux";
+        system = "aarch64-linux";
+      };
     in
     {
       nixosConfigurations = {
@@ -136,26 +140,13 @@
           host = "codeserver";
           system = "x86_64-linux";
         };
-        MacBookTux = mkHost {
-          host = "MacBookTux";
-          system = "aarch64-linux";
-          extraModules = [
-            nixos-apple-silicon.nixosModules.apple-silicon-support
-            (
-              { lib, ... }:
-              {
-                hardware.asahi.pkgs = lib.mkForce (
-                  import nixpkgs {
-                    system = "aarch64-linux";
-                    overlays = [
-                      nixos-apple-silicon.overlays.default
-                    ];
-                  }
-                );
-              }
-            )
-          ];
-        };
+        MacBookTux = macBookTux;
+      };
+
+      packages.aarch64-linux.apple-silicon-installer-release = import ./nix/apple-silicon/release.nix {
+        inherit (macBookTux) config pkgs;
+        inherit (inputs) self;
+        repoRevision = inputs.self.rev or "0000000000000000000000000000000000000000";
       };
 
       darwinConfigurations = {

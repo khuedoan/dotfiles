@@ -1,11 +1,12 @@
 {
   config,
+  inputs,
   lib,
-  pkgs,
   ...
 }:
 
 let
+  contract = import ../nix/apple-silicon/contract.nix;
   firmwareDirectory = ./MacBookTux/firmware;
 in
 {
@@ -14,14 +15,11 @@ in
     ../modules/dotfiles
     ../modules/gui
     ../modules/personal
+    ../nix/apple-silicon/first-boot.nix
+    inputs.nixos-apple-silicon.nixosModules.apple-silicon-support
   ];
 
   primaryUser.username = "khuedoan";
-  primaryUser.authorizedKeys = [
-    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIN5ue4np7cF34f6dwqH1262fPjkowHQ8irfjVC156PCG"
-    "ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBHpnKoOldKbNVElb8ve6ZQ8ArcipbyZBYsgNH8rJnqp0i/2RzOGEBJbDwnCrHuWXuS3BbsmmwoG/RlnqAyJdn4E="
-    "ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBEtp6vl/snmGvkfoy42OwxSSWhd4PvlCxX4bx4NgXgvpXuITfq1NpRc7YTqn5LAWobyVEQ3/zKARI3aXH/YW0/s="
-  ];
 
   networking = {
     hostName = "MacBookTux";
@@ -47,12 +45,12 @@ in
 
   fileSystems = {
     "/" = {
-      device = "/dev/disk/by-label/nixos";
+      device = "/dev/disk/by-label/${contract.rootLabel}";
       fsType = "ext4";
     };
 
     "/boot" = {
-      device = "/dev/disk/by-label/EFI\\x20-\\x20NIXOS";
+      device = contract.espByLabel;
       fsType = "vfat";
       options = [
         "umask=0077"
@@ -78,6 +76,14 @@ in
 
   hardware = {
     asahi = {
+      pkgs = lib.mkForce (
+        import inputs.nixpkgs {
+          system = "aarch64-linux";
+          overlays = [
+            inputs.nixos-apple-silicon.overlays.default
+          ];
+        }
+      );
       peripheralFirmwareDirectory = firmwareDirectory;
       extractPeripheralFirmware = builtins.pathExists (firmwareDirectory + "/all_firmware.tar.gz");
     };

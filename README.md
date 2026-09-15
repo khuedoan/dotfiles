@@ -99,36 +99,38 @@ Then reboot.
 
 ### Apple Silicon dual boot
 
-On macOS, write the matching upstream installer ISO to a USB drive:
+On Apple Silicon macOS, run the installer:
+
+```sh
+./scripts/nixos-apple-silicon-install.sh
+```
+
+The script verifies a pinned image release and starts the official Asahi
+installer. Select `NixOS (MacBookTux)` and choose the space to allocate.
+
+The Asahi installer asks you to shut down when it finishes. Hold the power
+button and select `NIXOS`. Complete the RecoveryOS prompts to approve the custom
+boot object and permissive security mode. Reboot when prompted. The next boot
+starts NixOS.
+
+Apple requires the RecoveryOS step. The install does not require a USB drive or
+a live Linux session.
+
+Before a release, build and inspect the image on `aarch64-linux`:
+
+```sh
+nix build .#packages.aarch64-linux.apple-silicon-installer-release
+./scripts/nixos-apple-silicon-install.sh --check --release-dir ./result
+```
+
+The [Apple Silicon installer design](docs/apple-silicon-installer.md) lists the
+required release and hardware checks. Do not use the image on a real disk until
+those checks pass.
+
+To create a USB rescue installer, run:
 
 ```sh
 ./scripts/nixos-apple-silicon-create-usb.sh /dev/diskN release-2025-11-18
-```
-
-Run the Asahi installer:
-
-```sh
-curl https://alx.sh | sh
-```
-
-Choose `UEFI environment only` and name it `NixOS`, which creates the
-`EFI - NIXOS` ESP expected by `hosts/MacBookTux.nix`.
-
-Boot the USB installer, create and format only the Linux root partition:
-
-```sh
-sgdisk /dev/nvme0n1 -n 0:0 -s
-sgdisk /dev/nvme0n1 -p
-mkfs.ext4 -L nixos /dev/nvme0n1pN
-```
-
-Replace `N` with the new Linux partition number, then run the install helper:
-
-```sh
-nix-shell -p git neovim zsh gnumake
-git clone https://github.com/khuedoan/dotfiles
-cd dotfiles
-./scripts/nixos-apple-silicon-install.sh
 ```
 
 ## Usage

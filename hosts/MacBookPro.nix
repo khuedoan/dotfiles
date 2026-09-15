@@ -18,7 +18,10 @@
         sshUser = "khuedoan";
         sshKey = "/var/root/.ssh/nix-builder";
         protocol = "ssh-ng";
-        system = "x86_64-linux";
+        systems = [
+          "x86_64-linux"
+          "aarch64-linux"
+        ];
         maxJobs = 4;
         supportedFeatures = [ "big-parallel" ];
       }

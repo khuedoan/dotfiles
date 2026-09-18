@@ -24,5 +24,8 @@
     tenv
     tflint
     yq-go
+
+    # AI
+    pkgs.unofficial.opencodex
   ];
 }

@@ -28,6 +28,7 @@ jobs:
 
   darwin:
     name: Darwin
+    if: github.event_name == 'workflow_dispatch'
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v4

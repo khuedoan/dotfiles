@@ -3,5 +3,10 @@
     "mac_address": "10:66:6a:3f:86:c7",
     "ip": "192.168.1.30",
     "machine_id_hash": "90b3e8da38d64fa48e62dc9692e2371f8ec2f679cc2534e80ac5ef9af409fe3e"
+  },
+  "claw": {
+    "mac_address": "02:36:52:8d:5e:c7",
+    "ip": "192.168.1.37",
+    "machine_id_hash": "1a32d191151219acd6ad591253cdfd2368825822a174b4a624b3bbd7545b0810"
   }
 }

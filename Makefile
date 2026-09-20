@@ -34,13 +34,12 @@ install:
 
 install-pxe:
 	# TODO fix auto address detection in nixie
-	sudo env "PATH=$$PATH" nixie \
+	sudo env "PATH=$$PATH" "SSH_AUTH_SOCK=$$SSH_AUTH_SOCK" nixie \
 		--installer path:.#nixosConfigurations.installer \
 		--flake path:. \
 		--hosts hosts/hosts.json \
-		--install-ssh-key "${HOME}/.ssh/id_ed25519" \
-		--deployment-ssh-key "${HOME}/.ssh/id_ed25519" \
-		--address 192.168.1.28
+		--deployment-ssh-user khuedoan \
+		--address 192.168.1.30
 
 ssh-keygen:
 	ssh-tpm-keygen

@@ -15,6 +15,7 @@
     backblaze-b2
     bat
     btop
+    bun
     cargo
     dive
     dyff

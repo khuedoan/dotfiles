@@ -34,11 +34,36 @@ in
   # hermes gateway setup
   # hermes config set dashboard.basic_auth.username admin
   # Set HERMES_DASHBOARD_BASIC_AUTH_PASSWORD in ~/.hermes/.env
-  systemd.services.hermes-gateway = {
-    description = "Hermes Agent Gateway";
+  systemd.services.signal-cli = {
+    description = "signal-cli Daemon";
     wantedBy = [ "multi-user.target" ];
     after = [ "network-online.target" ];
     wants = [ "network-online.target" ];
+
+    serviceConfig = {
+      User = "khuedoan";
+      WorkingDirectory = "/home/khuedoan";
+      Environment = [ "HOME=/home/khuedoan" ];
+      ExecStart = "${pkgs.signal-cli}/bin/signal-cli -a +84812942437 daemon --http 127.0.0.1:8080";
+
+      Restart = "always";
+      RestartSec = "5";
+    };
+  };
+
+  systemd.services.hermes-gateway = {
+    description = "Hermes Agent Gateway";
+    wantedBy = [ "multi-user.target" ];
+    after = [
+      "network-online.target"
+      "signal-cli.service"
+    ];
+    wants = [
+      "network-online.target"
+      "signal-cli.service"
+    ];
+
+    unitConfig.StartLimitIntervalSec = "0";
 
     serviceConfig = {
       User = "khuedoan";
@@ -53,7 +78,6 @@ in
       Restart = "always";
       RestartSec = "5";
       TimeoutStopSec = "90";
-      StartLimitIntervalSec = "0";
     };
   };
 
@@ -74,5 +98,6 @@ in
 
   environment.systemPackages = [
     pkgs.unofficial.hermes-agent
+    pkgs.signal-cli
   ];
 }

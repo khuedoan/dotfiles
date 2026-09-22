@@ -24,6 +24,11 @@ in
     ../modules/personal
   ];
 
+  nix.settings.trusted-users = [
+    "root"
+    "khuedoan"
+  ];
+
   # Explicit disk for nixos-anywhere
   disko.devices.disk.main.device = "/dev/sda";
 
@@ -97,7 +102,25 @@ in
   };
 
   environment.systemPackages = [
+    pkgs.brave
     pkgs.unofficial.hermes-agent
     pkgs.signal-cli
+  ];
+
+  # Passwordless sudo for applying this host's config from the dotfiles repo.
+  security.sudo.extraRules = [
+    {
+      users = [ username ];
+      commands = [
+        {
+          command = "${home}/Projects/dotfiles/scripts/rebuild.py switch*";
+          options = [ "NOPASSWD" ];
+        }
+        {
+          command = "${home}/Projects/dotfiles/scripts/rebuild.py boot*";
+          options = [ "NOPASSWD" ];
+        }
+      ];
+    }
   ];
 }

@@ -4,7 +4,7 @@
   homebrew = {
     casks = [
       "aws-vpn-client"
-      "claude-code"
+      "claude-code@latest"
       "royal-tsx"
     ];
   };

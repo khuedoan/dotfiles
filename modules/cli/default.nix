@@ -64,7 +64,7 @@
     typescript-language-server
 
     # AI
-    agent-browser
+    pkgs.unofficial.agent-browser
     codex
     pi-coding-agent
   ];

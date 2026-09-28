@@ -1,0 +1,13 @@
+{
+  "extends": "nolabs-ai/pi",
+  "meta": {
+    "name": "pi",
+    "version": "1.0",
+    "description": "Pi coding agent"
+  },
+  "filesystem": {
+    "allow": [
+      "$HOME/Projects"
+    ]
+  }
+}

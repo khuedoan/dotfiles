@@ -40,6 +40,20 @@ in
 
   environment.systemPackages = [ pkgs.unofficial.t3code ];
 
+  networking = {
+    firewall = {
+      allowedTCPPorts = [
+        80 # iPXE boot files
+        5000 # Nixie agent API
+      ];
+      allowedUDPPorts = [
+        67 # ProxyDHCP
+        69 # TFTP
+        4011 # UEFI PXE
+      ];
+    };
+  };
+
   services.nginx = {
     enable = true;
     virtualHosts.t3code = {

@@ -65,6 +65,7 @@
 
     # AI
     pkgs.unofficial.agent-browser
+    pkgs.unofficial.amp
     pkgs.unofficial.codex
     pkgs.unofficial.nono
     pkgs.unofficial.pi

@@ -7,6 +7,9 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "auto_update": false,
+  "reveal_if_open": true,
+  "disable_ai": true,
   "which_key": {
     "enabled": true
   },

@@ -79,7 +79,7 @@ bindsym $mod+shift+r exec toggle-recording
 # Apps
 
 bindsym $mod+Space exec $shell panel-toggle launcher
-bindsym $mod+Shift+p exec kitty otp
+bindsym $mod+Shift+p exec MENU="noctalia dmenu" otp
 
 # Control
 

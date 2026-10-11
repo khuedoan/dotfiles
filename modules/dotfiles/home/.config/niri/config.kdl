@@ -75,6 +75,7 @@ binds {
 
     // Suggested binds for running programs: terminal, app launcher, screen locker.
     Mod+Space { spawn "noctalia" "msg" "panel-toggle" "launcher"; }
+    Mod+Shift+p { spawn "env" "MENU=noctalia dmenu" "otp"; }
     Mod+Ctrl+Q { spawn "noctalia" "msg" "session" "lock"; }
     Mod+Ctrl+Shift+Q { spawn "noctalia" "msg" "panel-toggle" "session"; }
 

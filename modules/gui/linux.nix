@@ -89,6 +89,8 @@
         pkgs.unstable.piper
         pkgs.xdg-utils
         pkgs.zathura
+        pkgs.unstable.zed-editor
+        pkgs.unstable.kitty
       ];
 
       pointerCursor = {

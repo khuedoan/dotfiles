@@ -7,14 +7,35 @@ source = "community"
 community_palette = "One"
 
 [bar.main]
-thickness = 26
+position = "left"
+thickness = 30
+background_opacity = 0.25
 radius = 0
 margin_ends = 0
 margin_edge = 0
-padding = 8
-widget_spacing = 3
-scale = 0.9
+padding = 12
+widget_spacing = 8
+scale = 1.0
 shadow = false
+start = ["launcher", "gap", "workspaces", "gap", "clock"]
+center = []
+end = ["tray", "privacy", "notifications", "gap", "network", "volume", "battery", "gap", "control-center"]
+
+[widget.gap]
+type = "spacer"
+length = 8
+
+[widget.privacy]
+hide_inactive = true
+
+[widget.network]
+show_label = false
+
+[widget.volume]
+show_label = false
+
+[widget.battery]
+show_label = true
 
 [idle.behavior.lock]
 action = "lock"

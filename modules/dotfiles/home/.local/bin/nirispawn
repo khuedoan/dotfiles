@@ -1,0 +1,14 @@
+#!/bin/sh
+
+set -e
+
+cwd="${HOME}"
+pid="$(niri msg --json focused-window | jq .pid)"
+
+if ! [ "$pid" = "null" ]; then
+    ppid="$(pgrep --newest --parent "${pid}")"
+    cwd="$(readlink --canonicalize-existing "/proc/${ppid}/cwd" || echo "${HOME}")"
+fi
+
+cd "${cwd}"
+exec "$@"

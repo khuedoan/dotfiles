@@ -170,14 +170,6 @@ Opening Zsh:
 zsh -i -c exit  0.04s user 0.01s system 100% cpu 0.047 total
 ```
 
-Opening the terminal (including waiting for the shell):
-
-`time foot zsh -i -c exit` (67ms)
-
-```
-foot zsh -i -c exit  0.05s user 0.02s system 103% cpu 0.067 total
-```
-
 Opening Neovim with 14 plugins:
 
 `time nvim --headless +qa` (47ms)

@@ -74,7 +74,6 @@ binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
 
     // Suggested binds for running programs: terminal, app launcher, screen locker.
-    Mod+Return { spawn "nirispawn" "foot"; }
     Mod+Space { spawn "noctalia" "msg" "panel-toggle" "launcher"; }
     Mod+Ctrl+Q { spawn "noctalia" "msg" "session" "lock"; }
     Mod+Ctrl+Shift+Q { spawn "noctalia" "msg" "panel-toggle" "session"; }

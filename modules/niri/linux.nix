@@ -15,9 +15,7 @@
   programs.niri.enable = true;
 
   environment.systemPackages = with pkgs; [
-    jq
     pkgs.unstable.noctalia
-    procps
     soteria
     wl-clipboard
   ];

@@ -78,7 +78,6 @@
     home = {
       packages = [
         pkgs.unstable.brave
-        pkgs.foot
         pkgs.unstable.gnome-sound-recorder
         pkgs.unstable.kdePackages.kdeconnect-kde
         pkgs.libnotify

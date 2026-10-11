@@ -1,8 +1,0 @@
-#!/bin/sh
-
-set -e
-
-pid="$(swaymsg -t get_tree | jq '.. | select(.type? == "con" and .focused == true) | .pid')"
-ppid="$(pgrep --newest --parent "${pid}")"
-
-readlink --canonicalize-existing "/proc/${ppid}/cwd" || echo "${HOME}"

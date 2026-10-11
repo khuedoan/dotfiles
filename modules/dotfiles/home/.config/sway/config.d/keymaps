@@ -79,9 +79,7 @@ bindsym $mod+shift+r exec toggle-recording
 # Apps
 
 bindsym $mod+Space exec $shell panel-toggle launcher
-bindsym $mod+Return exec cd $(swaycwd) && foot
-bindsym $mod+Shift+Return exec foot
-bindsym $mod+Shift+p exec foot -e otp
+bindsym $mod+Shift+p exec kitty otp
 
 # Control
 

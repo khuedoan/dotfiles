@@ -1,5 +1,8 @@
-[wallpaper.default]
-path = "~/Pictures/Wallpapers/astronaut-jellyfish.jpg"
+[wallpaper]
+directory = "~/Pictures/Wallpapers"
+
+[wallpaper.automation]
+enabled = true
 
 [theme]
 mode = "dark"

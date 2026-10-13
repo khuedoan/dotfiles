@@ -1,5 +1,6 @@
 [wallpaper]
 directory = "~/Pictures/Wallpapers"
+transition = []
 
 [wallpaper.automation]
 enabled = true
@@ -9,9 +10,18 @@ mode = "dark"
 source = "community"
 community_palette = "One"
 
+[shell.animation]
+enabled = false
+
+[shell.panel]
+open_near_click_control_center = true
+
+[lockscreen]
+transition = []
+
 [bar.main]
 position = "left"
-thickness = 30
+thickness = 24
 background_opacity = 0.25
 radius = 0
 margin_ends = 0
@@ -20,13 +30,12 @@ padding = 12
 widget_spacing = 8
 scale = 1.0
 shadow = false
-start = ["launcher", "gap", "workspaces", "gap", "clock"]
-center = []
-end = ["tray", "privacy", "notifications", "gap", "network", "volume", "battery", "gap", "control-center"]
+start = ["control-center", "launcher", "clock"]
+center = ["workspaces"]
+end = ["tray", "privacy", "notifications", "network", "volume", "battery"]
 
-[widget.gap]
-type = "spacer"
-length = 8
+[widget.workspaces]
+capsule_radius = 0
 
 [widget.privacy]
 hide_inactive = true

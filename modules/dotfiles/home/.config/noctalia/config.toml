@@ -30,9 +30,9 @@ padding = 12
 widget_spacing = 8
 scale = 1.0
 shadow = false
-start = ["control-center", "launcher", "clock"]
-center = ["workspaces"]
-end = ["tray", "privacy", "notifications", "network", "volume", "battery"]
+start = ["notifications", "network", "volume", "battery"]
+center = ["control-center", "workspaces", "launcher"]
+end = ["tray", "clock"]
 
 [widget.workspaces]
 capsule_radius = 0

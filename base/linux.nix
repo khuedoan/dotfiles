@@ -99,6 +99,7 @@ in
   };
 
   programs = {
+    nix-ld.enable = true;
     mosh.enable = true;
   };
 

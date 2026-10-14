@@ -140,10 +140,6 @@
           host = "codeserver";
           system = "x86_64-linux";
         };
-        claw = mkHost {
-          host = "claw";
-          system = "x86_64-linux";
-        };
         MacBookTux = macBookTux;
       };
 

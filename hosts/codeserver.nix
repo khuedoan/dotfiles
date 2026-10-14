@@ -21,6 +21,7 @@ in
   imports = [
     ../modules/cli
     ../modules/dotfiles
+    ../modules/hermes
     ../modules/personal
   ];
 

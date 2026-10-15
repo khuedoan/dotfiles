@@ -43,8 +43,18 @@ nix build .#packages.aarch64-linux.apple-silicon-installer-release
 
 The output contains `manifest.tsv`, `installer_data.json`,
 `MacBookTux.zip`, and the pinned official Asahi installer. Publish all four
-files under the immutable release URL in the launcher. Publish the manifest
-last.
+files under the immutable release URL in the launcher. Copy the generated
+`manifest.tsv` to
+`nix/apple-silicon/releases/${RELEASE_ID}/manifest.tsv`, commit that trusted
+copy, then publish the same manifest and the other three files. Do not rebuild
+the image after adding the trusted copy. To change a published image, use a new
+release ID and build a new release.
+
+The default macOS launcher requires the trusted copy before it downloads any
+files. It compares the downloaded manifest with that copy before it reads the
+manifest fields. An explicit `--release-url` override and local `--release-dir`
+checks do not use a trusted copy. The current prototype has no approved release
+manifest. The default install stops until the release is built and approved.
 
 Verify that directory on any OS:
 
@@ -60,11 +70,18 @@ contract.
 The root image is the `MacBookTux` closure. First boot is that generation. There
 is no extra image-only NixOS configuration.
 
+The bootloader loads the ESP's `vendorfw/firmware.cpio` before the NixOS initrd.
+The kernel can then use device firmware before drivers start. The initrd keeps
+the firmware in `/run/asahi-firmware` and links `/lib/firmware/vendor` to it in
+the new root. The pinned Asahi kernel searches this directory after the NixOS
+firmware path.
+
 Before the first root mount, the initrd replaces the image UUID with a random
 UUID. After switch-root, systemd grows the ext4 file system, loads the Nix
-database, and copies the firmware files that Asahi placed on the ESP into
-`/etc/nixos`. A later `nixos-rebuild` includes the copied files in the NixOS
-firmware derivation.
+database, and copies `firmware.cpio` into `/etc/nixos`. A later `nixos-rebuild`
+includes the copied archive in the initrd and the NixOS firmware derivation.
+Use a `path:` flake reference when rebuilding a Git checkout so that Nix can
+read the ignored firmware file.
 
 ## Release gates
 
@@ -82,8 +99,15 @@ of these checks:
    a partition.
 6. macOS stays available in the Apple boot picker after each failure test.
 
-QEMU can check the root image and UEFI files. It cannot prove Apple boot policy
-or device firmware behavior.
+Run the boot-service test on `x86_64-linux`:
+
+```sh
+nix build .#checks.x86_64-linux.apple-silicon-first-boot
+```
+
+The test checks root growth, UUID replacement, firmware persistence, and a
+second boot in a VM. It uses a test firmware archive. QEMU cannot prove Apple
+boot policy or device firmware behavior.
 
 ## Alternatives
 
@@ -97,6 +121,6 @@ logic from Asahi. This design does not permit that option.
 ## Open checks
 
 - Confirm that Asahi installer `v0.9.1` accepts the local package layout.
-- Confirm that the pinned 2025 kernel receives device firmware on first boot.
+- Confirm that the pinned kernel receives device firmware on first boot.
 - Test the 1 GB ESP size with several NixOS generations.
 - Test one interrupted first boot and one firmware rebuild on a supported Mac.

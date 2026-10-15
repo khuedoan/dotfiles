@@ -2,7 +2,6 @@
   releaseId = builtins.replaceStrings [ "\n" "\r" ] [ "" "" ] (builtins.readFile ./release-id);
   rootLabel = "nixos";
   rootImageUuid = "44444444-4444-4444-8888-888888888888";
-  espLabel = "EFI - NIXOS";
   espByLabel = "/dev/disk/by-label/EFI\\x20-\\x20NIXOS";
   osListName = "NixOS (MacBookTux)";
   defaultOsName = "NIXOS";

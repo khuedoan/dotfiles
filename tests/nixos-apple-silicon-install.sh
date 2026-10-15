@@ -8,9 +8,9 @@ trap 'rm -rf "$tmpdir"' EXIT INT TERM
 bin=$tmpdir/bin
 release=$tmpdir/release
 payload=$tmpdir/payload
-asahi=$tmpdir/asahi
+vendorfw=$tmpdir/vendorfw
 dest=$tmpdir/firmware
-mkdir -p "$bin" "$release" "$payload" "$asahi" "$dest"
+mkdir -p "$bin" "$release" "$payload" "$vendorfw" "$dest"
 
 cat >"$payload/install.sh" <<'EOF'
 #!/bin/sh
@@ -112,14 +112,13 @@ grep -q 'SHA-256 mismatch for MacBookTux.zip' "$tmpdir/bad.err"
 PATH="$bin:$PATH" "$repo/scripts/nixos-apple-silicon-install.sh" --rescue >"$tmpdir/rescue.out"
 grep -q 'Do not delete or recreate Apple or Asahi partitions by hand.' "$tmpdir/rescue.out"
 
-printf 'firmware\n' >"$asahi/all_firmware.tar.gz"
-printf 'cache\n' >"$asahi/kernelcache.release"
-"$repo/nix/apple-silicon/copy-firmware.sh" "$asahi" "$dest"
-grep -q '^firmware$' "$dest/all_firmware.tar.gz"
-grep -q '^cache$' "$dest/kernelcache.release"
-"$repo/nix/apple-silicon/copy-firmware.sh" "$asahi" "$dest"
+printf 'firmware\n' >"$vendorfw/firmware.cpio"
+"$repo/nix/apple-silicon/copy-firmware.sh" "$vendorfw" "$dest"
+grep -q '^firmware$' "$dest/firmware.cpio"
+"$repo/nix/apple-silicon/copy-firmware.sh" "$vendorfw" "$dest"
+[ ! -e "$dest/firmware.cpio.tmp" ]
 
-empty=$tmpdir/empty-asahi
+empty=$tmpdir/empty-vendorfw
 mkdir -p "$empty"
 "$repo/nix/apple-silicon/copy-firmware.sh" "$empty" "$dest"
 if "$repo/nix/apple-silicon/copy-firmware.sh" "$empty" "$tmpdir/empty-dest" 2>"$tmpdir/empty.err"; then
@@ -127,5 +126,73 @@ if "$repo/nix/apple-silicon/copy-firmware.sh" "$empty" "$tmpdir/empty-dest" 2>"$
   exit 1
 fi
 grep -q 'Asahi firmware archive not found' "$tmpdir/empty.err"
+
+printf 'updated firmware\n' >"$vendorfw/firmware.cpio"
+"$repo/nix/apple-silicon/copy-firmware.sh" "$vendorfw" "$dest"
+grep -q '^updated firmware$' "$dest/firmware.cpio"
+
+remote=$tmpdir/remote
+fake_repo=$tmpdir/fake-repo
+mkdir -p "$remote" "$fake_repo/scripts" \
+  "$fake_repo/nix/apple-silicon/releases/test-1"
+printf 'package\n' >"$release/MacBookTux.zip"
+cp "$release"/* "$remote/"
+cp "$repo/scripts/nixos-apple-silicon-install.sh" "$fake_repo/scripts/"
+printf 'test-1\n' >"$fake_repo/nix/apple-silicon/release-id"
+cp "$release/manifest.tsv" \
+  "$fake_repo/nix/apple-silicon/releases/test-1/manifest.tsv"
+
+cat >"$bin/curl" <<'EOF'
+#!/bin/sh
+set -eu
+
+printf '%s\n' "$*" >>"$REMOTE/curl.log"
+url=
+output=
+while [ "$#" -gt 0 ]; do
+  case "$1" in
+    -o)
+      output=$2
+      shift
+      ;;
+    http*)
+      url=$1
+      ;;
+  esac
+  shift
+done
+
+cp "$REMOTE/${url##*/}" "$output"
+EOF
+chmod +x "$bin/curl"
+
+REMOTE="$remote" PATH="$bin:$PATH" \
+  "$fake_repo/scripts/nixos-apple-silicon-install.sh" \
+  --check >"$tmpdir/remote-check.out"
+grep -q 'Release test-1 is valid.' "$tmpdir/remote-check.out"
+
+printf 'tampered\n' >>"$remote/manifest.tsv"
+if REMOTE="$remote" PATH="$bin:$PATH" \
+  "$fake_repo/scripts/nixos-apple-silicon-install.sh" \
+  --check >"$tmpdir/tampered-remote.out" 2>"$tmpdir/tampered-remote.err"; then
+  echo 'Expected a trusted manifest mismatch to fail.' >&2
+  exit 1
+fi
+grep -q 'does not match the trusted manifest' "$tmpdir/tampered-remote.err"
+
+REMOTE="$remote" PATH="$bin:$PATH" \
+  "$fake_repo/scripts/nixos-apple-silicon-install.sh" \
+  --check --release-url https://example.invalid/test-1 >"$tmpdir/override-check.out"
+grep -q 'Release test-1 is valid.' "$tmpdir/override-check.out"
+
+rm "$fake_repo/nix/apple-silicon/releases/test-1/manifest.tsv" "$remote/curl.log"
+if REMOTE="$remote" PATH="$bin:$PATH" \
+  "$fake_repo/scripts/nixos-apple-silicon-install.sh" \
+  --check >"$tmpdir/missing-trust.out" 2>"$tmpdir/missing-trust.err"; then
+  echo 'Expected a missing trusted manifest to fail.' >&2
+  exit 1
+fi
+grep -q 'Trusted release manifest not found' "$tmpdir/missing-trust.err"
+[ ! -e "$remote/curl.log" ]
 
 echo 'Apple Silicon installer launcher tests passed.'

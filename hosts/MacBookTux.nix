@@ -60,6 +60,9 @@ in
 
   boot = {
     binfmt.emulatedSystems = lib.mkForce [ "x86_64-linux" ];
+    initrd.prepend = lib.optionals config.hardware.asahi.extractPeripheralFirmware [
+      "${firmwareDirectory}/firmware.cpio"
+    ];
 
     loader = {
       systemd-boot = {
@@ -76,16 +79,9 @@ in
 
   hardware = {
     asahi = {
-      pkgs = lib.mkForce (
-        import inputs.nixpkgs {
-          system = "aarch64-linux";
-          overlays = [
-            inputs.nixos-apple-silicon.overlays.default
-          ];
-        }
-      );
+      enable = true;
       peripheralFirmwareDirectory = firmwareDirectory;
-      extractPeripheralFirmware = builtins.pathExists (firmwareDirectory + "/all_firmware.tar.gz");
+      extractPeripheralFirmware = builtins.pathExists (firmwareDirectory + "/firmware.cpio");
     };
   };
 

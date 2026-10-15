@@ -20,6 +20,11 @@ jobs:
       - uses: NixOS/nix-installer-action@main
       - uses: DeterminateSystems/magic-nix-cache-action@main
 
+      - name: Test Apple Silicon installer
+        run: |
+          sh tests/nixos-apple-silicon-install.sh
+          nix build .#checks.x86_64-linux.apple-silicon-first-boot
+
       - name: Build hosts
         run: |
           for host in $(nix eval --json --apply builtins.attrNames .#nixosConfigurations | jq -r '.[]'); do

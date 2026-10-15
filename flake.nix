@@ -3,7 +3,7 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-26.05";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     nixos-apple-silicon = {
-      url = "github:nix-community/nixos-apple-silicon/release-2025-11-18"; # TODO use 26.05
+      url = "github:nix-community/nixos-apple-silicon/release-2026-07-30";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
@@ -147,6 +147,10 @@
         inherit (macBookTux) config pkgs;
         inherit (inputs) self;
         repoRevision = inputs.self.rev or "0000000000000000000000000000000000000000";
+      };
+
+      checks.x86_64-linux.apple-silicon-first-boot = import ./tests/apple-silicon-first-boot.nix {
+        pkgs = nixpkgs.legacyPackages.x86_64-linux;
       };
 
       darwinConfigurations = {

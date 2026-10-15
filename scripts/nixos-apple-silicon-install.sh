@@ -121,7 +121,7 @@ install_from_linux() {
     git_cmd clone "$repo_url" "$config_dir"
   fi
 
-  "$config_dir/nix/apple-silicon/copy-firmware.sh" "$target/boot/asahi" "$firmware_dir"
+  "$config_dir/nix/apple-silicon/copy-firmware.sh" "$target/boot/vendorfw" "$firmware_dir"
 
   if ! nix_cmd eval "path:$config_dir#nixosConfigurations.$flake.config.hardware.asahi.extractPeripheralFirmware" |
     grep -qx true; then
@@ -134,7 +134,12 @@ install_from_linux() {
 verify_release() {
   local_release_dir=$1
   pin_release_id=$2
-  work_dir=$3
+  trusted_manifest=$3
+  work_dir=$4
+
+  if [ -n "$trusted_manifest" ]; then
+    [ -f "$trusted_manifest" ] || die "Trusted release manifest not found: $trusted_manifest. Build and approve the release first."
+  fi
 
   if [ -n "$local_release_dir" ]; then
     release_dir=$(CDPATH=; cd -P -- "$local_release_dir" && pwd)
@@ -146,6 +151,9 @@ verify_release() {
 
   manifest=$release_dir/manifest.tsv
   [ -f "$manifest" ] || die "Release manifest not found: $manifest"
+  if [ -n "$trusted_manifest" ]; then
+    cmp -s "$manifest" "$trusted_manifest" || die "Release manifest does not match the trusted manifest."
+  fi
 
   schema=$(manifest_value schema "$manifest")
   manifest_release=$(manifest_value release_id "$manifest")
@@ -301,11 +309,13 @@ work_dir=$(mktemp -d)
 trap 'rm -rf "$work_dir"' EXIT INT TERM
 
 pin_release_id=
+trusted_manifest=
 if [ -z "$local_release_dir" ] && [ "$release_url_set" = false ]; then
   pin_release_id=$release_id
+  trusted_manifest=$repo/nix/apple-silicon/releases/$release_id/manifest.tsv
 fi
 
-verify_release "$local_release_dir" "$pin_release_id" "$work_dir"
+verify_release "$local_release_dir" "$pin_release_id" "$trusted_manifest" "$work_dir"
 
 if [ "$check_only" = true ]; then
   exit 0

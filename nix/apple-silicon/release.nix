@@ -28,6 +28,7 @@ let
   loaderEntry = pkgs.writeText "nixos.conf" ''
     title NixOS
     linux /EFI/nixos/Image
+    initrd /vendorfw/firmware.cpio
     initrd /EFI/nixos/initrd
     options ${kernelParams}
   '';

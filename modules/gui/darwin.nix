@@ -5,7 +5,6 @@
     casks = [
       "brave-browser"
       "codex-app"
-      "t3-code@nightly"
       "handy"
       "kitty"
       "linearmouse"

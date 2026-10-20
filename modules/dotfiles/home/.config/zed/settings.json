@@ -8,6 +8,11 @@
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
   "window_decorations": "server",
+  "git_panel": {
+    "group_by": "staging",
+    "tree_view": true
+  },
+  "diff_view_style": "unified",
   "auto_update": false,
   "reveal_if_open": true,
   "disable_ai": true,

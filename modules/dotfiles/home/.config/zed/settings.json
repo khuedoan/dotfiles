@@ -7,6 +7,20 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "ssh_connections": [
+    {
+      "host": "codeserver",
+      "username": "khuedoan",
+      "args": [],
+      "projects": [
+        {
+          "paths": [
+            "/home/khuedoan/Projects/homelab"
+          ]
+        }
+      ]
+    }
+  ],
   "window_decorations": "server",
   "git_panel": {
     "group_by": "staging",

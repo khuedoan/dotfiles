@@ -60,6 +60,9 @@ animations {
 window-rule {
     match is-active=false
     opacity 0.85
+    background-effect {
+        blur true
+    }
 }
 
 window-rule {

@@ -34,6 +34,7 @@
   systemd.sleep.settings.Sleep.HibernateDelaySec = "8h";
 
   services = {
+    fprintd.enable = true; # fprintd-enroll
     logind.settings.Login.HandleLidSwitch = "suspend-then-hibernate";
     upower = {
       enable = true;

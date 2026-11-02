@@ -55,31 +55,6 @@ in
     };
   };
 
-  services.nginx = {
-    enable = true;
-    virtualHosts.t3code = {
-      listen = [
-        {
-          addr = "127.0.0.1";
-          port = 3772;
-        }
-      ];
-      extraConfig = ''
-        if ($http_tailscale_user_login != "khuedoan@github") {
-          return 403;
-        }
-      '';
-      locations."/" = {
-        proxyPass = "http://127.0.0.1:3773";
-        proxyWebsockets = true;
-        extraConfig = ''
-          proxy_set_header Host $host;
-          proxy_set_header X-Forwarded-Proto $http_x_forwarded_proto;
-        '';
-      };
-    };
-  };
-
   users.users.${username}.linger = true;
 
   # To get token on first pair:
@@ -107,16 +82,10 @@ in
   systemd.services.t3code-https = {
     description = "T3 Code HTTPS access over Tailscale";
     wantedBy = [ "multi-user.target" ];
-    wants = [
-      "tailscaled.service"
-      "nginx.service"
-    ];
-    after = [
-      "tailscaled.service"
-      "nginx.service"
-    ];
+    wants = [ "tailscaled.service" ];
+    after = [ "tailscaled.service" ];
     serviceConfig = {
-      ExecStart = "${config.services.tailscale.package}/bin/tailscale serve --https=443 http://127.0.0.1:3772";
+      ExecStart = "${config.services.tailscale.package}/bin/tailscale serve --https=443 http://127.0.0.1:3773";
       Restart = "always";
       RestartSec = 5;
     };

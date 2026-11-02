@@ -66,6 +66,7 @@
     # AI
     pkgs.unofficial.agent-browser
     pkgs.unofficial.codex
+    pkgs.unofficial.herdr-core
     pkgs.unofficial.pi
   ];
 }

@@ -20,6 +20,25 @@ in
 {
   environment.systemPackages = [ pkgs.unofficial.t3code ];
 
+  programs.nix-ld.libraries = with pkgs; [
+    alsa-lib
+    at-spi2-core
+    dbus
+    expat
+    glib
+    libgbm
+    libx11
+    libxcb
+    libxcomposite
+    libxdamage
+    libxext
+    libxfixes
+    libxkbcommon
+    libxrandr
+    nspr
+    nss
+  ];
+
   users.users.${username}.linger = true;
 
   # To get token on first pair:

@@ -1,28 +1,12 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
-}:
+{ ... }:
 
-let
-  username = config.primaryUser.username;
-  home = config.users.users.${username}.home;
-  profilePaths = map (lib.replaceStrings
-    [ "$HOME" "$USER" "\${XDG_STATE_HOME}" ]
-    [
-      home
-      username
-      config.home-manager.users.${username}.xdg.stateHome
-    ]
-  ) config.environment.profiles;
-in
 {
   imports = [
     ../modules/cli
     ../modules/dotfiles
     ../modules/hermes
     ../modules/personal
+    ../modules/t3code
   ];
 
   # Explicit disk for nixos-anywhere
@@ -39,8 +23,6 @@ in
     "khuedoan"
   ];
 
-  environment.systemPackages = [ pkgs.unofficial.t3code ];
-
   networking = {
     firewall = {
       allowedTCPPorts = [
@@ -52,42 +34,6 @@ in
         69 # TFTP
         4011 # UEFI PXE
       ];
-    };
-  };
-
-  users.users.${username}.linger = true;
-
-  # To get token on first pair:
-  # journalctl --user -u t3code -b --no-pager
-  home-manager.users.${username}.systemd.user.services.t3code = {
-    Unit = {
-      Description = "T3 Code web server";
-      Requires = [ "ssh-tpm-agent.socket" ];
-      After = [ "ssh-tpm-agent.socket" ];
-    };
-    Install.WantedBy = [ "default.target" ];
-    Service = {
-      Environment = [
-        "PATH=${lib.makeBinPath (lib.unique ([ "/run/wrappers" ] ++ profilePaths ++ [ "${home}/.local" ]))}"
-        "SSH_AUTH_SOCK=%t/ssh-tpm-agent.sock"
-      ];
-      WorkingDirectory = home;
-      ExecStart = "${pkgs.unofficial.t3code}/bin/t3 serve --host 127.0.0.1 --port 3773";
-      Restart = "on-failure";
-      RestartSec = 5;
-      UMask = "0077";
-    };
-  };
-
-  systemd.services.t3code-https = {
-    description = "T3 Code HTTPS access over Tailscale";
-    wantedBy = [ "multi-user.target" ];
-    wants = [ "tailscaled.service" ];
-    after = [ "tailscaled.service" ];
-    serviceConfig = {
-      ExecStart = "${config.services.tailscale.package}/bin/tailscale serve --https=443 http://127.0.0.1:3773";
-      Restart = "always";
-      RestartSec = 5;
     };
   };
 

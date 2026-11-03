@@ -12,7 +12,6 @@
 
   home-manager.users.${config.primaryUser.username}.home.packages = with pkgs.unstable; [
     awscli2
-    azure-cli
     cmctl
     granted
     istioctl

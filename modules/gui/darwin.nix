@@ -11,6 +11,7 @@
       "linearmouse"
       "localsend"
       "secretive"
+      "t3-code"
       "utm"
       "zed"
     ];

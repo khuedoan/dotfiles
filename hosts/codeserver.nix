@@ -4,7 +4,6 @@
   imports = [
     ../modules/cli
     ../modules/dotfiles
-    ../modules/hermes
     ../modules/personal
     ../modules/t3code
   ];

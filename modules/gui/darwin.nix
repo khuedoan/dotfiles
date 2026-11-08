@@ -4,9 +4,7 @@
   homebrew = {
     casks = [
       "brave-browser"
-      "codex-app"
       "handy"
-      "herdr-app"
       "kitty"
       "linearmouse"
       "localsend"

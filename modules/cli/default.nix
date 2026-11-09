@@ -35,6 +35,7 @@
     kubernetes-helm
     kustomize
     markdown-oxide
+    mcporter
     neovim
     nnn
     nodejs

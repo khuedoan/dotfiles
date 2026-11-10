@@ -7,6 +7,10 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "terminal": {
+    "font_family": "FiraCode Nerd Font Mono",
+    "font_size": 12.0
+  },
   "ssh_connections": [
     {
       "host": "codeserver",
@@ -23,7 +27,7 @@
   ],
   "window_decorations": "server",
   "git_panel": {
-    "group_by": "staging",
+    "group_by": "none",
     "tree_view": true
   },
   "diff_view_style": "unified",

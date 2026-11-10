@@ -1,8 +1,7 @@
 [
-  // Override space in normal mode to act as leader prefix
-  // (default space moves cursor right via vim::WrappingRight)
+  // Use the Neovim leader in normal and visual modes.
   {
-    "context": "vim_mode == normal",
+    "context": "Editor && mode == full && (vim_mode == normal || vim_mode == visual) && !menu",
     "bindings": {
       "space": null
     }
@@ -10,13 +9,14 @@
 
   // Clipboard operations
   {
-    "context": "vim_mode == visual",
+    "context": "Editor && mode == full && vim_mode == visual && !menu",
     "bindings": {
-      "space y": "editor::Copy"
+      "space y": ["workspace::SendKeystrokes", "\" + y"],
+      "space c f": "editor::FormatSelections"
     }
   },
   {
-    "context": "vim_mode == normal",
+    "context": "Editor && mode == full && vim_mode == normal && !menu",
     "bindings": {
       "space y F": "workspace::CopyPath",
       "space y f": "workspace::CopyRelativePath"
@@ -25,7 +25,7 @@
 
   // Buffer management
   {
-    "context": "vim_mode == normal",
+    "context": "Editor && mode == full && vim_mode == normal && !menu",
     "bindings": {
       "space b d": "pane::CloseActiveItem"
     }
@@ -33,47 +33,53 @@
 
   // Git
   {
-    "context": "vim_mode == normal",
+    "context": "Editor && mode == full && vim_mode == normal && !menu",
     "bindings": {
       "space g s": "git_panel::ToggleFocus",
+      "space g d": "git::ViewUnstagedChanges",
+      "space g D": "git::ViewStagedChanges",
       "space g b": "git::Blame",
-      "space g o": "editor::ToggleSelectedDiffHunks"
+      "space g l": "git_graph::Open",
+      "space g h b": "git::OpenFilePermalink",
+      "space g o": "editor::ToggleAllDiffHunks"
     }
   },
 
   // Search and replace
   {
-    "context": "vim_mode == normal",
+    "context": "Editor && mode == full && vim_mode == normal && !menu",
     "bindings": {
-      "space s r": "buffer_search::Deploy",
-      "space s R": "pane::DeploySearch"
+      "space s r": ["buffer_search::Deploy", { "replace_enabled": true }],
+      "space s R": ["pane::DeploySearch", { "replace_enabled": true }]
     }
   },
 
   // File finder and navigation
   {
-    "context": "vim_mode == normal",
+    "context": "Editor && mode == full && vim_mode == normal && !menu",
     "bindings": {
       "space space": "file_finder::Toggle",
       "space f g": "file_finder::Toggle",
-      "space ,": "pane::ActivateLastItem",
+      "space ,": "tab_switcher::OpenInActivePane",
       "space /": "pane::DeploySearch",
-      "space ?": "project_search::ToggleFocus"
+      "space ?": "pane::DeploySearch",
+      // The project panel substitutes for Oil.
+      "-": "pane::RevealInProjectPanel",
+      "_": "project_panel::ToggleFocus"
     }
   },
 
-  // Format and undo
+  // Format. Zed has no undo tree for <Leader>u.
   {
-    "context": "vim_mode == normal",
+    "context": "Editor && mode == full && vim_mode == normal && !menu",
     "bindings": {
-      "space c f": "editor::Format",
-      "space u": "editor::Undo"
+      "space c f": "editor::Format"
     }
   },
 
   // Project management (ported from Doom Emacs <leader> p)
   {
-    "context": "vim_mode == normal",
+    "context": "Editor && mode == full && vim_mode == normal && !menu",
     "bindings": {
       "space p p": "projects::OpenRecent",
       "space p >": "projects::OpenRecent",
@@ -88,12 +94,31 @@
     }
   },
 
-  // Sneak motion (replaces leap.nvim)
+  // Sneak is a directional substitute for Leap.
   {
-    "context": "vim_mode == normal || vim_mode == visual",
+    "context": "Editor && mode == full && VimControl && !menu",
     "bindings": {
-      "s": "vim::PushSneak",
-      "shift-s": "vim::PushSneakBackward"
+      "s": "vim::PushSneak"
+    }
+  },
+
+  // Match mini.surround without delaying the delete operator.
+  {
+    "context": "Editor && mode == full && (vim_mode == normal || vim_mode == visual) && !menu",
+    "bindings": {
+      "g z": "vim::PushAddSurrounds"
+    }
+  },
+  {
+    "context": "Editor && mode == full && vim_mode == normal && !menu",
+    "bindings": {
+      "r z": ["vim::PushChangeSurrounds", {}]
+    }
+  },
+  {
+    "context": "Editor && mode == full && vim_operator == d && !menu",
+    "bindings": {
+      "z": "vim::PushDeleteSurrounds"
     }
   }
 ]

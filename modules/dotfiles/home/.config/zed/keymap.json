@@ -1,4 +1,23 @@
 [
+  // Match Kitty pane controls while a terminal has focus.
+  {
+    "context": "Terminal",
+    "bindings": {
+      "alt-enter": "pane::SplitRight",
+      "alt-shift-enter": "pane::SplitDown",
+      "alt-h": "workspace::ActivatePaneLeft",
+      "alt-j": "workspace::ActivatePaneDown",
+      "alt-k": "workspace::ActivatePaneUp",
+      "alt-l": "workspace::ActivatePaneRight",
+      "alt-shift-h": "workspace::SwapPaneLeft",
+      "alt-shift-j": "workspace::SwapPaneDown",
+      "alt-shift-k": "workspace::SwapPaneUp",
+      "alt-shift-l": "workspace::SwapPaneRight",
+      "alt-q": "pane::CloseActiveItem",
+      "alt-shift-f": "workspace::ToggleZoom"
+    }
+  },
+
   // Use the Neovim leader in normal and visual modes.
   {
     "context": "Editor && mode == full && (vim_mode == normal || vim_mode == visual) && !menu",

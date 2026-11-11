@@ -7,6 +7,27 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "edit_predictions": {
+    "allow_data_collection": "no",
+  },
+  "tabs": {
+    "file_icons": true,
+    "git_status": true,
+  },
+  "title_bar": {
+    "show_sign_in": false,
+  },
+  "close_on_file_delete": true,
+  "use_smartcase_search": true,
+  "semantic_tokens": "combined",
+  "colorize_brackets": true,
+  "format_on_save": "modifications",
+  "indent_guides": {
+    "coloring": "indent_aware",
+  },
+  "scroll_beyond_last_line": "vertical_scroll_margin",
+  "buffer_font_family": "FiraCode Nerd Font Mono",
+  "restore_on_startup": "empty_tab",
   "terminal": {
     "font_family": "FiraCode Nerd Font Mono",
     "font_size": 12.0
@@ -33,36 +54,31 @@
   "diff_view_style": "unified",
   "auto_update": false,
   "reveal_if_open": true,
-  "disable_ai": true,
   "which_key": {
     "enabled": true
   },
   "buffer_line_height": "standard",
-  "proxy": "",
   "project_panel": {
+    "entry_spacing": "standard",
     "dock": "left"
   },
   "agent": {
+    "use_modifier_to_send": true,
     "enable_feedback": false,
-    "single_file_review": true,
-    "favorite_models": [],
-    "model_parameters": []
+    "favorite_models": []
   },
   "telemetry": {
     "diagnostics": false,
-    "metrics": false,
-    "anthropic_retention": false
+    "metrics": false
   },
   "session": {
     "trust_all_worktrees": true
   },
   "vim_mode": true,
   "relative_line_numbers": "enabled",
-  "vertical_scroll_margin": 3,
-  "scrollbar": {
-    "show": "auto"
-  },
   "vim": {
+    "use_smartcase_find": true,
+    "use_system_clipboard": "on_yank",
     "toggle_relative_line_numbers": true
   },
   "agent_servers": {
@@ -87,11 +103,5 @@
       "type": "registry"
     }
   },
-  "ui_font_size": 16.0,
-  "buffer_font_size": 13.0,
-  "theme": {
-    "mode": "system",
-    "light": "Gruvbox Light Hard",
-    "dark": "One Dark"
-  },
+  "buffer_font_size": 12.0
 }

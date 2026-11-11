@@ -18,124 +18,98 @@
     }
   },
 
-  // Use the Neovim leader in normal and visual modes.
+  // Workspace leader: command mode or a view without text input.
+  // Keep Space available in editors, prompts, terminals, and pending operators.
   {
-    "context": "Editor && mode == full && (vim_mode == normal || vim_mode == visual) && !menu",
+    "context": "((VimControl && vim_mode != operator) || (!Editor && !Terminal)) && !menu",
     "bindings": {
-      "space": null
-    }
-  },
+      "space": null,
 
-  // Clipboard operations
-  {
-    "context": "Editor && mode == full && vim_mode == visual && !menu",
-    "bindings": {
-      "space y": ["workspace::SendKeystrokes", "\" + y"],
-      "space c f": "editor::FormatSelections"
-    }
-  },
-  {
-    "context": "Editor && mode == full && vim_mode == normal && !menu",
-    "bindings": {
-      "space y F": "workspace::CopyPath",
-      "space y f": "workspace::CopyRelativePath"
-    }
-  },
-
-  // Buffer management
-  {
-    "context": "Editor && mode == full && vim_mode == normal && !menu",
-    "bindings": {
-      "space b d": "pane::CloseActiveItem"
-    }
-  },
-
-  // Git
-  {
-    "context": "Editor && mode == full && vim_mode == normal && !menu",
-    "bindings": {
-      "space g s": "git_panel::ToggleFocus",
-      "space g d": "git::ViewUnstagedChanges",
-      "space g D": "git::ViewStagedChanges",
-      "space g b": "git::Blame",
-      "space g l": "git_graph::Open",
-      "space g h b": "git::OpenFilePermalink",
-      "space g o": "editor::ToggleAllDiffHunks"
-    }
-  },
-
-  // Search and replace
-  {
-    "context": "Editor && mode == full && vim_mode == normal && !menu",
-    "bindings": {
-      "space s r": ["buffer_search::Deploy", { "replace_enabled": true }],
-      "space s R": ["pane::DeploySearch", { "replace_enabled": true }]
-    }
-  },
-
-  // File finder and navigation
-  {
-    "context": "Editor && mode == full && vim_mode == normal && !menu",
-    "bindings": {
+      // Navigation
       "space space": "file_finder::Toggle",
       "space f g": "file_finder::Toggle",
       "space ,": "tab_switcher::OpenInActivePane",
-      "space /": "pane::DeploySearch",
-      "space ?": "pane::DeploySearch",
-      // The project panel substitutes for Oil.
-      "-": "pane::RevealInProjectPanel",
-      "_": "project_panel::ToggleFocus"
-    }
-  },
 
-  // Format. Zed has no undo tree for <Leader>u.
-  {
-    "context": "Editor && mode == full && vim_mode == normal && !menu",
-    "bindings": {
-      "space c f": "editor::Format"
-    }
-  },
+      // Git
+      "space g s": "git_panel::ToggleFocus",
+      "space g d": "git::ViewUnstagedChanges",
+      "space g D": "git::ViewStagedChanges",
+      "space g l": "git_graph::Open",
 
-  // Project management (ported from Doom Emacs <leader> p)
-  {
-    "context": "Editor && mode == full && vim_mode == normal && !menu",
-    "bindings": {
+      // Projects and tasks
       "space p p": "projects::OpenRecent",
       "space p >": "projects::OpenRecent",
       "space p f": "file_finder::Toggle",
       "space p b": "tab_switcher::Toggle",
       "space p s": "workspace::SaveAll",
       "space p .": "project_panel::ToggleFocus",
-      "space p k": "pane::CloseAllItems",
       "space p c": "task::Spawn",
       "space p R": "task::Rerun",
       "space p T": "task::Spawn"
     }
   },
 
+  // Editing in normal and visual modes.
+  {
+    "context": "VimControl && vim_mode != operator && !menu",
+    "bindings": {
+      "g z": "vim::PushAddSurrounds"
+    }
+  },
+
+  // Commands that act on the current editor or pane.
+  {
+    "context": "vim_mode == normal && !menu",
+    "bindings": {
+      // Clipboard
+      "space y F": "workspace::CopyPath",
+      "space y f": "workspace::CopyRelativePath",
+
+      // Buffers
+      "space b d": "pane::CloseActiveItem",
+      "space p k": "pane::CloseAllItems",
+
+      // Git
+      "space g b": "git::Blame",
+      "space g h b": "git::OpenFilePermalink",
+      "space g o": "editor::ToggleAllDiffHunks",
+
+      // Search and replace
+      "space s r": ["buffer_search::Deploy", { "replace_enabled": true }],
+      "space s R": ["pane::DeploySearch", { "replace_enabled": true }],
+      "space /": "pane::DeploySearch",
+      "space ?": "pane::DeploySearch",
+
+      // The project panel substitutes for Oil.
+      "-": "pane::RevealInProjectPanel",
+      "_": "project_panel::ToggleFocus",
+
+      // Formatting and surround
+      "space c f": "editor::Format",
+      "r z": ["vim::PushChangeSurrounds", {}]
+    }
+  },
+
+  // Selection commands have different behavior from normal-mode commands.
+  {
+    "context": "vim_mode == visual && !menu",
+    "bindings": {
+      "space y": ["workspace::SendKeystrokes", "\" + y"],
+      "space c f": "editor::FormatSelections"
+    }
+  },
+
   // Sneak is a directional substitute for Leap.
   {
-    "context": "Editor && mode == full && VimControl && !menu",
+    "context": "VimControl && !menu",
     "bindings": {
       "s": "vim::PushSneak"
     }
   },
 
-  // Match mini.surround without delaying the delete operator.
+  // Match mini.surround's delete operator.
   {
-    "context": "Editor && mode == full && (vim_mode == normal || vim_mode == visual) && !menu",
-    "bindings": {
-      "g z": "vim::PushAddSurrounds"
-    }
-  },
-  {
-    "context": "Editor && mode == full && vim_mode == normal && !menu",
-    "bindings": {
-      "r z": ["vim::PushChangeSurrounds", {}]
-    }
-  },
-  {
-    "context": "Editor && mode == full && vim_operator == d && !menu",
+    "context": "vim_operator == d && !menu",
     "bindings": {
       "z": "vim::PushDeleteSurrounds"
     }

@@ -5,4 +5,5 @@
   "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIN6HOaBZDGKmTHMHekPwzbb6inFGFlBFNsm3y+/AaQ9S nix-builder-MacBookPro"
   "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIB5qSejUhkUMiaFlShJdS9fuG5iRKVnmZStiQw6n3lez mbp-work"
   "ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBM/WQcPFuzsPmfXSM1GGkIndFcDRirTl5Aqsou8lWPJyUNZOdFt2cWlUkm+Q1F+LFJQ2+YdIXPZlTqhWLF1eWuY= khuedoan@codeserver"
+  "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFjMVNJv//d00dvlGf9ms/786cNGUZ5cd0uduQR1FyOV iphone"
 ]

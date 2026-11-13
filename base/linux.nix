@@ -110,9 +110,10 @@ in
   };
 
   virtualisation = {
-    docker = {
+    podman = {
       enable = true;
-      enableOnBoot = false;
+      dockerCompat = true;
+      dockerSocket.enable = true;
       autoPrune = {
         enable = true;
         flags = [
@@ -134,7 +135,7 @@ in
   users.users.${username} = {
     isNormalUser = true;
     extraGroups = [
-      "docker"
+      "podman"
       "libvirtd"
       "networkmanager"
       config.security.tpm2.tssGroup

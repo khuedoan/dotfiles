@@ -18,6 +18,11 @@ let
   ) config.environment.profiles;
 in
 {
+  networking.firewall.extraInputRules = ''
+    ip saddr { 10.0.0.0/8, 100.64.0.0/10, 172.16.0.0/12, 192.168.0.0/16 } tcp dport 3773 accept
+    ip6 saddr { fc00::/7, fe80::/10 } tcp dport 3773 accept
+  '';
+
   environment.systemPackages = [ pkgs.unofficial.t3code ];
 
   programs.nix-ld.libraries = with pkgs; [
@@ -56,23 +61,10 @@ in
         "SSH_AUTH_SOCK=%t/ssh-tpm-agent.sock"
       ];
       WorkingDirectory = home;
-      ExecStart = "${pkgs.unofficial.t3code}/bin/t3 serve --host 127.0.0.1 --port 3773";
+      ExecStart = "${pkgs.unofficial.t3code}/bin/t3 serve --host :: --port 3773";
       Restart = "on-failure";
       RestartSec = 5;
       UMask = "0077";
     };
   };
-
-  systemd.services.t3code-https = {
-    description = "T3 Code HTTPS access over Tailscale";
-    wantedBy = [ "multi-user.target" ];
-    wants = [ "tailscaled.service" ];
-    after = [ "tailscaled.service" ];
-    serviceConfig = {
-      ExecStart = "${config.services.tailscale.package}/bin/tailscale serve --https=443 http://127.0.0.1:3773";
-      Restart = "always";
-      RestartSec = 5;
-    };
-  };
-
 }

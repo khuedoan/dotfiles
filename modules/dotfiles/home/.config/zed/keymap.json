@@ -24,17 +24,25 @@
     "context": "((VimControl && vim_mode != operator) || (!Editor && !Terminal)) && !menu",
     "bindings": {
       "space": null,
+      "space f": null,
 
       // Navigation
       "space space": "file_finder::Toggle",
       "space f g": "file_finder::Toggle",
       "space ,": "tab_switcher::OpenInActivePane",
+      "space /": "pane::DeploySearch",
+      "space ?": "pane::DeploySearch",
+      "space s shift-r": ["pane::DeploySearch", { "replace_enabled": true }],
 
       // Git
       "space g s": "git_panel::ToggleFocus",
       "space g d": "git::ViewUnstagedChanges",
-      "space g D": "git::ViewStagedChanges",
+      "space g shift-d": "git::ViewStagedChanges",
       "space g l": "git_graph::Open",
+
+      // Buffers
+      "space b d": "pane::CloseActiveItem",
+      "space p k": "pane::CloseAllItems",
 
       // Projects and tasks
       "space p p": "projects::OpenRecent",
@@ -43,9 +51,37 @@
       "space p b": "tab_switcher::Toggle",
       "space p s": "workspace::SaveAll",
       "space p .": "project_panel::ToggleFocus",
+      "_": "project_panel::ToggleFocus",
       "space p c": "task::Spawn",
-      "space p R": "task::Rerun",
-      "space p T": "task::Spawn"
+      "space p shift-r": "task::Rerun",
+      "space p shift-t": "task::Spawn"
+    }
+  },
+
+  // Fugitive status keys for the Git changes list.
+  {
+    "context": "GitPanel && ChangesList && !GitBranchSelector && !GitRepositorySelector",
+    "bindings": {
+      "s": "git::StageFile",
+      "u": "git::UnstageFile",
+      "-": "git::ToggleStaged",
+      "shift-u": "git::UnstageAll",
+      "shift-x": ["git::RestoreFile", { "skip_prompt": false }],
+      "=": "menu::Confirm",
+      "d d": "menu::Confirm",
+      "enter": "git::ViewFile",
+      "c c": "git::ExpandCommitEditor",
+      "q": "git_panel::Close",
+      "g q": "git_panel::Close"
+    }
+  },
+
+  // Leave the Git graph search field with Escape.
+  {
+    "context": "GitGraphSearchBar > Editor",
+    "bindings": {
+      "escape": "git_graph::FocusNextTabStop",
+      "ctrl-[": "git_graph::FocusNextTabStop"
     }
   },
 
@@ -62,12 +98,8 @@
     "context": "vim_mode == normal && !menu",
     "bindings": {
       // Clipboard
-      "space y F": "workspace::CopyPath",
+      "space y shift-f": "workspace::CopyPath",
       "space y f": "workspace::CopyRelativePath",
-
-      // Buffers
-      "space b d": "pane::CloseActiveItem",
-      "space p k": "pane::CloseAllItems",
 
       // Git
       "space g b": "git::Blame",
@@ -76,13 +108,9 @@
 
       // Search and replace
       "space s r": ["buffer_search::Deploy", { "replace_enabled": true }],
-      "space s R": ["pane::DeploySearch", { "replace_enabled": true }],
-      "space /": "pane::DeploySearch",
-      "space ?": "pane::DeploySearch",
 
       // The project panel substitutes for Oil.
       "-": "pane::RevealInProjectPanel",
-      "_": "project_panel::ToggleFocus",
 
       // Formatting and surround
       "space c f": "editor::Format",

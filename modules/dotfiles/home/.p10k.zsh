@@ -5,8 +5,6 @@ typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
 typeset -g POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(
   os_icon
   dir
-  time
-
   context
   vcs
   status

@@ -95,6 +95,8 @@
     };
   };
 
+  security.pam.services.login.fprintAuth = false;
+
   home-manager.users.${config.primaryUser.username}.home.file.".config/sway/config.d/hardware".text =
     ''
       output "eDP-1" {

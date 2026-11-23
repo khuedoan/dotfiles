@@ -98,6 +98,7 @@
         pkgs.zathura
         pkgs.unstable.zed-editor
         pkgs.unstable.kitty
+        pkgs.unofficial.t3code-desktop
       ];
 
       pointerCursor = {

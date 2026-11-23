@@ -109,8 +109,6 @@
     };
 
     services = {
-      easyeffects.enable = true;
-
       voxtype = {
         enable = true;
         package = pkgs.unstable.voxtype-onnx;

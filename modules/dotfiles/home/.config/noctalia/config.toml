@@ -21,7 +21,7 @@ transition = []
 
 [bar.main]
 position = "left"
-thickness = 24
+thickness = 32
 background_opacity = 0.25
 radius = 0
 margin_ends = 0
@@ -30,12 +30,15 @@ padding = 12
 widget_spacing = 8
 scale = 1.0
 shadow = false
-start = ["control-center", "workspaces", "launcher"]
+start = ["control-center", "taskbar", "launcher"]
 center = ["clock"]
 end = ["tray", "notifications", "network", "volume", "battery"]
 
-[widget.workspaces]
+[widget.taskbar]
 capsule_radius = 0
+group_by_workspace = true
+group_single_icon_per_app = true
+minimal = true
 
 [widget.privacy]
 hide_inactive = true

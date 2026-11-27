@@ -22,20 +22,6 @@
     "khuedoan"
   ];
 
-  security.sudo.extraRules = [
-    # TODO I'm too lazy to enter password for Nixie every time so I'm YOLOing a bit here,
-    # maybe there's a better way to make Nixie requires less root level permissions?
-    {
-      users = [ config.primaryUser.username ];
-      runAs = "root";
-      commands = [
-        {
-          command = "/nix/store/*-nixie-*/bin/nixie";
-          options = [ "NOPASSWD" ];
-        }
-      ];
-    }
-  ];
 
   networking = {
     firewall = {

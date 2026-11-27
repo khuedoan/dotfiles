@@ -11,6 +11,7 @@
     ../modules/gui
     ../modules/personal
     ../modules/steam-machine
+    ../modules/t3code
   ];
 
   primaryUser.username = "khuedoan";

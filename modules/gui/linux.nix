@@ -1,6 +1,5 @@
 {
   config,
-  inputs,
   pkgs,
   ...
 }:
@@ -80,9 +79,6 @@
   };
 
   home-manager.users.${config.primaryUser.username} = {
-    # TODO use stable option when available and remove this
-    imports = [ "${inputs.home-manager-unstable}/modules/services/voxtype.nix" ];
-
     home = {
       packages = [
         pkgs.unstable.brave
@@ -105,26 +101,6 @@
         enable = true;
         name = "Adwaita";
         package = pkgs.adwaita-icon-theme;
-      };
-    };
-
-    services = {
-      voxtype = {
-        enable = true;
-        package = pkgs.unstable.voxtype-onnx;
-        loadModels = [ "parakeet-unified-en-0.6b" ];
-        settings = {
-          engine = "parakeet";
-          hotkey.enabled = false;
-          parakeet = {
-            model = "parakeet-unified-en-0.6b";
-            streaming = true;
-            # Streaming requires multiples of 80ms
-            streaming_chunk_secs = 0.48;
-            streaming_left_context_secs = 1.6;
-            streaming_right_context_secs = 0.48;
-          };
-        };
       };
     };
   };

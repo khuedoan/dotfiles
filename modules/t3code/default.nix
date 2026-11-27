@@ -59,6 +59,7 @@ in
       Environment = [
         "PATH=${lib.makeBinPath (lib.unique ([ "/run/wrappers" ] ++ profilePaths ++ [ "${home}/.local" ]))}"
         "SSH_AUTH_SOCK=%t/ssh-tpm-agent.sock"
+        "T3CODE_TELEMETRY_ENABLED=false"
       ];
       WorkingDirectory = home;
       ExecStart = "${pkgs.unofficial.t3code}/bin/t3 serve --host :: --port 3773";

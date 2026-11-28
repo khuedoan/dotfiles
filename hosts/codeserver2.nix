@@ -29,6 +29,15 @@
 
   services.openssh.settings.KbdInteractiveAuthentication = false;
 
+  system.autoUpgrade = {
+    enable = true;
+    flake = "github:khuedoan/dotfiles/master#codeserver2";
+    flags = [ "--accept-flake-config" ];
+    dates = "04:40";
+    upgrade = false;
+    allowReboot = true;
+  };
+
   nix.settings.trusted-users = [
     "root"
     config.primaryUser.username

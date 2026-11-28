@@ -131,6 +131,10 @@
           host = "codeserver";
           system = "x86_64-linux";
         };
+        codeserver2 = mkHost {
+          host = "codeserver2";
+          system = "aarch64-linux";
+        };
       };
 
       darwinConfigurations = {

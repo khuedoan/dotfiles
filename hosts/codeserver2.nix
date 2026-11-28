@@ -27,6 +27,8 @@
     kernelParams = [ "console=ttyAMA0" ];
   };
 
+  services.openssh.settings.KbdInteractiveAuthentication = false;
+
   nix.settings.trusted-users = [
     "root"
     config.primaryUser.username

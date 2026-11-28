@@ -27,7 +27,11 @@
     kernelParams = [ "console=ttyAMA0" ];
   };
 
-  services.openssh.settings.KbdInteractiveAuthentication = false;
+  services.openssh.settings = {
+    AllowUsers = [ config.primaryUser.username ];
+    KbdInteractiveAuthentication = false;
+    PermitRootLogin = "no";
+  };
 
   system.autoUpgrade = {
     enable = true;
